@@ -1,4 +1,5 @@
 ---
+typora-root-url: ../
 title: SimTower Reference
 category: Gaming
 layout: post
@@ -6,24 +7,26 @@ tags:
   - SimTower
 ---
 
-When playing through SimTower again, I was frequently looking for facts from the help and from online walkthroughs. Here's a double-checked, complete set of the details I was looking for when replaying the game.
+When playing through SimTower again, I was frequently looking for facts from the help and from online walkthroughs. Here's a double-checked, complete set of the details I was looking for when replaying the game, with more useful details together in one place than the original help.
 
-Note that these details are for the PC 1.0 version of the game. I suspect some of the discrepancies I saw online were because other versions of the game are a bit different from one another.
+![simtower-help](/assets/img/SimTower/help.png)
+
+Note that these details are for the PC 1.0 version of the game. I saw some conflicting information online which I suspect is for SimTower on other platforms.
 
 ### Facility Overview
 
-| Name          | Stars | Cost [K] | Width   | Population | Pop/Seg  | Income/Qtr [K] | $/Seg |
-| ------------- | ----- | -------- | ------- | ---------- | -------- | -------------- | ----- |
-| Condo         | 1     | $80      | 16      | 3          | 0.19     | $0*            | 0     |
-| Office        | 1     | $40      | 9       | 6          | 0.67     | $10            | 1.11  |
-| Fast Food     | 1     | $100     | 16      | 35*        | **2.19** | $9*            | 0.56  |
-| Hotel, Single | 2     | $20      | 4       | 1          | 0.25     | $6             | 1.50  |
-| Hotel, Twin   | 2     | $50      | 6       | 2          | 0.33     | $9             | 1.50  |
-| Hotel, Suite  | 2     | $100     | 10      | 2          | 0.20     | $18            | 1.80  |
-| Restaurant    | 3     | $200     | 24      | 35*        | 1.46     | $18*           | 0.75  |
-| Retail Shop   | 3     | $100     | 12      | 25*        | **2.08** | $15            | 1.25  |
-| Party Hall    | 3     | $100     | 24 x 2h | 50         | 1.04     | $60            | 1.25  |
-| Cinema        | 3     | $500     | 31 x 2h | 120        | 1.94     | $30            | 0.48  |
+| Name          | Stars | Cost [K] | Width   | Population | Pop/Seg  | $/Qtr [K] | $/Seg |
+| ------------- | ----- | -------- | ------- | ---------- | -------- | --------- | ----- |
+| Condo         | 1     | $80      | 16      | 3          | 0.19     | $0*       | 0     |
+| Office        | 1     | $40      | 9       | 6          | 0.67     | $10       | 1.11  |
+| Fast Food     | 1     | $100     | 16      | 35*        | **2.19** | $9*       | 0.56  |
+| Hotel, Single | 2     | $20      | 4       | 1          | 0.25     | $6        | 1.50  |
+| Hotel, Twin   | 2     | $50      | 6       | 2          | 0.33     | $9        | 1.50  |
+| Hotel, Suite  | 2     | $100     | 10      | 2          | 0.20     | $18       | 1.80  |
+| Restaurant    | 3     | $200     | 24      | 35*        | 1.46     | $18*      | 0.75  |
+| Retail Shop   | 3     | $100     | 12      | 25*        | **2.08** | $15       | 1.25  |
+| Party Hall    | 3     | $100     | 24 x 2h | 50         | 1.04     | $60       | 1.25  |
+| Cinema        | 3     | $500     | 31 x 2h | 120        | 1.94     | $30       | 0.48  |
 
 Condos have $150k one-time income when occupied, and no recurring income.
 Retail Shops settle at 25 (weekday) and 30 (weekend) population.

@@ -1,4 +1,5 @@
 ---
+typora-root-url: ../
 title: SimTower Max Tower
 category: Gaming
 layout: post
@@ -6,7 +7,7 @@ tags:
   - SimTower
 ---
 
-A few days after my [previous SimTower adventure]({% post_url 2021-03-12-Return-To-SimTower %}), I wanted to make an even more impressive tower. My retail-heavy-attempt was straightforward and didn't take too many floors, but I thought it'd be fun to try to build consistently all the way up to the 100th floor cathedral, and to try to max out many of the in-game limits right when I reached it.
+A few days after my [previous SimTower adventure]({% post_url 2021-03-12-Return-To-SimTower %}), I wanted to revise my tower design. My retail-heavy-attempt was straightforward and didn't take too many floors, but I thought it'd be fun to try to build consistently all the way up to the 100th floor cathedral, and to try to max out many of the in-game limits right when I reached it.
 
 ### Design
 
@@ -38,7 +39,11 @@ Here's the basic template for each lobby:
 | 15     | Lobby          |       |           |
 | 11-14  | 4x Fast Food   | 1,260 | $324      |
 
+![max-layout](/assets/img/SimTower/max-layout.png)
+
 So this is six hotel floors, four fast food, three retail shop, and one office. I kept two office floors above the first lobby, and B1 is parking, so there are only three fast food and two shop floors on the bottom lobby. The 90th floor lobby only has five hotel floors, since F100 is for the cathedral.
+
+![f101-underground](/assets/img/SimTower/max-underground.png)
 
 ### Tribulations
 
@@ -48,11 +53,12 @@ Next, I eventually needed 10 Recycling Centers, so I had to bump the main lobby 
 
 Finally, my topmost Retail Shop floor, floor 94, couldn't maintain enough traffic. Three floors of retail worked on the other lobbies, and no other facilities had bad reviews on the 90th floor lobby. I decided to replace the shops with restaurants, which didn't have any problems and still kept my weekday population over 15,000.
 
+![f101-eval](/assets/img/SimTower/max-eval.png)
+
 ### Result
 
 After a long night of building, I finally got it all done - it's a monster! I'm using all 24 elevator shafts, 59 out of 64 escalators, and 477 of the 512 commercial facility limit. The population peaks at 21,643 on the first weekday evening (counting weekend retail traffic and with the hotel rooms filled), and still manages a 15,527 weekday minimum.
 
+![welcome-to-tower](/assets/img/SimTower/max-welcome-to-tower.png)
 
-
-
-
+![finance-100f](/assets/img/SimTower/max-finance.png)
