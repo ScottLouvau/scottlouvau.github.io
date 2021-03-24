@@ -21,7 +21,7 @@ See my [SimTower Reference]({% post_url 2021-03-13-SimTower-Reference %}) for so
 
 The map is 375 "segments" wide, but a 360 segment tower is much easier to fill evenly, so build a 360 segment lobby. Put three floors with 40 offices each on top. Add three stairways to serve them: after the 9th, 20th and 31st offices. 
 
-Now, turn up the simulation speed and save up $60M. For maximum speed, close the Map Window, shrink the Main Window, look at the sky, and turn on "Fast Mode". My 2020 laptop finished a quarter every 8 seconds like this, so it was only about a ten minute wait.
+Now, turn up the simulation speed and save up $60M.  For maximum speed, close the Map Window, shrink the Main Window, look at the sky, and turn on "Fast Mode". My 2020 laptop finished a quarter every 8 seconds like this, so it was only about a ten minute wait. Here's my [saved game](/assets/files/SimTower/144_60M.TDT), in case you want to skip that.
 
 Next, build an empty B1. Add matching stairs, two security offices on the left, and 10 Fast Food centered around the middle stairs. 
 
@@ -39,9 +39,12 @@ Build a second Skylobby on F30, with the same seven shopping floors from F26-F33
 
 Almost done! You need one more shopping floor, but can't build any more escalators. Add four elevator shafts around F15, on top of the hotel ones. Add four cars to each and set them to wait 30 seconds. Connect them to F19 and build your last shopping floor there.
 
-Finally, you can extend the middle two express elevators to floor 90, build a small Skylobby, build up to floor 100, add a Cathedral, build a two car elevator to get people from 90 to 100, and wait for the wedding.
+Finally, you can extend the middle two express elevators to floor 90, build a small Skylobby, build up to floor 100, add a Cathedral, build a two car elevator to get people from 90 to 100, and wait for the wedding. 
 
 ![tower](/assets/img/SimTower/tower.png)
+
+[Save - Offices and $60M](/assets/files/SimTower/144_60M.TDT)
+[Save - Just Got TOWER](/assets/files/SimTower/V2F100.TDT)
 
 ### Rationale
 

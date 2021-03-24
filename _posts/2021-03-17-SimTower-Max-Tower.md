@@ -45,6 +45,9 @@ So this is six hotel floors, four fast food, three retail shop, and one office. 
 
 ![f101-underground](/assets/img/SimTower/max-underground.png)
 
+[Save - Offices and $60M](/assets/files/SimTower/144_60M.TDT)
+[Save - Just Before Cathedral](/assets/files/SimTower/144F99.TDT)
+
 ### Tribulations
 
 This layout went up relatively smoothly, but it wasn't completely without problems. The elevators must be very carefully placed to get all of the shafts within the 144 width - the service elevators had to be at the outermost edges, and I had to rebuild the local elevators a few segments out from their original placement to fit all six express elevators with enough spacing.
