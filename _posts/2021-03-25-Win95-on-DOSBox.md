@@ -315,10 +315,10 @@ boot -l C
 
 ### Troubleshooting
 
-**Win95 is showing a messed up screen on boot or running ScanDisk forever**
+#### Win95 is showing a messed up screen on boot or running ScanDisk forever
 This happens to me when I haven't shut down Win95 properly. You can get your original Win95.img from your ZIP to go back to a working install.
 
-**Windows Setup Error "SU 0013" **
+#### Windows Setup Error "SU 0013"
 This error blocked me in my previous walkthrough. It happens when you mount the hard drive image to write files to rather than to boot to, or you don't specify the hard drive geometry. If you copy the Win95 setup files to the hard drive you'll install to, you need to close DOSBox, and start again mounting the drive "boot style" before you run setup.exe.
 
 ```
@@ -330,6 +330,9 @@ imgmount 2 Win95.img -size %Size256MB% -t hdd -fs none
 ```
 
 Note that to boot, you must mount to an IDE position number instead of drive letter (2 is 'Primary Master'), you must provide the geometry (-size), and you must not let DOSBox try to read the file system (-fs none).
+
+#### Opening Control Panel crashes
+I saw this, but only for the first three or so boots of Win95. I know, weird. Anyway, try another reboot and it may work after that.
 
 ### Bonus: Automating Win95 Setup
 
