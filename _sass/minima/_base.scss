@@ -300,7 +300,7 @@ pre {
  * Tables
  */
 table {
-  margin-bottom: $spacing-unit;
+  margin-bottom: $spacing-unit / 2;
   max-width: 100%;
   display: block;
   overflow-x: auto;
@@ -327,11 +327,12 @@ table {
   td {
     border: 1px solid var(--table-border-color);
   }
-}
 
-@include media-query($on-medium) {
-  table
-  {
-    @include relative-font-size(0.8);    
+  @include media-query($on-medium) {
+    @include relative-font-size(0.85);    
+  }
+
+  @include media-query($on-small) {
+    @include relative-font-size(0.75);
   }
 }
