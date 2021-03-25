@@ -13,7 +13,7 @@ baseurl: ""
 description: >- 
   Incessantly optimizing code, games, and finances.
 social:
-  facebook: "scott.louvau"
+  #facebook: "scott.louvau"
   github: "ScottLouvau"
   linkedin: "scott-louvau-97846531"
   email: "scottlo@outlook.com"
