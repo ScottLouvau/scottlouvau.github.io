@@ -92,25 +92,25 @@ To get the six star "TOWER" rating, you must have over 15,000 population for a w
 
 ### Q&A
 
-**How do you build escalators on the office floors?**
+#### How do you build escalators on the office floors?
 It turns out that you can build escalators on empty floors, so just bulldoze the offices right behind the stairs, then replace the stairs with an escalator, and then rebuild the offices. Sims will take a maximum of four flights of stairs, but seven escalators, so you can build out three levels above and four levels below each lobby with escalators.
 
-**When does population update?**
+#### When does population update?
 Population is static for offices and condos. Hotel Population goes up and down as guest check in and out. Population for retail locations updates when they open to reflect the number of "natural" customers the previous day. For example, if a Fast Food place has 48 customers on the weekend, the tower will count that population from 10am (opening) on the next day (weekday 1) until the opening two days later (weekday 2).
 
-**What is the math for fast food population, and how do offices affect them?**
+#### What is the math for fast food population, and how do offices affect them?
 Fast Food, when newly built, has the following daily traffic: 10, 20, 20, 20, 35, 35, 35, 40, .... Weekends get 20% extra traffic. Rainy days get about half the normal traffic. Fast Food places normally have 35 weekday customers and 48 weekend customers. 
 
 If office workers can get to the fast food place, five of the six office workers will visit a Fast Food place within range each weekday. Ideally, this means three offices can boost each Fast Food place to maximum revenue, but the distribution of bonus visitors is uneven, so you are likely to need four offices per fast food. These extra customers boost earnings (slightly), but are not counted again for the tower population, so they don't help you earn a higher star rating.
 
-**How far away do facilities have to be to avoid noise problems?**
+#### How far away do facilities have to be to avoid noise problems?
 There must be at least **11** empty segments between the fast food and the office. Hotel rooms require **21** segments from an office. These gaps waste space quickly, so keeping whole floors all one type seems to work better.
 
-**Which facilities object to noise from one another?**
+#### Which facilities object to noise from one another?
 Offices object to noise from commercial (fast food, restaurants, retail, cinema). Hotels and Condos object to noise from commercial and offices.
 
-**How do housekeepers work?**
+#### How do housekeepers work?
 Each housekeeping facility has six housekeepers. They will only work on separate floors, so you need multiple housekeeping facilities and a service elevator to get several to clean one floor. Each housekeeper can clean 19 rooms, apparently, but I needed four housekeeping facilities to safely clean my 58 room floors and they didn't finish until after 2:00pm. 
 
-**What are the best express elevator settings?**
+#### What are the best express elevator settings?
 Each express elevator shaft should only stop at the lobby and a single skylobby, so the cars just go back and forth. Two shafts with all eight cars each can serve each skylobby with the full eight full shopping floors. Configure the express elevators to wait 30 seconds to cause them to fill up more consistently.
