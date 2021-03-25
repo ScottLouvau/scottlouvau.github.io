@@ -15,16 +15,17 @@ In addition to a Win95 CD ISO and key, you'll need [empty FAT-16 HDD images](/as
 
 ### Recommendations
 
-**Use Win95C (OSR 2.5)**
+#### Use Win95C (OSR 2.5)
 I saw the fewest unhandled exceptions and other problems with the last Win95 release.
 
-**Trim the Win95 install CD**
+#### Trim the Win95 install CD
 You can delete all of the files on the Win95C CD which aren't on the Win95A CD to get the latest Win95 fixes, but without all of the optional software (IE, AOL, ...). This also eliminated a few exceptions during the first boot.
 
-**Make a Win95 install CD hard drive**
+#### Make a Win95 install CD hard drive
 I couldn't mount the Win95 ISO so a DOS boot disk would see it. The walkthroughs copy the install directory to the target hard drive, but that means the target drive must be larger. Instead, I copied my (trimmed) Win95 setup folder to an empty hard drive image and then mount it along with the DOS Boot Disk and target drive to start setup.
 
-**Mount a second hard drive for each game**
+#### Mount a second hard drive for each game
+
 You have to boot from an "img" file in DOSBox to run Win95, but IMG files take up the whole drive size, not just the used space. I didn't want to installing all of my games in the same Win95 image, which I could break easily, and I didn't want a huge Win95 starting image to install each game. Instead, you can leave the Win95 image small and mount a second empty drive for each game that's the right size to install the game to.
 
 
@@ -307,6 +308,8 @@ imgmount 3 %GAME% -size %GAMESIZE% -t hdd -fs none
 boot -l C
 
 ```
+
+...and you're done!
 
 ![safe-to-turn-off](/assets/img/Win95/safe-to-turn-off.png)
 
