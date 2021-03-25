@@ -5,30 +5,14 @@
 
     <div class="footer-col-wrapper">
       <div class="footer-col">
-        {%- if site.author.email %}
-        <a href="mailto:{{ site.author.email }}" class="u-email">
-          <svg class="svg-icon">
-            <use xlink:href="{{ 'assets/minima-social-icons.svg#email' | relative_url }}"></use>
-          </svg><span>{{site.author.name}}</span>
-        </a>
-      {%- endif %}
+        <div class="social-links">
+          {%- include social.html -%}
+        </div>
       </div>
-      <div class="footer-col">
-        <a href="{{ 'feed.xml' | relative_url }}" class="feed-subscribe">
-          <svg class="svg-icon orange">
-            <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
-          </svg><span>Subscribe</span>
-        </a>
-      </div>
-      <div class="footer-col">
+      <div class="footer-col site-description">
         {{ site.description | escape }}
       </div>
     </div>
-
-    <div class="social-links">
-      {%- include social.html -%}
-    </div>
-
   </div>
 
 </footer>

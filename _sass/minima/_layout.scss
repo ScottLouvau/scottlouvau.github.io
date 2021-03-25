@@ -49,7 +49,9 @@
     padding-top: 10px;
     text-align: center;
 
-    > svg path {
+    > svg {
+      width: 18px;
+      height: 15px;
       fill: var(--border-color-03);
     }
   }
@@ -126,19 +128,20 @@
   padding: $spacing-unit / 4 0;
 }
 
+.footer-col-wrapper .site-description {
+  text-align: right;
+  padding-top: $spacing-unit / 6;
+}
+
 .footer-heading {
   @include relative-font-size(1.125);
   margin-bottom: $spacing-unit / 2;
 }
 
-.feed-subscribe .svg-icon {
-  padding: 5px 5px 2px 0
-}
-
 .contact-list,
 .social-media-list {
   list-style: none;
-  margin-left: 0;
+  margin: 0;
 }
 
 .footer-col-wrapper,
@@ -291,15 +294,16 @@
 
 .social-media-list {
   display: table;
-  margin: 0 auto;
+  margin: 0;
   li {
     float: left;
     margin: 5px 10px 5px 0;
     &:last-of-type { margin-right: 0 }
     a {
       display: block;
-      padding: $spacing-unit / 4;
-      border: 1px solid var(--border-color-01);
+      padding-right: $spacing-unit / 6;
+      //padding: 0 0 0 0;
+      //border: 1px solid var(--border-color-01);
       &:hover { border-color: var(--border-color-02); }
     }
   }
