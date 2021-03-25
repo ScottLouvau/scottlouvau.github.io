@@ -9,7 +9,7 @@ tags:
 
 It's 1994, and Maxis is a big name in gaming. The excellent SimCity 2000 released last year, but we're looking at a lesser known title, SimTower. SimTower was not actually developed by Maxis, but instead by Yoot Saito, who was inspired by the 1989 SimCity. The game was released as "The Tower" in Japan and was relatively successful. Maxis learned about the game and offered to publish it in the US, branded as a "Sim"-title.
 
-26 years later, I've been digging up old games and wanted to really beat SimTower this time. Being from 1994, SimTower is actually a Windows 3.1 title, so you have to install Windows on DosBox to run it. I installed Windows 95 to run it, which took a few hours of attempts and ended up being a nostalgic journey itself. [DarkTraveler's Guide](http://dosbox95.darktraveler.com/guide part 1.html) had the steps that ended up working for me.
+26 years later, I've been digging up old games and wanted to really beat SimTower this time. Being from 1994, SimTower is actually a Windows 3.1 title, so you have to install Windows on DosBox to run it. I installed Windows 95 to run it, which took a few hours of attempts and ended up being a nostalgic journey itself. I've written up the [steps that worked for me]({% post_url 2021-03-25-Win95-on-DOSBox %}).
 
 Here's my first pass at "solving" SimTower. I was inspired by a very short and simple SimTower [walkthrough](http://blog.codekills.net/2009/03/15/how-to-beat-simtower/), though I ended up using a Retail Store / Fast Food mix for higher income with similar population.
 
