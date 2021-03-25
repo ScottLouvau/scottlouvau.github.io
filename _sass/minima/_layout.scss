@@ -18,7 +18,7 @@
   margin-bottom: 0;
   float: left;
 
-  @include media-query($on-palm) {
+  @include media-query($on-medium) {
     padding-right: 45px;
   }
 

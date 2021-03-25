@@ -327,6 +327,11 @@ table {
   td {
     border: 1px solid var(--table-border-color);
   }
+}
 
-    
+@include media-query($on-medium) {
+  table
+  {
+    @include relative-font-size(0.8);    
+  }
 }
