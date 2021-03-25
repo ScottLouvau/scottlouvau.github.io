@@ -187,6 +187,7 @@
     &:last-child {
       padding-right: 0;
       padding-left: $spacing-unit / 2;
+      width: calc(2 * (100% - (#{$spacing-unit} / 2)));
     }
   }
 }

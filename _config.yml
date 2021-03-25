@@ -7,12 +7,16 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Relentless Optimizer
-email: scottlo@outlook.com
+title: "Relentless Optimizer"
+url: "https://relentlessoptimizer.com" 
+baseurl: "" 
 description: >- 
   Incessantly optimizing code, games, and finances.
-baseurl: "" 
-url: "https://relentlessoptimizer.com" 
+social:
+  facebook: "scott.louvau"
+  github: "ScottLouvau"
+  linkedin: "scott-louvau-97846531"
+  email: "scottlo@outlook.com"
 
 show_excerpts: true
 
@@ -20,10 +24,6 @@ show_excerpts: true
 theme: minima
 plugins:
   - jekyll-feed
-
-minima:
-  skin: classic
-#  skin: dark
 
 # Exclude from processing.
 # The following items will not be processed, by default.
