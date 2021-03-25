@@ -8,4 +8,6 @@ Hi, I'm Scott Louvau. I live near Seattle. I worked at Microsoft, mostly on Visu
 
 I'd love to see a world where more of the code I run is fast and more people achieve financial independence sooner, and hopefully this blog will help with that. 
 
+You can reach me via [scottlo@outlook.com](mailto:scottlo@outlook.com).
+
 ![About-Crop-350px](..\assets\img\About-Crop-350px.jpg)
