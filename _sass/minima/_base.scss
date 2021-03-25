@@ -58,7 +58,6 @@ p, blockquote, pre, hr,
 dl, dd, ol, ul, figure {
   margin: 0;
   padding: 0;
-
 }
 
 
@@ -115,7 +114,7 @@ main {
  * Images
  */
 img {
-  max-width: 100%;
+  max-width: calc(100% - #{$spacing-unit});
   vertical-align: middle;
   border: 1px solid var(--border-color-01);
 }
@@ -222,7 +221,7 @@ code {
 }
 
 pre {
-  padding: 8px 12px;
+  padding: 4px 8px;
   overflow-x: auto;
 
   > code {
@@ -302,11 +301,17 @@ pre {
  */
 table {
   margin-bottom: $spacing-unit;
-  width: 100%;
+  max-width: 100%;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
   text-align: $table-text-align;
   color: var(--table-text-color);
+
   border-collapse: collapse;
-  border: 1px solid var(--table-border-color);
+  
   tr {
     &:nth-child(even) {
       background-color: var(--table-zebra-color);
@@ -323,10 +328,5 @@ table {
     border: 1px solid var(--table-border-color);
   }
 
-  @include media-query($on-laptop) {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-            -ms-overflow-style: -ms-autohiding-scrollbar;
-  }
+    
 }

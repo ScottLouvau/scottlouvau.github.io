@@ -19,7 +19,7 @@ In addition to a Win95 CD ISO and key, you'll need [empty FAT-16 HDD images](/as
 I saw the fewest unhandled exceptions and other problems with the last Win95 release.
 
 #### Trim the Win95 install CD
-You can delete all of the files on the Win95C CD which aren't on the Win95A CD to get the latest Win95 fixes, but without all of the optional software (IE, AOL, ...). This also eliminated a few exceptions during the first boot.
+You can delete all of the files on the Win95C CD which aren't on the Win95A CD to get the latest Win95 fixes, but without all of the optional software (IE, AOL, ...). This also eliminated a few exceptions during the first boot. My scripting in Step 1 below copies the correct file list.
 
 #### Make a Win95 install CD hard drive
 I couldn't mount the Win95 ISO so a DOS boot disk would see it. The walkthroughs copy the install directory to the target hard drive, but that means the target drive must be larger. Instead, I copied my (trimmed) Win95 setup folder to an empty hard drive image and then mount it along with the DOS Boot Disk and target drive to start setup.
