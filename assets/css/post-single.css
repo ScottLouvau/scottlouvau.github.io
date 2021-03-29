@@ -5,7 +5,7 @@
 
 .post-title {
     margin-bottom: 2px;
-    font-size: 40px
+    font-size: 32px;
 }
 
 .post-description {
@@ -45,16 +45,16 @@
 
 .post-content h1 {
     margin: 60px auto 24px;
-    font-size: 40px
+    font-size: 32px;
 }
 
 .post-content h2 {
     margin: 56px auto 18px;
-    font-size: 32px
+    font-size: 28px;
 }
 
 .post-content h3 {
-    font-size: 24px
+    font-size: 24px;
 }
 
 .post-content h4 {
