@@ -5,7 +5,7 @@
     max-width: calc(var(--nav-width) + var(--gap) * 2);
     margin-inline-start: auto;
     margin-inline-end: auto;
-    line-height: var(--header-height);
+    min-height: var(--header-height);
     border-bottom: solid 1px var(--border);
 }
 
