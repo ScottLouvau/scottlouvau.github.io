@@ -1,9 +1,0 @@
----
-# Only the main Sass file needs front matter (the dashes are enough)
----
-
-@import
-  "minima/initialize";
-
-  // Not importing Skin; added classic and dark theme colors to Base.scss to be dark theme reactive.
-  //   "minima/skins/{{ site.minima.skin | default: 'classic' }}",
