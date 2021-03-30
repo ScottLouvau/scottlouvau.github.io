@@ -36,6 +36,10 @@
     color: var(--content)
 }
 
+.post-content strong, b,  i, em {
+    color: var(--primary);
+}
+
 .post-content h3,
 .post-content h4,
 .post-content h5,

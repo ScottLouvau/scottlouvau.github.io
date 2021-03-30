@@ -38,9 +38,9 @@ languages:
                 - name: Code
                   url: code/
                   weight: 10
-                #- name: Finance
-                #  url: finance/
-                #  weight: 10
+                - name: Finance
+                  url: finance/
+                  weight: 10
                 - name: Gaming
                   url: gaming/
                   weight: 10
@@ -55,6 +55,7 @@ params:
     mainSections:
         - gaming
         - code
+        - finance
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Incessantly optimizing code, games, and finances."
     author: Scott Louvau
