@@ -9,24 +9,23 @@
 {{ $.Scratch.Set "tags" (delimit ($hashtags.Get "tags") ",") }}
 {{- end }}
 
-{{ $icons := resources.Get "icons.svg" }}
 <div class="share-buttons">
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on twitter" href="https://twitter.com/intent/tweet/?text={{ $title }}&amp;url={{ $pageurl }}&amp;hashtags={{- $.Scratch.Get " tags " -}}">
-        <svg><use xlink:href="{{ $icons.RelPermalink }}#twitter"></use></svg>
+        <svg>{{ partial "useSvg.html" "twitter" }}</svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ $pageurl }}&amp;title={{ $title }}&amp;summary={{ $title }}&amp;source={{ $pageurl }}">
-        <svg><use xlink:href="{{ $icons.RelPermalink }}#linkedin"></use></svg>
+        <svg>{{ partial "useSvg.html" "linkedin" }}</svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on reddit" href="https://reddit.com/submit?url={{ $pageurl }}&title={{ $title }}">
-        <svg><use xlink:href="{{ $icons.RelPermalink }}#reddit"></use></svg>
+        <svg>{{ partial "useSvg.html" "reddit" }}</svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on facebook" href="https://facebook.com/sharer/sharer.php?u={{ $pageurl }}">
-        <svg><use xlink:href="{{ $icons.RelPermalink }}#facebook"></use></svg>
+        <svg>{{ partial "useSvg.html" "facebook" }}</svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on whatsapp" href="https://api.whatsapp.com/send?text={{ $title }}%20-%20{{ $pageurl }}">
-        <svg><use xlink:href="{{ $icons.RelPermalink }}#whatsapp"></use></svg>
+        <svg>{{ partial "useSvg.html" "whatsapp" }}</svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on telegram" href="https://telegram.me/share/url?text={{ $title }}&amp;url={{ $pageurl }}">
-        <svg><use xlink:href="{{ $icons.RelPermalink }}#telegram"></use></svg>
+        <svg>{{ partial "useSvg.html" "telegram" }}</svg>
     </a>
 </div>

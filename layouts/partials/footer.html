@@ -12,8 +12,7 @@
 {{- if (not .Site.Params.disableScrollToTop) }}
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
     <button class="top-link" id="top-link" type="button" accesskey="g">
-        {{ $icons := resources.Get "icons.svg" }}
-        <svg><use xlink:href="{{ $icons.RelPermalink }}#top-link"></use></svg>
+        <svg>{{ partial "useSvg.html" "top-link" }}</svg>
     </button>
 </a>
 {{- end }}
