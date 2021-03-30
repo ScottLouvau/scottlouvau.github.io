@@ -65,7 +65,7 @@ params:
     summaryLength: 60
 
     defaultTheme: auto
-    ShowShareButtons: true # false
+    ShowShareButtons: false
     ShowReadingTime: true
     disableSpecial1stPost: true
     displayFullLangName: true
