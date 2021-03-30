@@ -9,23 +9,24 @@
 {{ $.Scratch.Set "tags" (delimit ($hashtags.Get "tags") ",") }}
 {{- end }}
 
+{{ $icons := resources.Get "icons.svg" }}
 <div class="share-buttons">
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on twitter" href="https://twitter.com/intent/tweet/?text={{ $title }}&amp;url={{ $pageurl }}&amp;hashtags={{- $.Scratch.Get " tags " -}}">
-        <svg><use xlink:href="/assets/icons.svg#twitter"></use></svg>
+        <svg><use xlink:href="{{ $icons.RelPermalink }}#twitter"></use></svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ $pageurl }}&amp;title={{ $title }}&amp;summary={{ $title }}&amp;source={{ $pageurl }}">
-        <svg><use xlink:href="/assets/icons.svg#linkedin"></use></svg>
+        <svg><use xlink:href="{{ $icons.RelPermalink }}#linkedin"></use></svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on reddit" href="https://reddit.com/submit?url={{ $pageurl }}&title={{ $title }}">
-        <svg><use xlink:href="/assets/icons.svg#reddit"></use></svg>
+        <svg><use xlink:href="{{ $icons.RelPermalink }}#reddit"></use></svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on facebook" href="https://facebook.com/sharer/sharer.php?u={{ $pageurl }}">
-        <svg><use xlink:href="/assets/icons.svg#facebook"></use></svg>
+        <svg><use xlink:href="{{ $icons.RelPermalink }}#facebook"></use></svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on whatsapp" href="https://api.whatsapp.com/send?text={{ $title }}%20-%20{{ $pageurl }}">
-        <svg><use xlink:href="/assets/icons.svg#whatsapp"></use></svg>
+        <svg><use xlink:href="{{ $icons.RelPermalink }}#whatsapp"></use></svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on telegram" href="https://telegram.me/share/url?text={{ $title }}&amp;url={{ $pageurl }}">
-        <svg><use xlink:href="/assets/icons.svg#telegram"></use></svg>
+        <svg><use xlink:href="{{ $icons.RelPermalink }}#telegram"></use></svg>
     </a>
 </div>

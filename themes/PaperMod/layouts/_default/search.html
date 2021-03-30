@@ -2,7 +2,8 @@
 
 <header class="page-header">
     <h1>{{ .Title }}
-        <svg id="search"><use xlink:href="/assets/icons.svg#search"></use></svg>
+        {{ $icons := resources.Get "icons.svg" }}
+        <svg id="search"><use xlink:href="{{ $icons.RelPermalink }}#search"></use></svg>
     </h1>
     {{- if .Description }}
     <div class="post-description">
