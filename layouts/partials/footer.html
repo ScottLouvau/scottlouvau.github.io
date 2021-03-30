@@ -12,9 +12,7 @@
 {{- if (not .Site.Params.disableScrollToTop) }}
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
     <button class="top-link" id="top-link" type="button" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
+        <svg><use xlink:href="/assets/icons.svg#ttop-link"></use></svg>
     </button>
 </a>
 {{- end }}
@@ -32,7 +30,7 @@
 {{- end }}
 {{- if (not .Site.Params.disableMenuScroll) }}
 <script>
-    window.onload = function () {
+    window.onload = function() {
         if (localStorage.getItem("menu-scroll-position")) {
             document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
         }
@@ -43,7 +41,7 @@
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
+        anchor.addEventListener("click", function(e) {
             e.preventDefault();
             var id = this.getAttribute("href").substr(1);
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -60,14 +58,13 @@
             }
         });
     });
-
 </script>
 {{- end }}
 
 {{- if (not .Site.Params.disableScrollToTop) }}
 <script>
     var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
+    window.onscroll = function() {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
@@ -76,7 +73,6 @@
             mybutton.style.opacity = "0";
         }
     };
-
 </script>
 {{- end }}
 
@@ -91,6 +87,5 @@
             localStorage.setItem("pref-theme", 'dark');
         }
     })
-
 </script>
 {{- end }}

@@ -14,6 +14,11 @@
     color: var(--primary);
 }
 
+.nav svg {
+    height: 24px;
+    width: 24px;
+}
+
 .logo,
 #menu {
     display: flex;
@@ -41,7 +46,7 @@
     height: 18px;
 }
 
-button#theme-toggle  {
+button#theme-toggle {
     font-size: 26px;
     margin: auto 4px
 }
