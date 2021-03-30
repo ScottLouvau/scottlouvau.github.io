@@ -1,2 +1,2 @@
 {{- $icons := resources.Get "icons.svg" | resources.ExecuteAsTemplate "assets/icons-eval.svg" . -}}
-<use xlink:href="{{ $icons.RelPermalink }}#{{ . }}"></use>
+{{- $icons.RelPermalink -}}

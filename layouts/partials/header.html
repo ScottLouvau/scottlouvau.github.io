@@ -49,8 +49,8 @@
             <span class="logo-switches">
                 {{- if (not .Site.Params.disableThemeToggle) }}
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon">{{ partial "useSvg.html" "moon" }}</svg>
-                    <svg id="sun">{{ partial "useSvg.html" "sun" }}</svg>
+                    <svg id="moon"><use xlink:href="{{ partial "useSvg.html" . }}#moon"></use></svg>
+                    <svg id="sun"><use xlink:href="{{ partial "useSvg.html" . }}#sun"></use></svg>
                 </button>
                 {{- end}}
                 {{ $lang := .Lang}}
