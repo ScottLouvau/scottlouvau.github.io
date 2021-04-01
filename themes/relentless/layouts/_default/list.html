@@ -11,17 +11,12 @@
 {{- $paginator := .Paginate $pages -}}
 
 {{- range $index, $page := $paginator.Pages }}
-    <h3>
+<article>
+    <h2>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    </h3>
-
-    {{ if gt (len .Summary) 0 }}
-      <p>
-        {{ .Summary | safeHTML }}
-      </p>
-  {{ end }}
-
-
+    </h2>
+    {{ partial "fancySummary.html" . }}
+</article>
 {{ end }}
 
 {{ end }}
