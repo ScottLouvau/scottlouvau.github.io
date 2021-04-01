@@ -2,19 +2,22 @@
 
 <h1>{{ .Title }}</h1>
 
-{{ range .RegularPages }}
+{{- $pages := .RegularPages -}}
 
+{{- if .IsHome -}}
+{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections -}}
+{{- end -}}
+
+{{- $paginator := .Paginate $pages -}}
+
+{{- range $index, $page := $paginator.Pages }}
     <h3>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </h3>
 
-    
     {{ if gt (len .Summary) 0 }}
-
       <p>
         {{ .Summary | safeHTML }}
-
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       </p>
   {{ end }}
 

@@ -5,7 +5,11 @@
     {{- range .AlternativeOutputFormats }}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{- end -}}
-    
+
+    {{- /* Bundled CSS */ -}}
+    {{- $stylesheet := (resources.Match "css/*.css") | resources.Concat "assets/css/styles.css" | minify }}
+    <link href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
+
     <title>
         {{- if .IsHome -}}
             {{ .Site.Title }}
@@ -13,8 +17,4 @@
             {{ .Title }} | {{ .Site.Title }} 
         {{- end -}}
     </title>
-
-    {{- /* Bundled CSS */ -}}
-    {{- $stylesheet := (resources.Match "css/*.css") | resources.Concat "assets/css/styles.css" | minify }}
-    <link href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
 </head>
