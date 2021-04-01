@@ -45,22 +45,25 @@
   {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
   <header class="entry-header">
     <h2>
-      {{ .Title }}
+      <a aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}">
+        {{ .Title }}
+        </a>
       {{- if .Draft }}<div class="entry-isdraft"><sup>&nbsp;&nbsp;[draft]</sup></div>{{- end }}
     </h2>
   </header>
+  
+  {{- if not (.Param "hideMeta") }}
+  <div class="entry-footer">
+  {{- partial "post_meta.html" . -}}
+  </div>
+  {{- end }}
+
   {{- if (ne (.Param "hideSummary") true)}}
   <section class="entry-content">
     <!-- <p>{{ .Summary | plainify | htmlUnescape }}{{- if .Truncated }}...{{- end -}}</p> -->
     {{- partial "fancySummary.html" . }}
   </section>
-  {{- end }}
-  {{- if not (.Param "hideMeta") }}
-  <footer class="entry-footer">
-    {{- partial "post_meta.html" . -}}
-  </footer>
-  {{- end }}
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+  {{- end }}  
 </article>
 {{- end }}
 
