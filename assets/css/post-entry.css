@@ -68,7 +68,8 @@
 
 .entry-footer {
     color: var(--secondary);
-    font-size: 13px
+    font-size: 13px;
+    padding-top: 2px;
 }
 
 .entry-cover,
