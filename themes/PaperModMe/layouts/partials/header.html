@@ -1,0 +1,94 @@
+{{- /* theme-toggle is enabled */}}
+{{- if (not .Site.Params.disableThemeToggle) }}
+{{- /* theme is light */}}
+{{- if (eq .Site.Params.defaultTheme "light") }}
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+</script>
+{{- /* theme is dark */}}
+{{- else if (eq .Site.Params.defaultTheme "dark") }}
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+</script>
+{{- else }}
+{{- /* theme is auto */}}
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+{{- end }}
+{{- /* theme-toggle is disabled and theme is auto */}}
+{{- else if (and (ne .Site.Params.defaultTheme "light") (ne .Site.Params.defaultTheme "dark"))}}
+<script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+{{- end }}
+<header class="header">
+    <div class="logo">
+        {{- if .Title }}
+        <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ .Site.Params.label.text | default .Site.Title }} (Alt + H)">
+            {{- if .Site.Params.label.icon }}
+            <img src="{{- .Site.Params.label.icon -}}" alt="logo" aria-label="logo"
+                height="{{- .Site.Params.label.iconHeight | default "30px" -}}">
+            {{- end -}}
+            {{- .Site.Params.label.text | default .Site.Title -}}
+        </a>
+        {{- end }}
+        <span class="logo-switches">
+            {{- if (not .Site.Params.disableThemeToggle) }}
+            <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <svg id="moon"><use xlink:href="{{ partial "useSvg.html" . }}#moon"></use></svg>
+                <svg id="sun"><use xlink:href="{{ partial "useSvg.html" . }}#sun"></use></svg>
+            </button>
+            {{- end}}
+            {{ $lang := .Lang}}
+            {{ $separator := or .Title (not .Site.Params.disableThemeToggle)}}
+            {{- with $.Site.Home.AllTranslations }}
+
+            <ul class="lang-switch">
+                {{- if $separator }}<li>|</li>{{ end }}
+                {{- range . -}}
+                {{- if ne $lang .Lang }}
+                <li>
+                    <a href="{{- .Permalink -}}" title="{{ .Language.LanguageName | default (.Lang | humanize) }}"
+                        aria-label="{{ .Language.LanguageName | default (.Lang | humanize) }}">
+                        {{- if (and $.Site.Params.displayFullLangName (.Language.LanguageName)) }}
+                        {{- .Language.LanguageName | emojify -}}
+                        {{- else }}
+                        {{- .Lang | humanize -}}
+                        {{- end -}}
+                    </a>
+                </li>
+                {{- end -}}
+            {{- end}}
+            </ul>
+            {{- end }}
+        </span>
+    </div>
+    {{- $currentPage := . }}
+    <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">          
+            <span class="menu-icon">
+            <svg><use xlink:href="{{ partial "useSvg.html" . }}#menu"></use></svg>
+            </span>
+        </label>
+        
+        <div class="trigger">
+            {{- range .Site.Menus.main }}
+            <a class="page-link" href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">{{- .Name -}}</a>
+            {{- end -}}
+        </div>
+    </nav>
+</header>

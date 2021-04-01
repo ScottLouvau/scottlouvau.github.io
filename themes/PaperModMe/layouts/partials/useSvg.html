@@ -1,0 +1,2 @@
+{{- $icons := resources.Get "icons.svg" | resources.ExecuteAsTemplate "assets/icons.svg" . -}}
+{{- $icons.RelPermalink -}}

@@ -1,7 +1,7 @@
 baseURL: "https://relentlessoptimizer.com"
 title: Relentless Optimizer
 paginate: 10
-theme: PaperMod
+theme: PaperModMe
 pluralizeListTitles: false  # To auto convert list titles 'Gamings'
 summaryLength: 20
 
