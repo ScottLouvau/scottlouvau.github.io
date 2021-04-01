@@ -1,0 +1,11 @@
+<header>
+    <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
+
+    <nav>
+        <ul>
+            {{- range .Site.Menus.main }}
+            <li><a href="{{ .URL | absLangURL }}">{{- .Name -}}</a></li>
+            {{- end }}
+        </ul>
+    </nav>
+</header>

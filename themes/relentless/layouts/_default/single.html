@@ -1,0 +1,45 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+
+{{ if ne .Params.Type "page" }}
+  {{ partial "metadata.html" . }}
+{{ end }}
+
+{{ .Content }}
+
+{{ if .Params.categories }}
+
+  <p><strong>Related categories:</strong></p>
+
+  <ul>
+
+  {{ with .Params.categories }}
+  {{ range . }}
+  {{ $href := print (absURL "categories/") (urlize .) }}
+  <li><a href="{{ $href }}">{{ . }}</a></li>
+  {{ end }}
+  {{ end }}
+
+  </ul>
+
+{{ end }}
+
+{{ if .Params.tags }}
+
+  <p><strong>Related tags:</strong></p>
+
+  <ul>
+
+  {{ with .Params.tags }}
+  {{ range . }}
+  {{ $href := print (absURL "tags/") (urlize .) }}
+  <li><a href="{{ $href }}">{{ . }}</a></li>
+  {{ end }}
+  {{ end }}
+
+  </ul>
+
+{{ end }}
+
+
+{{ end }}

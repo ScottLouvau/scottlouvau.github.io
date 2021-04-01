@@ -1,0 +1,24 @@
+{{ define "main" }}
+
+<h1>{{ .Title }}</h1>
+
+{{ range .Pages.ByPublishDate.Reverse }}
+
+    <h3>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h3>
+
+    
+    {{ if gt (len .Summary) 0 }}
+
+      <p>
+        {{ .Summary | safeHTML }}
+
+        <a href="{{ .RelPermalink }}">{{ .Title }} full article</a>
+      </p>
+  {{ end }}
+
+
+{{ end }}
+
+{{ end }}
