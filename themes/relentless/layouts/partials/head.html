@@ -14,5 +14,7 @@
         {{- end -}}
     </title>
 
-    {{ partial "style.html" . }}
+    {{- /* Bundled CSS */ -}}
+    {{- $stylesheet := (resources.Match "css/*.css") | resources.Concat "assets/css/styles.css" | minify }}
+    <link href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
 </head>
