@@ -35,62 +35,60 @@
 </script>
 {{- end }}
 <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            {{- if .Title }}
-            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ .Site.Params.label.text | default .Site.Title }} (Alt + H)">
-                {{- if .Site.Params.label.icon }}
-                <img src="{{- .Site.Params.label.icon -}}" alt="logo" aria-label="logo"
-                    height="{{- .Site.Params.label.iconHeight | default "30px" -}}">
-                {{- end -}}
-                {{- .Site.Params.label.text | default .Site.Title -}}
-            </a>
-            {{- end }}
-            <span class="logo-switches">
-                {{- if (not .Site.Params.disableThemeToggle) }}
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon"><use xlink:href="{{ partial "useSvg.html" . }}#moon"></use></svg>
-                    <svg id="sun"><use xlink:href="{{ partial "useSvg.html" . }}#sun"></use></svg>
-                </button>
-                {{- end}}
-                {{ $lang := .Lang}}
-                {{ $separator := or .Title (not .Site.Params.disableThemeToggle)}}
-                {{- with $.Site.Home.AllTranslations }}
-
-                <ul class="lang-switch">
-                    {{- if $separator }}<li>|</li>{{ end }}
-                    {{- range . -}}
-                    {{- if ne $lang .Lang }}
-                    <li>
-                        <a href="{{- .Permalink -}}" title="{{ .Language.LanguageName | default (.Lang | humanize) }}"
-                            aria-label="{{ .Language.LanguageName | default (.Lang | humanize) }}">
-                            {{- if (and $.Site.Params.displayFullLangName (.Language.LanguageName)) }}
-                            {{- .Language.LanguageName | emojify -}}
-                            {{- else }}
-                            {{- .Lang | humanize -}}
-                            {{- end -}}
-                        </a>
-                    </li>
-                    {{- end -}}
-                    {{- end}}
-                </ul>
-                {{- end }}
-            </span>
-        </div>
-        {{- $currentPage := . }}
-        <ul id="menu" {{- if (not .Site.Params.disableMenuScroll) }} onscroll="menu_on_scroll()" {{- end }}>
-            {{- range .Site.Menus.main }}
-            {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
-            {{- $page_url:= $currentPage.Permalink | absLangURL }}
-            {{- $is_search := eq ($.Site.GetPage .KeyName).Layout `search` }}
-            <li>
-                <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /) " | safeHTMLAttr) (" " | safeHTMLAttr ) }}" {{- cond $is_search ( " accesskey=/" | safeHTMLAttr) ( "" | safeHTMLAttr ) }}>
-                    <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
-                        {{- .Name -}}
-                    </span>
-                </a>
-            </li>
+    <div class="logo">
+        {{- if .Title }}
+        <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ .Site.Params.label.text | default .Site.Title }} (Alt + H)">
+            {{- if .Site.Params.label.icon }}
+            <img src="{{- .Site.Params.label.icon -}}" alt="logo" aria-label="logo"
+                height="{{- .Site.Params.label.iconHeight | default "30px" -}}">
             {{- end -}}
-        </ul>
+            {{- .Site.Params.label.text | default .Site.Title -}}
+        </a>
+        {{- end }}
+        <span class="logo-switches">
+            {{- if (not .Site.Params.disableThemeToggle) }}
+            <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <svg id="moon"><use xlink:href="{{ partial "useSvg.html" . }}#moon"></use></svg>
+                <svg id="sun"><use xlink:href="{{ partial "useSvg.html" . }}#sun"></use></svg>
+            </button>
+            {{- end}}
+            {{ $lang := .Lang}}
+            {{ $separator := or .Title (not .Site.Params.disableThemeToggle)}}
+            {{- with $.Site.Home.AllTranslations }}
+
+            <ul class="lang-switch">
+                {{- if $separator }}<li>|</li>{{ end }}
+                {{- range . -}}
+                {{- if ne $lang .Lang }}
+                <li>
+                    <a href="{{- .Permalink -}}" title="{{ .Language.LanguageName | default (.Lang | humanize) }}"
+                        aria-label="{{ .Language.LanguageName | default (.Lang | humanize) }}">
+                        {{- if (and $.Site.Params.displayFullLangName (.Language.LanguageName)) }}
+                        {{- .Language.LanguageName | emojify -}}
+                        {{- else }}
+                        {{- .Lang | humanize -}}
+                        {{- end -}}
+                    </a>
+                </li>
+                {{- end -}}
+            {{- end}}
+            </ul>
+            {{- end }}
+        </span>
+    </div>
+    {{- $currentPage := . }}
+    <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">          
+            <span class="menu-icon">
+            <svg><use xlink:href="{{ partial "useSvg.html" . }}#menu"></use></svg>
+            </span>
+        </label>
+        
+        <div class="trigger">
+            {{- range .Site.Menus.main }}
+            <a class="page-link" href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">{{- .Name -}}</a>
+            {{- end -}}
+        </div>
     </nav>
 </header>
