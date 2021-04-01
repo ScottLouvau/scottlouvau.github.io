@@ -1,22 +1,17 @@
 header 
 {
-    display: flex;
-    padding: 0 var(--spacing-unit);
+    display: flex;    
+    justify-content: space-between;
 
+    padding: 0 var(--spacing-unit);
     min-height: var(--header-height);
     border-bottom: solid 1px var(--border);
 }
 
 .site-name
 {
-    margin: auto 0;
-    line-height: calc(var(--header-height) - 6px);
     font-size: 24px;
-}
-
-header nav
-{
-    display: inline-block;
+    margin: auto 0;
 }
 
 header nav ul
@@ -40,6 +35,11 @@ main
     margin: 0 auto;
     padding: 0 var(--spacing-unit);
     max-width: var(--main-width);
+}
+
+main p 
+{
+    color: var(--secondary);
 }
 
 footer
