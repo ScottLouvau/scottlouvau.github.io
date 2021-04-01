@@ -1,0 +1,48 @@
+header 
+{
+    display: flex;
+    padding: 0 var(--spacing-unit);
+
+    min-height: var(--header-height);
+    border-bottom: solid 1px var(--border);
+}
+
+.site-name
+{
+    margin: auto 0;
+    line-height: calc(var(--header-height) - 6px);
+    font-size: 24px;
+}
+
+header nav
+{
+    display: inline-block;
+}
+
+header nav ul
+{
+    list-style: none;
+    word-break: keep-all;
+}
+
+header nav ul li
+{
+    display: inline;
+}
+
+header nav ul li+li
+{
+    margin-inline-start: var(--spacing-unit);
+}
+
+main
+{
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+    max-width: var(--main-width);
+}
+
+footer
+{
+    min-height: var(--footer-height);
+}

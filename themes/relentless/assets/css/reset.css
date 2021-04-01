@@ -1,0 +1,66 @@
+*, ::after, ::before 
+{
+    box-sizing: border-box;
+}
+
+html
+{
+    overflow-y: auto;
+}
+
+body 
+{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    
+    padding: 0;
+    margin: 0;
+
+    color: var(--primary);
+    background: var(--theme);
+}
+
+header, footer, main, article, nav, section
+{
+    display: block;
+}
+
+a 
+{
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover 
+{
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-weight: 400;
+    margin-top: 2em;
+    margin-bottom: 0.25em;
+}
+
+p
+{
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+img
+{
+    display: block;
+    max-width: 100%;
+}
+
+table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow-x: auto;
+    word-break: keep-all
+}
