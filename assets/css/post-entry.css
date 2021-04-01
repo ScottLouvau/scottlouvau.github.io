@@ -35,12 +35,7 @@
 
 .post-entry {
     position: relative;
-    margin-bottom: var(--gap);
     padding: var(--gap);
-    background: var(--entry);
-    border-radius: var(--radius);
-    transition: transform .1s;
-    border: 1px solid var(--border);
 }
 
 .post-entry:active {
@@ -51,15 +46,19 @@
     display: none
 }
 
-.entry-header h2 {
-    color: var(--link-base-color);
+.entry-header h2 a {
+    color: var(--primary);
     font-size: 24px;
 }
 
+.entry-header h2:hover {
+    text-decoration: underline;
+}
+
 .entry-content {
-    margin: 8px 0;
+    margin: 4px 0;
     color: var(--secondary);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     overflow: hidden;
     display: -webkit-box;
@@ -70,14 +69,6 @@
 .entry-footer {
     color: var(--secondary);
     font-size: 13px
-}
-
-.entry-link {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0
 }
 
 .entry-cover,
