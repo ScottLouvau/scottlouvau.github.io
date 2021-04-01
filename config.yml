@@ -58,7 +58,6 @@ params:
         - finance
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Incessantly optimizing code, games, and finances."
-    author: Scott Louvau
     disableScrollToTop: true
     disableMenuScroll: true
     disableThemeToggle: false
