@@ -5,6 +5,7 @@
 
 html
 {
+    /* Hide scrollbar if content fits */
     overflow-y: auto;
 }
 
@@ -14,9 +15,11 @@ body
     font-size: 16px;
     line-height: 1.6;
     
+    /* Remove default body spacing (allow header to be full width) */
     padding: 0;
     margin: 0;
 
+    /* Set overall theme colors */
     color: var(--primary);
     background: var(--theme);
 }
@@ -28,18 +31,23 @@ main, article, nav, section
 
 a 
 {
+    /* Make links look like everything else... */
     color: var(--primary);
     text-decoration: none;
 }
 
 a:hover 
 {
+    /* ...except they're underlined on hover */
     text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6
 {
+    /* Make all headings non-bold */
     font-weight: 400;
+
+    /* Set default heading spacing: Two lines above and a little underneath */
     margin-top: 2em;
     margin-bottom: 0.25em;
 }
@@ -52,6 +60,7 @@ p
 
 img
 {
+    /* Set images to take available width only */
     display: block;
     max-width: 100%;
 }

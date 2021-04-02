@@ -1,40 +1,58 @@
 header 
 {
+    /* Flex Layout, put extra space between pieces */
     display: flex;    
     justify-content: space-between;
 
+    /* Keep content away from side edges */
     padding: 0 var(--spacing-unit);
+
+    /* Set header height (allow stretching) */
     min-height: var(--header-height);
+
+    /* Add border line under header */
     border-bottom: solid 1px var(--border);
 }
 
 .site-name
 {
+    /* Make site name large */
     font-size: 24px;
+
+    /* Center site name vertically */
     margin: auto 0;
 }
 
 header nav ul
 {
+    /* Get rid of list bullets */
     list-style: none;
+    
     word-break: keep-all;
 }
 
 header nav ul li
 {
+    /* Put list items together on one line */
     display: inline;
 }
 
 header nav ul li+li
 {
+    /* Space between each non-first list item */
     margin-inline-start: var(--spacing-unit);
 }
 
 main
 {
-    margin: 0 auto;
-    padding: 0 var(--spacing-unit);
+    /* Limit maximum main area width */
     max-width: var(--main-width);
+
+    /* Keep main content away from side edges */
+    padding: 0 var(--spacing-unit);
+
+    /* Center main content if excess width available */
+    margin: 0 auto;
 }
 
 main p 
@@ -44,5 +62,6 @@ main p
 
 footer
 {
+    /* Set footer height */
     min-height: var(--footer-height);
 }
