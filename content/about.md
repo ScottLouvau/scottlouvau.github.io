@@ -8,4 +8,4 @@ I'd love to see a world where more of the code I run is fast and more people ach
 
 You can reach me via [scottlo@outlook.com](mailto:scottlo@outlook.com).
 
-![About-Crop-350px](/img/About-Crop-350px.jpg)
+![Me](/img/About-Crop-350px.jpg)
