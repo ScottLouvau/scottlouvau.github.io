@@ -11,15 +11,15 @@ IF "%~1"=="" (
   GOTO :eof
 )
 
+
+SET OutputFolder=%OutputRoot%\4x
+MD "%OutputFolder%"
+
 :Start
 
 SET In=%~1
-SET OutputFolder=%OutputRoot%\4x
 SET OutPathAndName=%OutputFolder%\%~n1
 SET ext=%~x1
-MD "%OutputFolder%"
-
-COPY /Y "%In%" "%OutPathAndName%%ext%"
 
 ECHO Resizing '%~n1'...
 %Magick% "%In%" -strip -auto-orient -scale 400%% "%OutPathAndName%%ext%"
