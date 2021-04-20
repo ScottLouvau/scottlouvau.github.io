@@ -1,5 +1,4 @@
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 {{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
 <meta name="robots" content="index, follow">
@@ -51,20 +50,15 @@
 {{- else}}
 {{ $search := (slice $fusejs $fastsearch ) | resources.Concat "assets/js/search.js" | minify }}
 <script defer src="{{ $search.RelPermalink }}" onload="loadSearch();"></script>
-{{- end}}
+{{- end }}
 {{- end -}}
 
 <!-- Favicons -->
-<link rel="icon" href="{{- .Site.Params.assets.favicon | default "favicon.ico" | absURL -}}">
-<link rel="icon" type="image/png" sizes="16x16" href="
-    {{- .Site.Params.assets.favicon16x16 | default "favicon-16x16.png" | absURL -}}">
-<link rel="icon" type="image/png" sizes="32x32" href="
-    {{- .Site.Params.assets.favicon32x32 | default "favicon-32x32.png" | absURL -}}">
-<link rel="apple-touch-icon" href="
-    {{- .Site.Params.assets.apple_touch_icon | default "apple-touch-icon.png" | absURL -}}">
-<link rel="mask-icon" href="{{- .Site.Params.assets.safari_pinned_tab | default "safari-pinned-tab.svg" | absURL -}}">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-128x128.png" sizes="128x128">
+<link rel="icon" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" href="favicon.ico" sizes="16x16">
+
 <!-- Generator -->
 {{- hugo.Generator }}
 <!-- RSS -->
