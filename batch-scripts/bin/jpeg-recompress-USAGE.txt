@@ -1,0 +1,39 @@
+: Jpeg-Recompress
+: ===============
+:  jpeg-recompress [options] [inPath] [outPath]
+:  
+:  --quality <level>   : optimize for preset level of similarity [medium] (low | medium | high | veryhigh)
+:  --strip             : remove metadata
+:  --min               : set min jpeg quality [40] (1-100)
+:  --max               : set max jpeg quality [95] (1-100)
+:  --quiet             : only output errors
+
+: ----
+
+: Usage: jpeg-recompress.exe [options] input.jpg compressed-output.jpg
+:
+:  Options:
+:
+:    -V, --version                 output program version
+:    -h, --help                    output help information
+:    -t, --target [arg]            Set target quality [0.9999]
+:    -q, --quality [arg]           Set a quality preset: low, medium, high, veryhigh [medium]
+:    -n, --min [arg]               Minimum JPEG quality [40]
+:    -x, --max [arg]               Maximum JPEG quality [95]
+:    -l, --loops [arg]             Set the number of runs to attempt [6]
+:    -a, --accurate                Favor accuracy over speed
+:    -m, --method [arg]            Set comparison method to one of 'mpe', 'ssim', 'ms-ssim', 'smallfry' [ssim]
+:    -s, --strip                   Strip metadata
+:    -d, --defish [arg]            Set defish strength [0.0]
+:    -z, --zoom [arg]              Set defish zoom [1.0]
+:    -r, --ppm                     Parse input as PPM instead of JPEG
+:    -c, --no-copy                 Disable copying files that will not be compressed
+:    -p, --no-progressive          Disable progressive encoding
+:    -S, --subsample [arg]         Set subsampling method. Valid values: 'default', 'disable'. [default]
+:    -Q, --quiet                   Only print out errors.
+
+: These values seem to be the minimums.
+: %jpeg-recompress% --target 0.9995 --min 35 "%In%\%%C" "%Out%\%%C"
+: Quality of 10, 20, or 25 is visibly blocky sections of color, and quality of 35+ tends to be about similarity 0.999.
+
+: Using the default (medium) looks good for archive quality image optimization.

@@ -1,7 +1,7 @@
 @ECHO OFF
-:: Usage: Drag and Drop an image to output scaled versions of it with metadata removed.
+:: Usage: Drag and Drop PNG images to output optimized versions.
 
-SET pngquant="C:\Users\slouv\OneDrive\Tools\bin\Image\pngquant\pngquant.exe"
+SET pngquant="%~dp0bin\pngquant.exe"
 SET OutputRoot=%USERPROFILE%\Desktop\ImageOpt
 
 IF "%~1"=="" (

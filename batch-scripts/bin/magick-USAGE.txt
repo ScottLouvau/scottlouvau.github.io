@@ -1,0 +1,12 @@
+
+: ImageMagick
+: ===========
+:   Magick [inPath] [options] [outPath]
+: 
+:   <geometry>         : scale% | scale-x%scale-y% | width | xheight | widthxheight
+:   -quality           : reset JPEG compression level
+:   -auto-orient       : read EXIF orientation and apply to image.
+:   -strip             : remove metadata
+:   -resize <geometry> : resize, preserve aspect ratio
+:   -scale <percent>   : scale, cloning pixels to retain clean lines
+:   -posterize         : reduce colors per channel to reduce size
