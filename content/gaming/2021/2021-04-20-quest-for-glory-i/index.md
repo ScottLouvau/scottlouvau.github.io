@@ -46,4 +46,4 @@ This isn't a walkthrough, but I can't help but leave a few tips:
 * Battle the Goblins in their camp to finish training combat skills.
 * Keep a few potions handy - running out of stamina can easily lead to death.
 
-I took too many screenshots for one post, but you can find the [full set here](files/qfg1-screenshots.zip). In DOSBox, use Ctrl+F5 to get perfect native resolution screenshots, and ImageMagick -scale 400% to make pixel-perfect scaled versions. =)
+I took too many screenshots for one post, but you can find the [full set here](files/qfg1-screenshots.zip). In DOSBox, use Ctrl+F5 to get perfect native resolution screenshots, and ImageMagick -scale 400% to make pixel-perfect scaled versions. =) 
