@@ -3,11 +3,11 @@ title: Quest for Glory I
 date: 2021-04-20
 ---
 
-Quest for Glory 1 is one of my favorite role-playing games, and one of the first I played. Sierra walked the line between adventure and puzzle games beautifully in the series, making something that still feels somewhat unique. Ultimately, though, what keeps bringing me back is the setting and the story, told with impressive graphics, great music, and witty dialog that still hold up well so many years later.
+Quest for Glory 1 is one of my favorite role-playing games, and one of the first I played. Sierra walked the line between adventure and puzzle games beautifully in the series, making something that still feels unique. Ultimately, though, what keeps bringing me back is the setting and the story, told with impressive graphics, great music, and witty dialog that still hold up well so many years later.
 
 ![box](img/box.jpg)
 
-I recently came back to play it again. You can find it on [GOG](https://www.gog.com/game/quest_for_glory), seven megabyte monster that it is. I highly recommend playing with the excellent [Gamer Walkthrough](http://gamerwalkthroughs.com/quest-for-glory-1/) for it and a [map](https://www.oldgames.sk/images/oldgames/adventure/Quest.for.Glory.1-vga/Maps/qfg-map.jpg), which are great for hitting the highlights quickly and helping you past the more subtle puzzles.
+I recently came back to play it again. You can find it on [GOG](https://www.gog.com/game/quest_for_glory), seven megabyte monster that it is. I highly recommend the excellent [Gamer Walkthrough](http://gamerwalkthroughs.com/quest-for-glory-1/) for it and a [map](https://www.oldgames.sk/images/oldgames/adventure/Quest.for.Glory.1-vga/Maps/qfg-map.jpg), which are great for hitting the highlights and solving the more subtle puzzles.
 
 Even ten playthroughs in, walking out of town into the forest and hearing [Hero's March](https://www.youtube.com/watch?v=gDiAiF_dVQ8) gives me that feeling of nervous excitement and imminent adventure.
 
@@ -27,11 +27,11 @@ Oh, man, the [seedy tavern theme](https://www.youtube.com/watch?v=sF617r584qU) a
 
 ![thieves-guild](img/thieves-guild.png)
 
-And, of course, [Erana's Peace](https://www.youtube.com/watch?v=AmjpRkyj2eM). It's viscerally calming to walk into this grove in the middle of the night, running from monsters that are much too powerful for you. I think some of my adulthood hiking and camping adventures are really about trying to find a place like this in the real world. =)
+And, of course, [Erana's Peace](https://www.youtube.com/watch?v=AmjpRkyj2eM). It's profoundly calming to walk into this grove in the middle of the night, running from monsters that are much too powerful for you. I think some of my adulthood hiking and camping adventures are really about trying to find a place like this in the real world. =)
 
 ![eranas-peace-day](img/eranas-peace-day.png)
 
-Like all games, not everything in Quest for Glory is great. Puzzles, as noted earlier, can be quite hard if you haven't talked to the right other person. Magic is hard to use quickly and you rapidly run out of mana and stamina, so resting or potions are important to keep handy. The combat is frustrating as the frame rates are very low and so it's quite hard to see when monsters are about to hit you in time to dodge. Here's me about to get clocked...
+Like all games, not everything in Quest for Glory is great. Puzzles, as noted earlier, can be quite hard if you haven't talked to the right person. Magic is awkward to use outside combat. You rapidly run out of mana and stamina, so potions are important to avoid death due to overexertion. Combat is frustrating as it's quite hard to see enemy movements in time to dodge. Here's me about to get clocked...
 
 ![combat](img/combat.png)
 
