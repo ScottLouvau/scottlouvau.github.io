@@ -1,5 +1,6 @@
 @ECHO OFF
 :: Usage: Drag and Drop PNG images to output optimized versions.
+:: Note: tinypng.com and CloudFlare 'Polish' often get still better results.
 
 SET pngquant="%~dp0bin\pngquant.exe"
 SET OutputRoot=%USERPROFILE%\Desktop\ImageOpt
