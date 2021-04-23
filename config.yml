@@ -1,6 +1,10 @@
-baseURL: "https://relentlessoptimizer.com"
+# Use baseURL = '/' to get site-relative URLs for everything.
+#baseURL: "https://relentlessoptimizer.com"
+#baseURL: "/"
 title: "Relentless Optimizer"
 paginate: 10
+# 'Relentless' is a minimal theme from scratch.
+# 'PaperModMe' is my customizations on the PaperMod theme.
 #theme: "relentless"
 theme: "PaperModMe"
 pluralizeListTitles: false  # To auto convert list titles 'Gamings'
