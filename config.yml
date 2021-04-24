@@ -1,6 +1,4 @@
-# Use baseURL = '/' to get site-relative URLs for everything.
-#baseURL: "https://relentlessoptimizer.com"
-baseURL: "/"
+baseURL: "https://relentlessoptimizer.com"
 title: "Relentless Optimizer"
 paginate: 10
 # 'Relentless' is a minimal theme from scratch.
