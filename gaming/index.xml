@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gaming on Relentless Optimizer</title>
-    <link>/gaming/</link>
+    <link>https://relentlessoptimizer.com/gaming/</link>
     <description>Recent content in Gaming on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/gaming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/gaming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quest for Glory I</title>
-      <link>/gaming/2021/04/20/quest-for-glory-i/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/04/20/quest-for-glory-i/</link>
       <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/04/20/quest-for-glory-i/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/04/20/quest-for-glory-i/</guid>
       <description>Quest for Glory 1 is one of my favorite role-playing games, and one of the first I played. Sierra walked the line between adventure and puzzle games beautifully in the series, making something that still feels unique.</description>
     </item>
     
     <item>
       <title>DOSBox Cheat Sheet</title>
-      <link>/gaming/2021/03/25/dosbox-cheat-sheet/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/03/25/dosbox-cheat-sheet/</link>
       <pubDate>Thu, 25 Mar 2021 13:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/03/25/dosbox-cheat-sheet/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/03/25/dosbox-cheat-sheet/</guid>
       <description>Some quick tables about DOSBox that I kept looking for.
 Sound Card Defaults Sound - DOSBoxWiki
 SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
@@ -29,37 +29,37 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
     
     <item>
       <title>Win95 on DOSBox</title>
-      <link>/gaming/2021/03/25/win95-on-dosbox/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/03/25/win95-on-dosbox/</link>
       <pubDate>Thu, 25 Mar 2021 12:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/03/25/win95-on-dosbox/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/03/25/win95-on-dosbox/</guid>
       <description>I needed Windows to run SimTower, so I decided to try getting Win95 to run on DOSBox. The walkthroughs online had some skippable steps and I ran into some problems, and then I got distracted optimizing it.</description>
     </item>
     
     <item>
       <title>SimTower Max Tower</title>
-      <link>/gaming/2021/03/17/simtower-max-tower/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/03/17/simtower-max-tower/</link>
       <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/03/17/simtower-max-tower/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/03/17/simtower-max-tower/</guid>
       <description>A few days after my previous SimTower adventure, I wanted to revise my tower design. My retail-heavy-attempt was straightforward and didn&amp;rsquo;t take too many floors, but I thought it&amp;rsquo;d be fun to try to build consistently all the way up to the 100th floor cathedral, and to try to max out many of the in-game limits right when I reached it.</description>
     </item>
     
     <item>
       <title>SimTower Reference</title>
-      <link>/gaming/2021/03/13/simtower-reference/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/03/13/simtower-reference/</link>
       <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/03/13/simtower-reference/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/03/13/simtower-reference/</guid>
       <description>When playing through SimTower again, I was frequently looking for facts from the help and from online walkthroughs. Here&amp;rsquo;s a double-checked, complete set of the details I was looking for when replaying the game, with more useful details together in one place than the original help.</description>
     </item>
     
     <item>
       <title>Return to SimTower</title>
-      <link>/gaming/2021/03/12/return-to-simtower/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/03/12/return-to-simtower/</link>
       <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/03/12/return-to-simtower/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/03/12/return-to-simtower/</guid>
       <description>It&amp;rsquo;s 1994, and Maxis is a big name in gaming. The excellent SimCity 2000 released last year, but we&amp;rsquo;re looking at a lesser known title, SimTower.</description>
     </item>
     

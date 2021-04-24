@@ -2,63 +2,63 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Relentless Optimizer</title>
-    <link>/</link>
+    <link>https://relentlessoptimizer.com/</link>
     <description>Recent content on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quest for Glory I</title>
-      <link>/gaming/2021/04/20/quest-for-glory-i/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/04/20/quest-for-glory-i/</link>
       <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/04/20/quest-for-glory-i/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/04/20/quest-for-glory-i/</guid>
       <description>Quest for Glory 1 is one of my favorite role-playing games, and one of the first I played. Sierra walked the line between adventure and puzzle games beautifully in the series, making something that still feels unique.</description>
     </item>
     
     <item>
       <title>What To Save For</title>
-      <link>/finance/2021/04/13/what-to-save-for/</link>
+      <link>https://relentlessoptimizer.com/finance/2021/04/13/what-to-save-for/</link>
       <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>/finance/2021/04/13/what-to-save-for/</guid>
+      <guid>https://relentlessoptimizer.com/finance/2021/04/13/what-to-save-for/</guid>
       <description>So you&amp;rsquo;ve made a budget and now you&amp;rsquo;re starting to save. What should you do with the money?
   Credit Card debt Emergency Fund (one month of expenses) Other Non-Mortgage Debt (car loan, student loans) Some Retirement Saving (get employer match) Future Big Purchases (house, trip, car, kid college) More Retirement Saving Audacious Goals: House Payoff, Early Retirement, Year off from Work, &amp;hellip;   First, if you have any credit card debt, pay it off.</description>
     </item>
     
     <item>
       <title>Frugal Tip: Starbucks Cold Brew Refills</title>
-      <link>/finance/2021/04/12/frugal-tip-starbucks-cold-brew-refills/</link>
+      <link>https://relentlessoptimizer.com/finance/2021/04/12/frugal-tip-starbucks-cold-brew-refills/</link>
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>/finance/2021/04/12/frugal-tip-starbucks-cold-brew-refills/</guid>
+      <guid>https://relentlessoptimizer.com/finance/2021/04/12/frugal-tip-starbucks-cold-brew-refills/</guid>
       <description>I&amp;rsquo;ve been a fan of the Starbucks Vanilla Sweet Cream cold brew since it came out and a lover of cold brew coffee since the days before Seattle&amp;rsquo;s Best Coffee disappeared.</description>
     </item>
     
     <item>
       <title>The American Rescue Plan, ACA, and Roth conversions</title>
-      <link>/finance/2021/04/12/the-american-rescue-plan-aca-and-roth-conversions/</link>
+      <link>https://relentlessoptimizer.com/finance/2021/04/12/the-american-rescue-plan-aca-and-roth-conversions/</link>
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>/finance/2021/04/12/the-american-rescue-plan-aca-and-roth-conversions/</guid>
+      <guid>https://relentlessoptimizer.com/finance/2021/04/12/the-american-rescue-plan-aca-and-roth-conversions/</guid>
       <description>The American Rescue Plan became law on March 11th, 2021, and I was surprised to figure out that it changes the taxable income we want to aim for in 2021 and 2022 significantly.</description>
     </item>
     
     <item>
       <title>How We Budget</title>
-      <link>/finance/2021/03/30/how-we-budget/</link>
+      <link>https://relentlessoptimizer.com/finance/2021/03/30/how-we-budget/</link>
       <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>/finance/2021/03/30/how-we-budget/</guid>
+      <guid>https://relentlessoptimizer.com/finance/2021/03/30/how-we-budget/</guid>
       <description>When we got our first real jobs, we put our paychecks into our checking account and bought everything from there. It couldn&amp;rsquo;t be easier, and I&amp;rsquo;m sure many people do the same thing.</description>
     </item>
     
     <item>
       <title>DOSBox Cheat Sheet</title>
-      <link>/gaming/2021/03/25/dosbox-cheat-sheet/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/03/25/dosbox-cheat-sheet/</link>
       <pubDate>Thu, 25 Mar 2021 13:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/03/25/dosbox-cheat-sheet/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/03/25/dosbox-cheat-sheet/</guid>
       <description>Some quick tables about DOSBox that I kept looking for.
 Sound Card Defaults Sound - DOSBoxWiki
 SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
@@ -66,55 +66,55 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
     
     <item>
       <title>Win95 on DOSBox</title>
-      <link>/gaming/2021/03/25/win95-on-dosbox/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/03/25/win95-on-dosbox/</link>
       <pubDate>Thu, 25 Mar 2021 12:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/03/25/win95-on-dosbox/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/03/25/win95-on-dosbox/</guid>
       <description>I needed Windows to run SimTower, so I decided to try getting Win95 to run on DOSBox. The walkthroughs online had some skippable steps and I ran into some problems, and then I got distracted optimizing it.</description>
     </item>
     
     <item>
       <title>GitHub Pages and Domain.com DNS</title>
-      <link>/code/2021/03/24/github-pages-and-domain.com-dns/</link>
+      <link>https://relentlessoptimizer.com/code/2021/03/24/github-pages-and-domain.com-dns/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>/code/2021/03/24/github-pages-and-domain.com-dns/</guid>
+      <guid>https://relentlessoptimizer.com/code/2021/03/24/github-pages-and-domain.com-dns/</guid>
       <description>After some (mis)adventures, I finally got my custom domain name directed to my GitHub Pages site successfully. Here is what worked, in case someone else has the same problem.</description>
     </item>
     
     <item>
       <title>SimTower Max Tower</title>
-      <link>/gaming/2021/03/17/simtower-max-tower/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/03/17/simtower-max-tower/</link>
       <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/03/17/simtower-max-tower/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/03/17/simtower-max-tower/</guid>
       <description>A few days after my previous SimTower adventure, I wanted to revise my tower design. My retail-heavy-attempt was straightforward and didn&amp;rsquo;t take too many floors, but I thought it&amp;rsquo;d be fun to try to build consistently all the way up to the 100th floor cathedral, and to try to max out many of the in-game limits right when I reached it.</description>
     </item>
     
     <item>
       <title>SimTower Reference</title>
-      <link>/gaming/2021/03/13/simtower-reference/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/03/13/simtower-reference/</link>
       <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/03/13/simtower-reference/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/03/13/simtower-reference/</guid>
       <description>When playing through SimTower again, I was frequently looking for facts from the help and from online walkthroughs. Here&amp;rsquo;s a double-checked, complete set of the details I was looking for when replaying the game, with more useful details together in one place than the original help.</description>
     </item>
     
     <item>
       <title>Return to SimTower</title>
-      <link>/gaming/2021/03/12/return-to-simtower/</link>
+      <link>https://relentlessoptimizer.com/gaming/2021/03/12/return-to-simtower/</link>
       <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>/gaming/2021/03/12/return-to-simtower/</guid>
+      <guid>https://relentlessoptimizer.com/gaming/2021/03/12/return-to-simtower/</guid>
       <description>It&amp;rsquo;s 1994, and Maxis is a big name in gaming. The excellent SimCity 2000 released last year, but we&amp;rsquo;re looking at a lesser known title, SimTower.</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>/about/</link>
+      <link>https://relentlessoptimizer.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/about/</guid>
+      <guid>https://relentlessoptimizer.com/about/</guid>
       <description>Hi, I&amp;rsquo;m Scott Louvau. I live near Seattle. I worked at Microsoft, mostly on Visual Studio and Visual Studio Online. I&amp;rsquo;m passionate about performance and I love to optimize things - code, games, finances, coffee - everything.</description>
     </item>
     
