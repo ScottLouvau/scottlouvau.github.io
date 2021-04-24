@@ -11,15 +11,13 @@ const string jpegRecompress = @"C:\Code\blog\batch-scripts\bin\jpeg-recompress.e
 const string magick = @"C:\Code\blog\batch-scripts\bin\magick.exe";
 const string exifTool = @"C:\Code\blog\batch-scripts\bin\exiftool.exe";
 
-string inRootPath = Path.GetFullPath((Args.Count > 0 ? Args[0] : @"C:\Download\Photos\Original"));
+string inRootPath = Path.GetFullPath((Args.Count > 0 ? Args[0] : @"C:\ImageOpt\LowerResSample"));
 string outRootPath = Path.GetFullPath((Args.Count > 1 ? Args[1] : Path.Combine(inRootPath, "../Out")));
-int threadCount = (Args.Count > 2 ? int.Parse(Args[2]) : Environment.ProcessorCount);
 
 Stopwatch w = Stopwatch.StartNew();
 Console.WriteLine($"Optimizing JPGs under '{inRootPath}' into '{outRootPath}'...");
 
 string[] inputFiles = Directory.GetFiles(inRootPath, "*.jpg", SearchOption.AllDirectories);
-ParallelOptions po = new ParallelOptions() { MaxDegreeOfParallelism = threadCount };
 
 long inBytesTotal = 0;
 long outBytesTotal = 0;
@@ -41,13 +39,15 @@ Parallel.ForEach(inputFiles, (inFilePath) =>
         File.Copy(inFilePath, outFilePath, true);
     }
 
-    Cli.Wrap(exifTool).WithArguments($@"-all= -tagsfromfile @ -gps:all -alldates -Orientation ""{outFilePath}"" -overwrite_original").ExecuteAsync().Task.Wait();
     outSizeBytes = new FileInfo(outFilePath).Length;
     Console.WriteLine($"{pathWithinRoot}: {inSizeBytes / MB:n2} MB -> {outSizeBytes / MB:n2} MB ({sizeRatio:p0})");
 
     Interlocked.Add(ref inBytesTotal, inSizeBytes);
     Interlocked.Add(ref outBytesTotal, outSizeBytes);
 });
+
+Console.WriteLine("Removing metadata...");
+Cli.Wrap(exifTool).WithArguments($@"-all= -tagsfromfile @ -gps:all -alldates -Orientation -r ""{outRootPath}"" -overwrite_original").ExecuteAsync().Task.Wait();
 
 Console.WriteLine();
 Console.WriteLine($"Done. Optimized {inputFiles.Length:n0} images ({inBytesTotal / MB:n0} MB -> {outBytesTotal / MB:n0} MB) in {w.Elapsed.TotalSeconds:n0} seconds.");
