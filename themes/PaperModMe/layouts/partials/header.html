@@ -37,7 +37,7 @@
 <header class="header">
     <div class="logo">
         {{- if .Title }}
-        <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ .Site.Params.label.text | default .Site.Title }} (Alt + H)">
+        <a href="/" accesskey="h" title="{{ .Site.Params.label.text | default .Site.Title }} (Alt + H)">
             {{- if .Site.Params.label.icon }}
             <img src="{{- .Site.Params.label.icon -}}" alt="logo" aria-label="logo"
                 height="{{- .Site.Params.label.iconHeight | default "30px" -}}">
@@ -61,7 +61,7 @@
                 {{- range . -}}
                 {{- if ne $lang .Lang }}
                 <li>
-                    <a href="{{- .Permalink -}}" title="{{ .Language.LanguageName | default (.Lang | humanize) }}"
+                    <a href="{{- .RelPermalink -}}" title="{{ .Language.LanguageName | default (.Lang | humanize) }}"
                         aria-label="{{ .Language.LanguageName | default (.Lang | humanize) }}">
                         {{- if (and $.Site.Params.displayFullLangName (.Language.LanguageName)) }}
                         {{- .Language.LanguageName | emojify -}}
@@ -87,7 +87,7 @@
         
         <div class="trigger">
             {{- range .Site.Menus.main }}
-            <a class="page-link" href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">{{- .Name -}}</a>
+            <a class="page-link" href="{{ .URL | relLangURL }}" title="{{ .Title | default .Name }}">{{- .Name -}}</a>
             {{- end -}}
         </div>
     </nav>

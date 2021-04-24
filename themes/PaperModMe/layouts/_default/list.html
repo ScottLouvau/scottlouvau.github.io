@@ -45,7 +45,7 @@
   {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
   <header class="entry-header">
     <h2>
-      <a aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}">
+      <a aria-label="post link to {{ .Title | plainify }}" href="{{ .RelPermalink }}">
         {{ .Title }}
         </a>
       {{- if .Draft }}<div class="entry-isdraft"><sup>&nbsp;&nbsp;[draft]</sup></div>{{- end }}
