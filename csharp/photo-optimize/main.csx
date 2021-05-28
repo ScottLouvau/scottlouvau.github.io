@@ -1,17 +1,23 @@
 #! "netcoreapp2.0"
 #r "nuget: CliWrap, 3.3.2"
 
+// Copyright Scott Louvau, 2021, MIT License
 using System.Threading;
 using CliWrap;
 
 const double MB = 1024 * 1024;
 const double KeepBelowRelativeSize = 0.9;
 
-const string jpegRecompress = @"C:\Code\blog\batch-scripts\bin\jpeg-recompress.exe";
-const string magick = @"C:\Code\blog\batch-scripts\bin\magick.exe";
-const string exifTool = @"C:\Code\blog\batch-scripts\bin\exiftool.exe";
+const string jpegRecompress = @"jpeg-recompress.exe";
+const string exifTool = @"exiftool.exe";
 
-string inRootPath = Path.GetFullPath((Args.Count > 0 ? Args[0] : @"C:\ImageOpt\LowerResSample"));
+if (Args.Count == 0)
+{
+    Console.WriteLine("Usage: photo-optimize [inputRootFolder] [outputRootFolder?]");
+    return;
+}
+
+string inRootPath = Path.GetFullPath(Args[0]);
 string outRootPath = Path.GetFullPath((Args.Count > 1 ? Args[1] : Path.Combine(inRootPath, "../Out")));
 
 Stopwatch w = Stopwatch.StartNew();
@@ -46,6 +52,7 @@ Parallel.ForEach(inputFiles, (inFilePath) =>
     Interlocked.Add(ref outBytesTotal, outSizeBytes);
 });
 
+Console.WriteLine();
 Console.WriteLine("Removing metadata...");
 Cli.Wrap(exifTool).WithArguments($@"-all= -tagsfromfile @ -gps:all -alldates -Orientation -r ""{outRootPath}"" -overwrite_original").ExecuteAsync().Task.Wait();
 
