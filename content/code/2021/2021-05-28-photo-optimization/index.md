@@ -51,6 +51,8 @@ Here are two example images before and after optimization:
     </div>
 </div>
 
+You can [download the sample images](files/img.zip) if you want to compare them offline.
+
 And the code:
 
 ```c#

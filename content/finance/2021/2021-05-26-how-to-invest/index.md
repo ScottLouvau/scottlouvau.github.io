@@ -3,9 +3,9 @@ title: "How to Invest"
 date: 2021-05-26
 ---
 
-You've [made a budget]({{< relref "../2021-03-20-how-we-budget" >}}), [paid off any debt, and set up an emergency fund]({{< relref "../2021-04-13-what-to-save-for" >}}), and now you finally have some savings to invest for retirement. What should you invest it in, and how do you go about that? 
+You've [made a budget]({{< relref "../2021-03-20-how-we-budget" >}}), [done some initial saving]({{< relref "../2021-04-13-what-to-save-for" >}}), and now you finally have some savings to invest for retirement. What should you invest in, and how do you go about that? 
 
-TL;DR? Skip to the 'Summary' at the bottom.
+TL;DR? Skip to [Taking Action](#taking-action) at the bottom.
 
 ### Investment Options
 
@@ -87,12 +87,23 @@ To actually buy these funds, set up a mutual fund or brokerage account with a fi
 
 |                           | Vanguard                                                     | Fidelity     |
 | ------------------------- | ------------------------------------------------------------ | ------------ |
-| US Stock Index            | [VTSAX](https://investor.vanguard.com/mutual-funds/profile/overview/vtsax) | FSKAX, FZROX |
-| International Stock Index | [VTIAX](https://investor.vanguard.com/mutual-funds/profile/overview/vtiax) | FTIHX, FZILX |
-| US Bond Index             | [VBTLX](https://investor.vanguard.com/mutual-funds/profile/overview/vbtlx) | FXNAX        |
+| US Stock Index            | [VTSAX](https://investor.vanguard.com/mutual-funds/profile/overview/vtsax) | [FSKAX](https://fundresearch.fidelity.com/mutual-funds/summary/315911693), [FZROX](https://fundresearch.fidelity.com/mutual-funds/summary/31635T708) |
+| International Stock Index | [VTIAX](https://investor.vanguard.com/mutual-funds/profile/overview/vtiax) | [FTIHX](https://fundresearch.fidelity.com/mutual-funds/summary/31635V638), [FZILX](https://fundresearch.fidelity.com/mutual-funds/summary/31635T609) |
+| US Bond Index             | [VBTLX](https://investor.vanguard.com/mutual-funds/profile/overview/vbtlx) | [FXNAX](https://fundresearch.fidelity.com/mutual-funds/summary/316146356)        |
 
+### Don't Take My Word For It
 
+Investing advice is all over, and it can be hard to decide what to believe. Please, don't read just one source (even this one) to decide what to do with your life savings. Here are some other great resources which agree with the principles of investing I've outlined:
+
+* [Bogleheads - Investment Philosophy](https://www.bogleheads.org/wiki/Bogleheads%C2%AE_investment_philosophy)
+* [Warren Buffet](https://grow.acorns.com/warren-buffett-index-funds/)
+* [Investopedia - Index Funds](https://www.investopedia.com/terms/i/indexfund.asp)
+* [NerdWallet - Index Funds vs Mutual Funds](https://www.nerdwallet.com/article/investing/index-funds-vs-mutual-funds#:~:text=Index%20funds%20seek%20market%2Daverage,to%20be%20much%20less%20predictable.)
+* [SPIVA - S&P 500 vs Active Mutual Funds Comparison](https://www.spglobal.com/spdji/en/spiva/#/reports)
+* [Book: The Millionaire Next Door](https://www.themillionairenextdoor.com/)
+* [Book: The Automatic Millionaire](https://www.amazon.com/Automatic-Millionaire-Expanded-Updated-Powerful/dp/0451499085)
+* [Book: The Little Book of Common Sense Investing](https://www.amazon.com/Little-Book-Common-Sense-Investing/dp/1119404509)
 
 ### Summary
 
-Whew, that was a lot of territory to cover! In summary, **stocks, bonds, and real estate** are good investments because they generate income for you. Prices change from day-to-day, but the fluctuations only matter right when you're buying and selling. You can buy the stocks and bonds easily and efficiently through index funds. Make sure the index fund has a low expense ratio (0.10% or less), has no "loads" (no fees to buy and sell), and follows a capitalization-weighted index. 
+Whew, that was a lot of territory to cover! In summary, **stocks, bonds, and real estate** are good investments because they generate income for you. Prices change from day-to-day, but the fluctuations only matter right when you're buying and selling. You can buy stocks and bonds easily and efficiently through index funds. Make sure the index fund has a low expense ratio (0.10% or less), has no "loads" (no fees to buy and sell), and follows a capitalization-weighted index. 
