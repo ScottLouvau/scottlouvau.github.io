@@ -134,7 +134,7 @@ markup:
      codeFences: true
      guessSyntax: true
      lineNos: false
-     # noClasses: false
+     noClasses: false
      style: monokai
 
 # Privacy + GDPR

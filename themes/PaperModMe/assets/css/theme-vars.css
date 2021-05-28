@@ -7,7 +7,7 @@
         --tertiary: rgba(255, 255, 255, 0.16);
         --content: rgba(255, 255, 255, 0.705);
         --hljs-bg: #2e2e33;
-        --code-bg: #37383e;
+        --code-bg: #1e1e1e;
         --border: #4e4e4e;
     
         --table-zebra-color:  #222222;
@@ -61,7 +61,7 @@
     --tertiary: rgba(255, 255, 255, 0.16);
     --content: rgba(255, 255, 255, 0.705);
     --hljs-bg: #2e2e33;
-    --code-bg: #37383e;
+    --code-bg: #1e1e1e;
     --border: #4e4e4e;
 
     --table-zebra-color:  #222222;

@@ -240,6 +240,7 @@
     padding: 10px;
     color: rgba(255, 255, 255, .8);
     background: 0 0;
+    background-color: var(--code-bg);
     border-radius: 0;
     overflow-x: auto;
     word-break: break-all;
