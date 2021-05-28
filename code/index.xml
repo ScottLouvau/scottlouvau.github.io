@@ -6,7 +6,16 @@
     <description>Recent content in Code on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/code/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Photo Optimization</title>
+      <link>https://relentlessoptimizer.com/code/2021/05/28/photo-optimization/</link>
+      <pubDate>Fri, 28 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/code/2021/05/28/photo-optimization/</guid>
+      <description>I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process.</description>
+    </item>
+    
     <item>
       <title>GitHub Pages and Domain.com DNS</title>
       <link>https://relentlessoptimizer.com/code/2021/03/24/github-pages-and-domain.com-dns/</link>

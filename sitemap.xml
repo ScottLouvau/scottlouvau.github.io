@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://relentlessoptimizer.com/code/</loc>
+    <lastmod>2021-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://relentlessoptimizer.com/code/2021/05/28/photo-optimization/</loc>
+    <lastmod>2021-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://relentlessoptimizer.com/</loc>
+    <lastmod>2021-05-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://relentlessoptimizer.com/finance/</loc>
     <lastmod>2021-05-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/finance/2021/05/26/how-to-invest/</loc>
-    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://relentlessoptimizer.com/</loc>
     <lastmod>2021-05-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/finance/2021/05/15/five-mistakes-we-made-during-our-first-early-retirement/</loc>
@@ -37,9 +43,6 @@
   </url><url>
     <loc>https://relentlessoptimizer.com/gaming/2021/03/25/win95-on-dosbox/</loc>
     <lastmod>2021-03-25T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://relentlessoptimizer.com/code/</loc>
-    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/code/2021/03/24/github-pages-and-domain.com-dns/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
