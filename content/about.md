@@ -9,3 +9,5 @@ I'd love to see a world where more of the code I run is fast and more people ach
 You can reach me via [scottlo@outlook.com](mailto:scottlo@outlook.com).
 
 ![Me](/img/About-Crop-350px.jpg)
+
+All code on this blog, unless otherwise marked, is released under the [MIT License](/LICENSE.txt).

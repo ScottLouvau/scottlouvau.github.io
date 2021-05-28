@@ -2,7 +2,7 @@
     {{- if .Site.Copyright }}
     <span>{{ .Site.Copyright | markdownify }}</span>
     {{- else }}
-    <span>&copy; {{ now.Year }} <a href="/">{{ .Site.Title }}</a></span>
+    <span>&copy; {{ now.Year }} <a href="/">{{ .Site.Title }}</a>, all code <a href="/LICENSE.txt">MIT License</a></span>
     {{- end }}
     <span>&middot;</span>
     <span>{{ .Site.Params.description }}</span>

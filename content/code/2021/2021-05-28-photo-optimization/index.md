@@ -32,22 +32,22 @@ Here are two example images before and after optimization:
 <div class="alternate-container">
     <div>
         Original [1,394 KB]
-        <img src="img/original/desk.jpg" />
+        <img src="https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/original/desk.jpg" />
     </div>
     <div>
         Optimized [804 KB]
-        <img src="img/optimized/desk.jpg" />
+        <img src="https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/optimized/desk.jpg" />
     </div>
 </div>
 
 <div class="alternate-container">
     <div>
         Original [1,314 KB]
-        <img src="img/original/landscape.jpg" />
+        <img src="https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/original/landscape.jpg" />
     </div>
     <div>
         Optimized [747 KB]
-        <img src="img/optimized/landscape.jpg" />
+        <img src="https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/optimized/landscape.jpg" />
     </div>
 </div>
 
