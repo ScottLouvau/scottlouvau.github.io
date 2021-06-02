@@ -103,7 +103,7 @@ body:not(.dark) #sun {
     margin-inline-start: var(--gap);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
     .site-nav {
         display: block;
         position: absolute;
