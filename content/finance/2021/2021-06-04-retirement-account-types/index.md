@@ -36,3 +36,18 @@ I've said taxes are [usually much lower in retirement]({{< relref "../2021-06-03
 If you have money you want to save for retirement but might need it sooner, you can save in a taxable account so that you can get the money early if you need it. For example, if you're worried that the college fund for your kids won't be enough, you could put some savings in a taxable account for easy access if needed.
 
 Finally, if you're getting close to retirement and will retire before age 59.5, you should save up for the last few years in a taxable account. Basically, you can get money from tax-deferred and tax-free accounts before age 59.5, but you need a few years of spending in a taxable account to get things started.
+
+## Which Investments in Which Accounts?
+
+So, if you decide you want 75% stock and 25% bonds, should each of your accounts have exactly that ratio? Well, no.
+
+First, let me say that if you only have one kind of account (all tax-deferred), you don't have to worry about this. It's also not a big deal until your account balances get relatively large. (So you don't need to figure this out to get started.)
+
+That said, money you take out of a tax-free account is tax-free, money from a tax-deferred account is taxed at high rates, and money from a taxable account is taxed at moderate rates. You ideally want your fast-growing investments (stock) in your tax-free accounts, and your slow-growing investments (bonds) in your tax-deferred accounts.
+
+In your taxable accounts, interest from bonds is taxed at a high rate, while dividends and gains from selling stock are taxed at a lower rate. So, if all of your bonds fit in your tax-deferred accounts, great. If not, consider tax-exempt bonds in your taxable account.
+
+Another consideration is "rebalancing" - exchanging one investment for another to keep your target stock and bond percentage consistent. If you rebalance in a taxable account, you have to pay taxes on any gains from stock you sell. You might end up keeping some stock in your tax-deferred accounts just so that you can do your shuffles there. 
+
+These tactics can help optimize your taxes somewhat, but don't let these considerations keep you from having the percentage of stocks and bonds you feel comfortable with. If you want more bonds than you have room in your IRA for, buy them. Don't let the "tax tail wag the dog" as they say. Also, if you have enough retirement savings that the interest and dividends are causing you a lot of taxes, it's a very good sign for your retirement. =)
+
