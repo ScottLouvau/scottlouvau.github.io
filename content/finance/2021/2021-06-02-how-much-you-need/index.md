@@ -13,16 +13,18 @@ Notice that the rule of thumb above is a multiple of your **retirement spending*
 
 In retirement, you will (or can) have:
 
-* No payroll taxes (Social Security and Medicare Tax; 8.65% of your gross pay)
+* No payroll taxes (Social Security and Medicare Tax; 7.65% of your gross pay)
 * Much Lower Income Tax (for us, about 20% income tax when working to less than 2% retired)
 * No mortgage (pay off your house first)
 * No retirement saving (you finished that already)
 * No kids to support (if you have some still at home now)
 * Health Care to pay for (via Medicare or the ACA Exchange)
 
+See our [example couple]({{< relref "../2021-06-03-how-long-does-it-take" >}}), who earns $100k and goes from paying $15.1k tax when working to $3.7k or less in retirement.
+
 Your retirement spending is likely to have a lot of other small differences - maybe more spending on hobbies but less on gas since you're not commuting - but they are hard to predict before you make the leap into post-work life.
 
-You may be tempted to try to make a precise estimate, but unless you're quite close to retirement, a lot is likely to change between now and then. To get an initial idea of "the number" you need for retirement, take your annual income and take out taxes, your mortgage, and your current retirement savings, and add back your property taxes. When you start getting close to retirement, you can get more precise by getting current health insurance costs and subsidies for your planned income and adding any remaining mortgage payoff amount, among other things.
+You may be tempted to try to make a precise estimate, but unless you're quite close to retirement, a lot is likely to change between now and then. To get an initial idea of the income you'll need in retirement, take your annual income and take out taxes, your mortgage, and your current retirement savings, and add back property taxes. When you start getting close to retirement, you can get more precise by getting current health insurance costs and subsidies for your planned income and adding any remaining mortgage payoff amount, among other things.
 
 ## Don't Forget Social Security
 

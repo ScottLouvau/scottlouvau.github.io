@@ -30,7 +30,8 @@ So, how exactly did we go about all of this? I'm writing a blog post series to g
 * [How to Budget and Save]({{< relref "finance/2021/2021-03-20-how-we-budget" >}})
 * [What to Save For]({{< relref "finance/2021/2021-04-13-what-to-save-for" >}})
 * [How to Invest]({{< relref "finance/2021/2021-05-26-how-to-invest" >}})
+* [Retirement Account Types]({{< relref "finance/2021/2021-06-04-retirement-account-types" >}})
 * [How Much You Need to Retire]({{< relref "finance/2021/2021-06-02-how-much-you-need" >}})
-* How Long It Will Take
+* [How Long It Will Take]({{< relref "finance/2021/2021-06-03-how-long-does-it-take" >}})
 * How to Spend in Retirement
 
