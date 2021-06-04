@@ -48,6 +48,9 @@ languages:
                 - name: Gaming
                   url: gaming/
                   weight: 10
+                - name: Retire Early
+                  url: retire-early
+                  weight: 15
 
 outputs:
     home:
