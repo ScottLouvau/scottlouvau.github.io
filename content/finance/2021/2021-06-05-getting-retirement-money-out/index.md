@@ -53,11 +53,11 @@ Suppose you have $40,000 in ordinary income and $60,000 in qualified income. Her
 
 What happened? Ordinary income went first. $24,000 went into the first (0%) tax bracket. The remaining $16,000 went into the second bracket, for $1,600 ($16,000 x 10%) in tax. Next, $4,000 of qualified income filled the last of the second bracket, adding $4,000 x 0% = $0 tax. Finally, the remaining $56,000 of qualified income went into the third bracket, also adding $0 tax.
 
-In total, your $100,000 in income cost only **$1,600** in tax (1.6%). If instead you took the whole $100,000 from a tax-deferred account, your tax would be **$9,600**. 
+In total, your $100,000 in income cost only **$1,600** in tax (1.6%). If instead you took the whole $100,000 from a tax-deferred account, your tax would be **$8,720**. 
 
 If you're saying, "Wow, that's way less good!", you're right! That's why this topic matters. If you keep your ordinary income in the first two brackets, they are barely taxed. If your qualified income stays within the first three brackets, it's totally tax-free.
 
-How close is the $1,600 estimate to the real numbers? Use the [TaxCaster](https://turbotax.intuit.com/tax-tools/calculators/taxcaster/) app to get real numbers quickly. For our example, the tax is actually **$1,523**. Close enough? Close enough.
+How close are these estimates to the real numbers? Use the [TaxCaster](https://turbotax.intuit.com/tax-tools/calculators/taxcaster/) app to get real numbers quickly. The exact numbers are **$1,523** (vs $1,600) and **$8,632** (vs $8,720). Close enough? Close enough.
 
 ## Which Accounts First?
 
