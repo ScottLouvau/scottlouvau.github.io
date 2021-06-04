@@ -32,7 +32,7 @@ Next, there are **tax brackets**. For a married-filing-jointly couple in 2021:
 
 | Rough Bracket Sizes | Ordinary Tax Rate | Qualified Tax Rate |
 | ------------------: | ----------------: | -----------------: |
-| $24,000             | 0%                | 0%                 |
+| $25,000             | 0%                | 0%                 |
 | $20,000             | 10%               | 0%                 |
 | $60,000             | 12%               | 0%                 |
 | $90,000             | 22%               | 15%                |
@@ -47,17 +47,17 @@ Suppose you have $40,000 in ordinary income and $60,000 in qualified income. Her
 
 | Rough Bracket Sizes | Ordinary Income | Ordinary Rate | Qualified Income | Qualified Rate | Tax    |
 | ------------------: | --------------: | ------------: | ---------------: | -------------: | -----: |
-| $24,000             | $24,000         | 0%            |                  | 0%             | $0     |
-| $20,000             | $16,000         | 10%           | $4,000           | 0%             | $1,600 |
-| $60,000             |                 | 12%           | $56,000          | 0%             | $0     |
+| $25,000             | $25,000         | 0%            |                  | 0%             | $0     |
+| $20,000             | $15,000         | 10%           | $5,000           | 0%             | $1,500 |
+| $60,000             |                 | 12%           | $55,000          | 0%             | $0     |
 
-What happened? Ordinary income went first. $24,000 went into the first (0%) tax bracket. The remaining $16,000 went into the second bracket, for $1,600 ($16,000 x 10%) in tax. Next, $4,000 of qualified income filled the last of the second bracket, adding $4,000 x 0% = $0 tax. Finally, the remaining $56,000 of qualified income went into the third bracket, also adding $0 tax.
+What happened? Ordinary income went first. $25,000 went into the first (0%) tax bracket. The remaining $15,000 went into the second bracket, for $1,500 ($15,000 x 10%) in tax. Next, $5,000 of qualified income filled the last of the second bracket, adding $5,000 x 0% = $0 tax. Finally, the remaining $55,000 of qualified income went into the third bracket, also adding $0 tax.
 
-In total, your $100,000 in income cost only **$1,600** in tax (1.6%). If instead you took the whole $100,000 from a tax-deferred account, your tax would be **$8,720**. 
+In total, your $100,000 in income cost only **$1,500** in tax (1.6%). If instead you took the whole $100,000 from a tax-deferred account, your tax would be **$8,600**. 
 
 If you're saying, "Wow, that's way less good!", you're right! That's why this topic matters. If you keep your ordinary income in the first two brackets, they are barely taxed. If your qualified income stays within the first three brackets, it's totally tax-free.
 
-How close are these estimates to the real numbers? Use the [TaxCaster](https://turbotax.intuit.com/tax-tools/calculators/taxcaster/) app to get real numbers quickly. The exact numbers are **$1,523** (vs $1,600) and **$8,632** (vs $8,720). Close enough? Close enough.
+How close are these estimates to the real numbers? Use the [TaxCaster](https://turbotax.intuit.com/tax-tools/calculators/taxcaster/) app to get real numbers quickly. The exact numbers are **$1,523** (vs $1,500) and **$8,632** (vs $8,600). Close enough? Close enough.
 
 ## Which Accounts First?
 
