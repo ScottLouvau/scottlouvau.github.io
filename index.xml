@@ -6,7 +6,16 @@
     <description>Recent content on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 04 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Retirement Money Out</title>
+      <link>https://relentlessoptimizer.com/finance/2021/06/05/getting-retirement-money-out/</link>
+      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/finance/2021/06/05/getting-retirement-money-out/</guid>
+      <description>Once you retire, which accounts should you take your retirement spending from first? If you retire before age 59.5, how do you get IRA money out at all?</description>
+    </item>
+    
     <item>
       <title>Retirement Account Types</title>
       <link>https://relentlessoptimizer.com/finance/2021/06/04/retirement-account-types/</link>
@@ -171,6 +180,15 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       
       <guid>https://relentlessoptimizer.com/about/</guid>
       <description>Hi, I&amp;rsquo;m Scott Louvau. I live near Seattle. I worked at Microsoft, mostly on Visual Studio and Visual Studio Online. I&amp;rsquo;m passionate about performance and I love to optimize things - code, games, finances, coffee - everything.</description>
+    </item>
+    
+    <item>
+      <title>How To Retire Early</title>
+      <link>https://relentlessoptimizer.com/retire-early/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/retire-early/</guid>
+      <description>My wife and I retired just before turning 40, and here are the nuts and bolts of how we did it.</description>
     </item>
     
   </channel>
