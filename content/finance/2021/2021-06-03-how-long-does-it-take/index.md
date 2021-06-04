@@ -9,8 +9,8 @@ In ["How Much You Need To Retire"]({{< relref "../2021-06-02-how-much-you-need" 
 
 Now, let's set up a (reasonable) example so we have some concrete numbers to talk about. Let's say you're married, and this is your situation:
 
-| While Working                    | Yearly Amount |
-| -------------------------------: | ------------: |
+| While Working                    | Per Year |
+| -------------------------------- | ------------: |
 | Household Income                 |      $100,000 |
 | Social Security and Medicare Tax |        $7,650 |
 | Federal Taxes                    |        $7,450 |
@@ -20,14 +20,14 @@ Now, let's set up a (reasonable) example so we have some concrete numbers to tal
 
 What will things look like for this couple when retired?
 
-| Retired                                    | Yearly Amount |
-| -----------------------------------------: | ------------: |
+| Retired                                    | Per Year |
+| ------------------------------------------ | ------------: |
 | Federal Taxes                              |            ?? |
 | Property Taxes (mortgage paid off)         |        $6,000 |
 | Health Insurance (no longer work-provided) |        $4,000 |
 | Other Spending                             |       $45,000 |
 
-First, our couple is done saving for retirement, and they no longer have to pay Social Security and Medicare tax. With a paid off house, their $30k/yr mortgage ($2,500/mo) is replaced by $6k/yr in property taxes. However, they have to pay for healthcare.
+First, our couple is done saving for retirement, and they no longer have to pay Social Security and Medicare tax. With a paid off house, their $30,000 mortgage ($2,500/mo) is replaced by $6,000 in property taxes. However, they have to pay for healthcare.
 
 How much are their Federal Taxes?
 
@@ -35,8 +35,10 @@ At the highest, their taxes will now be **$3,712**, if all of their retirement i
 
 So, in summary, our couple went from paying $15,100 in federal taxes each year to $3,712 (worst-case) or potentially less than $1,000 per year depending on where their retirement income comes from.
 
-| Retired                                    | Yearly Amount |
-| -----------------------------------------: | ------------: |
+See [Getting Retirement Money Out]({{< relref "../2021-06-05-getting-retirement-money-out" >}}) for more on optimizing taxes in retirement.
+
+| Retired                                    | Per Year |
+| ------------------------------------------ | ------------: |
 | Retirement Income (all IRA or 401(k))      |       $59,000 |
 | Federal Taxes                              |        $3,712 |
 | Property Taxes (mortgage paid off)         |        $6,000 |
@@ -171,7 +173,7 @@ In our original example, we saved 10% of our income and our retirement budget wa
 
 In this table, I keep 30% of income as the "fixed" part (taxes and mortgage, approximately) and assume that every time you save an extra 5% of your income, your spending also goes down by 5% of your income. Here are the "years to retirement" for various savings rates:
 
-| Save % | Fixed % | Spend % | Years to Save One Year | Years To Retire |
+| Save | Fixed | Spend | Years to Save One Year | Years To Retire |
 | -----: | ------: | ------: | ---------------------: | --------------: |
 | 5%     | 30%     | 65%     | 13.0                   | 46.6            |
 | 10%    | 30%     | 60%     | 6.0                    | 36.0            |
