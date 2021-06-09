@@ -10,6 +10,7 @@ So, how exactly did we go about all of this? I've written a series to go through
 
 * [How to Budget and Save]({{< relref "finance/2021/2021-03-20-how-we-budget" >}})
 * [What to Save For]({{< relref "finance/2021/2021-04-13-what-to-save-for" >}})
+* [How We Kept the Same Budget for Eight Years]({{< relref "finance/2021/2021-06-09-how-we-kept-the-same-budget" >}})
 * [How to Invest]({{< relref "finance/2021/2021-05-26-how-to-invest" >}})
 * [Retirement Account Types]({{< relref "finance/2021/2021-06-04-retirement-account-types" >}})
 * [How Much You Need to Retire]({{< relref "finance/2021/2021-06-02-how-much-you-need" >}})
@@ -25,7 +26,7 @@ We started tech jobs right out of college in 2002 and signed up to save 30% of o
 
 We tried different ways of budgeting and controlling our spending, but they all felt like scrimping and required too much tracking. Finally we found [something that worked]({{< relref "finance/2021/2021-03-20-how-we-budget" >}}), and as the months went by our down payment started to pile up. We learned that we didn't need a 20% down payment after all, and with our savings and some bonuses we bought a house in 2004.
 
-We first redirected our savings to outfitting our house.  Then, when the thirst of Target and Home Depot were finally slaked, we redirected it again, half to paying off our mortgage early and half toward retirement. We were growing at work and getting solid raises and promotions, but our budget kept us from automatically spending the extra money. We ended up keeping the same budget for ten years, directing all of our raises toward savings. In the end, we were saving close to 70% of our after tax income.
+We first redirected our savings to outfitting our house.  Then, when the thirst of Target and Home Depot were finally slaked, we redirected it again, half to paying off our mortgage early and half toward retirement. We were growing at work and getting solid raises and promotions, but our budget kept us from automatically spending the extra money. We ended up keeping the same budget for eight years, directing all of our raises toward savings. In the end, we were saving close to 70% of our after tax income.
 
 In late 2009 we paid off our house, and we redirected all of our savings to [invest for retirement]({{< relref "finance/2021/2021-05-26-how-to-invest" >}}). It was a scary time to invest, but we believed the stock market would recover, and it did.
 

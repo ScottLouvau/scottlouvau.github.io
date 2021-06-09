@@ -80,7 +80,7 @@ Third is a toss up. You can take more tax-deferred withdrawals at the relative b
 
 Huh? Why not just use taxable accounts for all of this range? 
 
-Well, when you turn 70, you will have Social Security income and mandated minimum tax-deferred withdrawals (see RMDs in the next section). Together, these might cause a much higher tax rate than you had earlier in retirement. If they do, it might be a better overall deal to spend IRA money sooner to reduce taxes later. 
+Well, when you turn 72, you will have Social Security income and mandated minimum tax-deferred withdrawals (see RMDs in the next section). Together, these might cause a much higher tax rate than you had earlier in retirement. If they do, it might be a better overall deal to spend IRA money sooner to reduce taxes later. 
 
 Fourth, your tax free accounts are always free, of course, so if you are near one of the "tax surprises" below, you can lower your taxable income by taking some tax free money to avoid them. Tax-free accounts are also best to spend last because  if your portfolio grows really well, they don't hurt so much when you raise your retirement income and are the most tax-efficient for people to inherit.
 
@@ -94,9 +94,9 @@ As mentioned, your Social Security income is not all taxed. There's a formula wh
 
 #### Required Minimum Distributions (RMDs)
 
-At age 70 (well, 70.5) you start being required to take money out of your tax-deferred accounts. The government is tired of waiting for that tax money. This can mean much higher taxes than the earlier part of your retirement. 
+At age 72 you start being required to take money out of your tax-deferred accounts. The government is tired of waiting for that tax money. This can mean much higher taxes than the earlier part of your retirement. 
 
-When you retire, find out what your Social Security income and early RMD amounts will be. If the taxes are much higher than your pre-age-70 plan, meet with a tax professional to work through your options for optimizing things.
+When you retire, find out what your Social Security income and early RMD amounts will be. If the taxes are much higher than your pre-age-72 plan, meet with a tax professional to work through your options for optimizing things.
 
 #### Medicare IRMAA Thresholds
 

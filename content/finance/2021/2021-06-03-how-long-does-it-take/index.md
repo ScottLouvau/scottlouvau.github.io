@@ -165,7 +165,7 @@ First, the bigger savings means that after 28 years, you saved $1,190,401 instea
 
 Is this plausible? Saving an extra 0.5% per year sounds reasonable, but cutting your spending from $59k to $45.5k, even over a long time, sounds hard.
 
-However, when there's 2% inflation (as has been the average in recent US history), this really means getting by with just a 1% raise in spending each year. If you only got 1% raises, could you manage? You need to find things to trim here and there as prices go up, but it's possible, and it can make a huge difference in your retirement over time. More on that in another post. 
+However, when there's 2% inflation (as has been the average in recent US history), this really means getting by with just a 1% raise in spending each year. If you only got 1% raises, could you manage? You need to find things to trim here and there as prices go up, but it's possible, [we did it]({{< relref "../2021-06-09-how-we-kept-the-same-budget" >}}), and it can make a huge difference in your retirement over time. 
 
 ## Years to Retirement Table
 
