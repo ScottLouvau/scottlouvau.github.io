@@ -2,6 +2,7 @@
 
 <article class="post-single">
   <header class="post-header">
+    <img alt="" src="{{ print "https://asset.relentlessoptimizer.com/head.png?path=" .RelPermalink }}" width="1" height="1" />
     {{- partial "breadcrumbs.html" . }}
     <h1 class="post-title">
       {{ .Title }}
@@ -38,6 +39,7 @@
     {{- partial "anchored_headings.html" .Content -}}
   </div>
   <footer class="post-footer">
+    <img alt="" loading="lazy" src="{{ print "https://asset.relentlessoptimizer.com/foot.png?path=" .RelPermalink }}" width="1" height="1" />
     {{- if .Params.tags }}
     <ul class="post-tags">
       {{- range ($.GetTerms "tags") }}
