@@ -92,6 +92,5 @@
 
 <script>
     var mail = [ "mail", "to:", "scottlo", "@", "out", "look", "." ];
-    var link = document.getElementById("social-email");
-    if (link) link.href = mail.join('') + "com";
+    document.querySelectorAll(".social-email").forEach(link => link.href = mail.join('') + "com");
 </script>
