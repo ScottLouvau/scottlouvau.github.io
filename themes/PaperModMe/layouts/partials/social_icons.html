@@ -1,6 +1,6 @@
 <div class="social-icons">
     {{- range .Site.Params.socialIcons -}}
-    <a href="{{ trim .url " " }}" target="_blank" rel="noopener noreferrer me"
+    <a id="social-{{ .name | lower }}" href="{{ trim .url " " }}" target="_blank" rel="noopener noreferrer me"
         title="{{ .name | humanize }}">
         <svg><use xlink:href="{{ partial "useSvg.html" . }}#{{ .name | lower }}"></use></svg>
     </a>

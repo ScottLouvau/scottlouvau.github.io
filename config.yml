@@ -86,7 +86,7 @@ params:
         - name: RSS
           url: "index.xml"
         - name: email
-          url: "mailto:scottlo@outlook.com"
+          url: "obfuscated"
         - name: github
           url: "https://github.com/ScottLouvau"
         - name: LinkedIn
