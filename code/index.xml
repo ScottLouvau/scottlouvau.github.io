@@ -6,7 +6,16 @@
     <description>Recent content in Code on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 28 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/code/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CloudFlare Pages Custom Domain Setup</title>
+      <link>https://relentlessoptimizer.com/code/2021/06/26/cloudflare-pages-custom-domain-setup/</link>
+      <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/code/2021/06/26/cloudflare-pages-custom-domain-setup/</guid>
+      <description>This blog is hosted on CloudFlare Pages with CloudFlare-managed DNS, and I finally have DNS resolution working fully. The documentation was confusing and incomplete - here is what I needed to know.</description>
+    </item>
+    
     <item>
       <title>Photo Optimization</title>
       <link>https://relentlessoptimizer.com/code/2021/05/28/photo-optimization/</link>
