@@ -59,6 +59,7 @@ outputs:
         - JSON
 
 params:
+    author: Scott Louvau
     mainSections:
         - gaming
         - code
