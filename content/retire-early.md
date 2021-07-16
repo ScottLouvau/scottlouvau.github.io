@@ -12,6 +12,7 @@ So, how exactly did we go about all of this? I've written a series to go through
 * [What to Save For]({{< relref "finance/2021/2021-04-13-what-to-save-for" >}})
 * [How We Kept the Same Budget for Eight Years]({{< relref "finance/2021/2021-06-09-how-we-kept-the-same-budget" >}})
 * [How to Invest]({{< relref "finance/2021/2021-05-26-how-to-invest" >}})
+* [How Much Stock vs Bonds]({{< relref "finance/2021/2021-07-16-how-much-stock-vs-bonds" >}})
 * [Retirement Account Types]({{< relref "finance/2021/2021-06-04-retirement-account-types" >}})
 * [How Much You Need to Retire]({{< relref "finance/2021/2021-06-02-how-much-you-need" >}})
 * [How Long It Will Take]({{< relref "finance/2021/2021-06-03-how-long-does-it-take" >}})
