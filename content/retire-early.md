@@ -17,7 +17,7 @@ So, how exactly did we go about all of this? I've written a series to go through
 * [How Much You Need to Retire]({{< relref "finance/2021/2021-06-02-how-much-you-need" >}})
 * [How Long It Will Take]({{< relref "finance/2021/2021-06-03-how-long-does-it-take" >}})
 * [Getting Retirement Money Out]({{< relref "finance/2021/2021-06-05-getting-retirement-money-out" >}})
-
+* [Our Withdrawal Plan]({{< relref "finance/2021/2021-08-09-our-withdrawal-plan" >}})
 
 ### Our Story
 
