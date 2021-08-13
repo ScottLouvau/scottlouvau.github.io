@@ -1,5 +1,7 @@
 ---
 title: "Pacifica Camping Build"
+aliases: 
+    - "/PacControl/VanBuild/"
 ---
 
 We wanted to be able to sleep in our Pacifica, and for it to be more comfortable and faster to get to bed and get going than a random motel. We're picky sleepers and need our room to be dark, quiet, cool, and the bed to be right. Most motels don't have all of these things right, so we usually don't sleep especially well.
