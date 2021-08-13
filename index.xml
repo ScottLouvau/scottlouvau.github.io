@@ -227,5 +227,23 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <description>My wife and I retired just before turning 40, and here are the nuts and bolts of how we did it.</description>
     </item>
     
+    <item>
+      <title>Pacifica Camping Build</title>
+      <link>https://relentlessoptimizer.com/paccontrol/camping-build/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/paccontrol/camping-build/</guid>
+      <description>We wanted to be able to sleep in our Pacifica, and for it to be more comfortable and faster to get to bed and get going than a random motel.</description>
+    </item>
+    
+    <item>
+      <title>Pacifica Climate Control Circuit</title>
+      <link>https://relentlessoptimizer.com/paccontrol/circuit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/paccontrol/circuit/</guid>
+      <description>We wanted to camp overnight in our 2018 Chrysler Pacifica Hybrid. If the van is plugged in or the battery is charged enough, the climate system can run overnight without the engine turning on.</description>
+    </item>
+    
   </channel>
 </rss>
