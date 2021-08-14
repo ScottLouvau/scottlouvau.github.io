@@ -21,7 +21,7 @@ Perhaps the biggest benefit of the story is that since Joker controls the asylum
 
 Arkham Asylum is the first appearance of the "FreeFlow Combat System", which also features in the later Arkham games and the Middle Earth: Shadow series. Batman can easily outmatch a few thugs at once  even when you start the game, and if you take the time to really get good at the combat, he turns into an unstoppable beast. The combat is so fun that that there's a separate mode, Challenge Mode, which just drops you in a room with waves of goons to take out, and I've spent hours doing so with no particular goal I'm chasing. Take a look at [Combat Challenge](https://www.youtube.com/watch?v=fzgHAWwJ7RY) [videos](https://www.youtube.com/watch?v=Tr1I3O_rHko) on YouTube to fully appreciate what a skilled Batman can do.
 
-<video width="640" height="360" controls>
+<video controls>
  <source src="files/combat-challenge.mp4" type="video/mp4" />
 </video>
 

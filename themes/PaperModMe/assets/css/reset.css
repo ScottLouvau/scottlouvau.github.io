@@ -146,3 +146,12 @@ img {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary)
 }
+
+video {
+    width: 100%;
+}
+
+audio {
+    margin: 1px 4px;
+    max-width: calc(100% - 8px);
+}
