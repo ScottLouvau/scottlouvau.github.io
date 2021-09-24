@@ -48,6 +48,9 @@ languages:
                 - name: Gaming
                   url: gaming/
                   weight: 10
+                - name: Life
+                  url: life/
+                  weight: 10
                 - name: Retire Early
                   url: retire-early
                   weight: 15
@@ -64,6 +67,7 @@ params:
         - gaming
         - code
         - finance
+        - life
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Incessantly optimizing code, games, and finances."
     disableScrollToTop: true
