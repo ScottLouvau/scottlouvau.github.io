@@ -50,7 +50,7 @@ Finally, by rebalancing only from stocks to bonds, we hold onto our bonds during
 
 Rebalancing every year, like the 4% strategy does, has two effects. When stock prices are high, you sell some stock to "lock in" gains, increasing portfolio safety. When stock prices drop, you sell some bonds and buy stock to take advantage of low prices, increasing long term returns. Before retirement, both of these benefits are valuable. In retirement, don't need maximum gains anymore. By rebalancing only by selling stock for bonds, we're keeping just the "increase safety" effect and maximizing safety in long, deep market crashes.
 
-So, to recap, setting spending based on our previous peak provides **more predictability before retirement** and allows for **raises during retirement** if the portfolio has grown. Accepting spending cuts during significant crashes **reduces portfolio stress**. Rebalancing only by seling stock at high prices **increases portfolio safety**, losing some long term growth that we no longer need to maximize.
+So, to recap, setting spending based on our previous peak provides **more predictability before retirement** and allows for **raises during retirement** if the portfolio has grown. Accepting spending cuts during significant crashes **reduces portfolio stress**. Rebalancing only by selling stock at high prices **increases portfolio safety**, losing some long term growth that we no longer need to maximize.
 
 ### Why 3%?
 
