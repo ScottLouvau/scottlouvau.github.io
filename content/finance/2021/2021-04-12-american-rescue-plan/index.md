@@ -19,7 +19,7 @@ However, after reading an [excellent summary of the American Rescue Plan](https:
 
 First, the child tax credit is **fully refundable**, so we no longer need a particular minimum income to fully use the child tax credit. 
 
-Second, the ACA Premium Assistance Tax Credit (PATC, or "ACA subsidy" below) will be larger for 2021 and 2022. There's a "premium percentage" of your income that ACA expects you to pay for health care, but then the subsidy covers the rest of the cost of your local "benchmark plan". These premium percentages are **much lower** for 2021 and 2022 at a wide range of income levels. Using the [2020 Federal Poverty Levels](https://aspe.hhs.gov/2020-poverty-guidelines):
+Second, the ACA Advance Premium Tax Credit (APTC, or "ACA subsidy" below) will be larger for 2021 and 2022. There's a "premium percentage" of your income that ACA expects you to pay for health care, but then the subsidy covers the rest of the cost of your local "benchmark plan". These premium percentages are **much lower** for 2021 and 2022 at a wide range of income levels. Using the [2020 Federal Poverty Levels](https://aspe.hhs.gov/2020-poverty-guidelines):
 
 | Income [% of FPL] | Income [Family of 4] | 2021-2022 Premium Percentage | 'Normal' Premium Percentage |
 | ----------------- | -------------------- | ---------------------------- | --------------------------- |
@@ -45,6 +45,6 @@ A few more notes for 2021 and 2022:
 
 * Stimulus checks are officially based on 2021 income, but will be sent based on your latest taxes filed when the IRS initially processes the payments. You don't have to pay them back if your 2019 or 2020 taxes triggered a higher payment than your 2021 income would qualify for. You may want to delay filing taxes if your 2019 income was lower than 2020.
 * Watch out for the $150,000 income level (MFJ) because any stimulus payment and the extra child tax credit very rapidly phase out.
-* The ACA PATC is **not** limited to incomes under 400% of FPL, though your subsidy shrinks as you're expected to pay 8.5% of your income toward the benchmark healthcare plan.
+* The ACA APTC is **not** limited to incomes under 400% of FPL, though your subsidy shrinks as you're expected to pay 8.5% of your income toward the benchmark healthcare plan.
 * There are also dependent care account, COBRA, unemployment assistance, and tuition debt 
 
