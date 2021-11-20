@@ -39,3 +39,6 @@ There are many Shamans on this map, but our mage towers don't hurt them much. We
 | W12  | 8 Bandits (left, 1 per sec)<br />8 Bandits (right, 1 per sec)<br />4 Brigands (left, 1 per sec)<br />4 Brigands (right, 1 per sec)<br />3 Shamans (left, 1 per sec)<br />3 Shamans (left, 1 per sec) |
 |      | Upgrade Mage to L3 (right side bottom)<br />Upgrade Mage to L3 (left side bottom) |
 | W13  | 3 Brigands (left, 2 per sec)<br />3 Brigands (right, 2 per sec)<br />8 Bandits (left, 1 per sec)<br />8 Bandits (right, 1 per sec)<br />4 Brigands (left, 2 per sec)<br />4 Brigands (right, 2 per sec)<br />2 Shamans (left, 1 per sec)<br />2 Shamans (right, 1 per sec) |
+
+![L4 Twin River Pass Endty
+](img/L4 Twin River Pass End.png)

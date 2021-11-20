@@ -4,9 +4,11 @@ date: 2022-01-01
 draft: true
 ---
 
-![L1 Southport](img/L1 Southport.png)One artillery tower and two barracks can usually hold off all waves with no reinforcements, rain of fire, or hero involvement, and no upgrades active.
+One artillery tower and two barracks can usually hold off all waves with no reinforcements, rain of fire, or hero involvement, and no upgrades active.
 
 Consider building a mage tower below the artillery to handle any monsters who get through.
+
+![L1 Southport](img/L1 Southport.png)
 
 | Wave | Monsters                                                     |
 | ---- | ------------------------------------------------------------ |

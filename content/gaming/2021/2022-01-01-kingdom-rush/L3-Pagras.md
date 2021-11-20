@@ -32,3 +32,5 @@ Build a "kill zone" with three artillery and two supporting barracks and you can
 | W10  | 1 Ogre (upper)<br />2 Shamans (upper, 1 per sec)<br />**Reinforcements and Rain of Fire Shamans as they appear**<br />20 Goblins (upper, 2 per sec) |
 |      | Build Mage Tower (bottom center, backup)<br />Build Barracks (bottom left, backup) |
 | W11  | 1 Ogre (upper)<br />1 Ogre (lower)<br />**Rain of Fire Ogres once together**<br />8 Orcs (upper, 0.5 per sec)<br />8 Orcs (lower, 0.5 per sec)<br />2 Shamans (upper, at once)<br />2 Shamans (lower, at once)<br />10 Goblins (upper, 2 per sec)<br />10 Goblins (lower, 2 per sec) |
+
+![L3 Pagras End](img/L3 Pagras End.png)
