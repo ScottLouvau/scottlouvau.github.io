@@ -27,3 +27,9 @@ If any monsters get through, use Rain of Fire or place reinforcements to finish 
 | W7   | 5 Wulfs (at once)<br />5 Wulfs (at once)<br />10 Orcs (at once)<br />20 Goblins (4 per sec) |
 
 ![L2 The Outskirts End](img/L2 The Outskirts End.png)
+
+Complete Heroic mode right after the original level. The same tower layout and build order works, though you'll need a Rain of Fire to take out the Wave 3 group of Orcs.
+
+To complete Iron, you'll need a different setup. You aren't allowed to build barracks, so put artillery where the two barracks were and keep reinforcements around to block. Some Orcs will get through near the end, so build Mages at the bottom to finish them off.
+
+![L2 Iron End](img/L2 Iron End.png)
