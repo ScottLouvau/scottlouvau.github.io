@@ -6,7 +6,16 @@
     <description>Recent content on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 29 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Regex Builder 2.10</title>
+      <link>https://relentlessoptimizer.com/code/2021/12/08/regex-builder-2.10/</link>
+      <pubDate>Wed, 08 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/code/2021/12/08/regex-builder-2.10/</guid>
+      <description>Today I&amp;rsquo;m releasing a new version of Regex Builder, 14 years after the previous release, thanks to an email from a fan.</description>
+    </item>
+    
     <item>
       <title>Budgeting is Like Backpacking</title>
       <link>https://relentlessoptimizer.com/finance/2021/11/29/budgeting-is-like-backpacking/</link>
