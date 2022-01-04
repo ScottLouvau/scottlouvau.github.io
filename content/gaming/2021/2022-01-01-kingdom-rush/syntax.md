@@ -39,3 +39,32 @@ I use the first four letters of the tower type to identify them, and the first f
 If your build plan has you build and upgrade the tower in one position in back-to-back steps, you can just write a "move" for the highest level. For example, if you want to build a Tesla tower in position B5, write "B5 Tesl".
 
 The upgrades to the top-level towers (like the Tesla tower Overcharge) are identified by the first four letters of the upgrade name and a number for levels higher than one. To fully upgrade Overcharge on the Tesla tower, add "B5 Over3".
+
+
+
+## Upgrades
+
+X, Y, Z and level.
+
+Overcharge3 => Over3 => Y3.
+
+
+
+## Other
+
+|                | Mnemonic    | Short | Long | Top 1 | Top 2 |
+| -------------- | ----------- | ----- | ---- | ----- | ----- |
+| Rain of Fire   | "Meteors"   | M     | Rain |       |       |
+| Reinforcements | "Neighbors" | N     | Rein |       |       |
+| Hero           | "Officer"   | O     | Hero |       |       |
+| Barracks       | "Paladin"   | P     | Barr | Holy  | Barb  |
+| Archer         | "Ranger"    | R     | Arch | Rang  | Musk  |
+| Mage           | "Sorcerer"  | S     | Mage | Arca  | Sorc  |
+| Artillery      | "Tesla"     | T     | Arti | BigB  | Tesl  |
+
+'.' as visual separator between steps (leave out in URLs)
+'-' as whitespace indicator
+
+L2: C8 Arti; A9 Barr; - ; A6 Barr ; C9 Mage ; - ; C8 Arti2
+L2: C8t.A9p.-.A6p.-.C9s.-.C8t2
+L2: C8tA9pA6pC9sC8t2
