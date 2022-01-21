@@ -10,3 +10,11 @@
 :   -resize <geometry> : resize, preserve aspect ratio
 :   -scale <percent>   : scale, cloning pixels to retain clean lines
 :   -posterize         : reduce colors per channel to reduce size
+
+:: -scale with "x90" to set to height 90px and scale width to maintain aspect ratio
+:: Can use '*.png' to operate on multiple input files
+:: Use -set to set a variable to capture each input file name.
+:: Variable must start with filename: to be usable in output path.
+:: Must double '%' in command for use in batch file.
+
+%magick% "orig\*.png" -scale x90 -set filename:name %%t 90p\%%[filename:name].png
