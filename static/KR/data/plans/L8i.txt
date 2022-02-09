@@ -1,0 +1,23 @@
+L8
+
+E9 Mage2
+D5 Barr
+E5 Arti
+G2 Arti
+D2 Arti
+C2 Barr
+E9 Mage3
+F9 Barr
+G9 Arti
+E5 Arti2
+D2 Arti2
+G9 Arti2
+E5 Arti3
+C5 Barr
+E9 Arca
+E5 BigB
+D2 BigB
+
+# 04:50
+G9 Arti3
+G2 BigB

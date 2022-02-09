@@ -1,0 +1,10 @@
+L7
+
+C5 Barr2
+B5 Barr2
+D5 Barr2
+B1 Rang
+D1 Rang
+
+# 05:10
+C1 Rang

@@ -1,0 +1,30 @@
+*, ::after, ::before 
+{
+    box-sizing: border-box;
+}
+
+html
+{
+    overflow-y: auto;
+}
+
+body 
+{
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    
+    padding: 2px;
+    margin: 0;
+    height: 100vh;
+
+    color: #ddd;
+    background-color: #222;
+}
+
+#main {
+    z-index: -1;
+    display: block;
+    margin: auto;
+    width: min(calc(100vw - 4px), calc(16/9 * (100vh - 4px)), 1920px);
+    height: min(calc(9/16 * (100vw - 4px)), calc(100vh - 4px), 1080px);
+}

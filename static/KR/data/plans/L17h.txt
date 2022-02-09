@@ -1,0 +1,34 @@
+L17
+
+D7 Tesl
+C9 Barr
+F3 Barr
+E7 Sorc
+
+# 02:40
+C3 Arti
+A1 Barr
+C3 Tesl
+F4 Sorc
+
+# 05:40
+C9 Barr2
+A7 Barr
+C4 Musk
+
+# 08:00
+A4 Arch
+F3 Barr2
+A4 Musk
+E2 Arti3
+A1 Barr2
+
+# 09:20
+E2 Tesl
+F3 Barr3
+C9 Barr3
+A7 Barr2
+
+# 10:40
+C9 Barb
+F3 Barb

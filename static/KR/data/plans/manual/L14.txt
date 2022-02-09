@@ -1,0 +1,42 @@
+L14
+
+B4 Barr
+A6 Tesl
+A6 Over3
+
+C4 Mage2
+C7 Arti
+A9 Arti
+
+C4 Mage3
+E5 Rang
+
+C1 Barr
+B8 Rang
+
+B4 Barb
+B4 Thro3
+C7 Arti2
+
+G6 Sorc
+G6 Poly1
+
+C1 Barr2
+C7 Tesl
+C7 Over3
+C1 Barb
+C1 Thro3
+
+A9 BigB
+E3 BigB
+G3 BigB
+C9 Sorc
+C9 Poly1
+
+B9 Musk
+B9 Snip3
+F3 Musk
+F3 Snip3
+B9 Shra3
+F3 Shra3
+G9 Barb

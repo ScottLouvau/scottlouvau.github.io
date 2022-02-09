@@ -1,0 +1,30 @@
+L6
+
+B7 Mage3
+C7 Barr
+F7 Mage3
+C4 Barr
+A4 Barr
+E7 Barr
+H4 Barr
+E4 Barr
+F7 Arca
+
+# 01:10
+B7 Arca
+C7 Barr2
+E7 Barr2
+C7 Barr3
+E7 Barr3
+C7 Holy
+C9 Barr
+E7 Holy
+C4 Barr3
+E4 Barr3
+C4 Holy
+E4 Holy
+
+# 06:00
+H4 Barr2
+A4 Barr3
+H4 Holy

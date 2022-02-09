@@ -1,0 +1,51 @@
+L6
+
+B7 Barr
+C7 Arti
+E7 Arti
+H4 Mage
+C4 Mage
+E4 Mage
+A4 Mage
+F7 Barr
+C9 Mage
+
+# 01:20
+E9 Mage
+
+# 02:30
+E4 Mage2
+C4 Mage2
+C9 Mage2
+E9 Mage2
+H4 Mage2
+A4 Mage2
+
+# 04:40
+E4 Mage3
+F7 Barr2
+C4 Mage3
+B7 Barr2
+C1 Arti2
+E7 Arti2
+C7 Arti2
+B7 Barr3
+H4 Mage3
+A4 Mage3
+E4 Arca
+C4 Arca
+C9 Mage3
+F7 Barr3
+E9 Mage3
+C9 Arca
+E9 Arca
+
+# 12:10
+H4 Arca
+A4 Arca
+
+# 13:50
+E7 Arti3
+C7 Arti3
+B7 Holy
+F7 Holy

@@ -1,0 +1,28 @@
+L10
+
+C7 Tesl
+E8 Barr
+F8 Mage
+E5 Mage2
+
+# 01:00
+F8 Mage3
+E8 Barr2
+
+# 02:40
+F8 Sorc
+B4 Tesl
+F6 Arch3
+
+# 06:20
+E5 Sorc
+F6 Rang
+
+# 08:40
+E3 Musk
+
+# 09:40
+C4 Musk
+
+# 11:00
+G3 Sorc

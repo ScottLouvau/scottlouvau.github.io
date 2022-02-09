@@ -1,0 +1,12 @@
+L2
+
+A9 Barr
+C8 Arti
+A6 Barr
+
+# 02:00
+C8 Arti2
+C9 Mage
+
+# 03:20
+C3 Arti

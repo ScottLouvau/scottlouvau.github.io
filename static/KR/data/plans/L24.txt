@@ -1,0 +1,59 @@
+L24
+
+F9 Arti
+H6 Barr
+H2 Barr
+G1 Tesl
+
+# 05:40
+H3 Mage
+E6 Mage2
+
+# 08:00
+F9 Arti2
+
+# 08:40
+H3 Mage2
+H2 Barr2
+
+# 09:40
+H3 Mage3
+
+# 10:20
+H2 Barr3
+
+# 12:00
+F9 Arti3
+
+# 13:20
+H6 Barr2
+
+# 14:00
+F9 Tesl
+
+# 16:20
+H2 Holy
+
+# 17:00
+E6 Mage3
+H3 Sorc
+
+# 18:00
+H6 Barr3
+E6 Sorc
+
+# 20:00
+H6 Holy
+
+# 21:00
+F3 Mage3
+D2 Musk
+
+# 23:40
+F3 Sorc
+
+# 24:40
+D6 Musk
+
+# 32:20
+C4 Musk

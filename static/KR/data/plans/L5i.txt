@@ -1,0 +1,19 @@
+L5
+
+G7 Arti
+G6 Arti
+C6 Arch3
+F4 Arti
+B3 Arch3
+D3 Mage
+F3 Arti
+B1 Mage
+E7 Rang
+
+# 01:00
+E9 Mage
+G7 Arti2
+
+# 02:00
+E9 Mage2
+C6 Rang

@@ -1,0 +1,24 @@
+L12
+
+D2 Rang
+B6 Barr
+B2 Musk
+E2 Barr
+
+# 01:00
+A6 Arch3
+
+# 02:00
+C6 Rang
+
+# 03:00
+A6 Musk
+
+# 05:00
+B6 Barr2
+
+# 06:20
+C2 Sorc
+
+# 07:20
+F6 Musk

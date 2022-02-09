@@ -1,0 +1,35 @@
+L4
+
+G4 Barr
+B8 Barr
+B5 Arti
+G3 Mage
+F1 Arti
+
+# 01:20
+B6 Mage2
+
+# 03:00
+G3 Mage2
+
+# 03:40
+F1 Arti2
+
+# 04:20
+B5 Arti2
+
+# 05:20
+H1 Mage
+A4 Mage2
+H1 Mage2
+
+# 07:00
+B8 Barr2
+G4 Barr2
+
+# 07:40
+G3 Mage3
+B6 Mage3
+
+# 09:00
+F1 Arti3

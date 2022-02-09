@@ -1,0 +1,25 @@
+L16
+
+B3 Tesl
+A7 Barr
+
+# 01:00
+B6 Arti3
+A7 Barr2
+B6 Tesl
+A9 Barr
+A7 Barb
+F2 Tesl
+
+# 04:20
+A9 Barb
+
+# 05:00
+C4 Tesl
+A1 Barr3
+E2 Arti
+A1 Barb
+E2 Tesl
+
+# 07:40
+D7 Tesl

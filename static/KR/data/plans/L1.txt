@@ -1,0 +1,11 @@
+L1
+
+A8 Barr
+B5 Arti
+A9 Barr
+
+# 01:00
+D1 Mage
+
+# 01:50
+E3 Mage

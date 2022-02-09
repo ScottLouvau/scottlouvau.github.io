@@ -1,0 +1,20 @@
+L8
+
+E5 Arti
+G2 Arti
+D5 Rang
+C5 Barr
+D2 Arti
+C2 Barr
+
+# 01:10
+A3 Arch2
+C2 Barr2
+E5 Arti2
+D2 Arti2
+
+# 03:20
+H2 Musk
+E5 Arti3
+A3 Musk
+C5 Barr2

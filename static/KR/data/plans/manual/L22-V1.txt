@@ -1,0 +1,57 @@
+L22 Normal Campaign
+C1 Tesl
+
+# W1
+C1 Over3
+F3 Arti
+B4 Arti
+
+# W2
+B4 Arti2
+F3 Arti2
+
+# W3
+B4 Arti3
+D3 Mage
+D8 Mage
+
+# W4
+# W5 H
+B4 Tesl
+
+# W6
+D3 Sorc
+
+# W7
+B4 Over3
+D3 Poly1
+
+# W8
+F3 Tesl
+F3 Over3
+
+# W9
+A2 Mage
+G1 Mage
+E5 Arti
+
+# W10
+A2 Sorc
+G1 Sorc
+
+# W11
+E5 Tesl
+E5 Over3
+
+# W12
+A2 Poly1
+G1 Poly1
+D8 Sorc
+
+# W13
+G1 Summ1
+D8 Summ1
+C5 Musk
+C5 Shra3
+
+# W14

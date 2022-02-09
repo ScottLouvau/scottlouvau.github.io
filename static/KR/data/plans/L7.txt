@@ -1,0 +1,27 @@
+L7
+
+D1 Mage3
+B1 Arch2
+C1 Barr
+
+# 02:00
+B1 Arch3
+
+# 02:50
+D5 Arch2
+E1 Barr
+
+# 04:40
+B1 Rang
+
+# 06:50
+D5 Rang
+
+# 11:40
+C1 Barr2
+
+# 12:30
+D1 Arca
+
+# 14:20
+E1 Barr2

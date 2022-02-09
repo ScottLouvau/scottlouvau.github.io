@@ -1,0 +1,22 @@
+L7
+
+D1 Barr
+D5 Arch
+B1 Arti
+C1 Rang
+
+# 01:00
+D5 Arch3
+
+# 02:00
+B5 Barr
+B1 Arti2
+
+# 03:00
+D5 Rang
+
+# 04:50
+B1 Arti3
+
+# 07:00
+C5 Barr

@@ -1,0 +1,46 @@
+L12
+
+F2 Barr
+D2 Tesl
+
+# 01:20
+C2 Arti3
+E2 Mage
+F6 Mage
+
+# 05:10
+C2 Tesl
+
+# 06:10
+C6 Arch2
+B6 Barr
+C6 Musk
+E2 Sorc
+
+# 09:20
+B6 Barr2
+
+# 10:10
+F2 Barr2
+F6 Mage2
+B2 Tesl
+A9 Arch2
+F6 Mage3
+A9 Arch3
+F6 Sorc
+A9 Musk
+
+# 14:00
+A6 Barr
+
+# 16:00
+G1 Arca
+F2 Barr3
+A6 Barr2
+B6 Holy
+F8 Musk
+
+# 19:20
+A6 Barr3
+F2 Holy
+A6 Holy

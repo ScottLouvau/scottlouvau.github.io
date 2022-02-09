@@ -1,0 +1,14 @@
+L3
+
+C9 Arch
+A9 Arch
+B7 Arch
+D5 Mage
+C3 Mage
+D2 Mage2
+B4 Mage
+
+# 02:10
+C3 Mage2
+B1 Barr
+B4 Mage2

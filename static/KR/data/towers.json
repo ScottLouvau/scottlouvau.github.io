@@ -1,0 +1,54 @@
+{
+    "base": [
+        { "fullName": "Militia Barracks",    "ln": "Barr", "sn": "p1", "on": null, "cost": 70, "totalCost": 70, "unlock": 1, "index": 0 },
+        { "fullName": "Footmen Barracks",    "ln": "Barr2", "sn": "p2", "on": "p1", "cost": 110, "totalCost": 180, "unlock": 2, "index": 1 },
+        { "fullName": "Knights Barracks",    "ln": "Barr3", "sn": "p3", "on": "p2", "cost": 160, "totalCost": 340, "unlock": 4, "index": 2 },
+        { "fullName": "Holy Order",          "ln": "Holy",  "sn": "p4", "on": "p3", "cost": 230, "totalCost": 570, "unlock": 6, "index": 3 },
+        { "fullName": "Barbarian Mead Hall", "ln": "Barb",  "sn": "p5", "on": "p3", "cost": 230, "totalCost": 570, "unlock": 8, "index": 4 },
+
+        { "fullName": "Archer Tower",        "ln": "Arch", "sn": "r1", "on": null, "cost": 70, "totalCost": 70, "unlock": 1, "index": 5 },
+        { "fullName": "Marksmen Tower",      "ln": "Arch2", "sn": "r2", "on": "r1", "cost": 110, "totalCost": 180, "unlock": 2, "index": 6 },
+        { "fullName": "Sharpshooter Tower",  "ln": "Arch3", "sn": "r3", "on": "r2", "cost": 160, "totalCost": 340, "unlock": 4, "index": 7 },
+        { "fullName": "Rangers Hideout",     "ln": "Rang", "sn": "r4", "on": "r3", "cost": 230, "totalCost": 570, "unlock": 5, "index": 8 },
+        { "fullName": "Mustketeer Garrison", "ln": "Musk", "sn": "r5", "on": "r3", "cost": 230, "totalCost": 570, "unlock": 7, "index": 9 },
+
+        { "fullName": "Mage Tower",          "ln": "Mage", "sn": "s1", "on": null, "cost": 100, "totalCost": 100, "unlock": 1, "index": 10 },
+        { "fullName": "Adept Tower",         "ln": "Mage2", "sn": "s2", "on": "s1", "cost": 160, "totalCost": 260, "unlock": 2, "index": 11 },
+        { "fullName": "Wizard Tower",        "ln": "Mage3", "sn": "s3", "on": "s2", "cost": 240, "totalCost": 500, "unlock": 4, "index": 12 },
+        { "fullName": "Arcane Wizard",       "ln": "Arca", "sn": "s4", "on": "s3", "cost": 300, "totalCost": 800, "unlock": 6, "index": 13 },
+        { "fullName": "Sorcerer Mage",       "ln": "Sorc", "sn": "s5", "on": "s3", "cost": 300, "totalCost": 800, "unlock": 9, "index": 14 },
+
+        { "fullName": "Dwarven Bombard",     "ln": "Arti", "sn": "t1", "on": null, "cost": 125, "totalCost": 125, "unlock": 1, "index": 15 },
+        { "fullName": "Dwarven Artillery",   "ln": "Arti2", "sn": "t2", "on": "t1", "cost": 220, "totalCost": 345, "unlock": 2, "index": 16 },
+        { "fullName": "Dwarven Howitzer",    "ln": "Arti3", "sn": "t3", "on": "t2", "cost": 320, "totalCost": 665, "unlock": 4, "index": 17 },
+        { "fullName": "Big Bertha",          "ln": "BigB", "sn": "t4", "on": "t3", "cost": 400, "totalCost": 1065, "unlock": 8, "index": 18 },
+        { "fullName": "Tesla x104",          "ln": "Tesl", "sn": "t5", "on": "t3", "cost": 375, "totalCost": 1040, "unlock": 10, "index": 19 }
+    ],
+    "upgrades": [
+        { "fullName": "Healing Light",       "ln": "Heal", "sn": "x", "on": "p4", "cost": [150, 150, 150], "index": 0 },
+        { "fullName": "Shield of Valor",     "ln": "Shie", "sn": "y", "on": "p4", "cost": [250], "index": 1 },
+        { "fullName": "Healing Light",       "ln": "Heal", "sn": "z", "on": "p4", "cost": [220, 150, 150], "index": 2 },
+
+        { "fullName": "More Axes",           "ln": "More", "sn": "x", "on": "p5", "cost": [300, 100, 100], "index": 3 },
+        { "fullName": "Whirlwind Attack",    "ln": "Whir", "sn": "y", "on": "p5", "cost": [150, 100, 100], "index": 4 },
+        { "fullName": "Throwing Axes",       "ln": "Thro", "sn": "z", "on": "p5", "cost": [200, 100, 100], "index": 5 },
+        
+        { "fullName": "Poison Arrows",       "ln": "Pois", "sn": "x", "on": "r4", "cost": [250, 250, 250], "index": 6 },
+        { "fullName": "Wrath of the Forest", "ln": "Wrat", "sn": "y", "on": "r4", "cost": [300, 150, 150], "index": 7 },
+
+        { "fullName": "Sniper Shot",         "ln": "Snip", "sn": "x", "on": "r5", "cost": [250, 250, 250], "index": 9},
+        { "fullName": "Shrapnel Shot",       "ln": "Shra", "sn": "y", "on": "r5", "cost": [300, 300, 300], "index": 10 },
+
+        { "fullName": "Death Ray",           "ln": "Deat", "sn": "x", "on": "s4", "cost": [350, 200, 200], "index": 12 },
+        { "fullName": "Teleport",            "ln": "Tele", "sn": "y", "on": "s4", "cost": [300, 100, 100], "index": 13 },
+
+        { "fullName": "Polymorph",           "ln": "Poly", "sn": "x", "on": "s5", "cost": [300, 150, 150], "index": 15 },
+        { "fullName": "Summon Elemental",    "ln": "Summ", "sn": "y", "on": "s5", "cost": [350, 150, 150], "index": 16 },
+
+        { "fullName": "Dragonbreath Launcher", "ln": "Drag", "sn": "x", "on": "t4", "cost": [250, 100, 100], "index": 18 },
+        { "fullName": "Cluster Launcher",    "ln": "Clus", "sn": "y", "on": "t4", "cost": [250, 125, 125], "index": 19 },
+
+        { "fullName": "Supercharged Bolt",   "ln": "Supe", "sn": "x", "on": "t5", "cost": [250, 250], "index": 21 },
+        { "fullName": "Overcharge",          "ln": "Over", "sn": "y", "on": "t5", "cost": [250, 125, 125], "index": 22 }
+    ]
+}

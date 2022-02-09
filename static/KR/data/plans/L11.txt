@@ -1,0 +1,47 @@
+L11
+
+D7 Arti
+E9 Barr
+D7 Tesl
+
+# 01:10
+F7 Mage
+C7 Arti2
+B9 Barr
+E3 Mage
+
+# 03:40
+C7 Arti3
+D1 Mage
+
+# 04:40
+C7 Tesl
+
+# 05:50
+F7 Sorc
+E3 Mage3
+B3 Musk
+
+# 11:10
+E3 Sorc
+
+# 13:50
+G1 Mage
+B7 Arch2
+F3 Mage
+B7 Musk
+
+# 16:00
+G5 Mage
+F6 Mage
+D1 Sorc
+B9 Barr2
+E9 Barr2
+C1 Musk
+
+# 18:50
+A1 Mage
+
+# 20:00
+B9 Barr3
+F6 Sorc

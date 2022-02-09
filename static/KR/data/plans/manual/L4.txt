@@ -1,0 +1,26 @@
+L4
+
+G4 Barr
+F1 Arti
+
+G3 Mage
+
+B8 Barr
+B5 Arti
+
+B6 Mage
+
+B6 Mage2
+G3 Mage2
+
+F1 Arti2
+B5 Arti2
+
+A4 Mage
+H1 Mage
+
+A4 Mage2
+H1 Mage2
+
+G3 Mage3
+B6 Mage3
