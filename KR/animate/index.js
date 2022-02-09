@@ -11,6 +11,7 @@ async function loadImage(url) {
     const img = new Image();
     const loadPromise = new Promise((resolve, reject) => {
         img.onload = () => { resolve(); };
+        img.onerror = () => { reject(`Image '${url}' was invalid or not found.`); };
     });
 
     img.src = url;
@@ -22,11 +23,10 @@ async function loadJson(url) {
     return await (await fetch(url)).json();
 }
 
-let paused = false;
 let justEntered = false;
 let animator = null;
 
-async function run(fmt, planText) {
+async function run(fmt, planText, planPath) {
     const outCanvas = document.getElementById("main");
     const canvas = document.createElement("canvas");
     canvas.width = 1920;
@@ -37,14 +37,10 @@ async function run(fmt, planText) {
         drawOut.drawImage(canvas);
     });
 
-    const plan = await animator.parsePlan(planText, fmt);
-
-    if (plan.errors.length > 0) {
-        for (let i = 0; i < plan.errors.length; ++i) {
-            console.log(plan.errors[i]);
-        }
-
-        return;
+    if (planText !== null) {
+        await animator.parsePlan(planText, fmt);
+    } else {
+        animator.error = `Plan '${planPath}' was not found.`;
     }
 
     animate();
@@ -89,21 +85,23 @@ function mouse(enter) {
 }
 
 function togglePause() {
-    paused = !paused;
-    //document.getElementById("playPause").innerText = (paused ? "▶️" : "⏸️");
-    animator.paused = paused;
+    animator.paused = !animator.paused;
+    if (animator.isDone()) { animator.start(); }
     animate();
 }
 
 function animate() {
-    if (paused) {
+    if (animator.paused) {
         animator.drawWorld();
         return;
     }
 
     animator.next();
-
-    if (animator.drawUntil < animator.plan.steps.length) {
+    
+    if (animator.isDone()) {
+        animator.paused = true;
+        animator.drawWorld();
+    } else {
         setTimeout(animate, 500);
     }
 }

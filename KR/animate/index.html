@@ -35,7 +35,8 @@
     }
 
     async function loadText(url) {
-      return await (await fetch(url)).text();
+      const resp = await fetch(url);
+      return (resp.ok ? await resp.text() : null);
     }
 
     async function preload() {
@@ -52,7 +53,7 @@
       cacheImage(`../img/${fmt}/maps/${map}.${fmt}`);
 
       const index = await import("./index.js");
-      index.run(fmt, await document.plan);
+      index.run(fmt, await document.plan, plan);
     }
 
     preload();

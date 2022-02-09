@@ -27,40 +27,62 @@ export default class Drawing {
     }
 
     drawText(pos, text, options) {
+        const lines = text.split(/\r?\n/);
+        const padX = (options.padX ?? options.pad ?? 2);
+        const padY = (options.padY ?? options.pad ?? 2);
+
         this.ctx.textAlign = 'left';
         this.ctx.textBaseline = 'alphabetic';
-        this.ctx.font = `bold ${options.fontSizePx}px Arial`;
+        this.ctx.font = `${options.fontWeight ?? ''} ${options.fontSizePx ?? "24"}px ${options.fontFace ?? 'Arial'}`;
+        
+        // Compute maximum width and total height
+        //  Ignore actualBoundingBoxLeft to measure width including non-drawing characters (space)
+        //  Ignore actualBoundingBoxDescent to position lines evenly, ignoring letters below the main alphabetic line ('y')
+        let width = 0;
+        let height = 0;
+        let measures = [];
+        for (const line of lines) {
+            const measure = this.ctx.measureText(line);
+            measures.push(measure);
+            width = Math.max(width, /* measure.actualBoundingBoxLeft + */ measure.actualBoundingBoxRight + (2 * padX), options.minWidth ?? 0);
+            height += Math.ceil(Math.max(/* measure.actualBoundingBoxDescent + */ measure.actualBoundingBoxAscent + (2 * padY), options.minHeight ?? 0));
+        }
 
-        const pad = (options.pad ?? 2);
-        const measure = this.ctx.measureText(text);
-        const width = Math.max(measure.actualBoundingBoxRight + measure.actualBoundingBoxLeft + (2 * pad), options.minWidth ?? 0);
-        const height = Math.max(measure.actualBoundingBoxAscent + measure.actualBoundingBoxDescent + (2 * pad), options.minHeight ?? 0);
-
-        // Containing Box
+        // Draw surrounding box
         const box = {
             x: Math.ceil(pos.x - (options.left ? 0 : width / 2) + (options.relX ?? 0)),
-            y: pos.y - height + (options.relY ?? 0),
-            w: width,
-            h: height
+            y: Math.ceil(pos.y - height + (options.relY ?? 0)),
+            w: Math.ceil(width),
+            h: Math.ceil(height)
         };
 
         this.drawBox(box, options);
 
-        // Text itself
-        this.ctx.fillStyle = options.textColor;
-        this.ctx.fillText(
-            text,
-            box.x + measure.actualBoundingBoxLeft + pad,
-            box.y + measure.actualBoundingBoxAscent + pad
-        );
+        // Draw text lines
+        let nextY = box.y;
+        for (let i = 0; i < lines.length; ++i) {
+            const line = lines[i];
+            const measure = measures[i];
+
+            this.ctx.fillStyle = (options.highlightIndex === i ? options.highlightColor : options.textColor);
+            this.ctx.fillText(
+                line,
+                Math.floor(box.x + /*(options.left ? 0 : measure.actualBoundingBoxLeft)*/ + padX),
+                Math.floor(nextY + measure.actualBoundingBoxAscent + padY)
+            );
+
+            nextY += Math.ceil(Math.max(/* measure.actualBoundingBoxDescent + */ measure.actualBoundingBoxAscent + (2 * padY), options.minHeight ?? 0));
+        }
     }
 
     drawBox(box, options) {
         // Border
         if (options.borderColor) {
-            this.ctx.strokeStyle = options.borderColor;
-            this.ctx.strokeWidth = 2;
-            this.ctx.strokeRect(box.x - 1, box.y - 1, box.w + 2, box.h + 2);
+            this.ctx.fillStyle = options.borderColor;
+            this.ctx.fillRect(box.x - 2, box.y - 2, 2, box.h + 4);
+            this.ctx.fillRect(box.x + box.w, box.y - 2, 2, box.h + 4);
+            this.ctx.fillRect(box.x - 2, box.y - 2, box.w + 4, 2);
+            this.ctx.fillRect(box.x - 2, box.y + box.h, box.w + 4, 2);
         }
 
         // Background
@@ -73,7 +95,7 @@ export default class Drawing {
     drawTriangle(box, options) {
         this.ctx.beginPath();
 
-        if(options.dir === "right") {
+        if (options.dir === "right") {
             this.ctx.moveTo(box.x, box.y);
             this.ctx.lineTo(box.x, box.y + box.h);
             this.ctx.lineTo(box.x + box.w, box.y + box.h / 2);

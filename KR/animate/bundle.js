@@ -19,28 +19,44 @@ var Drawing = class {
     this.ctx.drawImage(spriteMap, from.x, from.y, spriteGeo.w, spriteGeo.h, to.x, to.y, spriteGeo.w, spriteGeo.h);
   }
   drawText(pos, text, options) {
+    const lines = text.split(/\r?\n/);
+    const padX = options.padX ?? options.pad ?? 2;
+    const padY = options.padY ?? options.pad ?? 2;
     this.ctx.textAlign = "left";
     this.ctx.textBaseline = "alphabetic";
-    this.ctx.font = `bold ${options.fontSizePx}px Arial`;
-    const pad = options.pad ?? 2;
-    const measure = this.ctx.measureText(text);
-    const width = Math.max(measure.actualBoundingBoxRight + measure.actualBoundingBoxLeft + 2 * pad, options.minWidth ?? 0);
-    const height = Math.max(measure.actualBoundingBoxAscent + measure.actualBoundingBoxDescent + 2 * pad, options.minHeight ?? 0);
+    this.ctx.font = `${options.fontWeight ?? ""} ${options.fontSizePx ?? "24"}px ${options.fontFace ?? "Arial"}`;
+    let width = 0;
+    let height = 0;
+    let measures = [];
+    for (const line of lines) {
+      const measure = this.ctx.measureText(line);
+      measures.push(measure);
+      width = Math.max(width, measure.actualBoundingBoxRight + 2 * padX, options.minWidth ?? 0);
+      height += Math.ceil(Math.max(measure.actualBoundingBoxAscent + 2 * padY, options.minHeight ?? 0));
+    }
     const box = {
       x: Math.ceil(pos.x - (options.left ? 0 : width / 2) + (options.relX ?? 0)),
-      y: pos.y - height + (options.relY ?? 0),
-      w: width,
-      h: height
+      y: Math.ceil(pos.y - height + (options.relY ?? 0)),
+      w: Math.ceil(width),
+      h: Math.ceil(height)
     };
     this.drawBox(box, options);
-    this.ctx.fillStyle = options.textColor;
-    this.ctx.fillText(text, box.x + measure.actualBoundingBoxLeft + pad, box.y + measure.actualBoundingBoxAscent + pad);
+    let nextY = box.y;
+    for (let i = 0; i < lines.length; ++i) {
+      const line = lines[i];
+      const measure = measures[i];
+      this.ctx.fillStyle = options.highlightIndex === i ? options.highlightColor : options.textColor;
+      this.ctx.fillText(line, Math.floor(box.x + +padX), Math.floor(nextY + measure.actualBoundingBoxAscent + padY));
+      nextY += Math.ceil(Math.max(measure.actualBoundingBoxAscent + 2 * padY, options.minHeight ?? 0));
+    }
   }
   drawBox(box, options) {
     if (options.borderColor) {
-      this.ctx.strokeStyle = options.borderColor;
-      this.ctx.strokeWidth = 2;
-      this.ctx.strokeRect(box.x - 1, box.y - 1, box.w + 2, box.h + 2);
+      this.ctx.fillStyle = options.borderColor;
+      this.ctx.fillRect(box.x - 2, box.y - 2, 2, box.h + 4);
+      this.ctx.fillRect(box.x + box.w, box.y - 2, 2, box.h + 4);
+      this.ctx.fillRect(box.x - 2, box.y - 2, box.w + 4, 2);
+      this.ctx.fillRect(box.x - 2, box.y + box.h, box.w + 4, 2);
     }
     if (options.backColor) {
       this.ctx.fillStyle = options.backColor;
@@ -101,7 +117,7 @@ var PlanParser = class {
     var result = { mapName, steps: [], errors: [] };
     var world = {};
     if (!positions) {
-      result.errors.push(`Error L1: Unknown map name ${mapName}.`);
+      result.errors.push(`Line 1: Unknown map name ${mapName}.`);
       return result;
     }
     var count = 1;
@@ -118,13 +134,13 @@ var PlanParser = class {
       var action = stepParts[1];
       var position = positions[positionName];
       if (!position) {
-        result.errors.push(`Error L${i}: Unknown position ${positionName} on ${mapName}.`);
+        result.errors.push(`Line ${i}: Unknown position ${positionName} on ${mapName}.`);
         continue;
       }
       var base = this.towers.base.find((t) => t.ln === action);
       var upgrade = this.towers.upgrades.find((u) => action.toLowerCase().startsWith(u.ln.toLowerCase()));
       if (!base && !upgrade) {
-        result.errors.push(`Error L${i}: Unknown action ${action} at ${step.positionName} on ${mapName}.`);
+        result.errors.push(`Line ${i}: Unknown action ${action} at ${step.positionName} on ${mapName}.`);
         continue;
       }
       var previous = world[positionName];
@@ -139,24 +155,28 @@ var PlanParser = class {
         step.shortAction = base.sn;
         if (previous) {
           if (base.sn[0] !== previous.base.sn[0]) {
-            result.errors.push(`Error L${i}: Can't build ${action} on ${previous.base.ln} at ${step.positionName} on ${mapName}.`);
+            result.errors.push(`Line ${i}: Can't build ${action} on ${previous.base.ln} at ${step.positionName}.`);
             continue;
           }
           if (base.sn[1] <= previous.base.sn[1]) {
-            result.errors.push(`Error L${i}: Tower downgrade ${action} on ${previous.base.ln} at ${step.positionName} on ${mapName}.`);
+            result.errors.push(`Line ${i}: Tower downgrade ${action} on ${previous.base.ln} at ${step.positionName}.`);
             continue;
           }
         }
       }
       if (upgrade) {
+        if (!previous) {
+          result.errors.push(`Line ${i}: Upgrade ${action} on nothing at ${step.positionName}.`);
+          continue;
+        }
         var lastUpgradeOfType = previous[upgrade.sn];
         var newLevel = parseInt(action.at(-1)) || (lastUpgradeOfType?.level ?? 0) + 1;
         if (upgrade.on !== previous.base.sn) {
-          result.errors.push(`Error L${i}: Upgrade ${action} not valid on tower ${previous.base.ln} at ${step.positionName} on ${mapName}.`);
+          result.errors.push(`Line ${i}: Upgrade ${action} not valid on tower ${previous.base.ln} at ${step.positionName}.`);
           continue;
         }
         if (lastUpgradeOfType && newLevel <= lastUpgradeOfType.level) {
-          result.errors.push(`Error L${i}: Ability downgrade ${action} at ${step.positionName} on ${mapName}.`);
+          result.errors.push(`Line ${i}: Ability downgrade ${action} at ${step.positionName}.`);
           continue;
         }
         step.upgrade = upgrade;
@@ -206,10 +226,12 @@ var settings_default = {
     tileOrder: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 17, 14, 18, 19, 13, 15, 22, 20, 21, 23, 24, 25, 26]
   },
   labels: {
-    small: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontSizePx: 24, relY: -16, pad: 3 },
-    medium: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontSizePx: 36, relY: -12, pad: 3 },
-    large: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontSizePx: 56, relY: 12, pad: 4 },
-    message: { textColor: "#DDD", backColor: "#231C17", fontSizePx: 18, x: 148, y: 46, minWidth: 170, minHeight: 26 }
+    small: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontWeight: "bold", fontSizePx: 24, relY: -16, pad: 3 },
+    medium: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontWeight: "bold", fontSizePx: 36, relY: -12, pad: 3 },
+    large: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontWeight: "bold", fontSizePx: 56, relY: 12, pad: 4 },
+    message: { x: 148, y: 46, textColor: "#DDD", backColor: "#231C17", fontSizePx: 18, minWidth: 170, minHeight: 26 },
+    plan: { x: 12, y: 1050, left: true, textColor: "#eee", borderColor: "#eee", backColor: "#222", highlightColor: "#fe0", fontFace: "monospace", fontSizePx: 20, padX: 6, padY: 4, minWidth: 120 },
+    error: { x: 960, y: 720, textColor: "#e00", borderColor: "#e00", backColor: "#222", fontSizePx: 24, pad: 6 }
   },
   geo: {
     tower: { w: 160, h: 140, relX: -80, relY: -104, cols: 5 },
@@ -318,33 +340,43 @@ var Animator = class {
   async init(imageFormat) {
     if (!this.planParser) {
       imageFormat ??= "png";
-      const [towerSprites, upgradeSprites] = await Promise.all([
-        this.loadImage(`../img/${imageFormat}/sprites/towers.${imageFormat}`),
-        this.loadImage(`../img/${imageFormat}/sprites/upgrades.${imageFormat}`)
-      ]);
       this.imageFormat = imageFormat;
-      this.towers = towers_min_default;
-      this.allPositions = positions_min_default;
-      this.planParser = new PlanParser(this.allPositions, this.towers);
-      this.towerSprites = towerSprites;
-      this.upgradeSprites = upgradeSprites;
+      try {
+        const [towerSprites, upgradeSprites] = await Promise.all([
+          this.loadImage(`../img/${imageFormat}/sprites/towers.${imageFormat}`),
+          this.loadImage(`../img/${imageFormat}/sprites/upgrades.${imageFormat}`)
+        ]);
+        this.towerSprites = towerSprites;
+        this.upgradeSprites = upgradeSprites;
+      } catch (error) {
+        this.error = error;
+      }
+      this.planParser = new PlanParser(positions_min_default, towers_min_default);
     }
   }
   async parsePlan(planText, imageFormat) {
-    await this.init(imageFormat);
-    this.planText = planText;
-    this.plan = this.planParser.parse(planText);
-    this.map = await this.loadImage(`../img/${this.imageFormat}/maps/${this.plan.mapName}.${this.imageFormat}`);
-    this.positions = this.allPositions[this.plan.mapName];
+    try {
+      await this.init(imageFormat);
+      this.planText = planText;
+      this.plan = this.planParser.parse(planText);
+      this.positions = positions_min_default[this.plan.mapName];
+      if (!this.positions) {
+        this.error = `Map '${this.plan?.mapName}' is invalid.`;
+      } else {
+        this.map = await this.loadImage(`../img/${this.imageFormat}/maps/${this.plan.mapName}.${this.imageFormat}`);
+      }
+    } catch (error) {
+      this.error = error;
+    }
     this.drawWorld();
     return this.plan;
   }
   drawControlHints() {
     const can = this.targetDrawing.canvas;
-    this.drawControlPane({ x: 0, y: 0, w: can.width * 1 / 4, h: can.height * 2 / 3 - 2 }, "prev");
+    this.drawControlPane({ x: 0, y: 0, w: can.width * 1 / 4, h: can.height * 2 / 3 }, "prev");
     this.drawControlPane({ x: 0, y: can.height * 2 / 3, w: can.width * 1 / 4, h: can.height * 1 / 3 }, "start");
-    this.drawControlPane({ x: can.width * 1 / 4 + 3, y: 0, w: can.width * 1 / 2 - 6, h: can.height }, this.paused ? "play" : "pause");
-    this.drawControlPane({ x: can.width * 3 / 4, y: 0, w: can.width * 1 / 4, h: can.height * 2 / 3 - 2 }, "next");
+    this.drawControlPane({ x: can.width * 1 / 4, y: 0, w: can.width * 1 / 2, h: can.height }, this.paused ? "play" : "pause");
+    this.drawControlPane({ x: can.width * 3 / 4, y: 0, w: can.width * 1 / 4, h: can.height * 2 / 3 }, "next");
     this.drawControlPane({ x: can.width * 3 / 4, y: can.height * 2 / 3, w: can.width * 1 / 4, h: can.height * 1 / 3 }, "end");
   }
   drawControlPane(box, command) {
@@ -380,26 +412,18 @@ var Animator = class {
     }
   }
   drawPlan() {
-    const ctx = this.targetDrawing.ctx;
-    const width = 120;
-    const height = 6 + this.plan.steps.length * 24;
-    let box = { x: 12, y: 1080 - height - 30, w: width, h: height };
-    this.targetDrawing.drawBox(box, { borderColor: "#eee", backColor: "#222" });
-    box.x += 6;
-    box.y += 6;
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";
-    ctx.font = `20px monospace`;
+    let text = "";
     for (let i = 0; i < this.plan.steps.length; ++i) {
-      const highlight = this.drawUntil - 1 === i;
-      ctx.fillStyle = highlight ? "#fe0" : "#eee";
-      ctx.fillText(this.plan.steps[i].text, box.x + (highlight ? 12 : 0), box.y);
-      box.y += 24;
+      text += `${i > 0 ? "\n" : ""}${i === this.drawUntil - 1 ? " " : ""}${this.plan.steps[i].text}`;
     }
+    this.targetDrawing.drawText(settings_default.labels.plan, text, { ...settings_default.labels.plan, highlightIndex: this.drawUntil - 1 });
   }
   drawWorld() {
-    if (!this.plan) {
-      console.log("ERROR: No plan parsed. Call Animator.parsePlan before drawing.");
+    if (this.error || this.plan.errors.length > 0) {
+      this.targetDrawing.drawText(settings_default.labels.error, this.error ?? this.plan.errors.join("\n"), settings_default.labels.error);
+      if (this.onDraw) {
+        this.onDraw();
+      }
       return;
     }
     let world = {};
@@ -492,15 +516,15 @@ var Animator = class {
     this.drawWorld();
   }
   next() {
-    this.drawUntil = Math.min(this.drawUntil + 1, this.plan.steps.length);
+    this.drawUntil = Math.min(this.drawUntil + 1, this.plan?.steps?.length ?? 0);
     this.drawWorld();
   }
   end() {
-    this.drawUntil = this.plan.steps.length;
+    this.drawUntil = this.plan?.steps?.length ?? 0;
     this.drawWorld();
   }
   isDone() {
-    return this.drawUntil >= this.plan.steps.length;
+    return this.drawUntil >= (this.plan?.steps?.length ?? 0);
   }
 };
 
@@ -511,6 +535,9 @@ async function loadImage(url) {
     img.onload = () => {
       resolve();
     };
+    img.onerror = () => {
+      reject(`Image '${url}' was invalid or not found.`);
+    };
   });
   img.src = url;
   await loadPromise;
@@ -519,10 +546,9 @@ async function loadImage(url) {
 async function loadJson(url) {
   return await (await fetch(url)).json();
 }
-var paused = false;
 var justEntered = false;
 var animator = null;
-async function run(fmt, planText) {
+async function run(fmt, planText, planPath) {
   const outCanvas = document.getElementById("main");
   const canvas = document.createElement("canvas");
   canvas.width = 1920;
@@ -531,12 +557,10 @@ async function run(fmt, planText) {
   animator = new Animator(loadImage, loadJson, canvas, () => {
     drawOut.drawImage(canvas);
   });
-  const plan = await animator.parsePlan(planText, fmt);
-  if (plan.errors.length > 0) {
-    for (let i = 0; i < plan.errors.length; ++i) {
-      console.log(plan.errors[i]);
-    }
-    return;
+  if (planText !== null) {
+    await animator.parsePlan(planText, fmt);
+  } else {
+    animator.error = `Plan '${planPath}' was not found.`;
   }
   animate();
   document.addEventListener("keydown", keyDown);
@@ -574,17 +598,22 @@ function mouse(enter) {
   setTimeout(() => justEntered = false, 50);
 }
 function togglePause() {
-  paused = !paused;
-  animator.paused = paused;
+  animator.paused = !animator.paused;
+  if (animator.isDone()) {
+    animator.start();
+  }
   animate();
 }
 function animate() {
-  if (paused) {
+  if (animator.paused) {
     animator.drawWorld();
     return;
   }
   animator.next();
-  if (animator.drawUntil < animator.plan.steps.length) {
+  if (animator.isDone()) {
+    animator.paused = true;
+    animator.drawWorld();
+  } else {
     setTimeout(animate, 500);
   }
 }

@@ -6,10 +6,12 @@ export default
         tileOrder: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 17, 14, 18, 19, 13, 15, 22, 20, 21, 23, 24, 25, 26],
     },
     labels: {
-        small: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontSizePx: 24, relY: -16, pad: 3 },
-        medium: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontSizePx: 36, relY: -12, pad: 3 },
-        large: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontSizePx: 56, relY: 12, pad: 4 },
-        message: { textColor: "#DDD", backColor: "#231C17", fontSizePx: 18, x: 148, y: 46, minWidth: 170, minHeight: 26 }
+        small: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontWeight: "bold", fontSizePx: 24, relY: -16, pad: 3 },
+        medium: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontWeight: "bold", fontSizePx: 36, relY: -12, pad: 3 },
+        large: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontWeight: "bold", fontSizePx: 56, relY: 12, pad: 4 },
+        message: { x: 148, y: 46, textColor: "#DDD", backColor: "#231C17", fontSizePx: 18, minWidth: 170, minHeight: 26 },
+        plan: { x: 12, y: 1050, left: true, textColor: "#eee", borderColor: "#eee", backColor: "#222", highlightColor: "#fe0", fontFace: "monospace", fontSizePx: 20, padX: 6, padY: 4, minWidth: 120 },
+        error: { x: 960, y: 720, textColor: "#e00", borderColor: "#e00", backColor: "#222", fontSizePx: 24, pad: 6 },
     },
     geo: {
         tower: { w: 160, h: 140, relX: -80, relY: -104, cols: 5 },

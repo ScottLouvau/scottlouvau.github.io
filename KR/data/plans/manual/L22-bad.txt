@@ -1,0 +1,59 @@
+L22
+
+C1 Tesl
+D3 Barr
+C1 Over3
+
+# 02:30
+F3 Mage3
+
+# 04:10
+D3 Barr2
+F3 Sorc
+
+
+# 05:50
+E5 Arti
+B4 Arti
+H3 Arti
+D3 Barr3
+E5 Arti2
+G1 Barr
+H3 Arti2
+B4 Arti2
+E5 Tesl
+E5 Poly
+
+# 11:10
+H3 Tesl
+H3 Over3
+G1 Barr2
+E5 Over2
+
+# 13:10
+A2 Sorc
+A2 Poly
+E5 Over3
+
+# 14:40
+B4 Tesl
+B4 Over3
+
+# 15:40
+D3 Holy
+C1 Supe2
+
+# 16:30
+G1 Barr3
+C5 Musk
+G1 Snip
+
+# 17:40
+E9 Sorc
+G1 Holy 
+E8 Poly
+C5 Snip2
+C5 Shra3
+
+# 20:10
+F8 Barr2
