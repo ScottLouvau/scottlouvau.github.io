@@ -1,0 +1,46 @@
+L8
+
+C2 Barr
+G2 Arti
+E5 Arti
+D2 Arti
+D5 Arch
+D2 Arti2
+D1 Arch
+
+# 01:30
+E9 Mage
+
+# 02:50
+E5 Arti2
+D5 Arch2
+D1 Arch2
+F9 Arch
+D5 Rang
+
+# 07:10
+D1 Rang
+C5 Barr
+
+# 08:50
+F9 Rang
+
+# 13:10
+H2 Rang
+
+# 14:40
+E5 Arti3
+
+# 17:10
+D2 Arti3
+C5 Barr2
+C2 Barr2
+G2 Arti2
+G9 Musk
+
+# 19:10
+A3 Musk
+
+# 20:30
+E9 Mage2
+G2 Arti3

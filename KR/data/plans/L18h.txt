@@ -1,0 +1,26 @@
+L18
+
+A4 Barr
+B1 Barr
+B6 Rang
+A9 Musk
+C2 Arch3
+
+# 03:00
+B1 Barr2
+C2 Musk
+A4 Barr2
+
+# 05:40
+D9 Arch2
+B1 Barr3
+D6 Arch2
+D9 Rang
+D6 Musk
+
+# 08:40
+E4 Musk
+
+# 09:40
+B1 Holy
+A4 Barr3

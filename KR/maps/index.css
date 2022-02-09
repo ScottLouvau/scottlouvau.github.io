@@ -6,11 +6,12 @@
 }
 
 body {
-    padding: 8px;
+    padding: 4px;
 
     background-color: #151515;
     color: #dddddd;
-    font: 16px 'Segoe UI';
+    font-size: 16px;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 #container {
@@ -21,17 +22,17 @@ body {
 
 .item {
     position: relative;
-    margin: 4px;
+    margin: 3px;
     background-color: white;
 }
 
-.item img {
+.item .img {
     display: block;
-    max-width: 100%;
-    height: auto;
+    width: calc(min(100vw - 8px, 100vh * 16/9 - 8px, 416px));
+    height: calc(min(100vh - 8px, 100vw * 9/16 - 8px, 234px));
 }
 
-.item figcaption {
+.item .caption {
     display: block;
     position: absolute;
     width: 100%;
@@ -44,7 +45,16 @@ body {
     backdrop-filter: brightness(40%) blur(1px);
 }
 
-.item img:hover {
+.item .caption div { 
+    float: right;
+}
+
+.item .caption div a {
+    color: #ddd;
+    margin-right: 8px;
+}
+
+.item .img:hover {
     /* filter: brightness(130%); */
     filter: opacity(70%);
 }

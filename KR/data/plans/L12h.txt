@@ -1,0 +1,23 @@
+L12
+
+B2 Arti
+D2 Tesl
+B6 Barr
+C2 Rang
+
+# 01:40
+B2 Tesl
+
+# 04:00
+A6 Musk
+C6 Rang
+
+# 07:20
+F6 Sorc
+E2 Rang
+
+# 09:40
+F2 Arca
+
+# 10:40
+F8 Musk

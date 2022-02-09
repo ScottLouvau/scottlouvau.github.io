@@ -1,0 +1,25 @@
+L23
+
+F1 Barr
+F3 Tesl
+
+# 05:00
+F1 Barr2
+F6 Tesl
+
+# 09:20
+F1 Barr3
+G5 Musk
+F1 Barb
+
+# 14:00
+D2 Musk
+
+# 18:20
+C4 Tesl
+
+# 19:40
+G8 Musk
+
+# 22:00
+D8 Musk

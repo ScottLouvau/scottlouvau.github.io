@@ -1,0 +1,35 @@
+L17 Camp
+
+A1 Barr
+C3 Arti
+
+C7 Barr
+D7 Arti2
+
+F3 Barr
+D7 Arti3
+C3 Arti2
+
+C9 Arch
+E2 Arch2
+
+D7 Tesl
+E7 Sorc
+E2 Rang
+C9 Musk
+F4 Sorc
+A4 Musk
+
+A1 Barr2
+C4 Barr2
+
+G3 Musk
+A7 Musk
+
+C7 Barr3
+C4 Barr3
+F3 Barr2
+
+A1 Holy
+C7 Holy
+C4 Holy

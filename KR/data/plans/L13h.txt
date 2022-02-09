@@ -1,0 +1,34 @@
+L13
+
+G1 Barr
+F1 Tesl
+F4 Mage
+
+# 01:20
+C2 Arch3
+F4 Mage2
+
+# 02:40
+C2 Rang
+F4 Mage3
+A1 Arti2
+H4 Arti2
+A1 Tesl
+
+# 05:50
+F4 Sorc
+
+# 06:40
+H4 Arti3
+D4 Musk
+H4 Tesl
+
+# 09:00
+E4 Musk
+B1 Musk
+
+# 11:00
+G7 Arti
+B4 Tesl
+A4 Barr
+G7 Arti2

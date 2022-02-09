@@ -1,0 +1,55 @@
+L9
+
+F1 Mage
+C1 Barr
+C7 Barr
+E7 Arti
+D4 Arti
+E4 Arch
+F4 Arti
+E1 Mage
+
+# 01:20
+E4 Arch2
+F1 Mage2
+
+# 02:20
+E4 Rang
+
+# 04:00
+F4 Arti2
+
+# 06:20
+F1 Mage3
+
+# 07:00
+D7 Musk
+
+# 08:40
+F1 Sorc
+
+# 10:00
+D4 Arti2
+
+# 11:20
+E1 Mage3
+
+# 12:20
+E7 Arti2
+F4 Arti3
+B7 Musk
+
+# 14:40
+E9 Barr
+E7 Arti3
+
+# 16:00
+E9 Barr2
+D4 Arti3
+
+# 16:40
+D9 Musk
+
+# 17:20
+F4 BigB
+C7 Barr2

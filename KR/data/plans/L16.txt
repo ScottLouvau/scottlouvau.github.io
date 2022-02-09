@@ -1,0 +1,37 @@
+L16
+
+A7 Barr
+B3 Arti2
+A1 Barr
+
+# 01:00
+B3 Tesl
+
+# 03:30
+C4 Mage2
+B6 Arti3
+A1 Barr2
+A7 Barr2
+
+# 05:50
+C4 Mage3
+A7 Barr3
+B6 Tesl
+
+# 07:40
+C4 Sorc
+
+# 08:20
+A1 Barr3
+D7 Rang
+
+# 10:50
+A7 Barb
+A1 Barb
+
+# 12:30
+A9 Arca
+
+# 14:30
+F2 Tesl
+E6 Musk

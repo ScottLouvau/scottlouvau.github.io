@@ -1,0 +1,24 @@
+L17
+
+C3 Barr
+E2 Rang
+C9 Rang
+A7 Barr2
+C3 Barr2
+
+# 02:10
+E7 Rang
+
+# 04:00
+A1 Barr
+C4 Musk
+C7 Barr
+
+# 06:40
+D7 Rang
+A4 Musk
+A1 Barr2
+
+# 09:10
+C7 Barr2
+F3 Musk

@@ -1,0 +1,35 @@
+L13
+
+B4 Arch
+A4 Barr
+A1 Arch
+G7 Arch2
+B4 Arch2
+F4 Barr
+H4 Arch2
+A1 Arch2
+D4 Arch3
+E4 Barr
+D4 Musk
+B1 Barr
+A1 Arch3
+H4 Musk
+B4 Arch3
+A1 Musk
+G7 Arch3
+B4 Musk
+
+# 03:40
+G7 Musk
+B1 Barr2
+F4 Barr2
+
+# 04:40
+C2 Rang
+E4 Barr2
+
+# 06:20
+F1 Barr
+
+# 08:20
+A4 Barr2

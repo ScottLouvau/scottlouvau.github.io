@@ -1,0 +1,13 @@
+L14
+
+A6 Tesl
+B4 Mage2
+C4 Arti
+E5 Mage
+B4 Mage3
+C4 Arti3
+B4 Sorc
+C4 Tesl
+E5 Mage2
+C7 Tesl
+E5 Sorc

@@ -1,0 +1,22 @@
+L10
+
+E8 Sorc
+C7 Rang
+E5 Mage2
+B4 Arch2
+F8 Mage
+B4 Arch3
+B1 Rang
+
+# 04:00
+F8 Mage3
+B4 Musk
+
+# 05:00
+E5 Mage3
+C4 Musk
+E5 Sorc
+
+# 07:20
+F8 Sorc
+F6 Rang

@@ -1,0 +1,57 @@
+L17
+
+D7 Arti
+C3 Arti
+A1 Barr
+C7 Barr
+D7 Arti2
+F3 Barr
+
+# 01:10
+E7 Mage
+D7 Arti3
+C4 Barr
+D7 Tesl
+C3 Arti2
+
+# 03:20
+E2 Arch2
+
+# 04:10
+E7 Mage3
+E2 Arch3
+C7 Barr2
+E2 Rang
+
+# 06:00
+E7 Sorc
+
+# 07:00
+F4 Mage
+
+# 08:10
+C4 Barr2
+C9 Musk
+C7 Barr3
+F4 Mage2
+C3 Arti3
+A1 Barr2
+F4 Sorc
+
+# 10:40
+A1 Barr3
+F3 Barr2
+A4 Arch3
+C7 Holy
+A4 Musk
+C3 Tesl
+
+# 13:30
+C4 Barr3
+G3 Musk
+C4 Holy
+A1 Holy
+
+# 17:50
+F9 Tesl
+A7 Musk

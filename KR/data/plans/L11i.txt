@@ -1,0 +1,58 @@
+L11
+
+B9 Mage
+E9 Mage
+C7 Mage
+B7 Mage
+A6 Mage
+A5 Mage
+A3 Mage
+B9 Mage2
+E9 Arca
+D7 Mage
+F7 Mage
+F6 Mage
+G5 Mage
+F3 Mage
+B3 Mage
+E3 Mage
+D1 Mage
+C1 Mage
+A1 Mage
+G1 Mage
+B9 Arca
+D7 Mage2
+C7 Mage2
+B7 Mage2
+C7 Mage3
+F7 Mage2
+D7 Mage3
+
+# 03:00
+C7 Arca
+D7 Arca
+B7 Mage3
+
+# 04:40
+F7 Mage3
+B7 Arca
+F7 Arca
+A6 Mage2
+F6 Mage2
+
+# 06:20
+A1 Mage2
+G1 Mage2
+
+# 07:00
+F6 Mage3
+A6 Mage3
+A1 Mage3
+G1 Arca
+A1 Arca
+F6 Arca
+A6 Arca
+A5 Mage3
+G5 Mage3
+A3 Mage2
+F3 Mage2

@@ -1,0 +1,34 @@
+L20
+
+A5 Arti
+B4 Barr
+A5 Tesl
+
+# 01:00
+E2 Arti2
+D4 Barr
+E2 Tesl
+
+# 04:00
+A2 Tesl
+
+# 06:00
+H7 Tesl
+B4 Barr2
+D4 Barr2
+G2 Musk
+
+# 09:10
+C3 Musk
+
+# 10:10
+F6 Musk
+
+# 11:50
+F9 Arca
+
+# 14:00
+G7 Mage
+C1 Mage
+D4 Holy
+G7 Sorc

@@ -1,0 +1,10 @@
+L22 Normal Campaign
+C1 Tesl
+C1 Over3
+C1 Supe2
+
+B4 Tesl
+D3 Sorc
+
+B4 Over3
+D3 Summ2

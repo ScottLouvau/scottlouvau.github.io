@@ -1,0 +1,57 @@
+L26
+
+C9 Barr
+C6 Arti
+A6 Barr
+A3 Barr
+C6 Arti3
+C2 Arti
+C6 Tesl
+
+# 03:00
+C2 Arti2
+B6 Arca
+
+# 06:40
+C2 Arti3
+B3 Mage3
+C2 Tesl
+
+# 09:00
+C9 Barr2
+
+# 09:40
+B3 Arca
+
+# 11:20
+F2 Arch3
+
+# 13:00
+C9 Barr3
+F2 Musk
+A6 Barr2
+A3 Barr2
+E6 Arti
+
+# 14:20
+F7 Musk
+E6 Arti2
+
+# 16:40
+A6 Barr3
+E6 Arti3
+A3 Barr3
+E6 Tesl
+A6 Holy
+
+# 18:40
+E3 Sorc
+
+# 20:40
+A3 Holy
+E9 Musk
+
+# 22:00
+H5 Arch3
+C9 Holy
+H5 Musk

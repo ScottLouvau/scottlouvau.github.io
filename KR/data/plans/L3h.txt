@@ -1,0 +1,23 @@
+L3
+
+D5 Arti
+D2 Barr
+B4 Arti
+
+# 01:30
+B7 Arti
+
+# 02:50
+D5 Arti2
+
+# 03:50
+C3 Barr
+B4 Arti2
+
+# 04:50
+B7 Arti2
+B1 Mage2
+
+# 06:40
+D2 Barr2
+A1 Mage2

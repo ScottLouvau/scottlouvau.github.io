@@ -1,0 +1,47 @@
+L21
+
+D2 Barr
+C1 Arti3
+F2 Barr
+C1 Tesl
+G1 Tesl
+
+# 04:00
+E1 Arca
+E5 Arch3
+
+# 06:20
+D2 Barr2
+F2 Barr2
+
+# 07:00
+E5 Musk
+C5 Arti2
+
+# 07:40
+B6 Musk
+
+# 09:40
+A5 Mage
+
+# 10:20
+D2 Holy
+
+# 11:00
+F2 Barr3
+
+# 12:00
+C5 Arti3
+F2 Holy
+A3 Musk
+
+# 13:00
+C5 Tesl
+G4 Tesl
+
+# 15:00
+H2 Musk
+
+# 16:20
+F6 Musk
+E6 Holy

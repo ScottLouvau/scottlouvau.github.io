@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://relentlessoptimizer.com/favicon.ico" sizes="16x16">
+  <title>Kingdom Rush Animator</title>
+
+  <script type="module">
+    async function imageFormat() {
+      let format = null;
+
+      const img = new Image();
+      const loadPromise = new Promise((resolve, reject) => {
+        img.onload = () => {
+          format = "webp";
+          resolve();
+        };
+        img.onerror = () => {
+          format = "png";
+          reject();
+        }
+      });
+
+      img.src = "data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAIAAAAAgVZQOCAiAAAAcAEAnQEqAQABAA/A/iWgAnQBQAAA/m8dWbtazgN3iAAAAA==";
+      await loadPromise;
+      return format;
+    }
+
+    function cacheImage(url) {
+      const img = document.createElement("img");
+      img.src = url;
+    }
+
+    async function loadText(url) {
+      return await (await fetch(url)).text();
+    }
+
+    async function preload() {
+      const params = new URLSearchParams(window.location.search);
+      const plan = params.get("p") ?? "L22";
+      const map = /L\d+/.exec(plan)[0];
+
+      document.plan = loadText(`../data/plans/${plan}.txt`);
+      document.imageFormat = imageFormat();
+
+      const fmt = await document.imageFormat;
+      cacheImage(`../img/${fmt}/sprites/towers.${fmt}`);
+      cacheImage(`../img/${fmt}/sprites/upgrades.${fmt}`);
+      cacheImage(`../img/${fmt}/maps/${map}.${fmt}`);
+
+      const index = await import("./index.js");
+      index.run(fmt, await document.plan);
+    }
+
+    preload();
+  </script>
+
+  <link href="index.css" rel="preload stylesheet" as="style" />
+</head>
+
+<body>
+  <canvas id="main" width="1920" height="1080"></canvas>
+</body>
+
+</html>
