@@ -13,7 +13,7 @@ export default class PlanParser {
         var world = {};
 
         if (!positions) {
-            result.errors.push(`Error L1: Unknown map name ${mapName}.`);
+            result.errors.push(`Line 1: Unknown map name ${mapName}.`);
             return result;
         }
 
@@ -29,7 +29,7 @@ export default class PlanParser {
 
             var position = positions[positionName];
             if (!position) {
-                result.errors.push(`Error L${i}: Unknown position ${positionName} on ${mapName}.`);
+                result.errors.push(`Line ${i}: Unknown position ${positionName} on ${mapName}.`);
                 continue;
             }
 
@@ -37,7 +37,7 @@ export default class PlanParser {
             var upgrade = this.towers.upgrades.find(u => action.toLowerCase().startsWith(u.ln.toLowerCase()));
 
             if (!base && !upgrade) {
-                result.errors.push(`Error L${i}: Unknown action ${action} at ${step.positionName} on ${mapName}.`);
+                result.errors.push(`Line ${i}: Unknown action ${action} at ${step.positionName} on ${mapName}.`);
                 continue;
             }
 
@@ -56,28 +56,33 @@ export default class PlanParser {
 
                 if (previous) {
                     if (base.sn[0] !== previous.base.sn[0]) {
-                        result.errors.push(`Error L${i}: Can't build ${action} on ${previous.base.ln} at ${step.positionName} on ${mapName}.`);
+                        result.errors.push(`Line ${i}: Can't build ${action} on ${previous.base.ln} at ${step.positionName}.`);
                         continue;
                     }
 
                     if (base.sn[1] <= previous.base.sn[1]) {
-                        result.errors.push(`Error L${i}: Tower downgrade ${action} on ${previous.base.ln} at ${step.positionName} on ${mapName}.`);
+                        result.errors.push(`Line ${i}: Tower downgrade ${action} on ${previous.base.ln} at ${step.positionName}.`);
                         continue;
                     }
                 }
             }
 
             if (upgrade) {
+                if (!previous) {
+                    result.errors.push(`Line ${i}: Upgrade ${action} on nothing at ${step.positionName}.`);
+                    continue;
+                }
+
                 var lastUpgradeOfType = previous[upgrade.sn];
                 var newLevel = (parseInt(action.at(-1)) || (lastUpgradeOfType?.level ?? 0) + 1);
 
                 if (upgrade.on !== previous.base.sn) {
-                    result.errors.push(`Error L${i}: Upgrade ${action} not valid on tower ${previous.base.ln} at ${step.positionName} on ${mapName}.`);
+                    result.errors.push(`Line ${i}: Upgrade ${action} not valid on tower ${previous.base.ln} at ${step.positionName}.`);
                     continue;
                 }
 
                 if (lastUpgradeOfType && newLevel <= lastUpgradeOfType.level) {
-                    result.errors.push(`Error L${i}: Ability downgrade ${action} at ${step.positionName} on ${mapName}.`);
+                    result.errors.push(`Line ${i}: Ability downgrade ${action} at ${step.positionName}.`);
                     continue;
                 }
 

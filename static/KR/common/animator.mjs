@@ -21,29 +21,43 @@ export default class Animator {
         if (!this.planParser) {
             imageFormat ??= "png";
 
-            const [towerSprites, upgradeSprites] = await Promise.all([
-                this.loadImage(`../img/${imageFormat}/sprites/towers.${imageFormat}`),
-                this.loadImage(`../img/${imageFormat}/sprites/upgrades.${imageFormat}`)
-            ]);
-
             this.imageFormat = imageFormat;
 
-            this.towers = towers;
-            this.allPositions = allPositions;
-            this.planParser = new PlanParser(this.allPositions, this.towers);
+            try {
+                const [towerSprites, upgradeSprites] = await Promise.all([
+                    this.loadImage(`../img/${imageFormat}/sprites/towers.${imageFormat}`),
+                    this.loadImage(`../img/${imageFormat}/sprites/upgrades.${imageFormat}`)
+                ]);
 
-            this.towerSprites = towerSprites;
-            this.upgradeSprites = upgradeSprites;
+                this.towerSprites = towerSprites;
+                this.upgradeSprites = upgradeSprites;
+            }
+            catch (error) {
+                this.error = error;
+            }
+
+            this.planParser = new PlanParser(allPositions, towers);
         }
     }
 
     async parsePlan(planText, imageFormat) {
-        await this.init(imageFormat);
+        try {
+            await this.init(imageFormat);
 
-        this.planText = planText;
-        this.plan = this.planParser.parse(planText);
-        this.map = await this.loadImage(`../img/${this.imageFormat}/maps/${this.plan.mapName}.${this.imageFormat}`);
-        this.positions = this.allPositions[this.plan.mapName];
+            this.planText = planText;
+            this.plan = this.planParser.parse(planText);
+            this.positions = allPositions[this.plan.mapName];
+
+            if (!this.positions) {
+                this.error = `Map '${this.plan?.mapName}' is invalid.`;
+            } else {
+                this.map = await this.loadImage(`../img/${this.imageFormat}/maps/${this.plan.mapName}.${this.imageFormat}`);
+            }
+        }
+        catch (error) {
+            this.error = error;
+        }
+
         this.drawWorld();
 
         return this.plan;
@@ -51,12 +65,12 @@ export default class Animator {
 
     drawControlHints() {
         const can = this.targetDrawing.canvas;
-        this.drawControlPane({ x: 0, y: 0, w: can.width * 1 / 4, h: can.height * 2 / 3 - 2 }, "prev");
+        this.drawControlPane({ x: 0, y: 0, w: can.width * 1 / 4, h: can.height * 2 / 3 }, "prev");
         this.drawControlPane({ x: 0, y: can.height * 2 / 3, w: can.width * 1 / 4, h: can.height * 1 / 3 }, "start");
 
-        this.drawControlPane({ x: can.width * 1 / 4 + 3, y: 0, w: can.width * 1 / 2 - 6, h: can.height }, (this.paused ? "play" : "pause"));
+        this.drawControlPane({ x: can.width * 1 / 4, y: 0, w: can.width * 1 / 2, h: can.height }, (this.paused ? "play" : "pause"));
 
-        this.drawControlPane({ x: can.width * 3 / 4, y: 0, w: can.width * 1 / 4, h: can.height * 2 / 3 - 2 }, "next");
+        this.drawControlPane({ x: can.width * 3 / 4, y: 0, w: can.width * 1 / 4, h: can.height * 2 / 3 }, "next");
         this.drawControlPane({ x: can.width * 3 / 4, y: can.height * 2 / 3, w: can.width * 1 / 4, h: can.height * 1 / 3 }, "end");
     }
 
@@ -65,7 +79,7 @@ export default class Animator {
         const ctx = this.targetDrawing.ctx;
 
         const h = can.height / 10;
-        const w = (command === "play" ? h * 2/3 : h / 2);
+        const w = (command === "play" ? h * 2 / 3 : h / 2);
         let r = { x: box.x + (box.w / 2) - w / 2, y: box.y + (box.h / 2) - h / 2, w: w, h: h };
         let bo = { backColor: "rgba(20, 20, 20, 0.5)", borderColor: "rgba(0, 0, 0, 1)" };
         let to = { borderColor: "#111", backColor: "#bbb", dir: (command === "start" || command === "prev" ? "left" : "right") };
@@ -100,34 +114,18 @@ export default class Animator {
     }
 
     drawPlan() {
-        const ctx = this.targetDrawing.ctx;
-        const width = 120;
-        const height = 6 + this.plan.steps.length * 24;
-
-        let box = { x: 12, y: (1080 - height - 30), w: width, h: height };
-        this.targetDrawing.drawBox(box, { borderColor: "#eee", backColor: "#222" });
-
-        box.x += 6;
-        box.y += 6;
-
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'top';
-        ctx.font = `20px monospace`;
-
-        //this.targetDrawing.drawGradientCircle({ x: box.x - 6, y: box.y + 8 + (24 * (this.drawUntil - 1)) }, settings.circles.pip);
-
+        let text = "";
         for (let i = 0; i < this.plan.steps.length; ++i) {
-            const highlight = (this.drawUntil - 1 === i);
-            ctx.fillStyle = (highlight ? "#fe0" : "#eee");
-            ctx.fillText(this.plan.steps[i].text, box.x + (highlight ? 12 : 0), box.y);
-            box.y += 24;
+            text += `${(i > 0 ? "\n" : "")}${i === this.drawUntil - 1 ? " " : ""}${this.plan.steps[i].text}`;
         }
 
+        this.targetDrawing.drawText(settings.labels.plan, text, { ...settings.labels.plan, highlightIndex: (this.drawUntil - 1) });
     }
 
     drawWorld() {
-        if (!this.plan) {
-            console.log('ERROR: No plan parsed. Call Animator.parsePlan before drawing.');
+        if (this.error || this.plan.errors.length > 0) {
+            this.targetDrawing.drawText(settings.labels.error, this.error ?? this.plan.errors.join("\n"), settings.labels.error);
+            if (this.onDraw) { this.onDraw(); }
             return;
         }
 
@@ -242,16 +240,16 @@ export default class Animator {
     }
 
     next() {
-        this.drawUntil = Math.min(this.drawUntil + 1, this.plan.steps.length);
+        this.drawUntil = Math.min(this.drawUntil + 1, (this.plan?.steps?.length ?? 0));
         this.drawWorld();
     }
 
     end() {
-        this.drawUntil = this.plan.steps.length;
+        this.drawUntil = (this.plan?.steps?.length ?? 0);
         this.drawWorld();
     }
 
     isDone() {
-        return (this.drawUntil >= this.plan.steps.length);
+        return (this.drawUntil >= (this.plan?.steps?.length ?? 0));
     }
 };
