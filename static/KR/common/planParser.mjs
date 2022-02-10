@@ -1,9 +1,7 @@
-export default class PlanParser {
-    constructor(allPositions, towers) {
-        this.allPositions = allPositions;
-        this.towers = towers;
-    }
+import allPositions from "../data/positions.min.mjs";
+import towers from "../data/towers.min.mjs";
 
+export default class PlanParser {
     parse(planText) {
         const steps = planText.split(/\r?\n/);
         if (steps.length === 1) {
@@ -11,43 +9,43 @@ export default class PlanParser {
         }
 
         const mapName = steps[0].split(' ')[0];
-        const positions = this.allPositions[mapName];
+        const positions = allPositions[mapName];
 
-        var result = { mapName: mapName, steps: [], errors: [] };
-        var world = {};
+        let result = { mapName: mapName, steps: [], errors: [] };
+        let world = {};
 
         if (!positions) {
             result.errors.push(`Line 1: Unknown map name ${mapName}.`);
             return result;
         }
 
-        var count = 1;
-        for (var i = 1; i < steps.length; ++i) {
-            var text = steps[i];
+        let count = 1;
+        for (let i = 1; i < steps.length; ++i) {
+            let text = steps[i];
             if (text === '') { continue; }
             if (text.startsWith('#')) { continue; }
 
-            var stepParts = text.split(' ');
-            var positionName = stepParts[0].toUpperCase();
-            var action = stepParts[1];
+            let stepParts = text.split(' ');
+            let positionName = stepParts[0].toUpperCase();
+            let action = stepParts[1];
 
-            var position = positions[positionName];
+            let position = positions[positionName];
             if (!position) {
                 result.errors.push(`Line ${i}: Unknown position ${positionName} on ${mapName}.`);
                 continue;
             }
 
-            var base = this.towers.base.find(t => t.ln === action);
-            var upgrade = this.towers.upgrades.find(u => action.toLowerCase().startsWith(u.ln.toLowerCase()));
+            let base = towers.base.find(t => t.ln === action);
+            let upgrade = towers.upgrades.find(u => action.toLowerCase().startsWith(u.ln.toLowerCase()));
 
             if (!base && !upgrade) {
                 result.errors.push(`Line ${i}: Unknown action ${action} at ${step.positionName} on ${mapName}.`);
                 continue;
             }
 
-            var previous = world[positionName];
+            let previous = world[positionName];
 
-            var step = {
+            let step = {
                 text: text,
                 positionName: positionName,
                 position: position,
@@ -77,8 +75,8 @@ export default class PlanParser {
                     continue;
                 }
 
-                var lastUpgradeOfType = previous[upgrade.sn];
-                var newLevel = (parseInt(action.at(-1)) || (lastUpgradeOfType?.level ?? 0) + 1);
+                let lastUpgradeOfType = previous[upgrade.sn];
+                let newLevel = (parseInt(action.at(-1)) || (lastUpgradeOfType?.level ?? 0) + 1);
 
                 if (upgrade.on !== previous.base.sn) {
                     result.errors.push(`Line ${i}: Upgrade ${action} not valid on tower ${previous.base.ln} at ${step.positionName}.`);
@@ -120,7 +118,7 @@ export default class PlanParser {
         this.require(ctx, ":", "Plan must have ':' after map name (ex: 'L26:').");
 
         const mapName = `L${number}`;
-        ctx.positions = this.allPositions[mapName];
+        ctx.positions = allPositions[mapName];
         ctx.result = { mapName: mapName, steps: [], errors: [] };
         ctx.world = {};
 
@@ -130,11 +128,14 @@ export default class PlanParser {
     parseStep(ctx) {
         const ii = ctx.i;
         const posName = (this.parsePosition(ctx) ?? ctx.lastPosition);
+        if (!posName) { throw `@${ctx.i}: No position provided and no previous position to re-use.`; }
         const pos = ctx.positions[posName];
-        if (!pos) { throw `@${ctx.i}: Unknown position ${posName}.`; }
+        if (!pos) { throw `@${ctx.i}: Unknown position '${posName}'.`; }
 
         const previous = ctx.world[posName];
+        const on = previous?.base?.sn;
         const action = this.parseAction(ctx);
+        if (!action) { throw `@${ctx.i}: Incomplete step at end of plan.`; }
 
         let step = {
             positionName: posName,
@@ -144,22 +145,31 @@ export default class PlanParser {
 
         if (action.base) {
             if (action.base.length === 2) {
-                step.base = this.towers.base.find(t => t.sn === action.base);
+                step.base = towers.base.find(t => t.sn === action.base);
             } else {
-                step.base = this.towers.base.find(t => t.sn === `${action.base}${previous.base.sn[1] + 1}`);
+                step.base = towers.base.find(t => t.sn === `${action.base}${(on ? +on[1] + 1 : 1)}`);
+            }
+
+            if (!step.base) { throw `@${ctx.i}: Invalid tower name/level '${action.base}' at ${step.positionName}.`; }
+
+            if (on) {
+                if (step.base.sn[0] !== on[0]) { throw `@${ctx.i}: Can't build ${step.base.ln} on ${previous.base.ln} at ${step.positionName}.`; }
+                if (step.base.sn[1] <= on[1]) { throw `@${ctx.i}: Tower downgrade ${step.base.ln} on ${previous.base.ln} at ${step.positionName}.`; }
             }
 
             step.shortAction = step.base.sn;
             step.text = `${posName} ${step.base.ln}`;
         } else if (action.upgrade) {
-            const on = previous?.base?.sn;
-            if (!on) { throw `@${ctx.i}: Upgrade '${action.upgrade}' built at ${posName} where there is no tower.` }
+            if (!on) { throw `@${ctx.i}: Upgrade '${action.upgrade}' on nothing at ${posName}.`; }
 
-            step.upgrade = this.towers.upgrades.find(u => u.on === on && u.sn === action.upgrade);
-            if(!step.upgrade) { throw `@${ctx.i}: Upgrade '${action.upgrade} is not valid on ${previous.base.ln} at ${posName}.`};
+            step.upgrade = towers.upgrades.find(u => u.on === on && u.sn === action.upgrade);
+            if (!step.upgrade) { throw `@${ctx.i}: There is no '${action.upgrade}' upgrade for ${previous.base.ln} at ${posName}.`; }
 
             let lastUpgradeOfType = previous[step.upgrade.sn];
-            let newLevel = (action.level ?? (lastUpgradeOfType?.level + 1) ?? 1);
+            let newLevel = (action.level ?? ((lastUpgradeOfType?.level ?? 0) + 1));
+            if (newLevel <= (lastUpgradeOfType?.level ?? 0)) { throw `@${ctx.i}: Ability downgrade from '${action.upgrade}${lastUpgradeOfType?.level}' to '${action.upgrade}${action.level}' at ${posName}.`; }
+            if (newLevel > step.upgrade.cost.length) { throw `@${ctx.i}: Ability upgrade to level ${newLevel} when ${step.upgrade.ln} max level is ${step.upgrade.cost.length} at ${posName}.`; }
+
             step[step.upgrade.sn] = { ...step.upgrade, level: newLevel };
 
             step.shortAction = `${step.upgrade.sn}${newLevel}`;
@@ -185,10 +195,10 @@ export default class PlanParser {
     }
 
     parseAction(ctx) {
-        if (ctx.i + 1 >= ctx.text.length) { return null; }
+        if (ctx.i >= ctx.text.length) { return null; }
 
         const letter = ctx.text[ctx.i].toLowerCase();
-        const digit = ctx.text[ctx.i + 1];
+        const digit = (ctx.i + 1 < ctx.text.length ? ctx.text[ctx.i + 1] : '');
         if (letter >= 'p' && letter <= 't') {
             if (digit >= '1' && digit <= '5') {
                 ctx.i += 2;
@@ -211,7 +221,7 @@ export default class PlanParser {
     }
 
     require(ctx, value, error) {
-        if (ctx.text[ctx.i++] !== value) { throw error; }
+        if (ctx.text[ctx.i++].toUpperCase() !== value.toUpperCase()) { throw error; }
     }
 
     number(ctx) {
@@ -227,12 +237,12 @@ export default class PlanParser {
     }
 
     toShortText(plan, spacer) {
-        var result = `${plan.mapName}:`;
+        let result = `${plan.mapName}:`;
         spacer = spacer || "";
 
-        var last = {};
-        for (var i = 0; i < plan.steps.length; ++i) {
-            var step = plan.steps[i];
+        let last = {};
+        for (let i = 0; i < plan.steps.length; ++i) {
+            let step = plan.steps[i];
 
             if (i !== 0) {
                 result += spacer;
@@ -242,7 +252,11 @@ export default class PlanParser {
                 result += step.positionName;
             }
 
-            result += step.shortAction;
+            if (step.shortAction.endsWith('1')) {
+                result += step.shortAction.slice(0, -1);
+            } else {
+                result += step.shortAction;
+            }
             last = step;
         }
 

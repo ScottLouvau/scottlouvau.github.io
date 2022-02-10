@@ -3,7 +3,6 @@ import PlanParser from "../common/planParser.mjs";
 
 import settings from "../data/settings.mjs";
 import allPositions from "../data/positions.min.mjs";
-import towers from "../data/towers.min.mjs";
 
 export default class Animator {
     constructor(loadImage, loadJson, targetCanvas, onDraw) {
@@ -20,7 +19,6 @@ export default class Animator {
     async init(imageFormat) {
         if (!this.planParser) {
             imageFormat ??= "png";
-
             this.imageFormat = imageFormat;
 
             try {
@@ -36,7 +34,7 @@ export default class Animator {
                 this.error = error;
             }
 
-            this.planParser = new PlanParser(allPositions, towers);
+            this.planParser = new PlanParser();
         }
     }
 
@@ -55,7 +53,7 @@ export default class Animator {
             }
         }
         catch (error) {
-            this.error = error;
+            this.error = "Plan Errors:\n" + error;
         }
 
         this.drawWorld();
