@@ -1,3 +1,5 @@
+import plans from "../data/plans.mjs";
+
 const tile = { w: 416, h: 234 };
 const tileOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 17, 14, 18, 19, 13, 15, 22, 20, 21, 23, 24, 25, 26];
 const mapNames = [
@@ -46,7 +48,7 @@ async function loadMaps(sprite) {
 
         const img = document.createElement("canvas");
         img.width = tile.w;
-        img.height = tile.h;        
+        img.height = tile.h;
         img.title = title;
         img.className = "img";
 
@@ -60,11 +62,14 @@ async function loadMaps(sprite) {
         item.appendChild(label);
 
         const links = document.createElement("div");
-        for(let mode of [{ n: "Camp", s: ""}, { n: "Heroic", s: "h"}, { n: "Iron", s: "i"}]) {
-            const link = document.createElement("a");
-            link.href = `../animate/?p=${name}${mode.s}`;
-            link.text = mode.n;
-            links.appendChild(link);
+        for (let mode of [{ n: "Camp", s: "" }, { n: "Heroic", s: "h" }, { n: "Iron", s: "i" }]) {
+            const planText = plans[`${name}${mode.s}`];
+            if (planText) {
+                const link = document.createElement("a");
+                link.href = `../animate/?p=${planText}`;
+                link.text = mode.n;
+                links.appendChild(link);
+            }
         }
         label.appendChild(links);
 
