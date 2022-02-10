@@ -712,6 +712,10 @@ async function run(fmt, planText, planPath) {
   outCanvas.addEventListener("mouseenter", () => mouse(true));
   outCanvas.addEventListener("mouseleave", () => mouse(false));
   outCanvas.addEventListener("click", canvasClicked);
+  outCanvas.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+  outCanvas.addEventListener("drop", onDrop);
 }
 function canvasClicked(e) {
   e.stopPropagation();
@@ -773,6 +777,20 @@ function keyDown(e) {
     animator.next();
   } else if (e.keyCode === 35 || e.keyCode === 40) {
     animator.end();
+  }
+}
+async function onDrop(e) {
+  e.preventDefault();
+  if (e.dataTransfer.items && e.dataTransfer.items.length >= 1) {
+    let item = e.dataTransfer.items[0];
+    if (item.kind === "file") {
+      const file = item.getAsFile();
+      const planText = await file.text();
+      animator.parsePlan(planText);
+      animator.paused = false;
+      animator.start();
+      animate();
+    }
   }
 }
 export {

@@ -49,6 +49,8 @@ async function run(fmt, planText, planPath) {
     outCanvas.addEventListener('mouseenter', () => mouse(true));
     outCanvas.addEventListener('mouseleave', () => mouse(false));
     outCanvas.addEventListener('click', canvasClicked);
+    outCanvas.addEventListener('dragover', (e) => { e.preventDefault(); });
+    outCanvas.addEventListener('drop', onDrop);
 }
 
 function canvasClicked(e) {
@@ -97,7 +99,7 @@ function animate() {
     }
 
     animator.next();
-    
+
     if (animator.isDone()) {
         animator.paused = true;
         animator.drawWorld();
@@ -125,6 +127,22 @@ function keyDown(e) {
     }
 }
 
-export { run };
+async function onDrop(e) {
+    // Suppress browser opening file
+    e.preventDefault();
 
-//document.addEventListener('DOMContentLoaded', run);
+    if (e.dataTransfer.items && e.dataTransfer.items.length >= 1) {
+        let item = e.dataTransfer.items[0];
+        if (item.kind === 'file') {
+            const file = item.getAsFile();
+            const planText = await file.text();
+
+            animator.parsePlan(planText);
+            animator.paused = false;
+            animator.start();
+            animate();
+        }
+    }
+}
+
+export { run };
