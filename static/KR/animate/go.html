@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://relentlessoptimizer.com/favicon.ico" sizes="16x16">
-  <title>Kingdom Rush Animator</title>
+  <title>Animator | Kingdom Rush | Relentless Optimizer</title>
 
   <script type="module">
     async function imageFormat() {
@@ -35,23 +35,26 @@
     }
 
     async function loadText(url) {
-      return await (await fetch(url)).text();
+      const resp = await fetch(url);
+      return (resp.ok ? await resp.text() : null);
     }
 
     async function preload() {
       const params = new URLSearchParams(window.location.search);
       const plan = params.get("p") ?? "L22";
+      const map = /L\d+/.exec(plan)[0];
+      const isFullPlan = (plan.indexOf(':') > 0);
 
-      document.plan = loadText(`../data/plans/${plan}.txt`);
+      document.plan = (isFullPlan ? plan : loadText(`../data/plans/${plan}.txt`));
       document.imageFormat = imageFormat();
 
       const fmt = await document.imageFormat;
       cacheImage(`../img/${fmt}/sprites/towers.${fmt}`);
       cacheImage(`../img/${fmt}/sprites/upgrades.${fmt}`);
-      cacheImage(`../img/${fmt}/maps/${plan}.${fmt}`);
+      cacheImage(`../img/${fmt}/maps/${map}.${fmt}`);
 
-      const index = await import("./bundle.js");
-      index.run(fmt, await document.plan);
+      const index = await import("./index.js");
+      index.run(fmt, await document.plan, plan);
     }
 
     preload();
