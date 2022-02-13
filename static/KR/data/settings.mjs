@@ -11,7 +11,7 @@ export default
         large: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontWeight: "bold", fontSizePx: 56, relY: 12, pad: 4 },
         message: { x: 148, y: 46, textColor: "#DDD", backColor: "#231C17", fontSizePx: 18, minWidth: 170, minHeight: 26 },
         plan: { x: 12, y: 1050, left: true, textColor: "#eee", borderColor: "#eee", backColor: "#222", highlightColor: "#fe0", fontFace: "monospace", fontSizePx: 20, padX: 6, padY: 4, minWidth: 120 },
-        error: { x: 960, y: 720, textColor: "#f00", borderColor: "#e00", backColor: "#222", fontSizePx: 90, pad: 30 },
+        error: { x: 960, y: 720, textColor: "#f00", borderColor: "#e00", backColor: "#222", fontSizePx: 60, pad: 30 },
     },
     geo: {
         tower: { w: 160, h: 140, relX: -80, relY: -104, cols: 5 },

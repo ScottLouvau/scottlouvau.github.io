@@ -5,9 +5,8 @@ import settings from "../data/settings.mjs";
 import allPositions from "../data/positions.min.mjs";
 
 export default class Animator {
-    constructor(loadImage, loadJson, targetCanvas, onDraw) {
+    constructor(loadImage, targetCanvas, onDraw) {
         this.loadImage = loadImage;
-        this.loadJson = loadJson;
         this.targetDrawing = new Drawing(targetCanvas);
         this.onDraw = onDraw;
 

@@ -1,0 +1,62 @@
+*, ::after, ::before 
+{
+    box-sizing: border-box;
+}
+
+html
+{
+    overflow-y: auto;
+}
+
+body 
+{
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    
+    padding: 2px;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+
+    color: #ddd;
+    background-color: #222;
+}
+
+.container {
+    display: grid;
+    column-gap: 4px;
+    grid-template-columns: 1fr 10em;
+}
+
+#progress {
+    background-color: #28f;
+    height: 1.1em;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    width: 0;
+}
+
+#diagnostic {
+    background-color: #555;
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+    height: auto;
+}
+
+textarea {
+    background-color: #eee;
+    color: #222;
+    padding: 4px;
+    width: 100%;
+    height: calc(100vh - 1.1em - 12px);
+}
+
+.permalink {
+    height: 1.1em;
+    margin-bottom: 6px;
+    margin-left: 2px;
+}
+
+a {
+    color: #eee;
+}

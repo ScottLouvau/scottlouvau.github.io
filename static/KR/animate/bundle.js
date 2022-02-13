@@ -215,7 +215,7 @@ var PlanParser = class {
       let base = towers_min_default.base.find((t) => t.ln === action);
       let upgrade = towers_min_default.upgrades.find((u) => action.toLowerCase().startsWith(u.ln.toLowerCase()));
       if (!base && !upgrade) {
-        result.errors.push(`Line ${i}: Unknown action ${action} at ${step.positionName} on ${mapName}.`);
+        result.errors.push(`Line ${i}: Unknown action ${action} at ${positionName} on ${mapName}.`);
         continue;
       }
       let previous = world[positionName];
@@ -452,7 +452,7 @@ var settings_default = {
     large: { textColor: "#49463a", backColor: "#efeddc", borderColor: "#49463a", fontWeight: "bold", fontSizePx: 56, relY: 12, pad: 4 },
     message: { x: 148, y: 46, textColor: "#DDD", backColor: "#231C17", fontSizePx: 18, minWidth: 170, minHeight: 26 },
     plan: { x: 12, y: 1050, left: true, textColor: "#eee", borderColor: "#eee", backColor: "#222", highlightColor: "#fe0", fontFace: "monospace", fontSizePx: 20, padX: 6, padY: 4, minWidth: 120 },
-    error: { x: 960, y: 720, textColor: "#f00", borderColor: "#e00", backColor: "#222", fontSizePx: 90, pad: 30 }
+    error: { x: 960, y: 720, textColor: "#f00", borderColor: "#e00", backColor: "#222", fontSizePx: 60, pad: 30 }
   },
   geo: {
     tower: { w: 160, h: 140, relX: -80, relY: -104, cols: 5 },
@@ -473,9 +473,8 @@ var settings_default = {
 
 // ../common/animator.mjs
 var Animator = class {
-  constructor(loadImage2, loadJson2, targetCanvas, onDraw) {
+  constructor(loadImage2, targetCanvas, onDraw) {
     this.loadImage = loadImage2;
-    this.loadJson = loadJson2;
     this.targetDrawing = new Drawing(targetCanvas);
     this.onDraw = onDraw;
     this.showControls = false;
@@ -688,9 +687,6 @@ async function loadImage(url) {
   await loadPromise;
   return img;
 }
-async function loadJson(url) {
-  return await (await fetch(url)).json();
-}
 var justEntered = false;
 var animator = null;
 async function run(fmt, planText, planPath) {
@@ -699,7 +695,7 @@ async function run(fmt, planText, planPath) {
   canvas.width = 1920;
   canvas.height = 1080;
   const drawOut = new Drawing(outCanvas);
-  animator = new Animator(loadImage, loadJson, canvas, () => {
+  animator = new Animator(loadImage, canvas, () => {
     drawOut.drawImage(canvas);
   });
   if (planText !== null) {

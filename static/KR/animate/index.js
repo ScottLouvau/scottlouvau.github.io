@@ -19,10 +19,6 @@ async function loadImage(url) {
     return img;
 }
 
-async function loadJson(url) {
-    return await (await fetch(url)).json();
-}
-
 let justEntered = false;
 let animator = null;
 
@@ -33,7 +29,7 @@ async function run(fmt, planText, planPath) {
     canvas.height = 1080;
 
     const drawOut = new Drawing(outCanvas);
-    animator = new Animator(loadImage, loadJson, canvas, () => {
+    animator = new Animator(loadImage, canvas, () => {
         drawOut.drawImage(canvas);
     });
 

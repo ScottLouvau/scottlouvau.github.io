@@ -39,7 +39,7 @@ export default class PlanParser {
             let upgrade = towers.upgrades.find(u => action.toLowerCase().startsWith(u.ln.toLowerCase()));
 
             if (!base && !upgrade) {
-                result.errors.push(`Line ${i}: Unknown action ${action} at ${step.positionName} on ${mapName}.`);
+                result.errors.push(`Line ${i}: Unknown action ${action} at ${positionName} on ${mapName}.`);
                 continue;
             }
 
