@@ -1,3 +1,5 @@
+import allPositions from "../data/positions.min.mjs";
+import towers from "../data/towers.min.mjs";
 import settings from '../data/settings.mjs';
 
 const classNames = ['Arca', 'Arch', 'Arch2', 'Arch3', 'Arti', 'Arti2', 'Arti3', 'Barb', 'Barr', 'Barr2', 'Barr3', 'BigB', 'Holy', 'Mage', 'Mage2', 'Mage3', 'Map', 'Musk', 'None', 'Rang', 'Sorc', 'Tesl'];
@@ -11,11 +13,9 @@ const SecondsPerFrame = 20;
 const PlanEmptyLineAfterSeconds = 40;
 
 export default class Scanner {
-    constructor(allPositions, towers, model, tf, logger) {
-        this.allPositions = allPositions;
-        this.towers = towers;
-        this.model = model;
+    constructor(tf, model, logger) {
         this.tf = tf;
+        this.model = model;
         this.logger = logger;
     }
 
@@ -98,8 +98,8 @@ export default class Scanner {
 
         // Try to identify by first position only
         for (let posIndex = 0; posIndex < 20; ++posIndex) {
-            for (let mapName in this.allPositions) {
-                const pos = Object.values(this.allPositions[mapName])[posIndex];
+            for (let mapName in allPositions) {
+                const pos = Object.values(allPositions[mapName])[posIndex];
                 if (!pos) { break; }
 
                 const matches = this.scanPosition(ctx, pos);
@@ -133,8 +133,8 @@ export default class Scanner {
                 return { issue: `WARN ${posName}: ignored None where previously ${previous}.` };
             }
         } else if (matches.best.name !== previous) {
-            const prevTower = this.towers.base[previous];
-            const currTower = this.towers.base[matches.best.name];
+            const prevTower = towers.base[previous];
+            const currTower = towers.base[matches.best.name];
 
             if (prevTower) {
                 if (currTower.shortName[0] !== prevTower.shortName[0]) {
@@ -166,35 +166,12 @@ export default class Scanner {
         this.log(message);
     }
 
-    toTimeString(totalSeconds) {
-        let hours = Math.floor(totalSeconds / 3600);
-        let minutes = Math.floor((totalSeconds / 60)) % 60;
-        let seconds = Math.floor(totalSeconds) % 60;
-        let millis = Math.floor(totalSeconds * 1000) % 1000;
-
-        if (totalSeconds > 0 && totalSeconds < 1) {
-            return `${millis.toFixed(0)}ms`;
-        }
-
-        let result = `${minutes.toFixed(0).padStart(2, '0')}:${seconds.toFixed(0).padStart(2, '0')}`;
-
-        if (hours > 0) {
-            result = `${hours.toFixed(0).padStart(2, '0')}:${result}`;
-        }
-
-        if (millis !== 0) {
-            result += `.${millis.toFixed(0).padStart(3, '0')}`;
-        }
-
-        return result;
-    }
-
     init(ctx) {
         this.log("Identifying map...");        
         const mapName = this.identifyMap(ctx);
         this.log(mapName);
         this.mapName = mapName;
-        this.positions = this.allPositions[mapName];
+        this.positions = allPositions[mapName];
         this.lastChangedFrame = -1;
         this.plan = [mapName, ''];
 
@@ -238,7 +215,7 @@ export default class Scanner {
                 } else {
                     // Add log separator if enough time passed since last step
                     if (this.lastChangedFrame < this.i) {
-                        if ((this.i - this.lastChangedFrame) >= (PlanEmptyLineAfterSeconds / SecondsPerFrame)) {
+                        if ((this.i - this.lastChangedFrame) >= (PlanEmptyLineAfterSeconds / SecondsPerFrame) && this.plan.length > 2) {
                             this.plan.push('');
                             this.plan.push(`# ${this.toTimeString(this.i * SecondsPerFrame)}`);
                         }
@@ -255,6 +232,7 @@ export default class Scanner {
         }
 
         this.i++;
+        return state;
     }
 
     // Scan a series of PNG frames over time; write the build plan to console and output file
@@ -276,5 +254,28 @@ export default class Scanner {
         if (this.logger) {
             this.logger(message);
         }
+    }
+
+    toTimeString(totalSeconds) {
+        let hours = Math.floor(totalSeconds / 3600);
+        let minutes = Math.floor((totalSeconds / 60)) % 60;
+        let seconds = Math.floor(totalSeconds) % 60;
+        let millis = Math.floor(totalSeconds * 1000) % 1000;
+
+        if (totalSeconds > 0 && totalSeconds < 1) {
+            return `${millis.toFixed(0)}ms`;
+        }
+
+        let result = `${minutes.toFixed(0).padStart(2, '0')}:${seconds.toFixed(0).padStart(2, '0')}`;
+
+        if (hours > 0) {
+            result = `${hours.toFixed(0).padStart(2, '0')}:${result}`;
+        }
+
+        if (millis !== 0) {
+            result += `.${millis.toFixed(0).padStart(3, '0')}`;
+        }
+
+        return result;
     }
 }
