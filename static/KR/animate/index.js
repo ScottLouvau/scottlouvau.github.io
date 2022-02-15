@@ -188,7 +188,7 @@ var PlanParser = class {
     if (steps.length === 1) {
       return this.parseShort(planText);
     }
-    const mapName = steps[0].split(" ")[0];
+    const mapName = steps[0]?.toUpperCase()?.split(" ")?.[0];
     const positions = positions_min_default[mapName];
     let result = { mapName, steps: [], errors: [] };
     let world = {};
@@ -206,17 +206,21 @@ var PlanParser = class {
         continue;
       }
       let stepParts = text.split(" ");
-      let positionName = stepParts[0].toUpperCase();
-      let action = stepParts[1];
-      let position = positions[positionName];
-      if (!position) {
-        result.errors.push(`Line ${i}: Unknown position ${positionName} on ${mapName}.`);
+      let positionName = stepParts?.[0]?.toUpperCase();
+      let action = stepParts?.[1]?.toLowerCase();
+      if (!positionName || !action) {
+        result.errors.push(`Line ${i + 1}: Did not have a position and action.`);
         continue;
       }
-      let base = towers_min_default.base.find((t) => t.ln === action);
-      let upgrade = towers_min_default.upgrades.find((u) => action.toLowerCase().startsWith(u.ln.toLowerCase()));
+      let position = positions[positionName];
+      if (!position) {
+        result.errors.push(`Line ${i + 1}: Unknown position '${positionName}' on ${mapName}.`);
+        continue;
+      }
+      let base = towers_min_default.base.find((t) => t.ln.toLowerCase() === action);
+      let upgrade = towers_min_default.upgrades.find((u) => action.startsWith(u.ln.toLowerCase()));
       if (!base && !upgrade) {
-        result.errors.push(`Line ${i}: Unknown action ${action} at ${positionName} on ${mapName}.`);
+        result.errors.push(`Line ${i + 1}: Unknown action '${action}' at ${positionName} on ${mapName}.`);
         continue;
       }
       let previous = world[positionName];
@@ -224,35 +228,39 @@ var PlanParser = class {
         text,
         positionName,
         position,
-        action
+        action: stepParts[1]
       };
       if (base) {
         step.base = base;
         step.shortAction = base.sn;
         if (previous) {
           if (base.sn[0] !== previous.base.sn[0]) {
-            result.errors.push(`Line ${i}: Can't build ${action} on ${previous.base.ln} at ${step.positionName}.`);
+            result.errors.push(`Line ${i + 1}: Can't build ${base.ln} on ${previous.base.ln} at ${step.positionName}.`);
             continue;
           }
           if (base.sn[1] <= previous.base.sn[1]) {
-            result.errors.push(`Line ${i}: Tower downgrade ${action} on ${previous.base.ln} at ${step.positionName}.`);
+            result.errors.push(`Line ${i + 1}: Tower downgrade ${base.ln} on ${previous.base.ln} at ${step.positionName}.`);
             continue;
           }
         }
       }
       if (upgrade) {
         if (!previous) {
-          result.errors.push(`Line ${i}: Upgrade ${action} on nothing at ${step.positionName}.`);
+          result.errors.push(`Line ${i + 1}: Upgrade '${upgrade.ln}' on nothing at ${step.positionName}.`);
           continue;
         }
         let lastUpgradeOfType = previous[upgrade.sn];
         let newLevel = parseInt(action.at(-1)) || (lastUpgradeOfType?.level ?? 0) + 1;
         if (upgrade.on !== previous.base.sn) {
-          result.errors.push(`Line ${i}: Upgrade ${action} not valid on tower ${previous.base.ln} at ${step.positionName}.`);
+          result.errors.push(`Line ${i + 1}: There is no '${upgrade.ln}' upgrade for ${previous.base.ln} at ${step.positionName}.`);
           continue;
         }
         if (lastUpgradeOfType && newLevel <= lastUpgradeOfType.level) {
-          result.errors.push(`Line ${i}: Ability downgrade ${action} at ${step.positionName}.`);
+          result.errors.push(`Line ${i + 1}: Ability downgrade from '${upgrade.ln}${lastUpgradeOfType.level}' to '${upgrade.ln}${newLevel}' at ${step.positionName}.`);
+          continue;
+        }
+        if (newLevel > upgrade.cost.length) {
+          result.errors.push(`Line ${i + 1}: Ability upgrade to level ${newLevel} when '${upgrade.ln}' max level is ${upgrade.cost.length} at ${step.positionName}.`);
           continue;
         }
         step.upgrade = upgrade;
