@@ -689,29 +689,35 @@ async function loadImage(url) {
 }
 var justEntered = false;
 var animator = null;
-async function run(fmt, planText, planPath) {
-  const outCanvas = document.getElementById("main");
-  const canvas = document.createElement("canvas");
-  canvas.width = 1920;
-  canvas.height = 1080;
-  const drawOut = new Drawing(outCanvas);
-  animator = new Animator(loadImage, canvas, () => {
-    drawOut.drawImage(canvas);
-  });
-  if (planText !== null) {
-    await animator.parsePlan(planText, fmt);
-  } else {
-    animator.error = `Plan '${planPath}' was not found.`;
+async function run(planText) {
+  if (animator === null) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 1920;
+    canvas.height = 1080;
+    const outCanvas = document.getElementById("main");
+    const drawOut = new Drawing(outCanvas);
+    animator = new Animator(loadImage, canvas, () => {
+      drawOut.drawImage(canvas);
+    });
+    outCanvas.addEventListener("mousemove", () => mouse(true));
+    outCanvas.addEventListener("mouseenter", () => mouse(true));
+    outCanvas.addEventListener("mouseleave", () => mouse(false));
+    outCanvas.addEventListener("click", canvasClicked);
+    document.getElementById("demo").addEventListener("click", async () => run("L5:G7t3E9p2E7r4xG6pE7y3G6p2E7x2"));
+    document.addEventListener("keydown", keyDown);
+    document.addEventListener("dragover", (e) => {
+      e.preventDefault();
+    });
+    document.addEventListener("drop", onDrop);
   }
-  animate();
-  document.addEventListener("keydown", keyDown);
-  outCanvas.addEventListener("mouseenter", () => mouse(true));
-  outCanvas.addEventListener("mouseleave", () => mouse(false));
-  outCanvas.addEventListener("click", canvasClicked);
-  outCanvas.addEventListener("dragover", (e) => {
-    e.preventDefault();
-  });
-  outCanvas.addEventListener("drop", onDrop);
+  if (planText !== null) {
+    document.getElementById("main").style.display = "";
+    document.getElementById("help-container").style.display = "none";
+    await animator.parsePlan(planText, document.imageFormat);
+    animator.paused = false;
+    animator.start();
+    animate();
+  }
 }
 function canvasClicked(e) {
   e.stopPropagation();
@@ -736,11 +742,20 @@ function canvasClicked(e) {
     }
   }
 }
+var hideControlsTimer = null;
 function mouse(enter) {
-  animator.showControls = enter === true;
-  animator.drawWorld();
-  justEntered = true;
-  setTimeout(() => justEntered = false, 50);
+  if (animator.showControls !== enter) {
+    animator.showControls = enter;
+    animator.drawWorld();
+    justEntered = true;
+    setTimeout(() => justEntered = false, 50);
+  }
+  if (enter) {
+    if (hideControlsTimer !== null) {
+      clearTimeout(hideControlsTimer);
+    }
+    hideControlsTimer = setTimeout(() => mouse(false), 2500);
+  }
 }
 function togglePause() {
   animator.paused = !animator.paused;
@@ -782,10 +797,7 @@ async function onDrop(e) {
     if (item.kind === "file") {
       const file = item.getAsFile();
       const planText = await file.text();
-      animator.parsePlan(planText);
-      animator.paused = false;
-      animator.start();
-      animate();
+      await run(planText);
     }
   }
 }

@@ -22,31 +22,45 @@ async function loadImage(url) {
 let justEntered = false;
 let animator = null;
 
-async function run(fmt, planText, planPath) {
-    const outCanvas = document.getElementById("main");
-    const canvas = document.createElement("canvas");
-    canvas.width = 1920;
-    canvas.height = 1080;
+async function run(planText) {
+    // Setup (once)
+    if (animator === null) {
+        // Create scratch canvas to render to
+        const canvas = document.createElement("canvas");
+        canvas.width = 1920;
+        canvas.height = 1080;
 
-    const drawOut = new Drawing(outCanvas);
-    animator = new Animator(loadImage, canvas, () => {
-        drawOut.drawImage(canvas);
-    });
+        // Attach to output canvas
+        const outCanvas = document.getElementById("main");
+        const drawOut = new Drawing(outCanvas);
+        animator = new Animator(loadImage, canvas, () => {
+            drawOut.drawImage(canvas);
+        });
 
-    if (planText !== null) {
-        await animator.parsePlan(planText, fmt);
-    } else {
-        animator.error = `Plan '${planPath}' was not found.`;
+        // Event handler hookup
+        outCanvas.addEventListener('mousemove', () => mouse(true));
+        outCanvas.addEventListener('mouseenter', () => mouse(true));
+        outCanvas.addEventListener('mouseleave', () => mouse(false));
+        outCanvas.addEventListener('click', canvasClicked);
+        
+        document.getElementById("demo").addEventListener('click', async () => run("L5:G7t3E9p2E7r4xG6pE7y3G6p2E7x2"));
+        document.addEventListener('keydown', keyDown);
+        document.addEventListener('dragover', (e) => { e.preventDefault(); });
+        document.addEventListener('drop', onDrop);
     }
 
-    animate();
+    // If plan provided...
+    if (planText !== null) {
+        // Hide help and show canvas
+        document.getElementById("main").style.display = "";
+        document.getElementById("help-container").style.display = "none";
 
-    document.addEventListener('keydown', keyDown);
-    outCanvas.addEventListener('mouseenter', () => mouse(true));
-    outCanvas.addEventListener('mouseleave', () => mouse(false));
-    outCanvas.addEventListener('click', canvasClicked);
-    outCanvas.addEventListener('dragover', (e) => { e.preventDefault(); });
-    outCanvas.addEventListener('drop', onDrop);
+        // Parse and start animating
+        await animator.parsePlan(planText, document.imageFormat);
+        animator.paused = false;
+        animator.start();
+        animate();
+    }
 }
 
 function canvasClicked(e) {
@@ -75,11 +89,21 @@ function canvasClicked(e) {
     }
 }
 
+let hideControlsTimer = null;
 function mouse(enter) {
-    animator.showControls = (enter === true);
-    animator.drawWorld();
-    justEntered = true;
-    setTimeout(() => justEntered = false, 50);
+    // Redraw when we first enter or exit the canvas
+    if (animator.showControls !== enter) {
+        animator.showControls = enter;
+        animator.drawWorld();
+        justEntered = true;
+        setTimeout(() => justEntered = false, 50);
+    }
+
+    // Hide controls three seconds after last mouse movement
+    if (enter) {
+        if (hideControlsTimer !== null) { clearTimeout(hideControlsTimer); }
+        hideControlsTimer = setTimeout(() => mouse(false), 2500);
+    }
 }
 
 function togglePause() {
@@ -133,10 +157,7 @@ async function onDrop(e) {
             const file = item.getAsFile();
             const planText = await file.text();
 
-            animator.parsePlan(planText);
-            animator.paused = false;
-            animator.start();
-            animate();
+            await run(planText);
         }
     }
 }

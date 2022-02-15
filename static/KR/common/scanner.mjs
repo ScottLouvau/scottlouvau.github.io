@@ -81,12 +81,12 @@ export default class Scanner {
         return predictions;
     }
 
-    scanImage(ctx, positions) {
+    scanImage(ctx) {
         // Return the top tower predictions at all tower positions in the provided image
         let state = {};
 
-        for (let posName in positions) {
-            state[posName] = this.scanPosition(ctx, positions[posName]);
+        for (let posName in this.positions) {
+            state[posName] = this.scanPosition(ctx, this.positions[posName]);
         }
 
         return state;
@@ -166,13 +166,16 @@ export default class Scanner {
         this.log(message);
     }
 
+    reset() {
+        this.mapName = null;
+    }
+
     init(ctx) {
-        this.log("Identifying map...");        
+        this.log("Identifying map...");
         const mapName = this.identifyMap(ctx);
         this.log(mapName);
         this.mapName = mapName;
         this.positions = allPositions[mapName];
-        this.lastChangedFrame = -1;
         this.plan = [mapName, ''];
 
         this.world = {};
@@ -184,7 +187,12 @@ export default class Scanner {
     }
 
     nextFrame(ctx) {
-        let state = this.scanImage(ctx, this.positions);
+        if (this.mapName === null) {
+            this.init(ctx);
+            if (this.mapName === null) { return; }
+        }
+
+        let state = this.scanImage(ctx);
         let loggedThisFrame = false;
 
         for (let posName in state) {
@@ -272,7 +280,7 @@ export default class Scanner {
             result = `${hours.toFixed(0).padStart(2, '0')}:${result}`;
         }
 
-        if (millis !== 0) {
+        if (millis !== 0 && totalSeconds < 10) {
             result += `.${millis.toFixed(0).padStart(3, '0')}`;
         }
 

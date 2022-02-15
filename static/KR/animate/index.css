@@ -21,10 +21,48 @@ body
     background-color: #222;
 }
 
+a {
+    color: #eee;
+}
+
 #main {
     z-index: -1;
     display: block;
     margin: auto;
     width: min(calc(100vw - 4px), calc(16/9 * (100vh - 4px)), 1920px);
     height: min(calc(9/16 * (100vw - 4px)), calc(100vh - 4px), 1080px);
+}
+
+#help-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#help {
+    padding: 6px 12px;
+    border: solid 1px #eee;
+    width: fit-content;
+}
+
+#help div {
+    padding-left: 8px;
+}
+
+#help .heading {
+    font-size: 125%;
+    padding-bottom: 4px;
+    padding-left: 0;
+}
+
+#help .subtext {
+    font-size: 80%;
+    padding-top: 12px;
+    padding-left: 0;
+}
+
+#demo {
+    text-decoration: underline;
+    cursor: pointer;
 }
