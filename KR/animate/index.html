@@ -54,7 +54,7 @@
       cacheMap(plan);
 
       // Load remaining code and animate
-      index = await (params.get("debug") === "true" ? import("./index.js") : import("./bundle.js"));
+      index = await import("./index.js");
       index.run(plan);
     }
 
@@ -73,7 +73,7 @@
       <div>- The last changed tower is highlighted</div>
       <div>- Ability upgrades are always visible</div>
       <div>- All steps shown on the left side</div>
-      <div>- <a href="../scan/">Let AI transcribe your game for you</a>!</div>
+      <div>- <a target="_blank" href="../scan/">Let AI transcribe your game for you</a>!</div>
       <div>&nbsp;</div>
       <div>See a <span id="demo">demo</span> or <a href="...">full help</a>.</div>
     </div>

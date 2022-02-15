@@ -17,6 +17,7 @@ let scanStartTime = null;
 let progress = null;
 let link = null;
 let planOut = null;
+let errorsOut = null;
 let diagnostic = null;
 let drawing = null;
 
@@ -27,8 +28,7 @@ let can = null;
 let ctx = null;
 
 async function scanVideo() {
-    document.getElementById("help-container").style.display = "none";
-    document.getElementById("container").style.display = "";
+    closeHelp();
 
     scanStartTime = performance.now();
     planOut.value = "";
@@ -42,7 +42,6 @@ async function scanVideo() {
     // (If at zero, seek a bit after to ensure we wait for video to really be loaded)
     video.currentTime = (video.currentTime === 0 ? 0.1 : 0);
 }
-
 
 function onSeeked() {
     if (elapsedSeconds === null && manualSeeking === false) { return; }
@@ -85,18 +84,31 @@ function onSeeked() {
 
 function updatePlanLink() {
     const planText = planOut.value;
-    const parsed = parser.parse(planText);
-    const shortText = parser.toShortText(parsed);
-    const url = `https://relentlessoptimizer.com/KR/animate?p=${shortText}`;
+    let errors = null;
 
-    if (parsed.errors.length === 0) {
-        link.innerText = "Animation Link";
-        link.href = url;
-    } else {
-        link.innerText = "[Error]";
-        link.href = "";
-        link.title = `${parsed.errors.join("\n")}`;
+    try {
+        const parsed = parser.parse(planText);
+        const shortText = parser.toShortText(parsed);
+        const url = `https://relentlessoptimizer.com/KR/animate?p=${shortText}`;
+
+        if (parsed.errors.length === 0) {
+            link.innerText = "Animation Link";
+            link.href = url;
+            errorsOut.value = "";
+            errorsOut.style.display = "none";
+            return;
+        }
+        
+        errors = parsed.errors.join("\n");
+    } catch (error) {
+        errors = error;
     }
+
+    link.innerText = "[Error]";
+    link.href = "";
+    link.title = `${errors}`;
+    errorsOut.innerText = errors;
+    errorsOut.style.display = "initial";
 }
 
 function drawDiagnostics(state) {
@@ -135,6 +147,11 @@ function confidenceColor(confidence) {
     }
 }
 
+function closeHelp() {
+    document.getElementById("help-container").style.display = "none";
+    document.getElementById("container").style.display = "";
+}
+
 async function onDrop(e) {
     // Suppress browser opening file
     e.preventDefault();
@@ -143,8 +160,15 @@ async function onDrop(e) {
         let item = e.dataTransfer.items[0];
         if (item.kind === 'file') {
             const file = await item.getAsFile();
-            const url = URL.createObjectURL(file);
-            video.src = url;
+
+            if (item.type.startsWith("text")) {
+                closeHelp();
+                planOut.value = await file.text();
+                updatePlanLink();
+            } else {
+                const url = URL.createObjectURL(file);
+                video.src = url;
+            }
         }
     }
 }
@@ -158,7 +182,7 @@ function onPlanChange() {
         window.setTimeout(() => {
             planChangeTimeout = null;
             updatePlanLink();
-        }, 2000);
+        }, 500);
     }
 }
 
@@ -181,6 +205,7 @@ async function run() {
     progress = document.getElementById("progress");
     link = document.getElementById("link");
     planOut = document.getElementById("planOut");
+    errorsOut = document.getElementById("errorsOut");
     diagnostic = document.getElementById("diagnostic");
     drawing = new Drawing(diagnostic);
 
@@ -208,6 +233,7 @@ async function run() {
     document.getElementById("progress-container").addEventListener('click', onProgressClick);
 
     document.getElementById("demo").addEventListener('click', () => { video.src = '../data/L10h-tiny.mp4'; });
+    document.getElementById("handwrite").addEventListener('click', closeHelp);
 }
 
 document.addEventListener('DOMContentLoaded', run);

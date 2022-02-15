@@ -12,8 +12,8 @@ body
 {
     font-family: 'Segoe UI', sans-serif;
     font-size: 16px;
-    
-    padding: 2px;
+
+    padding: 0;
     margin: 0;
     height: 100vh;
     overflow: hidden;
@@ -55,15 +55,32 @@ a {
     padding-left: 0;
 }
 
-#demo {
+.action {
     text-decoration: underline;
     cursor: pointer;
 }
 
 #container {
-    display: grid;
-    column-gap: 4px;
-    grid-template-columns: 1fr 10em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    padding: 2px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+.right {
+    flex-grow: 1;
+
+    min-width: 8em;
+    display: flex;
+    flex-direction: column;
+    padding-left: 2px;
 }
 
 #progress-container {
@@ -82,19 +99,38 @@ a {
     background-color: #555;
     aspect-ratio: 16 / 9;
     max-width: 100%;
-    height: auto;
 }
 
 textarea {
+    flex-grow: 1;
     background-color: #eee;
     color: #222;
     padding: 4px;
-    width: 100%;
-    height: calc(100vh - 1.1em - 12px);
+    resize: none;
+}
+
+#errorsOut {
+    flex-grow: 0;
+    display: none;
+
+    min-height: 2em;
+    overflow-y: auto;
+    
+    /* background-color: #eee;
+    color: #222; */
+
+    font-size: 80%;
+    background-color: #222;
+    color: #f00;
+
+    padding: 4px;
+    margin: 0;
+    border: solid 1px #767676;
+    white-space: pre-wrap;
 }
 
 .permalink {
     height: 1.1em;
-    margin-bottom: 6px;
     margin-left: 2px;
+    margin-bottom: 6px;
 }

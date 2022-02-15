@@ -78,8 +78,8 @@ export default class Animator {
         const h = can.height / 10;
         const w = (command === "play" ? h * 2 / 3 : h / 2);
         let r = { x: box.x + (box.w / 2) - w / 2, y: box.y + (box.h / 2) - h / 2, w: w, h: h };
-        let bo = { backColor: "rgba(20, 20, 20, 0.5)", borderColor: "rgba(0, 0, 0, 1)" };
-        let to = { borderColor: "#111", backColor: "#bbb", dir: (command === "start" || command === "prev" ? "left" : "right") };
+        let bo = { backColor: "rgba(20, 20, 20, 0.3)", borderColor: "rgba(0, 0, 0, 1)" };
+        let to = { borderColor: "#111", backColor: "#86C6F4", dir: (command === "start" || command === "prev" ? "left" : "right") };
         let shift = (to.dir === "left" ? -(r.w + 4) : (r.w + 4));
 
         this.targetDrawing.drawBox(box, bo);
@@ -120,11 +120,13 @@ export default class Animator {
     }
 
     drawWorld() {
-        if (this.error || this.plan.errors.length > 0) {
+        if (this.error || this.plan?.errors?.length > 0) {
             this.targetDrawing.drawText(settings.labels.error, this.error ?? this.plan.errors.join("\n"), settings.labels.error);
             if (this.onDraw) { this.onDraw(); }
             return;
         }
+
+        if (!this.plan) { return; }
 
         let world = {};
         for (let i = 0; i < this.drawUntil; ++i) {
