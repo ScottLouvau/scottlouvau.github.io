@@ -34,7 +34,7 @@ export default class Drawing {
         this.ctx.textAlign = 'left';
         this.ctx.textBaseline = 'alphabetic';
         this.ctx.font = `${options.fontWeight ?? ''} ${options.fontSizePx ?? "24"}px ${options.fontFace ?? 'Arial'}`;
-        
+
         // Compute maximum width and total height
         //  Ignore actualBoundingBoxLeft to measure width including non-drawing characters (space)
         //  Ignore actualBoundingBoxDescent to position lines evenly, ignoring letters below the main alphabetic line ('y')
@@ -76,13 +76,15 @@ export default class Drawing {
     }
 
     drawBox(box, options) {
+        const width = options.width ?? 2;
+
         // Border
         if (options.borderColor) {
             this.ctx.fillStyle = options.borderColor;
-            this.ctx.fillRect(box.x - 2, box.y - 2, 2, box.h + 4);
-            this.ctx.fillRect(box.x + box.w, box.y - 2, 2, box.h + 4);
-            this.ctx.fillRect(box.x - 2, box.y - 2, box.w + 4, 2);
-            this.ctx.fillRect(box.x - 2, box.y + box.h, box.w + 4, 2);
+            this.ctx.fillRect(box.x - width, box.y - width, width, box.h + (2 * width));
+            this.ctx.fillRect(box.x + box.w, box.y - width, width, box.h + (2 * width));
+            this.ctx.fillRect(box.x - width, box.y - width, box.w + (2 * width), width);
+            this.ctx.fillRect(box.x - width, box.y + box.h, box.w + (2 * width), width);
         }
 
         // Background
@@ -114,7 +116,7 @@ export default class Drawing {
 
         if (options.borderColor) {
             this.ctx.strokeStyle = options.borderColor;
-            this.ctx.strokeWidth = 2;
+            this.ctx.lineWidth = options.width ?? 2;
             this.ctx.stroke();
         }
     }

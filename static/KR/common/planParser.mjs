@@ -221,7 +221,7 @@ export default class PlanParser {
     }
 
     require(ctx, value, error) {
-        if (ctx.text[ctx.i++].toUpperCase() !== value.toUpperCase()) { throw error; }
+        if (ctx.i >= ctx.text.length || ctx.text[ctx.i++].toUpperCase() !== value.toUpperCase()) { throw error; }
     }
 
     number(ctx) {
