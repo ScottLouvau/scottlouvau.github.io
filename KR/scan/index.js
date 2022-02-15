@@ -6,60 +6,76 @@ import settings from '../data/settings.mjs';
 
 const lastFrameSecondsBeforeEnd = 3;
 
+// Video element and state of scanning
 let video = null;
 let elapsedSeconds = null;
 let duration = null;
+let manualSeeking = false;
+let scanStartTime = null;
 
+// Scanning feedback and outputs
 let progress = null;
 let link = null;
 let planOut = null;
 let diagnostic = null;
 let drawing = null;
 
+// Canvas capturing video frames and code to scan frames and parse plans
 let parser = null;
 let scanner = null;
 let can = null;
 let ctx = null;
 
 async function scanVideo() {
+    document.getElementById("help-container").style.display = "none";
+    document.getElementById("container").style.display = "";
+
+    scanStartTime = performance.now();
     planOut.value = "";
     progress.style.width = 0;
 
-    // Seek to start of video to start scanning frames
-    // (If at zero, seek a bit after to ensure we wait for video to really be loaded)
+    scanner.reset();
     elapsedSeconds = 0;
     duration = video.duration;
 
+    // Seek to start of video to start scanning frames
+    // (If at zero, seek a bit after to ensure we wait for video to really be loaded)
     video.currentTime = (video.currentTime === 0 ? 0.1 : 0);
 }
 
 
 function onSeeked() {
-    if (duration === null) { return; }
+    if (elapsedSeconds === null && manualSeeking === false) { return; }
+    const thisFrameElapsed = video.currentTime;
 
     // Grab a frame
-    ctx.drawImage(video, 0, 0);
+    ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 1920, 1080);
+    progress.style.width = `${(100 * thisFrameElapsed / duration).toFixed(2)}%`;
 
-    if (elapsedSeconds === 0) {
-        scanner.init(ctx);
-        planOut.value = scanner.mapName;
-    }
-
-    // Scan it and report diagnostics
-    const state = scanner.nextFrame(ctx);
-    drawDiagnostics(state);
-    progress.style.width = `${(100 * elapsedSeconds / duration).toFixed(2)}%`;
-
-    // Continue seeking if video isn't over
-    if (elapsedSeconds < duration - lastFrameSecondsBeforeEnd) {
+    // Start seeking to next frame immediately (if there's more)
+    if (elapsedSeconds < duration - lastFrameSecondsBeforeEnd && manualSeeking === false) {
         elapsedSeconds = Math.min(elapsedSeconds + 20, duration - lastFrameSecondsBeforeEnd);
         video.currentTime = elapsedSeconds;
-    } else {
-        progress.style.width = "100%";
-        elapsedSeconds = null;
-        duration = null;
     }
 
+    // Scan the frame and report diagnostics
+    const state = (manualSeeking ? scanner.scanImage(ctx) : scanner.nextFrame(ctx));
+    drawDiagnostics(state);
+
+    // Scan and diagnostics only for manual seeks
+    if (manualSeeking) {
+        manualSeeking = false;
+        return;
+    }
+
+    // Report when scanning done
+    if (thisFrameElapsed >= duration - lastFrameSecondsBeforeEnd) {
+        elapsedSeconds = null;
+        progress.style.width = "100%";
+        console.log(`Scanned ${scanner.toTimeString(duration)} video in ${scanner.toTimeString((performance.now() - scanStartTime) / 1000)}.`);
+    }
+
+    // Update long and short plan with each frame
     const planText = scanner.plan.join('\r\n');
     planOut.value = planText;
     planOut.scrollTop = planOut.scrollHeight - planOut.clientHeight;
@@ -146,6 +162,17 @@ function onPlanChange() {
     }
 }
 
+function onProgressClick(e) {
+    // Don't allow seeking until video done
+    if (elapsedSeconds !== null) { return; }
+
+    // Set manualSeeking and seek to a particular moment to show diagnostics
+    const container = document.getElementById("progress-container");
+    manualSeeking = true;
+    const percentage = ((e.clientX - container.clientLeft) / container.clientWidth);
+    video.currentTime = (percentage * duration);
+}
+
 async function run() {
     const model = await tf.loadGraphModel('../data/models/v2-u8-graph/model.json');
     scanner = new Scanner(tf, model);
@@ -175,7 +202,12 @@ async function run() {
     document.body.addEventListener('drop', onDrop);
 
     // On manual plan edits, update plan link and errors
-    document.getElementById('planOut').addEventListener('keyup', onPlanChange);
+    planOut.addEventListener('keyup', onPlanChange);
+
+    // On progress bar click, analyze and show diagnostics for frame
+    document.getElementById("progress-container").addEventListener('click', onProgressClick);
+
+    document.getElementById("demo").addEventListener('click', () => { video.src = '../data/L10h-tiny.mp4'; });
 }
 
 document.addEventListener('DOMContentLoaded', run);

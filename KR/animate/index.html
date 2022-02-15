@@ -9,24 +9,25 @@
   <title>Animator | Kingdom Rush | Relentless Optimizer</title>
 
   <script type="module">
-    async function imageFormat() {
-      let format = null;
+    let index = null;
+    let fmt = null;
 
+    async function imageFormat() {
       const img = new Image();
       const loadPromise = new Promise((resolve, reject) => {
         img.onload = () => {
-          format = "webp";
+          fmt = "webp";
           resolve();
         };
         img.onerror = () => {
-          format = "png";
+          fmt = "png";
           reject();
         }
       });
 
       img.src = "data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAIAAAAAgVZQOCAiAAAAcAEAnQEqAQABAA/A/iWgAnQBQAAA/m8dWbtazgN3iAAAAA==";
       await loadPromise;
-      return format;
+      return fmt;
     }
 
     function cacheImage(url) {
@@ -34,27 +35,27 @@
       img.src = url;
     }
 
-    async function loadText(url) {
-      const resp = await fetch(url);
-      return (resp.ok ? await resp.text() : null);
+    function cacheMap(plan) {
+      if (!plan) { return; }
+      const map = /^L\d+/.exec(plan);
+      if (map) { cacheImage(`../img/${fmt}/maps/${map}.${fmt}`); }
     }
 
     async function preload() {
       const params = new URLSearchParams(window.location.search);
-      const plan = params.get("p") ?? "L22:C1t5D3pC1y3F3s3D3p2F3s5E5tB4tH3tD3p3E5t2G1pH3t2B4t2E5t5F3xH3t5y3G1p2E5y2A2s5xE5y3B4t5y3D3p4C1x2G1p3C5r5xE8s5G1p4E8xC5x2y3F8p2";
-      const map = /L\d+/.exec(plan)[0];
-      const isFullPlan = (plan.indexOf(':') > 0);
+      const plan = params.get("p");
 
-      document.plan = (isFullPlan ? plan : loadText(`../data/plans/${plan}.txt`));
-      document.imageFormat = imageFormat();
+      // Determine safe image format
+      document.imageFormat = await imageFormat();
 
-      const fmt = await document.imageFormat;
+      // Preload sprites
       cacheImage(`../img/${fmt}/sprites/towers.${fmt}`);
       cacheImage(`../img/${fmt}/sprites/upgrades.${fmt}`);
-      cacheImage(`../img/${fmt}/maps/${map}.${fmt}`);
+      cacheMap(plan);
 
-      const index = await import("./index.js");
-      index.run(fmt, await document.plan, plan);
+      // Load remaining code and animate
+      index = await (params.get("debug") === "true" ? import("./index.js") : import("./bundle.js"));
+      index.run(plan);
     }
 
     preload();
@@ -64,7 +65,20 @@
 </head>
 
 <body>
-  <canvas id="main" width="1920" height="1080"></canvas>
+  <div id="help-container">
+    <div id="help">
+      <div class="heading">Kingdom Rush Animator</div>
+      <div>- Walkthroughs with <b>just the build steps</b></div>
+      <div>- Watch like a video or use arrow keys to go step-by-step</div>
+      <div>- The last changed tower is highlighted</div>
+      <div>- Ability upgrades are always visible</div>
+      <div>- All steps shown on the left side</div>
+      <div>- <a href="../scan/">Let AI transcribe your game for you</a>!</div>
+      <div>&nbsp;</div>
+      <div>See a <span id="demo">demo</span> or <a href="...">full help</a>.</div>
+    </div>
+  </div>
+  <canvas id="main" width="1920" height="1080" style="display: none"></canvas>
 </body>
 
 </html>

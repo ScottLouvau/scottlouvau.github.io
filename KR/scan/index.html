@@ -5,16 +5,37 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Plan Scanner | Kingdom Rush | Relentless Optimizer</title>
+  <title>AI Scanner | Kingdom Rush | Relentless Optimizer</title>
 
   <script src="index.js" type="module"></script>
   <link href="index.css" rel="preload stylesheet" as="style" />
 </head>
 
 <body>
-  <div class="container">
+  <div id="help-container">
+    <div id="help">
+      <div class="heading">Kingdom Rush AI Scanner</div>
+      <div>- Play Kingdom Rush at 1920x1080</div>
+      <div>- Record video with Xbox Game Bar (Win+Alt+R)</div>
+      <div>- Drag-and-drop video here</div>
+      <div>- AI transcribes your tower build plan</div>
+      <div>- Hand edit script if desired</div>
+      <div>- Watch animation or read script to follow your plan</div>
+      <div>- Click progress bar to see what AI saw in that frame</div>
+      <div>&nbsp;</div>
+      <div>See a <span id="demo">scan demo</span>, <a target="_blank" href="../animate/?p=L5:G7t3E9p2E7r4xG6pE7y3G6p2E7x2">animation demo</a> or <a target="_blank" href="...">full help</a>.</div>
+      <div class="subtext">
+        AI doesn't yet find ability upgrades, just towers built. <br/>
+        None of your data is uploaded - AI in the browser!
+      </div>
+    </div>
+  </div>
+
+  <div id="container" style="display: none">
     <div class="left">
-      <div id="progress"></div>
+      <div id="progress-container">
+        <div id="progress"></div>
+      </div>
       <canvas id="diagnostic" width="1920" height="1080"></canvas>
     </div>
     <div class="right">

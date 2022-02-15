@@ -22,10 +22,52 @@ body
     background-color: #222;
 }
 
-.container {
+a {
+    color: #eee;
+}
+
+#help-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#help {
+    padding: 6px 12px;
+    border: solid 1px #eee;
+    width: fit-content;
+}
+
+#help div {
+    padding-left: 8px;
+}
+
+#help .heading {
+    font-size: 125%;
+    padding-bottom: 4px;
+    padding-left: 0;
+}
+
+#help .subtext {
+    font-size: 80%;
+    padding-top: 12px;
+    padding-left: 0;
+}
+
+#demo {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#container {
     display: grid;
     column-gap: 4px;
     grid-template-columns: 1fr 10em;
+}
+
+#progress-container {
+    cursor: pointer;
 }
 
 #progress {
@@ -55,8 +97,4 @@ textarea {
     height: 1.1em;
     margin-bottom: 6px;
     margin-left: 2px;
-}
-
-a {
-    color: #eee;
 }
