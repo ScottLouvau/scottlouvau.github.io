@@ -4,7 +4,7 @@ title: "Kingdom Rush Help"
 
 ## Kingdom Rush Syntax
 
-Kingdom Rush syntax is used to write a plan for how to play a given level, the same way that Chess Algebra is used to document chess games. The syntax has a **long form**, intended for human use, and a **short form** for computers (in URLs or stored in JSON, for example).
+Kingdom Rush syntax is used to write a plan for how to play a given level, the same way that Chess Algebra is used to document chess games. The syntax has a **long form**, intended for human use, and a [**short form**](#short-syntax) for computers (in URLs or stored in JSON, for example).
 
 In the long form syntax, a **plan** consists of a **level** followed by a series of **steps**, each on a separate line. Each **step** is a **tower position** followed by an **action**.
 
@@ -43,7 +43,7 @@ Here's L5 with the positions labelled:
 
 So, "G7 Arti3" means to build a level three artillery tower at G7, which is near the top right part of the map. 
 
-Why "Arti3"? I've made every **action** in the syntax four letters long, because that was short but enough that I could read them clearly. I don't remember the names of all of the towers, so the lower level towers are just a category ("Arti" for artillery) followed by the upgrade level (three). The top-tier towers are described by the first four letters of their names, like "Tesl" for the Tesla tower. See [tower and upgrade names](#syntax-towers-and-abilities).
+Why "Arti3"? I've made every **action** in the syntax four letters long, because that was short but enough that I could read them clearly. I don't remember the names of all of the towers, so the lower level towers are just a category ("Arti" for artillery) followed by the upgrade level (three). The top-tier towers are described by the first four letters of their names, like "Tesl" for the Tesla tower. See [tower and upgrade names](#syntax-towers-and-abilities) for the valid actions.
 
 Why did I jump straight to a level three Artillery? I could say to build a level one artillery first, but it's shorter just to say the final level to upgrade it to before doing an action somewhere else.
 
@@ -110,7 +110,7 @@ To see the named tower positions for every level, see [Maps](https://relentlesso
 
 ## Short Syntax
 
-The short syntax is a very compact form of the normal syntax, with some optimizations to further reduce length. You don't need to write the short syntax - the animator will convert long syntax for you. If you want the details, however, keep reading.
+The short syntax is a very compact form of the [normal syntax](#kingdom-rush-syntax), with some optimizations to further reduce length. You don't need to write the short syntax - the animator will convert long syntax for you. If you want the details, however, keep reading.
 
 Here's the example from above translated to the short syntax:
 
@@ -118,11 +118,11 @@ Here's the example from above translated to the short syntax:
 L5:G7t3 E9p2 E7r4 x G6p E7y3 G6p2 E7x2
 ```
 
-Just like the long syntax, it's a level and then a sequence of steps. In short form, the level has a colon ':' right after it.
+Just like the long syntax, it's a **level** and then a sequence of **steps**. In short form, the level has a colon ':' right after it.
 
-The steps are, again, a position name and an action. The position names don't need shortening, so you see the same "G7" as in the long form, "G7 Arti3".
+The steps are, again, a **position name** and an **action**. The position names don't need shortening, so you see the same "G7" as in the long form, "G7 Arti3".
 
-In short form, the actions are also reduced to one letter and one number. The letters are "P" for Barracks ("Paladins"), "R" for Archers ("Rangers"), "S" for Mages ("Sorcerers"), and "T" for Artillery ("Tesla"). The numbers are the levels, like before, but levels "4" and "5" are the two top level towers (the one on the left and right, respectively, in the Steam release). 
+In short form, the actions are also reduced to one letter and one number. The letters are "p" for Barracks ("Paladins"), "r" for Archers ("Rangers"), "s" for Mages ("Sorcerers"), and "t" for Artillery ("Tesla"). The numbers are the levels, like before, but levels "4" and "5" are the two top level towers (the one on the left and right, respectively, in the Steam release). 
 
 So, "t3" is "Arti3" (Artillery level 3), and "r4" is "Rang" (Ranger's Hideout). 
 
@@ -142,35 +142,15 @@ You can see the animation for a plan by passing the short form as "p" in the que
 
 [https://relentlessoptimizer.com/KR/animate/?p=L5:G7t3E9p2E7r4xG6pE7y3G6p2E7x2](https://relentlessoptimizer.com/KR/animate/?p=L5:G7t3E9p2E7r4xG6pE7y3G6p2E7x2)
 
-## Converting to Short Syntax
+### Converting to Short Syntax
 
-Drag-and-drop a file with a [long syntax plan](#kingdom-rush-syntax) onto the [Kingdom Rush Animator](https://relentlessoptimizer.com/KR/animate). It will translate it to the [short form](#short-syntax) and add it to the URL for you.
+Drag-and-drop a file with a [long syntax](#kingdom-rush-syntax) plan onto the [Kingdom Rush Animator](https://relentlessoptimizer.com/KR/animate). It will translate it to the [short form](#short-syntax) and add it to the URL for you.
 
 ## Error  Checking Plans
 
-If you want to write plans manually with error checking, go to the [Kingdom Rush AI Scanner](https://relentlessoptimizer.com/KR/scan/), click "write yourself", and type the plan into the text area on the right side. The plan will be parsed and validated as-you-type, and errors will be shown at the bottom right.
+If you want to write plans manually with error checking, go to the [Kingdom Rush AI Scanner](https://relentlessoptimizer.com/KR/scan/), click "write yourself", and type the plan into the text area on the right side. The plan will be parsed and validated as-you-type, and errors will be shown at the bottom right. The animation link on the top right will stay up-to-date with what you've typed.
 
 If you try to animate a plan with errors, the animator will tell you the problems in red. It's easier to understand and fix them in the long form, however, so working in the scanner is a lot more pleasant.
-
-## Recording Playthroughs and AI Plan Transcription
-
-You can hand-write the [syntax](#kingdom-rush-syntax), and it's easy to edit an editing plan, but transcribing the plan from a play video is annoying. 
-
-Instead, I wrote an [AI Scanner](https://relentlessoptimizer.com/KR/scan/) which transcribes videos for you. It currently only finds the towers themselves (not ability upgrades), so if you want the ability upgrades, you have to write those in yourself. (Working on it..)
-
-The AI Scanner works internally with 1920x1080 frames, so, for best results, play at 1920x1080 resolution. On Windows, you can install the "Xbox Game Bar" app from the Microsoft Store. Once it's installed and running, you can use "Win+Alt+R" to record gameplay. 
-
-Drag and drop the video to the [AI Scanner](https://relentlessoptimizer.com/KR/scan/) and it will transcribe it.
-
-You can hand-edit the plan on the right-side pane if needed, either to fix transcription mistakes or refine the strategy for next play. The link at the top right is a permalink to the animator for that strategy. 
-
-If you want to see what the AI Scanner understood about a given frame, you can click on the progress bar at the top to seek to that part of the playthrough, AI analyze the frame, and see what the scanner saw.
-
-The AI shows a box around each tower position where something was detected. It shows what it detected on the top left, and how confident it was (as a percentage) on the bottom left.
-
-![AI Scanner](img/AI-scanner.webp)
-
-Here you can see it's 100% confident of most of the towers, but unsure about the Arch2 under the cursor (likely because the cursor and upgrade button are partially covering it). The AI will only transcribe a step if it is at least 95% confident there's a different tower there.
 
 ## Animator
 
@@ -185,7 +165,51 @@ YouTube Walkthroughs are annoying because:
 
 The Animator is designed to fix all of these problems. It shows just the build steps, so there's nothing to skip past. It highlights the most recent step with a gold outline so that you can quickly tell what just changed. Ability Upgrades are drawn under each tower at all times, so you can tell what abilities have been unlocked. Finally, the script is shown on the bottom left, so you can see what step the video is showing, what will happen next, and what happened in previous steps.
 
-You can watch the plan like a video or step through it deliberately as you play. Press spacebar to pause the animation, then use the left and right arrows to go through steps one-by-one. Up and Down quickly go to the start and end. All of these actions can also be triggered by tapping or clicking on the image. Tap or click once to see the controls and again to step or seek around.
+### Loading a Plan
+
+Watch a plan in the animator by dragging and dropping a text file with the long form syntax, or by adding the short syntax to the URL as the "p" parameter. If you drag and drop a long syntax file, the animator will add the short form equivalent to the URL for you to make it easy to bookmark or share.
+
+If the plan has errors, they will be shown in red and the plan won't be animated.
+
+### Controlling Playback
+
+Plans will play like a video by default, but you can step through them manually to follow along instead.
+
+Press spacebar to pause or resume playback. Press left and right arrow to show the previous or next step. Press up or down to skip to the beginning or end.
+
+You can also tap or click on the image itself to move around. Tap once to see the controls and again to navigate. 
+
+## AI Scanner Video Transcription
+
+You can hand-write the [syntax](#kingdom-rush-syntax), and it's easy to edit an editing plan, but transcribing the plan from a play video is annoying. 
+
+Instead, I wrote an [AI Scanner](https://relentlessoptimizer.com/KR/scan/) which transcribes videos for you. It currently only finds the towers themselves (not ability upgrades), so if you want the ability upgrades, you have to write those in yourself. (Working on it..)
+
+The AI Scanner works internally with 1920x1080 frames, so, for best results, play at 1920x1080 resolution. On Windows, you can install the "Xbox Game Bar" app from the Microsoft Store. Once it's installed and running, you can use "Win+Alt+R" to record gameplay. 
+
+### Loading a Video
+
+Drag and drop the video to the [AI Scanner](https://relentlessoptimizer.com/KR/scan/) and it will transcribe it. The video is not uploaded to any server. Video frames are extracted and analyzed directly in the browser.
+
+Once the video is analyzed, you'll see a transcription of it on the right side and a link to animate it on the top right.
+
+### Diagnostics
+
+While the video is being analyzed, you'll see the frames the AI is analyzing and diagnostics about what the AI recognizes.
+
+The AI shows a box around each tower position where something was detected. It shows what it detected on the top left, and how confident it was (as a percentage) on the bottom left.
+
+![AI Scanner](img/AI-scanner.webp)
+
+Here you can see it's 100% confident of most of the towers, but unsure about the Arch2 under the cursor (likely because the cursor and upgrade button are partially covering it). The AI will only transcribe a step if it is at least 95% confident there's a different tower there.
+
+After the video is analyzed, you can go back and see what the AI Scanner understood about a given frame by clicking on the progress bar at the top. The AI will seek to that part of the playthrough, analyze the frame, and show the diagnostics for it.
+
+### Editing
+
+You can hand-edit the plan on the right-side pane if needed, either to fix transcription mistakes or refine the strategy for next play.
+
+The plan will be parsed as-you-type. Any errors will be shown on the bottom right, and the animation link at the top right will be kept up-to-date as you type.
 
 ## My Workflow
 
