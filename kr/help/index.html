@@ -1,0 +1,362 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Kingdom Rush Help | Relentless Optimizer</title>
+<meta name=keywords content>
+<meta name=description content="Kingdom Rush Syntax Kingdom Rush syntax is used to write a plan for how to play a given level, the same way that Chess Algebra is used to document chess games.">
+<meta name=author content="Scott Louvau">
+<link rel=canonical href=https://relentlessoptimizer.com/kr/help/>
+<link href=/assets/css/stylesheet.min.5764b298d94915b8d61a523b7cb9c4d5227a81366d61f605b1555fc84df7797f.css integrity="sha256-V2SymNlJFbjWGlI7fLnE1SJ6gTZtYfYFsVVfyE33eX8=" rel="preload stylesheet" as=style>
+<link rel=icon href=https://relentlessoptimizer.com/favicon.svg type=image/svg+xml>
+<link rel=icon href=https://relentlessoptimizer.com/favicon-128x128.png sizes=128x128>
+<link rel=icon href=https://relentlessoptimizer.com/favicon-32x32.png sizes=32x32>
+<link rel=icon href=https://relentlessoptimizer.com/favicon.ico sizes=16x16>
+<meta name=generator content="Hugo 0.92.2">
+<meta property="og:title" content="Kingdom Rush Help">
+<meta property="og:description" content="Kingdom Rush Syntax Kingdom Rush syntax is used to write a plan for how to play a given level, the same way that Chess Algebra is used to document chess games.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://relentlessoptimizer.com/kr/help/"><meta property="article:section" content="KR">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Kingdom Rush Help">
+<meta name=twitter:description content="Kingdom Rush Syntax Kingdom Rush syntax is used to write a plan for how to play a given level, the same way that Chess Algebra is used to document chess games.">
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class=header>
+<div class=logo>
+<a href=/ accesskey=h title="Relentless Optimizer (Alt + H)">Relentless Optimizer</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon"><use xlink:href="/assets/icons.svg#moon"/></svg><svg id="sun"><use xlink:href="/assets/icons.svg#sun"/></svg>
+</button>
+</span>
+</div>
+<nav class=site-nav>
+<input type=checkbox id=nav-trigger class=nav-trigger>
+<label for=nav-trigger>
+<span class=menu-icon><svg><use xlink:href="/assets/icons.svg#menu"/></svg>
+</span>
+</label>
+<div class=trigger>
+<a class=page-link href=/about title=About>About</a>
+<a class=page-link href=/code/ title=Code>Code</a>
+<a class=page-link href=/finance/ title=Finance>Finance</a>
+<a class=page-link href=/gaming/ title=Gaming>Gaming</a>
+<a class=page-link href=/life/ title=Life>Life</a>
+<a class=page-link href=/retire-early title="Retire Early">Retire Early</a></div>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<img alt src="https://asset.relentlessoptimizer.com/head.png?path=/kr/help/" width=1 height=1>
+<div class=breadcrumbs>
+<a href=/>Home</a>&nbsp;»&nbsp;<a href=/kr/>KR</a>
+</div>
+<h1 class=post-title>
+Kingdom Rush Help
+</h1>
+<div class=post-meta>
+13 min&nbsp;·&nbsp;Scott Louvau
+</div>
+</header>
+<div class=post-content>
+<h2 id=kingdom-rush-syntax>Kingdom Rush Syntax<a hidden class=anchor aria-hidden=true href=#kingdom-rush-syntax>#</a></h2>
+<p>Kingdom Rush syntax is used to write a plan for how to play a given level, the same way that Chess Algebra is used to document chess games. The syntax has a <strong>long form</strong>, intended for human use, and a <a href=#short-syntax><strong>short form</strong></a> for computers (in URLs or stored in JSON, for example).</p>
+<p>In the long form syntax, a <strong>plan</strong> consists of a <strong>level</strong> followed by a series of <strong>steps</strong>, each on a separate line. Each <strong>step</strong> is a <strong>tower position</strong> followed by an <strong>action</strong>.</p>
+<p>Let&rsquo;s look at an example:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>L5
+
+G7 Arti3
+E9 Barr2
+
+# Upgrade provided Arch3 to a Ranger&#39;s Hideout
+E7 Rang
+E7 Pois1
+
+# Redirect to blocking and killing the spiders
+G6 Barr
+E7 Wrat3
+G6 Barr2
+
+# Poison for stronger bandits
+E7 Pois2
+</code></pre></div><p>Let&rsquo;s break it down.</p>
+<p>The first line, L5, indicates that this plan is for level five, Silveroak Forest. See <a href=#syntax-levels-maps>map names and numbers</a>. They are numbered in the same order as they appear in the game and are shown in the Ironhide strategy guide.</p>
+<p>The next line is empty - empty lines are allowed anywhere. I put an empty line after the &ldquo;initial build&rdquo; (everything before the first Wave) and when there is a significant time gap between steps.</p>
+<p>The third line, &ldquo;G7 Arti3&rdquo;, means to build a level three artillery tower at position G7. The tower positions don&rsquo;t have any names by default, so I came up with an algorithm to assign &ldquo;chess-square-like&rdquo; names to each of them. They are always one letter (A-H) followed by one number (1-9). Positions use later letters moving from left to right, and higher numbers going from the bottom to the top of the map. See <a href=https://relentlessoptimizer.com/KR/maps>maps</a> for all of the labelled maps.</p>
+<p>Here&rsquo;s L5 with the positions labelled:</p>
+<p><img loading=lazy src=img/L5.webp alt=L5>
+</p>
+<p>So, &ldquo;G7 Arti3&rdquo; means to build a level three artillery tower at G7, which is near the top right part of the map.</p>
+<p>Why &ldquo;Arti3&rdquo;? I&rsquo;ve made every <strong>action</strong> in the syntax four letters long, because that was short but enough that I could read them clearly. I don&rsquo;t remember the names of all of the towers, so the lower level towers are just a category (&ldquo;Arti&rdquo; for artillery) followed by the upgrade level (three). The top-tier towers are described by the first four letters of their names, like &ldquo;Tesl&rdquo; for the Tesla tower. See <a href=#syntax-towers-and-abilities>tower and upgrade names</a> for the valid actions.</p>
+<p>Why did I jump straight to a level three Artillery? I could say to build a level one artillery first, but it&rsquo;s shorter just to say the final level to upgrade it to before doing an action somewhere else.</p>
+<p>The fourth line says we need a level two barracks at E9, blocking the exit. The syntax doesn&rsquo;t tell you where to put the Rally Point for the soldiers, but I haven&rsquo;t found a case where that isn&rsquo;t obvious.</p>
+<p>These two towers are all we can afford before sending out enemies, so I&rsquo;ve left an empty line after this.</p>
+<p>Next we have a comment &ldquo;# Upgrade provided Arch3 to a Ranger&rsquo;s Hideout&rdquo;. You may put comments on any line after the first to help explain your strategy (to your future self or others).</p>
+<p>After that, &ldquo;E7 Rang&rdquo; says to upgrade the provided archer tower to a Ranger&rsquo;s Hideout.</p>
+<p>&ldquo;E7 Pois1&rdquo; says to buy the level one &ldquo;Poison Arrows&rdquo; ability for the tower. This helps take out the more armored bandits coming on the left side. The ability upgrades, like the top-level towers, are all identified by the first four letters of the upgrade name. See below for the full list. Abilities are followed by a number to indicate which level of the ability to unlock.</p>
+<p>The plan then says to build another Barracks at G6, fully upgrade Wrath of the Forest on the Ranger&rsquo;s Hideout, upgrade the Barracks to level two, and then buy Poison Arrows level 2.</p>
+<p>At the end of the level, we have something like this:</p>
+<p><img loading=lazy src=img/L5-done.webp alt=L5-done>
+</p>
+<h2 id=syntax-towers-and-abilities>Syntax: Towers and Abilities<a hidden class=anchor aria-hidden=true href=#syntax-towers-and-abilities>#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Barracks</th>
+<th>Archer</th>
+<th>Mage</th>
+<th>Artillery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Barr</td>
+<td>Arch</td>
+<td>Mage</td>
+<td>Arti</td>
+</tr>
+<tr>
+<td>Barr2</td>
+<td>Arch2</td>
+<td>Mage2</td>
+<td>Arti2</td>
+</tr>
+<tr>
+<td>Barr3</td>
+<td>Arch3</td>
+<td>Mage3</td>
+<td>Arti3</td>
+</tr>
+<tr>
+<td><strong>Holy</strong> Order<br> <strong>Heal</strong>ing Light<br> <strong>Shie</strong>ld of Valor [1]<br> <strong>Holy</strong> Strike</td>
+<td><strong>Rang</strong>er&rsquo;s Hideout<br> <strong>Pois</strong>on Arrows<br> <strong>Wrat</strong>h of the Forest</td>
+<td><strong>Arca</strong>ne Wizard<br> <strong>Deat</strong>h Ray<br> <strong>Tele</strong>port</td>
+<td><strong>BigB</strong>ertha<br> <strong>Drag</strong>onbreath Launcher<br> <strong>Clus</strong>ter Launcher</td>
+</tr>
+<tr>
+<td><strong>Barb</strong>arian Mead Hall<br> <strong>More</strong> Axes<br> <strong>Whir</strong>lwind Attack<br> <strong>Thro</strong>wing Axes</td>
+<td><strong>Musk</strong>eteer Garrison<br> <strong>Snip</strong>er Shot<br> <strong>Shra</strong>pnel Shot</td>
+<td><strong>Sorc</strong>erer Mage<br> <strong>Poly</strong>morph<br> <strong>Summ</strong>on Elemental</td>
+<td><strong>Tesl</strong>a x109<br> <strong>Supe</strong>rcharged Bolt [2]<br> <strong>Over</strong>charge</td>
+</tr>
+</tbody>
+</table>
+<p>The [1] and [2] above denote abilities that only have one or two levels to unlock, rather than three.</p>
+<h2 id=syntax-levels-maps>Syntax: Levels (Maps)<a hidden class=anchor aria-hidden=true href=#syntax-levels-maps>#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Southport</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>The Outskirts</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Pagras</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Twin River Pass</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Silveroak Forest</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>The Citadel</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Coldstep Mines</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Icewind Pass</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Stormcloud Temple</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>The Wastes</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>Forsaken Valley</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>The Dark Tower</td>
+</tr>
+<tr>
+<td>L13</td>
+<td>Sarelgaz&rsquo;s Lair</td>
+</tr>
+<tr>
+<td>L14</td>
+<td>Ruins of Acaroth</td>
+</tr>
+<tr>
+<td>L15</td>
+<td>Rotten Forest</td>
+</tr>
+<tr>
+<td>L16</td>
+<td>Hushwood</td>
+</tr>
+<tr>
+<td>L17</td>
+<td>Bandit&rsquo;s Lair</td>
+</tr>
+<tr>
+<td>L18</td>
+<td>Glacial Heights</td>
+</tr>
+<tr>
+<td>L19</td>
+<td>Ha&rsquo;Kraj Plateau</td>
+</tr>
+<tr>
+<td>L20</td>
+<td>Pit of Fire</td>
+</tr>
+<tr>
+<td>L21</td>
+<td>Pandaemonium</td>
+</tr>
+<tr>
+<td>L22</td>
+<td>Fungal Forest</td>
+</tr>
+<tr>
+<td>L23</td>
+<td>Rotwick</td>
+</tr>
+<tr>
+<td>L24</td>
+<td>Ancient Necropolis</td>
+</tr>
+<tr>
+<td>L25</td>
+<td>Nightfang Swale</td>
+</tr>
+<tr>
+<td>L26</td>
+<td>Castle Blackburn</td>
+</tr>
+</tbody>
+</table>
+<p>To see the named tower positions for every level, see <a href=https://relentlessoptimizer.com/KR/maps>Maps</a>. You can click on the map tile to see a high quality version of the labelled map.</p>
+<h2 id=short-syntax>Short Syntax<a hidden class=anchor aria-hidden=true href=#short-syntax>#</a></h2>
+<p>The short syntax is a very compact form of the <a href=#kingdom-rush-syntax>normal syntax</a>, with some optimizations to further reduce length. You don&rsquo;t need to write the short syntax - the animator will convert long syntax for you. If you want the details, however, keep reading.</p>
+<p>Here&rsquo;s the example from above translated to the short syntax:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>L5:G7t3 E9p2 E7r4 x G6p E7y3 G6p2 E7x2
+</code></pre></div><p>Just like the long syntax, it&rsquo;s a <strong>level</strong> and then a sequence of <strong>steps</strong>. In short form, the level has a colon &lsquo;:&rsquo; right after it.</p>
+<p>The steps are, again, a <strong>position name</strong> and an <strong>action</strong>. The position names don&rsquo;t need shortening, so you see the same &ldquo;G7&rdquo; as in the long form, &ldquo;G7 Arti3&rdquo;.</p>
+<p>In short form, the actions are also reduced to one letter and one number. The letters are &ldquo;p&rdquo; for Barracks (&ldquo;Paladins&rdquo;), &ldquo;r&rdquo; for Archers (&ldquo;Rangers&rdquo;), &ldquo;s&rdquo; for Mages (&ldquo;Sorcerers&rdquo;), and &ldquo;t&rdquo; for Artillery (&ldquo;Tesla&rdquo;). The numbers are the levels, like before, but levels &ldquo;4&rdquo; and &ldquo;5&rdquo; are the two top level towers (the one on the left and right, respectively, in the Steam release).</p>
+<p>So, &ldquo;t3&rdquo; is &ldquo;Arti3&rdquo; (Artillery level 3), and &ldquo;r4&rdquo; is &ldquo;Rang&rdquo; (Ranger&rsquo;s Hideout).</p>
+<p>All abilities are shortened to &ldquo;x&rdquo;, &ldquo;y&rdquo;, or &ldquo;z&rdquo;, matching the left-to-right order in the Steam game UI. So, &ldquo;x&rdquo; means the Poison Arrows when applied to a Ranger tower.</p>
+<p>Why is the &ldquo;x&rdquo; sitting by itself as the fourth step? Two things. First, if a step applies to the same tower position as the previous step, you can leave it out. Since we just built the Ranger&rsquo;s Hideout on E7, the step to add Poison Arrows can omit it. Second, if the level of a tower or upgrade is one, it can be omitted.</p>
+<p>You can also omit the level of a tower or upgrade if it&rsquo;s one level higher than the last level. This means that the upgrade to Poison Arrows level two at the end could also just be &ldquo;x&rdquo;.</p>
+<p>I&rsquo;m showing the short syntax here with spaces between the steps for clarity, but they don&rsquo;t need to be there, so the shortest version of the short form is:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>L5:G7t3E9p2E7r4xG6pE7y3G6p2E7x2
+</code></pre></div><p>You can see the animation for a plan by passing the short form as &ldquo;p&rdquo; in the query string to the Kingdom Rush Animator, like this:</p>
+<p><a href="https://relentlessoptimizer.com/KR/animate/?p=L5:G7t3E9p2E7r4xG6pE7y3G6p2E7x2">https://relentlessoptimizer.com/KR/animate/?p=L5:G7t3E9p2E7r4xG6pE7y3G6p2E7x2</a></p>
+<h3 id=converting-to-short-syntax>Converting to Short Syntax<a hidden class=anchor aria-hidden=true href=#converting-to-short-syntax>#</a></h3>
+<p>Drag-and-drop a file with a <a href=#kingdom-rush-syntax>long syntax</a> plan onto the <a href=https://relentlessoptimizer.com/KR/animate>Kingdom Rush Animator</a>. It will translate it to the <a href=#short-syntax>short form</a> and add it to the URL for you.</p>
+<h2 id=error--checking-plans>Error Checking Plans<a hidden class=anchor aria-hidden=true href=#error--checking-plans>#</a></h2>
+<p>If you want to write plans manually with error checking, go to the <a href=https://relentlessoptimizer.com/KR/scan/>Kingdom Rush AI Scanner</a>, click &ldquo;write yourself&rdquo;, and type the plan into the text area on the right side. The plan will be parsed and validated as-you-type, and errors will be shown at the bottom right. The animation link on the top right will stay up-to-date with what you&rsquo;ve typed.</p>
+<p>If you try to animate a plan with errors, the animator will tell you the problems in red. It&rsquo;s easier to understand and fix them in the long form, however, so working in the scanner is a lot more pleasant.</p>
+<h2 id=animator>Animator<a hidden class=anchor aria-hidden=true href=#animator>#</a></h2>
+<p>The Animator is designed to help you visualize and follow a Kingdom Rush plan much more easily than watching a YouTube walkthrough.</p>
+<p>YouTube Walkthroughs are annoying because:</p>
+<ul>
+<li>There&rsquo;s a lot of action in between the build steps to sit through.</li>
+<li>It&rsquo;s easy to miss what the last build step was.</li>
+<li>It&rsquo;s <strong>really</strong> easy to miss ability upgrades (unless you watch the moment they were unlocked).</li>
+<li>You don&rsquo;t know the next step until you unpause to watch ahead.</li>
+</ul>
+<p>The Animator is designed to fix all of these problems. It shows just the build steps, so there&rsquo;s nothing to skip past. It highlights the most recent step with a gold outline so that you can quickly tell what just changed. Ability Upgrades are drawn under each tower at all times, so you can tell what abilities have been unlocked. Finally, the script is shown on the bottom left, so you can see what step the video is showing, what will happen next, and what happened in previous steps.</p>
+<h3 id=loading-a-plan>Loading a Plan<a hidden class=anchor aria-hidden=true href=#loading-a-plan>#</a></h3>
+<p>Watch a plan in the animator by dragging and dropping a text file with the long form syntax, or by adding the short syntax to the URL as the &ldquo;p&rdquo; parameter. If you drag and drop a long syntax file, the animator will add the short form equivalent to the URL for you to make it easy to bookmark or share.</p>
+<p>If the plan has errors, they will be shown in red and the plan won&rsquo;t be animated.</p>
+<h3 id=controlling-playback>Controlling Playback<a hidden class=anchor aria-hidden=true href=#controlling-playback>#</a></h3>
+<p>Plans will play like a video by default, but you can step through them manually to follow along instead.</p>
+<p>Press spacebar to pause or resume playback. Press left and right arrow to show the previous or next step. Press up or down to skip to the beginning or end.</p>
+<p>You can also tap or click on the image itself to move around. Tap once to see the controls and again to navigate.</p>
+<h2 id=ai-video-transcription>AI Video Transcription<a hidden class=anchor aria-hidden=true href=#ai-video-transcription>#</a></h2>
+<p>You can hand-write the <a href=#kingdom-rush-syntax>syntax</a>, and it&rsquo;s easy to edit a plan, but transcribing the plan from a play video is annoying.</p>
+<p>Instead, I wrote an <a href=https://relentlessoptimizer.com/KR/scan/>AI Scanner</a> which transcribes videos for you. It currently only finds the towers themselves (not ability upgrades), so if you want the ability upgrades, you have to write those in yourself. (Working on it..)</p>
+<p>The AI Scanner works internally with 1920x1080 frames, so, for best results, play at 1920x1080 resolution. On Windows, you can install the &ldquo;Xbox Game Bar&rdquo; app from the Microsoft Store. Once it&rsquo;s installed and running, you can use &ldquo;Win+Alt+R&rdquo; to record gameplay. Videos are written to the \Users\YOU\Videos\Captures folder.</p>
+<h3 id=loading-a-video>Loading a Video<a hidden class=anchor aria-hidden=true href=#loading-a-video>#</a></h3>
+<p>Drag and drop the video to the <a href=https://relentlessoptimizer.com/KR/scan/>AI Scanner</a> and it will transcribe it. The video is not uploaded to any server. Video frames are extracted and analyzed directly in the browser.</p>
+<p>Once the video is analyzed, you&rsquo;ll see a transcription of it on the right side and a link to animate it on the top right.</p>
+<h3 id=diagnostics>Diagnostics<a hidden class=anchor aria-hidden=true href=#diagnostics>#</a></h3>
+<p>While the video is being analyzed, you&rsquo;ll see the frames the AI is analyzing and diagnostics about what the AI recognizes.</p>
+<p>The AI shows a box around each tower position where something was detected. It shows what it detected on the top left, and how confident it was (as a percentage) on the bottom left.</p>
+<p><img loading=lazy src=img/AI-scanner.webp alt="AI Scanner">
+</p>
+<p>Here you can see it&rsquo;s 100% confident of most of the towers, but unsure about the Arch2 under the cursor (likely because the cursor and upgrade button are partially covering it). The AI will only transcribe a step if it is at least 95% confident there&rsquo;s a different tower there.</p>
+<p>After the video is analyzed, you can go back and see what the AI Scanner understood about a given frame by clicking on the progress bar at the top. The AI will seek to that part of the playthrough, analyze the frame, and show the diagnostics for it.</p>
+<h3 id=editing>Editing<a hidden class=anchor aria-hidden=true href=#editing>#</a></h3>
+<p>You can hand-edit the plan on the right-side pane if needed, either to fix transcription mistakes or refine the strategy for next play.</p>
+<p>The plan will be parsed as-you-type. Any errors will be shown on the bottom right, and the animation link at the top right will be kept up-to-date as you type.</p>
+<h2 id=my-workflow>My Workflow<a hidden class=anchor aria-hidden=true href=#my-workflow>#</a></h2>
+<p>I designed the syntax and built the animator and scanner to help me play Kingdom Rush more effectively. When playing, I usually:</p>
+<ul>
+<li>Open the labelled map for reference.</li>
+<li>In the game, plan my before-Wave 1-steps and write them in the long syntax.</li>
+<li>Restart the level and start recording.</li>
+<li>Play until I beat or fail the level.</li>
+<li>Drag-and-drop the video onto the scanner for a transcription.</li>
+<li>Edit the long form syntax to plan my next attempt.</li>
+<li>Drag-and-drop the long form plan to the animator and leave at the last frame.</li>
+<li>Repeat until the strategy seems solid.</li>
+</ul>
+<h2 id=walkthroughs>Walkthroughs<a hidden class=anchor aria-hidden=true href=#walkthroughs>#</a></h2>
+<p>I&rsquo;ve saved strategies for most of the levels; go to <a href=https://relentlessoptimizer/KR/maps>Maps</a> and click the links on the bottom right to see my current playthroughs for each level and mode.</p>
+<h2 id=video-transcoding>Video Transcoding<a hidden class=anchor aria-hidden=true href=#video-transcoding>#</a></h2>
+<p>If you want to keep your gameplay videos (to transcribe again once the AI can read ability upgrades, or to watch your tactics if there&rsquo;s a detail you need to see) I highly recommend transcoding them to reduce their sizes. My playthroughs of long levels at 1920x1080 have been as much as 1.5 GB each in original form.</p>
+<p>I use the widely respected <a href=https://ffmpeg.org/download.html>FFMPEG</a> to transcode my videos. I stick with the H.264 video (-c:v libxh264), AAC audio (-c:a aac), and 1080p resolution, but encode at a lower quality (-preset veryfast -crf 24) and downmix the audio to mono (-ac 1), 96 kbps (-b:a 96k). The command is:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>ffmpeg -i &#34;%in%&#34; -y -c:a aac -b:a 96k -ac 1 -c:v libx264 -preset veryfast -crf 24 &#34;%out%&#34;
+</code></pre></div><p>This usually reduces the video size to about one eighth of the original size (500 MB to 60 MB), but still keeps enough quality that the videos would look fine on YouTube.</p>
+<p>If you need to save more space, you can cut down to 720p (-s 1280x720), quality 30 (-crf 30), 64 kbps audio (-b:a 64k), and 10fps (-r 10):</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>ffmpeg -i &#34;%in%&#34; -y -c:a aac -b:a 64k -ac 1 -c:v libx264 -preset veryfast -crf 30 -r 10 -s 1280x720 &#34;%out%&#34;
+</code></pre></div><p>This shrinks our video by another 4x, from 60 MB to about 15 MB.</p>
+<p>Also, if you would rather watch your playthroughs at 2x speed, add:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>-filter_complex &#34;[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]&#34; -map &#34;[v]&#34; -map &#34;[a]&#34;
+</code></pre></div><p>You can also remove audio completely (-an) to save a surprising amount of space if you&rsquo;ve already chosen low quality and low framerate.</p>
+<h2 id=feedback-welcome>Feedback Welcome!<a hidden class=anchor aria-hidden=true href=#feedback-welcome>#</a></h2>
+<p>If you have ideas about how to improve the syntax, animator, or AI scanner, please <a href=https://relentlessoptimizer.com/about/>contact me</a>. I plan to extend the AI to identify ability upgrades (but I have to scan far more frames to find them).</p>
+<p>I&rsquo;m especially interested in ways to visualize the build order better. If I could make a single image that shows the final built towers <strong>and</strong> the order of the steps (or a few steps), I think that would be the ideal guide to follow when playing.</p>
+</div>
+<footer class=post-footer>
+<img alt loading=lazy src="https://asset.relentlessoptimizer.com/foot.png?path=/kr/help/" width=1 height=1>
+</footer>
+</article>
+</main><footer class=footer>
+<span>&copy; 2022 <a href=/>Relentless Optimizer</a>, all code <a href=/LICENSE.txt>MIT License</a></span>
+<span>&#183;</span>
+<span>Incessantly optimizing code, games, and finances.</span><div class=social-icons><a class=social-rss href=index.xml target=_blank title=Rss><svg><use xlink:href="/assets/icons.svg#rss"/></svg>
+</a><a class=social-email href=obfuscated target=_blank title=Email><svg><use xlink:href="/assets/icons.svg#email"/></svg>
+</a><a class=social-github href=https://github.com/ScottLouvau target=_blank title=Github><svg><use xlink:href="/assets/icons.svg#github"/></svg>
+</a><a class=social-linkedin href=https://linkedin.com/in/scott-louvau-97846531 target=_blank title="Linked in"><svg><use xlink:href="/assets/icons.svg#linkedin"/></svg>
+</a></div>
+</footer>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>var mail=["mail","to:","scottlo","@","out","look","."];document.querySelectorAll(".social-email").forEach(a=>a.href=mail.join('')+"com")</script>
+</body>
+</html>

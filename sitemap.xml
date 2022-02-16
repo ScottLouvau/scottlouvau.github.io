@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://relentlessoptimizer.com/gaming/</loc>
+    <lastmod>2022-02-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://relentlessoptimizer.com/gaming/2022/02/16/optimizing-kingdom-rush/</loc>
+    <lastmod>2022-02-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://relentlessoptimizer.com/</loc>
+    <lastmod>2022-02-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://relentlessoptimizer.com/code/</loc>
     <lastmod>2021-12-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/code/2021/12/08/regex-builder-2.10/</loc>
-    <lastmod>2021-12-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://relentlessoptimizer.com/</loc>
     <lastmod>2021-12-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/finance/2021/11/29/budgeting-is-like-backpacking/</loc>
@@ -33,9 +39,6 @@
     <lastmod>2021-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/gaming/2021/08/14/batman-arkham-asylum/</loc>
-    <lastmod>2021-08-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://relentlessoptimizer.com/gaming/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/finance/2021/07/23/our-retirement-withdrawal-plan/</loc>
@@ -111,6 +114,10 @@
     <loc>https://relentlessoptimizer.com/pacifica/</loc>
   </url><url>
     <loc>https://relentlessoptimizer.com/retire-early/</loc>
+  </url><url>
+    <loc>https://relentlessoptimizer.com/kr/help/</loc>
+  </url><url>
+    <loc>https://relentlessoptimizer.com/kr/</loc>
   </url><url>
     <loc>https://relentlessoptimizer.com/pacifica/camping-build/</loc>
   </url><url>

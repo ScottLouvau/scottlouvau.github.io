@@ -6,7 +6,16 @@
     <description>Recent content on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 08 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Optimizing Kingdom Rush</title>
+      <link>https://relentlessoptimizer.com/gaming/2022/02/16/optimizing-kingdom-rush/</link>
+      <pubDate>Wed, 16 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/gaming/2022/02/16/optimizing-kingdom-rush/</guid>
+      <description>I love the tower defense game Kingdom Rush. More than anything else, it has just the right amount of complexity - just enough towers and abilities to give you options, and just enough tactical play to keep you busy between build steps.</description>
+    </item>
+    
     <item>
       <title>Regex Builder 2.10</title>
       <link>https://relentlessoptimizer.com/code/2021/12/08/regex-builder-2.10/</link>
@@ -288,6 +297,15 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       
       <guid>https://relentlessoptimizer.com/retire-early/</guid>
       <description>My wife and I retired just before turning 40, and here are the nuts and bolts of how we did it.</description>
+    </item>
+    
+    <item>
+      <title>Kingdom Rush Help</title>
+      <link>https://relentlessoptimizer.com/kr/help/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/kr/help/</guid>
+      <description>Kingdom Rush Syntax Kingdom Rush syntax is used to write a plan for how to play a given level, the same way that Chess Algebra is used to document chess games.</description>
     </item>
     
     <item>
