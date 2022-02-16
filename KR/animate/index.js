@@ -188,16 +188,11 @@ var PlanParser = class {
     if (steps.length === 1) {
       return this.parseShort(planText);
     }
-    const mapName = steps[0]?.toUpperCase()?.split(" ")?.[0];
-    const positions = positions_min_default[mapName];
-    let result = { mapName, steps: [], errors: [] };
+    let mapName = null;
+    let positions = null;
+    let result = { steps: [], errors: [] };
     let world = {};
-    if (!positions) {
-      result.errors.push(`Line 1: Unknown map name ${mapName}.`);
-      return result;
-    }
-    let count = 1;
-    for (let i = 1; i < steps.length; ++i) {
+    for (let i = 0; i < steps.length; ++i) {
       let text = steps[i];
       if (text === "") {
         continue;
@@ -208,6 +203,16 @@ var PlanParser = class {
       let stepParts = text.split(" ");
       let positionName = stepParts?.[0]?.toUpperCase();
       let action = stepParts?.[1]?.toLowerCase();
+      if (!mapName) {
+        mapName = positionName;
+        positions = positions_min_default[mapName];
+        result.mapName = mapName;
+        if (!positions) {
+          result.errors.push(`Line ${i + 1}: Unknown map name ${mapName}.`);
+          return result;
+        }
+        continue;
+      }
       if (!positionName || !action) {
         result.errors.push(`Line ${i + 1}: Did not have a position and action.`);
         continue;
@@ -269,7 +274,6 @@ var PlanParser = class {
       }
       this.apply(step, world);
       result.steps.push(step);
-      count++;
     }
     return result;
   }
@@ -282,7 +286,8 @@ var PlanParser = class {
     return ctx.result;
   }
   parseLevel(ctx) {
-    this.require(ctx, "L", "Plan didn't start with map (ex: 'L26:').");
+    this.skipWhitespace(ctx);
+    this.require(ctx, "L", "Plan didn't start with map (ex: 'L26').");
     const number = this.number(ctx);
     this.require(ctx, ":", "Plan must have ':' after map name (ex: 'L26:').");
     const mapName = `L${number}`;
@@ -294,6 +299,7 @@ var PlanParser = class {
     }
   }
   parseStep(ctx) {
+    this.skipWhitespace(ctx);
     const ii = ctx.i;
     const posName = this.parsePosition(ctx) ?? ctx.lastPosition;
     if (!posName) {
@@ -303,6 +309,7 @@ var PlanParser = class {
     if (!pos) {
       throw `@${ctx.i}: Unknown position '${posName}'.`;
     }
+    this.skipWhitespace(ctx);
     const previous = ctx.world[posName];
     const on = previous?.base?.sn;
     const action = this.parseAction(ctx);
@@ -414,6 +421,15 @@ var PlanParser = class {
       ctx.i++;
     }
     return numberString;
+  }
+  skipWhitespace(ctx) {
+    while (ctx.i < ctx.text.length) {
+      const c = ctx.text[ctx.i];
+      if (c !== " " && c !== "	" && c !== "\r" && c !== "\n" && c !== "." && c !== ";") {
+        break;
+      }
+      ctx.i++;
+    }
   }
   toShortText(plan, spacer) {
     let result = `${plan.mapName}:`;
