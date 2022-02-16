@@ -1,6 +1,20 @@
 ## Introduction
 
+I love the tower defense game Kingdom Rush. It has just enough tower and ability choices to give you strategic options without overwhelming you. It has just enough tactical play to keep you busy between build steps and to give you a limited ability to save yourself when things go bad, rather than just watching helplessly as you're overrun. It's great fun and has tons of potential replayability.
 
+That said, replaying the levels to refine a strategy is hard. Some levels are longer than 20 minutes, and remembering everything you did (and what worked well and didn't) is difficult. You can look at the maps to pre-plan a bit, but I often found myself muddling through and making the same mistakes repeatedly.
+
+There are excellent YouTube walkthrough videos available, which are great if you're stuck and useful to learn new strategic ideas from. 
+
+Unfortunately, following a YouTube walkthrough while you play is awful. You're constantly pausing and resuming the game and walkthrough as you play. You have to watch the walkthrough closely, or you can easily miss an ability upgrade. You really can't seek through or have it playing "off to the side" as you play.
+
+Enter the Kingdom Rush syntax and animator.
+
+I wanted a way to write down my strategies so that I could plan and iterate faster. I wanted "walkthroughs" without the downsides - short, clear steps, easy to see the last step anytime, easy to see ability upgrades anytime, easy to "step through". I designed a syntax so I could transcribe my games, and an animator to make these "better walkthroughs".
+
+It was great, except that I was **still** watching long Kingdom Rush videos (usually of my own play) in order to transcribe the steps. So I wrote an AI-powered scanner as well.
+
+Now I can finally record a game, drag-and-drop the video to the browser, and get a transcript of what I did and a fast animation to follow. Suddenly it's much easier to remember what I did and refine strategies intentionally, and I can get great playthroughs on difficult levels drastically faster. It transforms the game for me, and so I wanted to share it. Enjoy!
 
 ## Kingdom Rush Syntax Guide
 
