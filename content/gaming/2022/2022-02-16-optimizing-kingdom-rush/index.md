@@ -36,7 +36,7 @@ It was satisfying to be able to write my strategies and iterate on them, but the
 
 So I built a [Kingdom Rush Animator](https://relentlessoptimizer.com/KR/animate) which takes the text syntax and animates it on the level map. It shows just the build steps, so they're short. The last step is highlighted so you can find it at a glance while playing. Ability upgrades are drawn next to the towers, so you can't miss them. You can watch the animations like a video or tap through them like a slideshow as you play.
 
-![L5-plan](img/L5-plan.webm)
+![L5-plan](img/L5-plan.webp)
 
 With the animator, life was much better. I could transcribe my games, iterate on the strategy, and then follow it easily on a replay. The one problem left was transcribing the games. My goal was to stop watching walkthrough videos, but now I had to watch my own games to write down what I had done. By the time I was done, it was harder to remember what went wrong that I wanted to change for the next play through.
 
