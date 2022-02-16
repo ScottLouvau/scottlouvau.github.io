@@ -66,46 +66,46 @@ At the end of the level, we have something like this:
 
 ## Syntax: Towers and Abilities
 
-| Barracks                                                     | Archer                                                       | Mage                                                         | Artillery                                                    |
+| Barracks | Archer | Mage | Artillery |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Barr                                                         | Arch                                                         | Mage                                                         | Arti                                                         |
-| Barr2                                                        | Arch2                                                        | Mage2                                                        | Arti2                                                        |
-| Barr3                                                        | Arch3                                                        | Mage3                                                        | Arti3                                                        |
-| **Holy** Order<br />   **Heal**ing Light<br />   **Shie**ld of Valor [1]<br />   **Holy** Strike | **Rang**er's Hideout<br />   **Pois**on Arrows<br />   **Wrat**h of the Forest | **Arca**ne Wizard<br />   **Deat**h Ray<br />   **Tele**port | **BigB**ertha<br />   **Drag**onbreath Launcher<br />   **Clus**ter Launcher |
-| **Barb**arian Mead Hall<br />   **More** Axes<br />   **Whir**lwind Attack<br />   **Thro**wing Axes | **Musk**eteer Garrison<br />   **Snip**er Shot<br />   **Shra**pnel Shot | **Sorc**erer Mage<br />   **Poly**morph<br />   **Summ**on Elemental | **Tesl**a x109<br />   **Supe**rcharged Bolt [2]<br />   **Over**charge |
+| Barr | Arch | Mage | Arti |
+| Barr2 | Arch2 | Mage2 | Arti2 |
+| Barr3 | Arch3 | Mage3 | Arti3 |
+| **Holy** Order<br />&nbsp;&nbsp;**Heal**ing&nbsp;Light<br />&nbsp;&nbsp;**Shie**ld&nbsp;of&nbsp;Valor [1]<br />&nbsp;&nbsp;**Holy**&nbsp;Strike | **Rang**er's&nbsp;Hideout<br />&nbsp;&nbsp;**Pois**on&nbsp;Arrows<br />&nbsp;&nbsp;**Wrat**h&nbsp;of&nbsp;the&nbsp;Forest | **Arca**ne&nbsp;Wizard<br />&nbsp;&nbsp;**Deat**h&nbsp;Ray<br />&nbsp;&nbsp;**Tele**port | **BigB**ertha<br />&nbsp;&nbsp;**Drag**onbreath&nbsp;...<br />&nbsp;&nbsp;**Clus**ter&nbsp;Launcher |
+| **Barb**arian&nbsp;Hall<br />&nbsp;&nbsp;**More**&nbsp;Axes<br />&nbsp;&nbsp;**Whir**lwind&nbsp;Attack<br />&nbsp;&nbsp;**Thro**wing&nbsp;Axes | **Musk**eteer&nbsp;Garrison<br />&nbsp;&nbsp;**Snip**er&nbsp;Shot<br />&nbsp;&nbsp;**Shra**pnel&nbsp;Shot | **Sorc**erer&nbsp;Mage<br />&nbsp;&nbsp;**Poly**morph<br />&nbsp;&nbsp;**Summ**on | **Tesl**a&nbsp;x109<br />&nbsp;&nbsp;**Supe**r...&nbsp;Bolt [2]<br />&nbsp;&nbsp;**Over**charge |
 
 The [1] and [2] above denote abilities that only have one or two levels to unlock, rather than three.
 
 ## Syntax: Levels (Maps)
 
-| Level | Name               |
+| Level | Name |
 | ----- | ------------------ |
-| L1    | Southport          |
-| L2    | The Outskirts      |
-| L3    | Pagras             |
-| L4    | Twin River Pass    |
-| L5    | Silveroak Forest   |
-| L6    | The Citadel        |
-| L7    | Coldstep Mines     |
-| L8    | Icewind Pass       |
-| L9    | Stormcloud Temple  |
-| L10   | The Wastes         |
-| L11   | Forsaken Valley    |
-| L12   | The Dark Tower     |
-| L13   | Sarelgaz's Lair    |
-| L14   | Ruins of Acaroth   |
-| L15   | Rotten Forest      |
-| L16   | Hushwood           |
-| L17   | Bandit's Lair      |
-| L18   | Glacial Heights    |
-| L19   | Ha'Kraj Plateau    |
-| L20   | Pit of Fire        |
-| L21   | Pandaemonium       |
-| L22   | Fungal Forest      |
-| L23   | Rotwick            |
-| L24   | Ancient Necropolis |
-| L25   | Nightfang Swale    |
-| L26   | Castle Blackburn   |
+| L1 | Southport |
+| L2 | The Outskirts |
+| L3 | Pagras |
+| L4 | Twin River Pass |
+| L5 | Silveroak Forest |
+| L6 | The Citadel |
+| L7 | Coldstep Mines |
+| L8 | Icewind Pass |
+| L9 | Stormcloud Temple |
+| L10 | The Wastes |
+| L11 | Forsaken Valley |
+| L12 | The Dark Tower |
+| L13 | Sarelgaz's Lair |
+| L14 | Ruins of Acaroth |
+| L15 | Rotten Forest |
+| L16 | Hushwood |
+| L17 | Bandit's Lair |
+| L18 | Glacial Heights |
+| L19 | Ha'Kraj Plateau |
+| L20 | Pit of Fire |
+| L21 | Pandaemonium |
+| L22 | Fungal Forest |
+| L23 | Rotwick |
+| L24 | Ancient Necropolis |
+| L25 | Nightfang Swale |
+| L26 | Castle Blackburn |
 
 To see the named tower positions for every level, see [Maps](https://relentlessoptimizer.com/KR/maps). You can click on the map tile to see a high quality version of the labelled map.
 
