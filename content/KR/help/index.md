@@ -1,5 +1,6 @@
 ---
 title: "Kingdom Rush Help"
+url: "/KR/help"
 ---
 
 ## Kingdom Rush Syntax
