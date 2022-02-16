@@ -71,8 +71,8 @@ At the end of the level, we have something like this:
 | Barr | Arch | Mage | Arti |
 | Barr2 | Arch2 | Mage2 | Arti2 |
 | Barr3 | Arch3 | Mage3 | Arti3 |
-| **Holy** Order<br />&nbsp;&nbsp;**Heal**ing&nbsp;Light<br />&nbsp;&nbsp;**Shie**ld&nbsp;of&nbsp;Valor [1]<br />&nbsp;&nbsp;**Holy**&nbsp;Strike | **Rang**er's&nbsp;Hideout<br />&nbsp;&nbsp;**Pois**on&nbsp;Arrows<br />&nbsp;&nbsp;**Wrat**h&nbsp;of&nbsp;the&nbsp;Forest | **Arca**ne&nbsp;Wizard<br />&nbsp;&nbsp;**Deat**h&nbsp;Ray<br />&nbsp;&nbsp;**Tele**port | **BigB**ertha<br />&nbsp;&nbsp;**Drag**onbreath&nbsp;...<br />&nbsp;&nbsp;**Clus**ter&nbsp;Launcher |
-| **Barb**arian&nbsp;Hall<br />&nbsp;&nbsp;**More**&nbsp;Axes<br />&nbsp;&nbsp;**Whir**lwind&nbsp;Attack<br />&nbsp;&nbsp;**Thro**wing&nbsp;Axes | **Musk**eteer&nbsp;Garrison<br />&nbsp;&nbsp;**Snip**er&nbsp;Shot<br />&nbsp;&nbsp;**Shra**pnel&nbsp;Shot | **Sorc**erer&nbsp;Mage<br />&nbsp;&nbsp;**Poly**morph<br />&nbsp;&nbsp;**Summ**on | **Tesl**a&nbsp;x109<br />&nbsp;&nbsp;**Supe**r...&nbsp;Bolt [2]<br />&nbsp;&nbsp;**Over**charge |
+| **Holy** Order<br />- **Heal**ing&nbsp;Light<br />- **Shie**ld&nbsp;of&nbsp;Valor [1]<br />- **Holy**&nbsp;Strike | **Rang**er's&nbsp;Hideout<br />- **Pois**on&nbsp;Arrows<br />- **Wrat**h&nbsp;of&nbsp;the&nbsp;Forest | **Arca**ne&nbsp;Wizard<br />- **Deat**h&nbsp;Ray<br />- **Tele**port | **BigB**ertha<br />- **Drag**onbreath&nbsp;...<br />- **Clus**ter&nbsp;Launcher |
+| **Barb**arian&nbsp;Hall<br />- **More**&nbsp;Axes<br />- **Whir**lwind&nbsp;Attack<br />- **Thro**wing&nbsp;Axes | **Musk**eteer&nbsp;Garrison<br />- **Snip**er&nbsp;Shot<br />- **Shra**pnel&nbsp;Shot | **Sorc**erer&nbsp;Mage<br />- **Poly**morph<br />- **Summ**on | **Tesl**a&nbsp;x109<br />- **Supe**r...&nbsp;Bolt [2]<br />- **Over**charge |
 
 The [1] and [2] above denote abilities that only have one or two levels to unlock, rather than three.
 
