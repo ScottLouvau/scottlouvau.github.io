@@ -11,7 +11,7 @@ Refining your own strategies as you play is similarly difficult. It's hard to re
 
 I needed an easy way to write down the steps I took in a level, tweak the plan on paper, and then follow my plan on my next attempt.
 
-So I built a "chess-like" [Kingdom Rush syntax](/KR/help/#kingdom-rush-syntax) to transcribe my games. 
+So I built a "chess-like" [Kingdom Rush syntax](https://relentlessoptimizer.com/KR/help/#kingdom-rush-syntax) to transcribe my games. 
 
 ```
 L5
