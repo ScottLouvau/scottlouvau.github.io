@@ -179,13 +179,13 @@ Press spacebar to pause or resume playback. Press left and right arrow to show t
 
 You can also tap or click on the image itself to move around. Tap once to see the controls and again to navigate. 
 
-## AI Scanner Video Transcription
+## AI Video Transcription
 
-You can hand-write the [syntax](#kingdom-rush-syntax), and it's easy to edit an editing plan, but transcribing the plan from a play video is annoying. 
+You can hand-write the [syntax](#kingdom-rush-syntax), and it's easy to edit a plan, but transcribing the plan from a play video is annoying. 
 
 Instead, I wrote an [AI Scanner](https://relentlessoptimizer.com/KR/scan/) which transcribes videos for you. It currently only finds the towers themselves (not ability upgrades), so if you want the ability upgrades, you have to write those in yourself. (Working on it..)
 
-The AI Scanner works internally with 1920x1080 frames, so, for best results, play at 1920x1080 resolution. On Windows, you can install the "Xbox Game Bar" app from the Microsoft Store. Once it's installed and running, you can use "Win+Alt+R" to record gameplay. 
+The AI Scanner works internally with 1920x1080 frames, so, for best results, play at 1920x1080 resolution. On Windows, you can install the "Xbox Game Bar" app from the Microsoft Store. Once it's installed and running, you can use "Win+Alt+R" to record gameplay. Videos are written to the \Users\YOU\Videos\Captures folder.
 
 ### Loading a Video
 
