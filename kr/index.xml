@@ -8,10 +8,10 @@
     <language>en</language><atom:link href="https://relentlessoptimizer.com/kr/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kingdom Rush Help</title>
-      <link>https://relentlessoptimizer.com/kr/help/</link>
+      <link>https://relentlessoptimizer.com/KR/help/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://relentlessoptimizer.com/kr/help/</guid>
+      <guid>https://relentlessoptimizer.com/KR/help/</guid>
       <description>Kingdom Rush Syntax Kingdom Rush syntax is used to write a plan for how to play a given level, the same way that Chess Algebra is used to document chess games.</description>
     </item>
     
