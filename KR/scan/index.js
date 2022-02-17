@@ -75,7 +75,7 @@ function onSeeked() {
     }
 
     // Update long and short plan with each frame
-    const planText = scanner.plan.join('\r\n');
+    const planText = scanner.plan?.join('\r\n') ?? "Identifying Map...";
     planOut.value = planText;
     planOut.scrollTop = planOut.scrollHeight - planOut.clientHeight;
 

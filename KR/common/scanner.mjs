@@ -118,7 +118,11 @@ export default class Scanner {
         }
 
         //this.log(`Detected Map: ${(best.confidence * 100).toFixed(0)}% ${best.name} after ${scans}`);
-        return best.name;
+        if (best?.confidence >= ConfidenceThreshold) {
+            return best.name;
+        } else {
+            return null;
+        }
     }
 
     evaluateStep(posName, matches, previous) {
@@ -173,6 +177,7 @@ export default class Scanner {
     init(ctx) {
         this.log("Identifying map...");
         const mapName = this.identifyMap(ctx);
+        if (mapName === null) { return; }
         this.log(mapName);
         this.mapName = mapName;
         this.positions = allPositions[mapName];
