@@ -238,7 +238,7 @@
     display: block;
     margin: auto 0;
     padding: 10px;
-    color: rgba(255, 255, 255, .8);
+    color: var(--primary);
     background: 0 0;
     background-color: var(--code-bg);
     border-radius: 0;
