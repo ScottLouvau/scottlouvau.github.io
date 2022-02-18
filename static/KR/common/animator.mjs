@@ -128,7 +128,7 @@ export default class Animator {
 
         if (!this.plan) { return; }
 
-        let world = {};
+        let world = { steps: [] };
         for (let i = 0; i < this.drawUntil; ++i) {
             this.planParser.apply(this.plan.steps[i], world);
         }
@@ -140,7 +140,7 @@ export default class Animator {
         this.drawPlan();
 
         // Current tower glow and step text
-        const current = world.steps?.at(-1);
+        const current = world.steps?.[world.steps?.length - 1 ?? 0];
         if (current) {
             this.targetDrawing.drawGradientCircle(current.position, settings.circles.glow);
             //this.targetDrawing.drawText(settings.labels.message, `${world.steps.length}. ${current.text}`, settings.labels.message);
