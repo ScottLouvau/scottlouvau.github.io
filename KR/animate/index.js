@@ -255,7 +255,7 @@ var PlanParser = class {
           continue;
         }
         let lastUpgradeOfType = previous[upgrade.sn];
-        let newLevel = parseInt(action.at(-1)) || (lastUpgradeOfType?.level ?? 0) + 1;
+        let newLevel = parseInt(action?.[action?.length - 1]) || (lastUpgradeOfType?.level ?? 0) + 1;
         if (upgrade.on !== previous.base.sn) {
           result.errors.push(`Line ${i + 1}: There is no '${upgrade.ln}' upgrade for ${previous.base.ln} at ${step.positionName}.`);
           continue;
@@ -598,13 +598,13 @@ var Animator = class {
     if (!this.plan) {
       return;
     }
-    let world = {};
+    let world = { steps: [] };
     for (let i = 0; i < this.drawUntil; ++i) {
       this.planParser.apply(this.plan.steps[i], world);
     }
     this.targetDrawing.drawImage(this.map);
     this.drawPlan();
-    const current = world.steps?.at(-1);
+    const current = world.steps?.[world.steps?.length - 1];
     if (current) {
       this.targetDrawing.drawGradientCircle(current.position, settings_default.circles.glow);
     }

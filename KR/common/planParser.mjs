@@ -87,7 +87,7 @@ export default class PlanParser {
                 }
 
                 let lastUpgradeOfType = previous[upgrade.sn];
-                let newLevel = (parseInt(action.at(-1)) || (lastUpgradeOfType?.level ?? 0) + 1);
+                let newLevel = (parseInt(action?.[action?.length - 1 ?? 0]) || (lastUpgradeOfType?.level ?? 0) + 1);
 
                 if (upgrade.on !== previous.base.sn) {
                     result.errors.push(`Line ${i + 1}: There is no '${upgrade.ln}' upgrade for ${previous.base.ln} at ${step.positionName}.`);
