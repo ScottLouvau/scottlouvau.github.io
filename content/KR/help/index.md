@@ -71,10 +71,11 @@ At the end of the level, we have something like this:
 | Barr | Arch | Mage | Arti |
 | Barr2 | Arch2 | Mage2 | Arti2 |
 | Barr3 | Arch3 | Mage3 | Arti3 |
-| **Holy** Order<br />- **Heal**ing&nbsp;Light<br />- **Shie**ld&nbsp;of&nbsp;Valor [1]<br />- **Holy**&nbsp;Strike | **Rang**er's&nbsp;Hideout<br />- **Pois**on&nbsp;Arrows<br />- **Wrat**h&nbsp;of&nbsp;the&nbsp;Forest | **Arca**ne&nbsp;Wizard<br />- **Deat**h&nbsp;Ray<br />- **Tele**port | **BigB**ertha<br />- **Drag**onbreath&nbsp;...<br />- **Clus**ter&nbsp;Launcher |
+| **Holy** Order<br />- **Heal**ing&nbsp;Light<br />- **Shie**ld&nbsp;of&nbsp;Valor [1]<br />- **Hol**y&nbsp;**S**trike | **Rang**er's&nbsp;Hideout<br />- **Pois**on&nbsp;Arrows<br />- **Wrat**h&nbsp;of&nbsp;the&nbsp;Forest | **Arca**ne&nbsp;Wizard<br />- **Deat**h&nbsp;Ray<br />- **Tele**port | **BigB**ertha<br />- **Drag**onbreath&nbsp;...<br />- **Clus**ter&nbsp;Launcher |
 | **Barb**arian&nbsp;Hall<br />- **More**&nbsp;Axes<br />- **Whir**lwind&nbsp;Attack<br />- **Thro**wing&nbsp;Axes | **Musk**eteer&nbsp;Garrison<br />- **Snip**er&nbsp;Shot<br />- **Shra**pnel&nbsp;Shot | **Sorc**erer&nbsp;Mage<br />- **Poly**morph<br />- **Summ**on | **Tesl**a&nbsp;x109<br />- **Supe**r...&nbsp;Bolt [2]<br />- **Over**charge |
 
 The [1] and [2] above denote abilities that only have one or two levels to unlock, rather than three.
+The Holy Strike ability is 'HolS' to not be confused with the Holy Order tower.
 
 ## Syntax: Levels (Maps)
 
