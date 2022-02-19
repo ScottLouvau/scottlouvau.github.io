@@ -27,7 +27,7 @@
     "upgrades": [
         { "fullName": "Healing Light",         "ln": "Heal", "sn": "x", "on": "p4", "cost": [150, 150, 150], "index": 0 },
         { "fullName": "Shield of Valor",       "ln": "Shie", "sn": "y", "on": "p4", "cost": [250], "index": 1 },
-        { "fullName": "Holy Strike",           "ln": "Holy", "sn": "z", "on": "p4", "cost": [220, 150, 150], "index": 2 },
+        { "fullName": "Holy Strike",           "ln": "HolS", "sn": "z", "on": "p4", "cost": [220, 150, 150], "index": 2 },
 
         { "fullName": "More Axes",             "ln": "More", "sn": "x", "on": "p5", "cost": [300, 100, 100], "index": 3 },
         { "fullName": "Whirlwind Attack",      "ln": "Whir", "sn": "y", "on": "p5", "cost": [150, 100, 100], "index": 4 },

@@ -162,7 +162,7 @@ var towers_min_default = {
   upgrades: [
     { ln: "Heal", sn: "x", on: "p4", cost: [150, 150, 150], index: 0 },
     { ln: "Shie", sn: "y", on: "p4", cost: [250], index: 1 },
-    { ln: "Holy", sn: "z", on: "p4", cost: [220, 150, 150], index: 2 },
+    { ln: "HolS", sn: "z", on: "p4", cost: [220, 150, 150], index: 2 },
     { ln: "More", sn: "x", on: "p5", cost: [300, 100, 100], index: 3 },
     { ln: "Whir", sn: "y", on: "p5", cost: [150, 100, 100], index: 4 },
     { ln: "Thro", sn: "z", on: "p5", cost: [200, 100, 100], index: 5 },
