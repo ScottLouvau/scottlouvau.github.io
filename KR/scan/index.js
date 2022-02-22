@@ -92,8 +92,8 @@ function updatePlanLink() {
         const url = `https://relentlessoptimizer.com/KR/animate?p=${shortText}`;
 
         if (parsed.errors.length === 0) {
-            link.innerText = "Animation Link";
             link.href = url;
+            link.title = "";
             errorsOut.value = "";
             errorsOut.style.display = "none";
             return;
@@ -104,7 +104,6 @@ function updatePlanLink() {
         errors = error;
     }
 
-    link.innerText = "[Error]";
     link.href = "";
     link.title = `${errors}`;
     errorsOut.innerText = errors;
@@ -197,6 +196,28 @@ function onProgressClick(e) {
     video.currentTime = (percentage * duration);
 }
 
+function onSaveClick(e) {
+    e.preventDefault();
+
+    const planText = planOut.value;
+    const blob = new Blob([ planText ], { type: "text/plain"} );
+
+    let fileName = "Plan.txt";
+    try {
+        const parsed = parser.parse(planText);
+        fileName = `${parsed.mapName}.txt`;
+    } catch(error) {
+        // ... Just default download filename
+    }
+    
+    const tempLink = document.createElement("a");
+    tempLink.download = fileName;
+    tempLink.href = URL.createObjectURL(blob);
+    document.body.appendChild(tempLink);
+    tempLink.click();
+    document.body.removeChild(tempLink);
+}
+
 async function run() {
     const model = await tf.loadGraphModel('../data/models/v2-u8-graph/model.json');
     scanner = new Scanner(tf, model);
@@ -234,6 +255,7 @@ async function run() {
 
     document.getElementById("demo").addEventListener('click', () => { video.src = '../data/L10h-tiny.mp4'; });
     document.getElementById("handwrite").addEventListener('click', closeHelp);
+    document.getElementById("save").addEventListener('click', onSaveClick);
 }
 
 document.addEventListener('DOMContentLoaded', run);
