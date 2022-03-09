@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test</title>
+
+    <script src="test.js" type="module"></script>
+    <style>
+        *, ::after, ::before 
+        {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 2px;
+            background-color: #222;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        #left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: calc(100vh - 4px);
+        }
+
+        #right {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #progress {
+            background-color: #28f;
+            height: 1.1em;
+            margin-top: 2px;
+            margin-bottom: 4px;
+            width: 0;
+        }
+
+        #diagnostic {
+            background-color: #555;
+            aspect-ratio: 16 / 9;
+            max-width: 100%;
+        }
+
+        video {
+            background-color: #555;
+            aspect-ratio: 16 / 9;
+            max-width: 100%;
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="left">
+        <div id="progress"></div>
+        <video id="video" controls muted="true"></video>
+        <canvas id="diagnostic" width="1920" height="1080"></canvas>
+        </div>
+        <div id="right">
+            <textarea id="planOut"></textarea>
+            <pre id="errorsOut"></pre>
+          </div>
+    </div>
+</body>
+
+</html>

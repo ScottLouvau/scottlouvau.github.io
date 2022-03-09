@@ -111,12 +111,18 @@ export default class Animator {
     }
 
     drawPlan() {
+        // Show up to 25 steps; at least five after current if present, and the rest before.
+        const end = Math.min(this.plan.steps.length, Math.max(this.drawUntil + 5, 20));
+        const start = Math.max(0, end - 20);
+
         let text = "";
-        for (let i = 0; i < this.plan.steps.length; ++i) {
+        if (start > 0) { text += "..."; }
+        for (let i = start; i < end; ++i) {
             text += `${(i > 0 ? "\n" : "")}${i === this.drawUntil - 1 ? " " : ""}${this.plan.steps[i].text}`;
         }
+        if (end < this.plan.steps.length) { text += "\n..."; }
 
-        this.targetDrawing.drawText(settings.labels.plan, text, { ...settings.labels.plan, highlightIndex: (this.drawUntil - 1) });
+        this.targetDrawing.drawText(settings.labels.plan, text, { ...settings.labels.plan, highlightIndex: (this.drawUntil - (start > 0 ? start : 1)) });
     }
 
     drawWorld() {
@@ -190,7 +196,7 @@ export default class Animator {
         // Draw a shared box and border around all upgrades, with another left/right padding
         const sharedBox =
         {
-            x: this.#centerToLeft(state.position.x, upgradeBox.w, 0, count),
+            x: this.centerToLeft(state.position.x, upgradeBox.w, 0, count),
             y: state.position.y - 8,
             w: count * upgradeBox.w,
             h: upgradeBox.h
@@ -215,14 +221,14 @@ export default class Animator {
         this.targetDrawing.drawSprite({ x: box.x + geo.pad, y: box.y + pip.radius * 2 }, this.upgradeSprites, geo, upgrade.index);
 
         // Upgrade level pips
-        let pipPos = { x: this.#centerToLeft(box.x + box.w / 2, pip.radius * 2, 0, upgrade.level) + pip.radius, y: box.y + pip.radius };
+        let pipPos = { x: this.centerToLeft(box.x + box.w / 2, pip.radius * 2, 0, upgrade.level) + pip.radius, y: box.y + pip.radius };
         for (var i = 0; i < upgrade.level; ++i) {
             this.targetDrawing.drawGradientCircle(pipPos, settings.circles.pip);
             pipPos.x += pip.radius * 2;
         }
     }
 
-    #centerToLeft(center, width, index, count) {
+    centerToLeft(center, width, index, count) {
         const totalWidth = width * count;
         const left = center - totalWidth / 2;
         return left + (index * width);
