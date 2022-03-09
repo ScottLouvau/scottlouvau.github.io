@@ -15,9 +15,10 @@ export default
     },
     geo: {
         tower: { w: 160, h: 140, relX: -80, relY: -104, cols: 5 },
-        upgrade: {w: 28, h: 26, pad: 1, cols: 3, backColor: "#24211d", borderColor: "#efeddc" },
+        upgrade: { w: 28, h: 26, pad: 1, cols: 3, backColor: "#24211d", borderColor: "#efeddc" },
         upgradeLarge: { w: 56, h: 52 },
-        profile: { w: 80, h: 80, relX: -40, relY: -64 }
+        profile: { w: 80, h: 80, relX: -40, relY: -64 },
+        towerDiagnostics: { w: 90, h: 90, relX: -45, relY: -69 }
     },
     circles: {
         glow: { radius: 120, relY: -20, color: "rgba(255, 215, 0, 0.8)", mid: { at: 0.3, color: "rgba(255, 215, 0, 0.6)"} },

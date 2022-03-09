@@ -45,15 +45,16 @@ export default class Drawing {
             const measure = this.ctx.measureText(line);
             measures.push(measure);
             width = Math.max(width, /* measure.actualBoundingBoxLeft + */ measure.actualBoundingBoxRight + (2 * padX), options.minWidth ?? 0);
-            height += Math.ceil(Math.max(/* measure.actualBoundingBoxDescent + */ measure.actualBoundingBoxAscent + (2 * padY), options.minHeight ?? 0));
+            height = Math.max(height, /* measure.actualBoundingBoxDescent + */ measure.actualBoundingBoxAscent + (2 * padY), options.minHeight ?? 0);
         }
 
         // Draw surrounding box
+        const fullHeight = height * lines.length + padY;
         const box = {
             x: Math.ceil(pos.x - (options.left ? 0 : width / 2) + (options.relX ?? 0)),
-            y: Math.ceil(pos.y - height + (options.relY ?? 0)),
+            y: Math.ceil(pos.y - fullHeight + (options.relY ?? 0)),
             w: Math.ceil(width),
-            h: Math.ceil(height)
+            h: Math.ceil(fullHeight)
         };
 
         this.drawBox(box, options);
@@ -68,10 +69,10 @@ export default class Drawing {
             this.ctx.fillText(
                 line,
                 Math.floor(box.x + /*(options.left ? 0 : measure.actualBoundingBoxLeft)*/ + padX),
-                Math.floor(nextY + measure.actualBoundingBoxAscent + padY)
+                Math.floor(nextY + height)
             );
 
-            nextY += Math.ceil(Math.max(/* measure.actualBoundingBoxDescent + */ measure.actualBoundingBoxAscent + (2 * padY), options.minHeight ?? 0));
+            nextY += height;
         }
     }
 
