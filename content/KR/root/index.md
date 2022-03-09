@@ -12,6 +12,7 @@ I love Kingdom Rush, so I built a syntax for transcribing games, an animator to 
 - [AI Game Scanner](scan/) 
 - [Current Walkthroughs](maps/)
 - [Full Help](help/)
+- [GitHub Repo](https://github.com/ScottLouvau/kingdomrush)
 
 
 

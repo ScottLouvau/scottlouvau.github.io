@@ -260,6 +260,6 @@ You can also remove audio completely (-an) to save a surprising amount of space 
 
 ## Feedback Welcome!
 
-If you have ideas about how to improve the syntax, animator, or AI scanner, please [contact me](https://relentlessoptimizer.com/about/). I plan to extend the AI to identify ability upgrades (but I have to scan far more frames to find them).
+If you have ideas about how to improve the syntax, animator, or AI scanner, please [contact me](https://relentlessoptimizer.com/about/). The [code is on GitHub](https://github.com/ScottLouvau/kingdomrush). I plan to extend the AI to identify ability upgrades (but I have to scan far more frames to find them).
 
 I'm especially interested in ways to visualize the build order better. If I could make a single image that shows the final built towers **and** the order of the steps (or a few steps), I think that would be the ideal guide to follow when playing.
