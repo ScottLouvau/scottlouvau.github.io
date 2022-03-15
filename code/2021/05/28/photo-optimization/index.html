@@ -1,74 +1,16 @@
-<!doctype html><html lang=en dir=auto>
-<head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>Photo Optimization | Relentless Optimizer</title><meta name=keywords content>
-<meta name=description content="I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process.">
-<meta name=author content="Scott Louvau">
-<link rel=canonical href=https://relentlessoptimizer.com/code/2021/05/28/photo-optimization/>
-<link href=/assets/css/stylesheet.min.0b2e0140b43ef19b2a750e921516ad4fa6709d5410537b71ea94d625d11a0ddd.css integrity="sha256-Cy4BQLQ+8ZsqdQ6SFRatT6ZwnVQQU3tx6pTWJdEaDd0=" rel="preload stylesheet" as=style>
-<link rel=icon href=https://relentlessoptimizer.com/favicon.svg type=image/svg+xml>
-<link rel=icon href=https://relentlessoptimizer.com/favicon-128x128.png sizes=128x128>
-<link rel=icon href=https://relentlessoptimizer.com/favicon-32x32.png sizes=32x32>
-<link rel=icon href=https://relentlessoptimizer.com/favicon.ico sizes=16x16>
-<meta name=generator content="Hugo 0.93.3">
-<meta property="og:title" content="Photo Optimization">
-<meta property="og:description" content="I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://relentlessoptimizer.com/code/2021/05/28/photo-optimization/"><meta property="article:section" content="code">
-<meta property="article:published_time" content="2021-05-28T00:00:00+00:00">
-<meta property="article:modified_time" content="2021-05-28T00:00:00+00:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Photo Optimization">
-<meta name=twitter:description content="I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process.">
-</head><body id=top>
-<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script>
-<header class=header>
-<div class=logo>
-<a href=/ accesskey=h title="Relentless Optimizer (Alt + H)">Relentless Optimizer</a>
-<span class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon"><use xlink:href="/assets/icons.svg#moon"/></svg><svg id="sun"><use xlink:href="/assets/icons.svg#sun"/></svg>
-</button>
-</span>
-</div><nav class=site-nav>
-<input type=checkbox id=nav-trigger class=nav-trigger>
-<label for=nav-trigger>
-<span class=menu-icon><svg><use xlink:href="/assets/icons.svg#menu"/></svg>
-</span>
-</label>
-<div class=trigger>
-<a class=page-link href=/about title=About>About</a>
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Photo Optimization | Relentless Optimizer</title><meta name=keywords content><meta name=description content="I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process."><meta name=author content="Scott Louvau"><link rel=canonical href=https://relentlessoptimizer.com/code/2021/05/28/photo-optimization/><link href=/assets/css/stylesheet.min.0b2e0140b43ef19b2a750e921516ad4fa6709d5410537b71ea94d625d11a0ddd.css integrity="sha256-Cy4BQLQ+8ZsqdQ6SFRatT6ZwnVQQU3tx6pTWJdEaDd0=" rel="preload stylesheet" as=style><link rel=icon href=https://relentlessoptimizer.com/favicon.svg type=image/svg+xml><link rel=icon href=https://relentlessoptimizer.com/favicon-128x128.png sizes=128x128><link rel=icon href=https://relentlessoptimizer.com/favicon-32x32.png sizes=32x32><link rel=icon href=https://relentlessoptimizer.com/favicon.ico sizes=16x16><meta name=generator content="Hugo 0.94.2"><meta property="og:title" content="Photo Optimization"><meta property="og:description" content="I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process."><meta property="og:type" content="article"><meta property="og:url" content="https://relentlessoptimizer.com/code/2021/05/28/photo-optimization/"><meta property="article:section" content="code"><meta property="article:published_time" content="2021-05-28T00:00:00+00:00"><meta property="article:modified_time" content="2021-05-28T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Photo Optimization"><meta name=twitter:description content="I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process."></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><div class=logo><a href=/ accesskey=h title="Relentless Optimizer (Alt + H)">Relentless Optimizer</a>
+<span class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon"><use xlink:href="/assets/icons.svg#moon"/></svg><svg id="sun"><use xlink:href="/assets/icons.svg#sun"/></svg></button></span></div><nav class=site-nav><input type=checkbox id=nav-trigger class=nav-trigger>
+<label for=nav-trigger><span class=menu-icon><svg><use xlink:href="/assets/icons.svg#menu"/></svg></span></label><div class=trigger><a class=page-link href=/about title=About>About</a>
 <a class=page-link href=/code/ title=Code>Code</a>
 <a class=page-link href=/finance/ title=Finance>Finance</a>
 <a class=page-link href=/gaming/ title=Gaming>Gaming</a>
 <a class=page-link href=/life/ title=Life>Life</a>
-<a class=page-link href=/retire-early title="Retire Early">Retire Early</a></div></nav></header><main class=main>
-<article class=post-single>
-<header class=post-header>
-<img alt src="https://asset.relentlessoptimizer.com/head.png?path=/code/2021/05/28/photo-optimization/" width=1 height=1>
-<div class=breadcrumbs>
-<a href=/>Home</a>&nbsp;»&nbsp;<a href=/code/>Code</a>
-</div><h1 class=post-title>
-Photo Optimization
-</h1><div class=post-meta>
-May 28, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Scott Louvau
-</div></header><div class=post-content>
-<p>I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process. I figured our phones would produce decently optimized JPG photos directly, but it turns out that a quick pass with an optimization tool reduced the sizes by half with no difference that I could perceive.</p><p>I researched different tools (TinyPNG.com, TinyJPG.com, ImageMagick, PNGQuant), but it was important to me that the tool wouldn&rsquo;t compress the photos too much, and I have too many photos to review the outputs manually. I finally found <a href=https://github.com/danielgtaylor/jpeg-archive>jpeg-recompress</a>, which saves at multiple quality levels and runs a &ldquo;human-perceived difference&rdquo; algorithm to measure the perceived loss. It fits the bill perfectly. I couldn&rsquo;t get it to build, and there wasn&rsquo;t a built Windows executable handy, but <a href=https://github.com/imagemin/jpeg-recompress-bin>another repo</a> has <a href=https://github.com/imagemin/jpeg-recompress-bin/releases>published releases</a> (under vendor/win), or get it <a href=files/jpeg-recompress-bin-5.1.1.zip>here</a> (MIT license).</p><p>For archive quality, run jpeg-recompress with the default settings. You also want to run it in parallel across multiple threads, and it&rsquo;s worth trimming unwanted metadata from your images. In my case, I want GPS locations and Date Taken, but none of the camera details (exposure time, ISO setting, camera model name). Metadata for my images was 60 KB per image. For my 70,000 images, that&rsquo;s 4 GB of data I don&rsquo;t want.</p><p>I wrote a C# script to handle the threading; rather than publishing as an EXE, this makes it easy for others to alter the behavior and see what it&rsquo;s doing. To run it, install <a href=https://github.com/filipw/dotnet-script>dotnet-script</a>, download <a href=files/photo-optimizer.zip>my photo-optimizer zip</a>, open a command prompt, go to the photo-optimizer folder, and run:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>dotnet-script main.csx &#34;[InputRootPath]&#34; &#34;[OutputRootPath]&#34;
-</span></span></code></pre></div><p>How did it do? Overall, my photos were compressed from 212 GB to 114 GB, a 46% reduction. If you have unlimited cloud storage, this may not matter, but if you want to copy from cloud-to-cloud, download a local backup, or otherwise work with your images, it&rsquo;s a nice savings without any clear downside.</p><p>Here are two example images before and after optimization:</p><style>@keyframes first{0%{opacity:1}49%{opacity:1}50%{opacity:0}100%{opacity:0}}@keyframes second{0%{opacity:0}48%{opacity:0}49%{opacity:1}100%{opacity:1}}.alternate-container{margin:1em 0;display:grid;grid-template-columns:1fr}.alternate-container div{grid-row-start:1;grid-column-start:1}.alternate-container div:nth-child(1){animation:first 2s infinite}.alternate-container div:nth-child(2){animation:second 2s infinite}</style><div class=alternate-container>
-<div>
-Original [1,394 KB]
-<img src=https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/original/desk.jpg>
-</div><div>
-Optimized [804 KB]
-<img src=https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/optimized/desk.jpg>
-</div></div><div class=alternate-container>
-<div>
-Original [1,314 KB]
-<img src=https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/original/landscape.jpg>
-</div><div>
-Optimized [747 KB]
-<img src=https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/optimized/landscape.jpg>
-</div></div><p>You can <a href=files/img.zip>download the sample images</a> if you want to compare them offline.</p><p>And the code:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=err>#</span><span class=p>!</span> <span class=s>&#34;netcoreapp2.0&#34;</span>
+<a class=page-link href=/retire-early title="Retire Early">Retire Early</a></div></nav></header><main class=main><article class=post-single><header class=post-header><img alt src="https://asset.relentlessoptimizer.com/head.png?path=/code/2021/05/28/photo-optimization/" width=1 height=1><div class=breadcrumbs><a href=/>Home</a>&nbsp;»&nbsp;<a href=/code/>Code</a></div><h1 class=post-title>Photo Optimization</h1><div class=post-meta>May 28, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Scott Louvau</div></header><div class=post-content><p>I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process. I figured our phones would produce decently optimized JPG photos directly, but it turns out that a quick pass with an optimization tool reduced the sizes by half with no difference that I could perceive.</p><p>I researched different tools (TinyPNG.com, TinyJPG.com, ImageMagick, PNGQuant), but it was important to me that the tool wouldn&rsquo;t compress the photos too much, and I have too many photos to review the outputs manually. I finally found <a href=https://github.com/danielgtaylor/jpeg-archive>jpeg-recompress</a>, which saves at multiple quality levels and runs a &ldquo;human-perceived difference&rdquo; algorithm to measure the perceived loss. It fits the bill perfectly. I couldn&rsquo;t get it to build, and there wasn&rsquo;t a built Windows executable handy, but <a href=https://github.com/imagemin/jpeg-recompress-bin>another repo</a> has <a href=https://github.com/imagemin/jpeg-recompress-bin/releases>published releases</a> (under vendor/win), or get it <a href=files/jpeg-recompress-bin-5.1.1.zip>here</a> (MIT license).</p><p>For archive quality, run jpeg-recompress with the default settings. You also want to run it in parallel across multiple threads, and it&rsquo;s worth trimming unwanted metadata from your images. In my case, I want GPS locations and Date Taken, but none of the camera details (exposure time, ISO setting, camera model name). Metadata for my images was 60 KB per image. For my 70,000 images, that&rsquo;s 4 GB of data I don&rsquo;t want.</p><p>I wrote a C# script to handle the threading; rather than publishing as an EXE, this makes it easy for others to alter the behavior and see what it&rsquo;s doing. To run it, install <a href=https://github.com/filipw/dotnet-script>dotnet-script</a>, download <a href=files/photo-optimizer.zip>my photo-optimizer zip</a>, open a command prompt, go to the photo-optimizer folder, and run:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>dotnet-script main.csx &#34;[InputRootPath]&#34; &#34;[OutputRootPath]&#34;
+</span></span></code></pre></div><p>How did it do? Overall, my photos were compressed from 212 GB to 114 GB, a 46% reduction. If you have unlimited cloud storage, this may not matter, but if you want to copy from cloud-to-cloud, download a local backup, or otherwise work with your images, it&rsquo;s a nice savings without any clear downside.</p><p>Here are two example images before and after optimization:</p><style>@keyframes first{0%{opacity:1}49%{opacity:1}50%{opacity:0}100%{opacity:0}}@keyframes second{0%{opacity:0}48%{opacity:0}49%{opacity:1}100%{opacity:1}}.alternate-container{margin:1em 0;display:grid;grid-template-columns:1fr}.alternate-container div{grid-row-start:1;grid-column-start:1}.alternate-container div:nth-child(1){animation:first 2s infinite}.alternate-container div:nth-child(2){animation:second 2s infinite}</style><div class=alternate-container><div>Original [1,394 KB]
+<img src=https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/original/desk.jpg></div><div>Optimized [804 KB]
+<img src=https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/optimized/desk.jpg></div></div><div class=alternate-container><div>Original [1,314 KB]
+<img src=https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/original/landscape.jpg></div><div>Optimized [747 KB]
+<img src=https://github.com/ScottLouvau/scottlouvau.github.io/raw/main/content/code/2021/2021-05-28-photo-optimization/img/optimized/landscape.jpg></div></div><p>You can <a href=files/img.zip>download the sample images</a> if you want to compare them offline.</p><p>And the code:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=err>#</span><span class=p>!</span> <span class=s>&#34;netcoreapp2.0&#34;</span>
 </span></span><span class=line><span class=cl><span class=err>#</span><span class=n>r</span> <span class=s>&#34;nuget: CliWrap, 3.3.2&#34;</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1>// Copyright Scott Louvau, 2021, MIT License</span>
@@ -128,26 +70,7 @@ Optimized [747 KB]
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>();</span>
 </span></span><span class=line><span class=cl><span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>$&#34;Done. Optimized {inputFiles.Length:n0} images ({inBytesTotal / MB:n0} MB -&gt; {outBytesTotal / MB:n0} MB) in {w.Elapsed.TotalSeconds:n0} seconds.&#34;</span><span class=p>);</span>
-</span></span></code></pre></div></div><footer class=post-footer>
-<img alt loading=lazy src="https://asset.relentlessoptimizer.com/foot.png?path=/code/2021/05/28/photo-optimization/" width=1 height=1>
-<nav class=paginav>
-<a class=prev href=/finance/2021/05/26/how-to-invest/>
-<span class=title>« Previous Post</span>
-<br>
-<span>How to Invest</span>
-</a>
-<a class=next href=/finance/2021/06/02/how-much-you-need-to-retire/>
-<span class=title>Next Post »</span>
-<br>
-<span>How Much You Need to Retire</span>
-</a>
-</nav></footer></article></main><footer class=footer>
-<span>&copy; 2022 <a href=/>Relentless Optimizer</a>, all code <a href=/LICENSE.txt>MIT License</a></span>
+</span></span></code></pre></div></div><footer class=post-footer><img alt loading=lazy src="https://asset.relentlessoptimizer.com/foot.png?path=/code/2021/05/28/photo-optimization/" width=1 height=1><nav class=paginav><a class=prev href=/finance/2021/05/26/how-to-invest/><span class=title>« Previous Post</span><br><span>How to Invest</span></a>
+<a class=next href=/finance/2021/06/02/how-much-you-need-to-retire/><span class=title>Next Post »</span><br><span>How Much You Need to Retire</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2022 <a href=/>Relentless Optimizer</a>, all code <a href=/LICENSE.txt>MIT License</a></span>
 <span>&#183;</span>
-<span>Incessantly optimizing code, games, and finances.</span><div class=social-icons><a class=social-rss href=index.xml target=_blank title=Rss><svg><use xlink:href="/assets/icons.svg#rss"/></svg>
-</a><a class=social-email href=obfuscated target=_blank title=Email><svg><use xlink:href="/assets/icons.svg#email"/></svg>
-</a><a class=social-github href=https://github.com/ScottLouvau target=_blank title=Github><svg><use xlink:href="/assets/icons.svg#github"/></svg>
-</a><a class=social-linkedin href=https://linkedin.com/in/scott-louvau-97846531 target=_blank title="Linked in"><svg><use xlink:href="/assets/icons.svg#linkedin"/></svg>
-</a></div></footer><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script>
-<script>var mail=["mail","to:","scottlo","@","out","look","."];document.querySelectorAll(".social-email").forEach(e=>e.href=mail.join('')+"com")</script>
-</body></html>
+<span>Incessantly optimizing code, games, and finances.</span><div class=social-icons><a class=social-rss href=index.xml target=_blank title=Rss><svg><use xlink:href="/assets/icons.svg#rss"/></svg></a><a class=social-email href=obfuscated target=_blank title=Email><svg><use xlink:href="/assets/icons.svg#email"/></svg></a><a class=social-github href=https://github.com/ScottLouvau target=_blank title=Github><svg><use xlink:href="/assets/icons.svg#github"/></svg></a><a class=social-linkedin href=https://linkedin.com/in/scott-louvau-97846531 target=_blank title="Linked in"><svg><use xlink:href="/assets/icons.svg#linkedin"/></svg></a></div></footer><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>var mail=["mail","to:","scottlo","@","out","look","."];document.querySelectorAll(".social-email").forEach(e=>e.href=mail.join('')+"com")</script></body></html>
