@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://relentlessoptimizer.com/life/</loc>
+    <lastmod>2022-05-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://relentlessoptimizer.com/life/2022-05-04-m1-macbook-charging/</loc>
+    <lastmod>2022-05-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://relentlessoptimizer.com/</loc>
+    <lastmod>2022-05-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://relentlessoptimizer.com/code/</loc>
     <lastmod>2022-03-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/code/2022/03/15/ffmpeg-cheat-sheet/</loc>
-    <lastmod>2022-03-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://relentlessoptimizer.com/</loc>
     <lastmod>2022-03-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/gaming/</loc>
@@ -25,9 +31,6 @@
   </url><url>
     <loc>https://relentlessoptimizer.com/finance/</loc>
     <lastmod>2021-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://relentlessoptimizer.com/life/</loc>
-    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/life/2021-10-11-galaxy-watch-battery/</loc>
     <lastmod>2021-10-11T00:00:00+00:00</lastmod>
