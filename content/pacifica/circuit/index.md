@@ -38,6 +38,7 @@ You'll need soldering skills and a soldering iron and to know how to set up a Ra
 | ------------------------------------------------------------ | ----- |
 | [Raspberry Pi Zero WH](https://www.adafruit.com/product/3708) | $14   |
 | [Raspberry Pi Zero Case](https://www.adafruit.com/product/3252) | $5    |
+| [Mini HDMI to HDMI Adapter](https://www.adafruit.com/product/2819) | $3 |
 | [8GB Micro SD Card](https://www.adafruit.com/product/2820)   | $10   |
 | Micro USB Cable                                              |       |
 | [10kΩ Resistor](https://vetco.net/products/10k-ohm-1-4-watt-resistor) | $1    |
@@ -60,12 +61,56 @@ You'll need soldering skills and a soldering iron and to know how to set up a Ra
 * Leave a window cracked open when using this, so that if the car does turn off for some reason, you still have ventilation.
 * Test this at home a few times before using it on the road to make sure everything is working reliably.
 
-## Program Raspberry Pi
-* Download a Raspbian image to the SD card, if it wasn't pre-installed.
-* Download the [code and binaries](files/PacControl.zip) to /home/pi/pacControl/
-* Download the '[WiringPi](http://wiringpi.com/download-and-install/)' library.
-* Edit /etc/rc.local. At the end, add this line: "home/pi/pacControl/pacControl &"
-* Test the Raspberry Pi by connecting an LED and resistor between the ground and signal pins (GPIO 24, pin 18). Ensure you see it turn on three times about 15 seconds after the Pi is connected to power.
+
+## Set up SD Card
+* Set up the SD card with <a href="https://www.raspberrypi.com/software/">'Raspberry Pi Imager'</a> on a PC or Mac.
+  * Choose 'Raspberry Pi OS (Other)', then 'Raspberry Pi OS Lite (32-bit)'.
+  * Click the gear icon.
+    * Check 'Set hostname' (the default is fine).
+    * Check 'Set username and password' (username 'pi', password is up to you).
+    * Check 'Configure wireless LAN' and provide your home Wifi network name and password.
+    * Check 'Set locale settings' and provide your Time Zone and Keyboard layout.
+    * Click Save
+  * Click Write.
+
+## Set up Raspberry Pi
+Put the SD card in the Pi Zero, connect a monitor and keyboard, and connect power to boot it. Once it settles at a command prompt, run:
+
+* sudo apt update
+* sudo apt upgrade
+* sudo apt-get install git-core
+
+* cd /home/pi
+* git clone https://github.com/WiringPi/WiringPi
+* cd WiringPi
+* ./build
+
+* cd /home/pi
+* git clone https://github.com/ScottLouvau/PacControl
+* cd PacControl/src
+* chmod +x build
+* ./build
+
+## Test PacControl
+Connect an LED and resistor between pin 18 (program will blink) and pin 20 (ground).
+(Pin 1 has a square outline. Pin 2 is next to it. Going down the line, it's Pin 4, 6, 8, ...).
+
+On the Pi command prompt, run:
+/home/pi/PacControl/src/pacControl
+
+You should see "1: +-+-+-" as output. The LED should blink three times.
+
+## Set PacControl to run on startup
+On the Pi command prompt, run:
+sudo nano /etc/rc.local
+
+Add a line just before "exit 0" which says:
+/home/pi/PacControl/src/pacControl >> /home/pi/PacControl/src/pacControl.log &
+
+Press Ctrl+S and Ctrl+X to save.
+
+Disconnect and reconnect power from the Pi. Confirm that after about 30 seconds, the LED blinks three times.
+
 
 ![Raspberry Pi GPIO Pins](images/raspberry-pi-pinout.png)
 ![Raspberry Pi Test](images/walkthrough/05.PiLedTest.jpg)
