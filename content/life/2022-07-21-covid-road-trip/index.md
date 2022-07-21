@@ -55,7 +55,7 @@ US 30 calls itself a highway, but it's really more like a big street, like WA-16
 
 ![pizza-picnic](img/pizza-picnic.jpg)
 
-After we ate, and before any Target staff might come out to complain, we headed off. We chose a route right through the Chicago and Milwaukee downtowns, to at least get the sight of some other big cities on our way past. Traffic was dense but steady in Chicago, and while we saw quite a bit of the downtown and elevated train system, we didn't get close enough to see Lake Michigan. We ended up bypassing the Milwaukee to make it to a county campground near Madison, Wisconsin, by dusk, once again arriving at dusk. Despite the quality of our sleeping setup, we passed out quickly and slept soundly.
+After we ate, and before any Target staff might come out to complain, we headed off. We chose a route right through the Chicago and Milwaukee downtowns, to at least get the sight of some other big cities on our way past. Traffic was dense but steady in Chicago, and while we saw quite a bit of the downtown and elevated train system, we didn't get close enough to see Lake Michigan. We ended up bypassing the Milwaukee to make it to a county campground near Madison, Wisconsin, once again arriving at dusk. Despite the quality of our sleeping setup, we passed out quickly and slept soundly.
 
 ![chicago-skyline](img/chicago-skyline.jpg)
 
@@ -65,21 +65,23 @@ In most places we've camped, if you arrive after the entrance station is closed,
 
 ![essential-stop](img/essential-stop.jpg)
 
-We chose to follow I-90 through South Dakota, and enjoyed the 80 mph speed limits of the region. The mileage of the Equinox dropped to 27 mpg at 90 mph (roughly the prevailing speed) but we made great time. We watched the farms go by and finally saw the ceaseless and apparently un-irrigated green fields give way to the more familiar brown of our own side of the country. We pulled into a city park in Spearfish, South Dakota to end our third day. The city was gearing up for a festival of some sort, so the campground was relatively busy. Unlike the formal design of most state campgrounds, it was really just a big field where you park and pitch wherever you want.
+We chose to follow I-90 through South Dakota, and enjoyed the 80 mph speed limits of the region. The mileage of the Equinox dropped to 27 mpg at 90 mph (roughly the prevailing speed) but we made great time. We watched the farms go by and finally saw the ceaseless and apparently un-irrigated green fields give way to the more familiar brown of our own side of the country. 
 
 ![farms](img/farms.jpg)
 
-We were lucky to camp without any bad weather thus far, but after a beautiful purple sunset, a thunderstorm broke our streak. I slept in the car with the windows down and towels blocking bug and rain entry while the girls and Darinee filled up the tent. It was exciting for a while as the storm raged by, but returned to calm relatively quickly.
+We pulled into a city park in Spearfish, South Dakota to end our third day. The city was gearing up for a festival of some sort, so the campground was relatively busy. Unlike the formal design of most state campgrounds, it was really just a big field where you park and pitch wherever you want.
 
 ![sunset](img/sunset.jpg)
 
 ![tent-and-car-camping](img/tent-and-car-camping.jpg)
 
+We were lucky to camp without any bad weather thus far, but after a beautiful purple sunset, a thunderstorm broke our streak. I slept in the car with the windows down and towels blocking bug and rain entry while the girls and Darinee filled up the tent. It was exciting for a while as the storm raged by, but returned to calm relatively quickly.
+
 ## Day Four
 
 At this point we were pretty sure we would need two more days to finish the trip, as we had not been managing the full 12 hour driving days needed to make it in four. We headed out before the festival traffic got too heavy, got coffee and shockingly great pastries at a coffee shop in town (Ruby's Roost, if you're ever there), and were back on the highway around 8:30am.
 
-We decided to brave a long detour away from I-90 on US-212 for a shorter path. Like US-30, it was a mistake. They don't believe on doing road closures a mile or two at a time in South Dakota, apparently, instead closing a good ten or twenty miles at a time, with stoplights and pilot trucks to escort wagon trains of hapless vehicles slowly through. When we finally returned to I-90 near the Little Bighorn monument, we'd probably lost as much time to traffic as we had hoped to save in distance, if not more. We ran into several closed Rest Areas as well, delaying our first driver swap until the early afternoon.
+We decided to brave a long detour away from I-90 on US-212 for a shorter path. Like US-30, it was a mistake. They don't believe in doing road closures a mile or two at a time in South Dakota, apparently, instead closing a good ten or twenty miles at a time, with stoplights and pilot trucks to escort wagon trains of hapless vehicles slowly through. When we finally returned to I-90 near the Little Bighorn monument, we'd probably lost as much time to traffic as we had hoped to save in distance, if not more. We ran into several closed Rest Areas as well, delaying our first driver swap until the early afternoon.
 
 Back on I-90, we made quick time with the fast drivers of Montana (who also consistently move over to allow you to pass) and made it to Bozeman to pick up cold drinks by early afternoon. At this point, Google Maps told us we could somehow be home by midnight, and we decided to go for it. We made a gas and dinner stop in Missoula and a quick top-off just after Spokane to make it all the way back.
 
