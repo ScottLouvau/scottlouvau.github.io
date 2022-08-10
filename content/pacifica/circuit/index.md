@@ -38,6 +38,7 @@ You'll need soldering skills and a soldering iron and to know how to set up a Ra
 | ------------------------------------------------------------ | ----- |
 | [Raspberry Pi Zero WH](https://www.adafruit.com/product/3708) | $14   |
 | [Raspberry Pi Zero Case](https://www.adafruit.com/product/3252) | $5    |
+| [Mini HDMI to HDMI Adapter](https://www.adafruit.com/product/2819) | $3 |
 | [8GB Micro SD Card](https://www.adafruit.com/product/2820)   | $10   |
 | Micro USB Cable                                              |       |
 | [10kΩ Resistor](https://vetco.net/products/10k-ohm-1-4-watt-resistor) | $1    |
