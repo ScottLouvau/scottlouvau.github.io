@@ -1,5 +1,5 @@
 ---
-title: "Performance Tuning: Parse 50M DateTimes per second in C#"
+title: "Performance Tuning: From 1.5M to 50M DateTimes Parsed per second in C#"
 date: 2022-08-10
 ---
 
@@ -37,7 +37,7 @@ using (StreamReader r = File.OpenText(filePath))
 
 You run this on a sample log with 100 million DateTimes, and it takes **69 seconds**. This isn't terrible, but you would like to be able to go through a file in just a second or two if possible. Could that be achieved?
 
-You make a scaled sample of **10 million DateTimes**, which takes 6.9 seconds (6.901 milliseconds) to parse, and run it under the Performance Profiler in Visual Studio (including the free Community Edition). 
+You make a scaled sample of **10 million DateTimes**, which takes 6.9 seconds (6,901 milliseconds) to parse, and run it under the Performance Profiler in Visual Studio (which is even in the free Community Edition). 
 
 If our goal for 100 million DateTimes is two seconds, we would need to parse 10 million in **200 ms**. This means our runtime is currently more than 30x slower than our goal, which might seem very difficult to achieve. Let's see what we can do.
 
@@ -45,9 +45,9 @@ If our goal for 100 million DateTimes is two seconds, we would need to parse 10 
 
 When profiling C#, your runtime will often be spent (ultimately) down in .NET Framework APIs, so you'll want to know what they are doing. To make this easier, set some Tools -> Options to help:
 
-* Turn on **Debugging -> General -> Enable .NET Framework Stepping**
-* Turn off **Debugging -> General -> Enable Just My Code**
-* Turn on **Debugging -> Symbols -> Microsoft Symbol Servers**
+* Enable **Debugging -> General -> Enable .NET Framework Stepping**
+* Disable **Debugging -> General -> Enable Just My Code**
+* Enable **Debugging -> Symbols -> Microsoft Symbol Servers**
 
 Next, invoke the Profiler from Debug -> Performance Profiler.
 
@@ -67,7 +67,7 @@ So, what does the initial code profile look like?
 
 On the **Hot Path** at the bottom, you can see Program.Original (with my test code) is 98% of the runtime. This means my data isn't muddled by things happening before or after what I want to measure.
 
-The Hot Path also shows 60% of the runtime is in DateTime.TryParse and another 21% is in ConvertTime (probably what ToUniversalTime calls). This means I could likely get a lot of speedup by finding a faster way to do the parse, and especially if I could skip the conversion to local time and then back.
+Under **Top Functions**, we see 60% of the runtime is in DateTime.TryParse and another 21% is in ConvertTime (probably what ToUniversalTime calls). This means I should focus on the DateTime parsing (as opposed to the I/O) to speed up this code. Since 20% of the runtime is just converting the DateTimes back to UTC, I'll probably get a significant gain by avoiding the change to local time in the first place.
 
 ## Different DateTime.Parse arguments
 
@@ -91,7 +91,9 @@ using (StreamReader r = File.OpenText(filePath))
 }
 ```
 
-The runtime goes down from **6,901 ms** to **3,704 ms**, about twice as fast, for a very safe change. This is a good example of a very simple change providing a substantial gain, which is quite common.
+The runtime goes down from **6,901 ms** to **3,704 ms**, about twice as fast! 
+
+It's very common that you find significant improvements like this that are very safe and easy to make when you're starting to optimize something. If we didn't need this code to be drastically faster, we could stop right here with twice the speed for about 15 minutes of effort.
 
 ## DateTime.ParseExact?
 
@@ -117,7 +119,9 @@ using (StreamReader r = File.OpenText(filePath))
 }
 ```
 
-Here we get something interesting. DateTime.ParseExact is faster - **3,704 ms** to **2,866 ms** - but only **without** the AdjustToUniversal flag. While DateTime.Parse was faster with the flag, DateTime.ParseExact is slower. I stepped into the code and found out why. The code has a "fast path" for the "O" format, but only when the flags are DateTimeStyles.None.
+Here we get something interesting. DateTime.ParseExact is faster - the runtime goes from our previous **3,704 ms** to **2,866 ms** - but only **without** the AdjustToUniversal flag. DateTime.Parse was faster with the flag, but DateTime.ParseExact is slower. I stepped into the code and found out why. The code has a "fast path" for the "O" format, but only when the flags are DateTimeStyles.None.
+
+![DateTime-ParseExact-FastPath](img/DateTime-ParseExact-FastPath-crop.png)
 
 Assuming we really want the DateTimes as UTC in code, this isn't going to work. Note that if we're just looking for DateTimes in a range, it would - we could just convert the range edges to local time.
 
@@ -147,23 +151,23 @@ using (StreamReader r = File.OpenText(filePath))
 }
 ```
 
-The default DateTimeOffset.Parse overload is a bit slower than DateTime.Parse with the flag, but DateTimeOffset.ParseExact is the fastest thing we've seen yet with a nearly zero cost conversion to UTC. We're down from **2,866 ms** to **1,492 ms**, doubling our performance again! Excellent.
+The default DateTimeOffset.Parse overload is (a bit) slower than DateTime.Parse with the flag, but DateTimeOffset.ParseExact is the fastest thing we've seen yet with a nearly zero cost conversion to UTC. We're down from **2,866 ms** to **1,492 ms**, doubling our performance again! Excellent.
 
-Now we decide to profile again to see what the bottlenecks look like with this change.
+Let's run the profiler again to see what the bottlenecks now are with this code.
 
 ![Profile-Offset](img/Profile-Offset-crop.png)
 
-In this variation, DateTimeOffset.ParseExact and StreamReader.ReadLine now consume about equal time. This means probably can't get under about 700 ms no matter how fast the DateTime parsing gets.
+In this variation, DateTimeOffset.ParseExact and StreamReader.ReadLine now consume about equal time. This means any ReadLine()-based reading of the file will probably take at least 700 ms. Let's switch gears and try to speed up the I/O. As a side effect, this will take us toward different variations of DateTime.Parse, so we might also see gains there.
 
 In .NET, when you read a file and split it into parts, you have to create a new string (and a new copy in memory) for each part. Could we avoid this?
 
-## Span<char>
+## Span\<char\>
 
-In fact, we can. .NET introduced the Span<T> type early in .NET Core to help. Span can refer to a whole array or a slice of an array, without needing a new copy. In the case of our file, this means we could read in a whole block of a file and then operate on little slices of it without having to make copies. Span is also a struct, not an object, so Span itself also doesn't require allocation.
+In fact, we can! .NET introduced the Span\<T\> type in .NET Core 2 to help. A Span can reference a whole array or a slice of an array, without copying anything. In the case of File I/O, this means we could read in a big block of a file and then operate on little slices of it without making copies. Span is also a struct, not an object, so Span itself also doesn't need to be allocated.
 
-In this pass I'm going to try a few more improvements. I know that each DateTime is 28 characters long, and my files have two bytes for Windows-style newlines, for a total of 30 bytes for each DateTime.
+In this pass I'm going to try a few more improvements. I can see how long the file is, so I will construct the output List\<DateTime\> and pass the capacity so that it doesn't need to resize during the reading. 
 
-Therefore, instead of looking for newlines, I'll read a block from the file and look at each 30 byte chunk, interpreting it as a DateTime. **Note that** again, I'm adding a new requirement - the DateTimes must always be exaclty 28 bytes long (no writing only whole seconds or milliseconds) and the lines but have two byte delimiters (\r\n). I need to check these new requirements to ensure they're ok to assume.
+Also, I know that each DateTime is 28 characters long, and my files have two bytes for Windows-style newlines, for a total of 30 bytes for each DateTime. Therefore, instead of looking for newlines, I'll read a block from the file and look at each 30 byte chunk, interpreting it as a DateTime. **Note that** again, I'm adding a new requirement - the DateTimes must always be exaclty 28 bytes long (no writing only whole seconds or milliseconds) and the lines but have two byte delimiters (\r\n). I need to check these new requirements to ensure they're ok to assume.
 
 Here's the code I end up with:
 
@@ -192,15 +196,19 @@ using (StreamReader r = File.OpenText(filePath))
 }
 ```
 
-The runtime drops from **1,492 ms** to **878 ms**, which is now **7.8x faster than the original code**. How does the runtime split between File I/O and parsing now? The "Hot Path" didn't show enough of the calls under my test method, so I clicked on it to look at the Call Tree View.
+The runtime drops from **1,492 ms** to **878 ms**, which is now **7.8x faster than the original code**. How is the runtime split between File I/O and parsing now? The "Hot Path" didn't show enough of the calls under my test method, so I clicked on it to look at the Call Tree View.
 
 ![Profile-Span-CallTree](img/Profile-Span-CallTree-crop.png)
 
-I see that 66% of the time is in parsing and about 20% is in File I/O, so we would have to figure out even faster DateTime parsing to make much further progress. Is there anything left we can do?
+I see that 66% of the time is in parsing and about 20% is in File I/O, so we would have to figure out even faster DateTime parsing to make much further progress. 
+
+[Also, quick aside: You can see the code with runtimes annotated below the table. That's great! You can also see the highlight for the 66% is wrong - it's on the Span.Slice line, but it really belongs to DateTimeOffset.ParseExact. When profiling Release code, line number mappings back aren't always right. Trust the table over the highlighted code.] 
+
+Is there anything left we can do?
 
 ## Custom DateTime Parsing
 
-We decided to trust that our DateTimes are always a very specific format and constant length, so what if we skip a lot of DateTime logic and just parse the parts as integers, then construct a DateTime from them?
+We currently require our DateTimes to be a constant format, so what if we skip a lot of DateTime logic and just parse the parts as integers, then construct a DateTime from them?
 
 ```c#
 using (StreamReader r = File.OpenText(filePath))
@@ -241,17 +249,17 @@ using (StreamReader r = File.OpenText(filePath))
 }
 ```
 
-Here I'm parsing each part separately. I use NumberStyles.None to tell .NET it doesn't need to look for a leading plus or minus sign or for thousands separators.
+Here I'm parsing each part separately as an integer. I pass NumberStyles.None to tell .NET it doesn't need to look for a leading plus or minus sign or thousands separators.
 
 The runtime goes from **878 ms** to **1,080 ms**. This approach is **slower**. Sometimes that happens. We need to try something else.
 
-## Span<byte>
+## Span\<byte\>
 
-You might also know that .NET was built before UTF-8 really took off, and so .NET String and Char are UTF-16 (more properly, "UCS-2"). Our file on disk is UTF-8 (thankfully) - exactly 30,000,000 bytes for 10,000,000 DateTimes - so .NET is quietly converting the file to UTF-16 as we read it. Would eliminating that conversion be faster?
+You might also know that .NET was built before UTF-8 really took off, and so .NET String and Char are two bytes per character (UTF-16, or, more properly, "UCS-2"). Our file on disk is UTF-8 (thankfully) - exactly 300,000,000 bytes for 10,000,000 DateTimes - so .NET is quietly converting the file to UTF-16 as we read it. Would eliminating that conversion be faster?
 
-There's reason to think it wouldn't help much, because File I/O isn't our current bottleneck, but switching to bytes also allows us to Span<byte> methods for parsing, which might be better optimized.
+We might expect this to help the File I/O, but maybe not the parsing. On the other hand, we're now switching to the most recent and likely most optimized parsing methods in the .NET Framework.
 
-After switching to UTF-8 (Span<byte> and byte), here's the code:
+After switching to UTF-8 (Span\<byte\> and byte), here's the code:
 
 ```c#
 using (Stream stream = File.OpenRead(filePath))
@@ -296,21 +304,21 @@ using (Stream stream = File.OpenRead(filePath))
 }
 ```
 
-While .NET does not have full DateTime parsing on Span<byte>, it happily does have number parsing, so we can construct the DateTime from parts like we tried earlier. (And even though that wasn't faster for Span<char>, the same idea might work here).
+While .NET does not have full DateTime parsing on Span\<byte\>, it does have number parsing, so we can construct the DateTime from parts just like our previous attempt. (And even though that wasn't faster for Span\<char\>, the same idea might work here).
 
 How does it do?
 
-The runtime goes from **878 ms** (Span and DateTimeOffset.ParseExact, our previous best) to **592 ms**.
+The runtime goes from **878 ms** (Span and DateTimeOffset.ParseExact, our previous best) to **592 ms**. We're now **11.6x faster** than the original code.
 
-We're starting to get close to our 200 ms goal. Note that the code has gotten weirder and more complex with each of the last few optimizations. Our first changes kept the code pretty clear, but we've started trading higher complexity (and stricter input file requirements) for our gains, and so it's worth thinking briefly about whether this code will still be ok for our team to maintain.
+We're starting to get close to our 200 ms goal. Note that the code has started to get weirder and more complex with the last few optimizations. Our first changes kept the code pretty clear, but we've started trading higher complexity (and stricter input file requirements) for our gains. It's worth thinking about whether our team will still be comfortable owning and maintaining this code.
 
 ## Handwritten Parsing Function
 
-I didn't expect to be able to achieve much more speed parsing DateTimes - we're using some very optimized methods now - but decided to step into the code and look. 
+I didn't expect to be able to achieve much more speed parsing DateTimes - we're using some very optimized methods now - but let's  step into the framework code again and see if it's doing any extra work we don't want.
 
 ![Utf8Parser-TryPartInto32D](img/Utf8Parser-TryPartInto32D.png)
 
-Utf8Parser has (unavoidable) code to look for sign characters and is designed to stop at the first non-digit (for use when you don't know how long the number will be). Could we write a simpler implementation ourselves?
+Utf8Parser has code to look for sign characters (but no NumberStyles.None flag to pass) and is designed to stop at the first non-digit (for when you don't know how long the number will be). Could we write a simpler implementation ourselves?
 
 I want to **just parse digits** and only care about stopping on errors after every digit has been chewed through. Here's what that looks like:
 
@@ -333,9 +341,11 @@ public static int MyParse(ReadOnlySpan<byte> value, ref bool success)
 }
 ```
 
-I go through every byte, multiplying the previous sum by 10 and adding the digit. I use the fact that byte is unsigned to use only one condition (digit <= 9) to check for all out of range values. Values before '0' in the UTF-8 table will wrap around as large positive byte values.
+I go through every byte, multiplying the previous sum by 10 and adding the digit. I use the fact that byte is an unsigned type to identify all out of range values with a single condition (digit <= 9). Values before '0' in the UTF-8 table will wrap around as large positive byte values and fail the check.
 
-This is a big step up in change complexity - I've now got a new fundamental method to test. Again it's worth asking if the team will be ok with the additional code, though a number parsing function is about as simple as extra code could be. Let's start using this new method and see if we get any gains from it.
+This is a big step up in change complexity - I've now got a new fundamental method to test. Again it's worth asking if the team will be ok with the additional code, though a number parsing function is about as simple as reimplementing framework code can be. 
+
+Let's start calling this new method and see if we get any gains from it.
 
 ```c#
             using (Stream stream = File.OpenRead(filePath))
@@ -381,15 +391,15 @@ This is a big step up in change complexity - I've now got a new fundamental meth
 
 The outer method doesn't change much. One good thing is that we could easily change back to Utf8Parser.TryParse if we decided not to keep the custom method later.
 
-The custom parsing brings us down from **592 ms** to **485 ms**.
+The custom parsing brings us down from **592 ms** to **485 ms**. Better, but not a huge improvement for quite a bit more custom code.
 
 ## Fully Unrolled Custom Parsing
 
-If we want to keep going, we probably need to drop the loop and hardcode four digits for year, two for month, and so on.This may seem crazy, but if we look deep enough, .NET works this way underneath for some paths:
+If we want to keep going, we probably need to drop the loop and hardcode four digits for year, two for month, and so on.This may seem crazy, but the .NET Framework does exactly this in some code paths I was stepping into earlier. Here's where the "fast-path" for DateTimeOffset.ParseExact went:
 
 ![DateTimeParse-ParseFormatO](img/DateTimeParse-ParseFormatO-crop.png)
 
-I'll try this with no error handling whatsoever, to see what the best case performance could be. When I get down to custom methods, it's common for me to write "happy path only" code first, because if it's not faster I can revert the change without having spent the time to write it fully.
+I'll write this with no error handling at all initially. This will show me the best case performance, allow me to separately see the "tax" for validation as I try to add it, and save me the effort of writing validation at all if the performance is disappointing even without it.
 
 Here's the happy-path-only parsing:
 
@@ -446,17 +456,19 @@ using (Stream stream = File.OpenRead(filePath))
 }
 ```
 
-Note my addition of **MethodImplOptions.AggressiveInlining**. I wrote this code inline originally, then decided it should be a method and factored it out. When I did, the performance dropped by a third. At this point, either method call overhead is starting to matter, or conditions in the calling code (block.Length >= 28) is helping to cut out bounds checks, perhaps.
+Note my addition of **MethodImplOptions.AggressiveInlining**. I wrote this code inline originally, then refactored it into a method and saw the performance drop by a third. At this point, either method call overhead is starting to matter, or conditions in the calling code (block.Length >= 28) are helping to cut out bounds checks in the inner code, perhaps.
 
 The runtime goes from **485 ms** to **182 ms**, reaching our performance goal.
 
 It's a good thing, too, because I'm not sure where we'd get further gains. The I/O is in bulk with no conversions and no copying, and the DateTime parsing is about as minimal as it could be.
 
+This code would need some detailed comments and to have some validation added back in to really be used. As-is, however, we're now parsing **54 million** text DateTimes per second!
+
 We don't need to go further, but if we did, I would probably choose to start changing the rules about our inputs and outputs. If we were doing this work repeatedly on the same file, could we just save a copy already converted to DateTime instead?
 
 ## DateTime UTC Ticks as Binary
 
-To find out, I decided to write a binary file where I write each DateTime.ToUniversalTime().Ticks using BinaryWriter and then read it in with BinaryReader. I might or might not be able to get the provider of the files to send them like this, but if I was scanning them repeatedly, I could also compute and cache the converted form myself.
+To find out, I decided to write a binary file where I write each DateTime.ToUniversalTime().Ticks using BinaryWriter and then read it in with BinaryReader. I might or might not be able to get the provider of the files to send them like this. However, if I'm processing them repeatedly, I could write out this version on the first pass through, and then find it and skip the text file on subsequent passes.
 
 ```c#
 using (BinaryReader r = new BinaryReader(File.OpenRead(Path.ChangeExtension(filePath, ".bin"))))
@@ -479,11 +491,11 @@ using (BinaryReader r = new BinaryReader(File.OpenRead(Path.ChangeExtension(file
 
 One nice thing is the code becomes a lot simpler again.
 
-Runtime? **261 ms**, so shockingly a bit slower than our no-verification implementation. We're making separate calls for every 8 byte value, which ultimately limits our speed.
+Runtime? **261 ms**, so surprisingly a bit slower than our no-verification text-parsing implementation. We're making separate calls for every 8 byte value, which ultimately limits our speed.
 
 ## Binary DateTimes in Bulk
 
-Finally, down to the last option I know how to do. Could we just read the file of DateTime Ticks bytes and "cast it" to a DateTime array? Amazingly, yes, modern C# has a way to do that.
+Finally, down to the last option I know how to do. Could we just read the whole file of DateTime Ticks bytes and "cast it" to a DateTime array? Amazingly, yes, modern C# has a way to do that.
 
 We make a DateTime array the correct size, reinterpret it as a byte array, and ask the Stream to read directly into it.
 
@@ -502,31 +514,33 @@ using (Stream stream = File.OpenRead(Path.ChangeExtension(filePath, ".bin")))
 }
 ```
 
-If you see "MemoryMarshal" and get nervous, you've got good instincts. This very low level loading is trusting the bytes on disk to be valid, and trusting the .NET representation of DateTimes (and arrays of them) not to change. These are new requirements worth considering carefully. If we temporarily cache copies of the logs in this form, that might be fine. Storing them long term like this may not be.
+If you see "MemoryMarshal" and get nervous, you've got good instincts. This very low level loading is trusting the bytes on disk to be valid, and trusting the .NET representation of DateTimes (and arrays of them) not to change. These are new requirements worth considering carefully. If we temporarily cache copies of the logs in this form, that might be fine. Storing them long term like this may not be safe.
 
 What's the runtime of this craziness? **34 ms!** It's so fast I have to scale up to the full 100M DateTimes to get a reliable measurement. 100M DateTimes in binary is 760 MB and is parsed (well, loaded, really) in 340 ms, which is about 2.2 GB/s. This is as fast as the drive in my laptop can read, so we've hit a hardware limit with this particular variation as well.
 
 ## Reshaping the Problem
 
-Note that all of these implementations still build a set of DateTimes. If the real task was to find the rows in a given time range (or count them), we really don't need an array of all of them, and don't need to decode all of them. We could also write a file with, say, only every 32nd DateTime. We load it, binary search for the desired range, and then find the range in the main file. Since we don't have every row, we'll be off by a few, but we can search around in the big file to find the exact bounds.
+Note that all of these implementations still build a set of DateTimes. If the real task was to find the rows in a given time range (or count them), we really don't need an array of all of them, and we don't need to decode all of them. We could write a file with, say, only every 32nd DateTime. We load the small file, binary search for the desired range, and then find the exact range bounds in the main file.
 
-If we don't care about full ticks precision, we ask for the DateTimes with fewer fractional seconds, and save both space and parsing time. The binary format could potentially be represented with four bytes per value instead, though we have to figure out how to expand it back to either to load. (Two digit years never hurt anyone, right? /s)
+If we don't care about full ticks precision, we could ask for the DateTimes with fewer fractional seconds, and save both space and parsing time. The binary format could potentially be represented with four bytes per value instead, though we have to figure out how to expand it back to eight bytes each to load. (Two digit years never hurt anyone, right? /s)
 
 If we find we're often working with small ranges in the files, another really simple idea would be to push back on the 100 million rows per file design. Could we get down to 10 million and still achieve our other goals? Could we keep the smaller files for a while and merge them into big files only after we won't be processing them anymore?
 
-I gave some design restrictions up front, but hopefully your engineer mind perked up and wondered if those requirements were really strict and necessary or if they were somewhat flexible if a good enough reason came along.
+I listed some design decisions up front, but hopefully your engineer mind perked up and wondered if those requirements were really strict and necessary or if they were somewhat flexible if a good enough reason came along.
 
 ## What about the other log fields?
 
-We've gone through this whole set of experiments with files with just DateTimes in them. What about the full messages with other fields? It would be slower, obviously. If we know that newlines will appear right before the DateTimes, looking for newlines in a Span<byte> can be done very, very quickly with .NET, so we might be able to stay close to the "Unrolled" performance. The file could be much bigger than the DateTimes, however, so we'll be reading many more bytes and we might hit our disk read speed limit.
+We've gone through this whole set of experiments with files with just DateTimes in them. What about the full messages with other fields? It would be slower, obviously. If we know that newlines will appear right before the DateTimes, looking for newlines in a Span\<byte\> can be done very, very quickly with .NET, so we might be able to stay close to the "Unrolled" performance. The file could be much bigger than the DateTimes, however, so we'll be reading many more bytes and we might hit our disk read speed limit.
 
-Another option (along the lines of writing a separate binary file) is we could have (or build) a separate file with only the DateTimes in it from the raw log, which would make exactly this example what we're planning to process. How do we find the rows in the original file, then? We would probably have to write both the DateTimes and a byte offset in the main file where that row could be found.
+Another option (along the lines of writing a separate binary file) is we could read the main log once and write a separate file with only the DateTimes in it, which would make exactly this example what we're planning to process. How do we find the rows in the original file, then? We would probably have to write both the DateTimes and a byte offset in the main file where that row could be found.
 
 ## Why no multithreading?
 
-You may object that I never tried to multi-thread this method. Why? Basically, I always want to see what I can get from one thread before I add more. If I can reach the goal in one thread, I can leave the other cores for other work, other processes, or queries from other users. In addition, if we can find a way to parallelize above the level of this code, we don't need to do it here. For example, if we're processing multiple logs, we can have one thread work on each file separately with no coordination or merging of results to figure out. Speaking of coordination, it's often difficult to write multi-threaded code where the threads aren't sitting around waiting for each other. In this case, I could split up a file into chunks, allocate a big, perfectly sized array, and have each thread fill in a segment of it. In many problems, we don't know exactly how many results there will be and have to work harder to figure out how to merge them efficiently.
+You may object that I never tried to multi-thread this method. Why? Basically, I always want to see what I can get from one thread before I add more. If I can reach the goal in one thread, I can leave the other cores for other work, other processes, or requests from other users. In addition, if we can find a way to parallelize above the level of this code, we don't need to parallelize in here. For example, if we're processing multiple logs, we can have one thread work on each file separately with no coordination or merging of results to figure out. 
 
-If you have a problem where you don't have multi-threading above your code, you can't hit your goal in one thread, and you can figure out how to have them split up the work and coordinate the results, go for it. I would just suggest sticking to one thread first until you hit those limits. =)
+Speaking of coordination, it's often difficult to write multi-threaded code where the threads aren't sitting around waiting for each other. In **this** case, I could split up a file into chunks, allocate a big, perfectly sized array, and have each thread fill in a segment of it. Many problems aren't this simple. If we don't know exactly how many results there will be or exactly how to split the input evenly, we have more work to do properly merging the results.
+
+If you have a problem where you don't have multi-threading above your code, you can't hit your goal in one thread, and you can figure out how to have threads easily split up the work and coordinate the results, go for it. I would just suggest sticking to one thread first until you hit those limits. =)
 
 ## Conclusion
 
@@ -551,6 +565,8 @@ What was the overall speedup we achieved?
 So we could get 4.6x faster just by swapping the parsing method (to DateTimeOffset.ParseExact), 7.8x faster by switching to Span for I/O, and 11.6x faster still with standard parsing. Custom code got us to 37.9x, though a production-safe version would need error checking and would be slower.
 
 Finally, loosening the input requirements and switching to binary can get you a 200x speedup on this problem, if really need it, and can load 297 million DateTimes per second.
+
+You might think that optimizing "real code" will not be this simple, but if you take the time to build a simple but realistic console app sample, it can be. (And, seeing how many iterations we went through here, hopefully you can see why that's really important).
 
 ![Runtimes](img/Runtimes.png)
 
