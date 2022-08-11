@@ -63,7 +63,7 @@ So, what does the initial code profile look like?
 
 ## Initial Code Profile
 
-![Initial-Profile](img/Initial-Profile.png)
+![Initial-Profile](img/Initial-Profile-crop.png)
 
 On the **Hot Path** at the bottom, you can see Program.Original (with my test code) is 98% of the runtime. This means my data isn't muddled by things happening before or after what I want to measure.
 
@@ -151,7 +151,7 @@ The default DateTimeOffset.Parse overload is a bit slower than DateTime.Parse wi
 
 Now we decide to profile again to see what the bottlenecks look like with this change.
 
-![Profile-Offset](img/Profile-Offset.png)
+![Profile-Offset](img/Profile-Offset-crop.png)
 
 In this variation, DateTimeOffset.ParseExact and StreamReader.ReadLine now consume about equal time. This means probably can't get under about 700 ms no matter how fast the DateTime parsing gets.
 
@@ -194,7 +194,7 @@ using (StreamReader r = File.OpenText(filePath))
 
 The runtime drops from **1,492 ms** to **878 ms**, which is now **7.8x faster than the original code**. How does the runtime split between File I/O and parsing now? The "Hot Path" didn't show enough of the calls under my test method, so I clicked on it to look at the Call Tree View.
 
-![Profile-Span-CallTree](img/Profile-Span-CallTree.png)
+![Profile-Span-CallTree](img/Profile-Span-CallTree-crop.png)
 
 I see that 66% of the time is in parsing and about 20% is in File I/O, so we would have to figure out even faster DateTime parsing to make much further progress. Is there anything left we can do?
 
@@ -387,7 +387,7 @@ The custom parsing brings us down from **592 ms** to **485 ms**.
 
 If we want to keep going, we probably need to drop the loop and hardcode four digits for year, two for month, and so on.This may seem crazy, but if we look deep enough, .NET works this way underneath for some paths:
 
-![DateTimeParse-ParseFormatO](img/DateTimeParse-ParseFormatO.png)
+![DateTimeParse-ParseFormatO](img/DateTimeParse-ParseFormatO-crop.png)
 
 I'll try this with no error handling whatsoever, to see what the best case performance could be. When I get down to custom methods, it's common for me to write "happy path only" code first, because if it's not faster I can revert the change without having spent the time to write it fully.
 
