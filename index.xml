@@ -17,11 +17,11 @@
     </item>
     
     <item>
-      <title>Performance Tuning: Parse 50M DateTimes per second in C#</title>
-      <link>https://relentlessoptimizer.com/code/2022/08/10/performance-tuning-parse-50m-datetimes-per-second-in-c/</link>
+      <title>Performance Tuning: From 1.5M to 50M DateTimes Parsed per second in C#</title>
+      <link>https://relentlessoptimizer.com/code/2022/08/10/performance-tuning-from-1.5m-to-50m-datetimes-parsed-per-second-in-c/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://relentlessoptimizer.com/code/2022/08/10/performance-tuning-parse-50m-datetimes-per-second-in-c/</guid>
+      <guid>https://relentlessoptimizer.com/code/2022/08/10/performance-tuning-from-1.5m-to-50m-datetimes-parsed-per-second-in-c/</guid>
       <description>I love the Visual Studio C# Performance Profiler, and am shocked to find out how many engineers around me haven&amp;rsquo;t used it before.</description>
     </item>
     
