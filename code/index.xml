@@ -6,7 +6,25 @@
     <description>Recent content in Code on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 15 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/code/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Performance Optimize Existing Code</title>
+      <link>https://relentlessoptimizer.com/code/2022/08/10/how-to-performance-optimize-existing-code/</link>
+      <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/code/2022/08/10/how-to-performance-optimize-existing-code/</guid>
+      <description>You&amp;rsquo;ve got some existing code and you might want to make it faster. How hard is it to make it faster?</description>
+    </item>
+    
+    <item>
+      <title>Performance Tuning: Parse 50M DateTimes per second in C#</title>
+      <link>https://relentlessoptimizer.com/code/2022/08/10/performance-tuning-parse-50m-datetimes-per-second-in-c/</link>
+      <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/code/2022/08/10/performance-tuning-parse-50m-datetimes-per-second-in-c/</guid>
+      <description>I love the Visual Studio C# Performance Profiler, and am shocked to find out how many engineers around me haven&amp;rsquo;t used it before.</description>
+    </item>
+    
     <item>
       <title>FFMPEG Cheat Sheet</title>
       <link>https://relentlessoptimizer.com/code/2022/03/15/ffmpeg-cheat-sheet/</link>
