@@ -113,16 +113,12 @@ function checkAnswer() {
       setComplete.play();
     } else {
       oneComplete.load();
-      //oneComplete.play();
+      oneComplete.play();
     }
   }
 }
 
 function showProgress() {
-  // const first =  "linear-gradient(90deg, #c7e9c0, #41ab5d)";
-  // const second = "linear-gradient(90deg, #fee6ce, #fd8d3c)";
-  // const third = "linear-gradient(90deg, #fc9272, #ef3b2c)";
-
   // https://uigradients.com/; https://cssgradient.io/
   const first = "linear-gradient(to right, #ca7345, #732100)";
   const second = "linear-gradient(to right, #d7dde8, #757f9a)";
