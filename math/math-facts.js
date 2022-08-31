@@ -13,14 +13,15 @@ let setComplete = null;
 // State
 let nextAnswer = null;
 
-let settings = { goal: 40, pauseMs: 500, op: '+' };
+let settings = { goal: 40, pauseMs: 500, op: '+', sounds: true, volume: 0.25, oneSound: 0, setSound: 2 };
 let today = { date: dateString(new Date()), count: 0 };
-let history = { };
+let history = {};
 
+const sounds = ["air-horn", "applause", "birthday-party"];
 
 /* LocalStorage saved data 'shape':
 { 
-  settings: { goal: 5, op: '+' },
+  settings: { goal: 5, op: '+', ... },
   today: { date: today, count: 0 },
   history: {
     "2022-08-31": { date: "2022-08-31", count: 28 }, ... [>= 60 days ago]
@@ -28,42 +29,55 @@ let history = { };
 }
 */
 
+// Return a canonical string for the given date (ex: '2022-08-31')
 function dateString(date) {
-  // 2022-08-31
   return date.toISOString().slice(0, 10);
 }
 
+// Compute the date 'days' days before 'date'
 function daysAgo(date, days) {
   let result = new Date(date);
   result.setDate(result.getDate() - days);
   return result;
 }
 
+// Choose a value between min and max, except last.
+function randomish(min, max, last) {
+  let range = max - min;
+  if (last >= min && last <= max) { range--; }
+
+  let result = min + Math.floor(Math.random() * range);
+  if (result === last) { result = max; }
+
+  return result;
+}
+
+// Randomly choose the next math problem
 function nextProblem() {
   let o = op.innerText;
-  let u = null;
-  let l = null;
+  let u = +(upper.innerText);
+  let l = +(lower.innerText);
 
   if (o === '+') {
-    u = Math.floor(Math.random() * 12);
-    l = Math.floor(Math.random() * 12);
+    u = randomish(0, 12, u);
+    l = randomish(0, 12, l);
 
     nextAnswer = u + l;
   } else if (o === '-') {
-    u = Math.floor(Math.random() * 20);
-    l = Math.floor(Math.random() * u);
+    u = randomish(0, 20, u);
+    l = randomish(0, u, l);
 
     nextAnswer = u - l;
   } else if (o === 'x' || o === '*') {
-    u = Math.floor(Math.random() * 12);
-    l = Math.floor(Math.random() * 12);
+    u = randomish(0, 12, u);
+    l = randomish(0, 12, l);
 
     nextAnswer = u * l;
   } else { // (o === '/' || o === '÷')
     // No divide zero or divide by zero
-    nextAnswer = Math.floor(Math.random() * 11) + 1;
-    l = Math.floor(Math.random() * 11) + 1;
-    
+    nextAnswer = randomish(1, 12, nextAnswer);
+    l = randomish(1, 12, l);
+
     u = nextAnswer * l;
   }
 
@@ -72,6 +86,7 @@ function nextProblem() {
   answer.value = "";
 }
 
+// Toggle to the next math operation
 function nextOperation() {
   let o = op.innerText;
 
@@ -93,11 +108,14 @@ function nextOperation() {
   } catch { }
 
   nextProblem();
+  answer.focus();
 }
 
+// Check the answer
 function checkAnswer() {
   let a = +(answer.value);
 
+  // If correct, track progress, celebrate, and pick the next one
   if (a === nextAnswer) {
     today.count++;
 
@@ -108,16 +126,19 @@ function checkAnswer() {
     showProgress();
     setTimeout(nextProblem, settings.pauseMs ?? 250);
 
-    if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
-      setComplete.load();
-      setComplete.play();
-    } else {
-      oneComplete.load();
-      oneComplete.play();
+    if (settings.sounds) {
+      if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
+        setComplete.load();
+        setComplete.play();
+      } else {
+        oneComplete.load();
+        oneComplete.play();
+      }
     }
   }
 }
 
+// Render progress on top bar
 function showProgress() {
   // https://uigradients.com/; https://cssgradient.io/
   const first = "linear-gradient(to right, #ca7345, #732100)";
@@ -142,8 +163,8 @@ function showProgress() {
   progress.style.backgroundSize = `${Math.floor(100 * portionDone)}% 100%`;
 }
 
+// Load stored settings, progress today, and historical progress.
 function loadState() {
-  // Load stored settings, progress today, and historical progress.
   const storage = window.localStorage;
   try {
     settings = { ...settings, ...JSON.parse(storage.getItem('settings')) };
@@ -160,7 +181,7 @@ function loadState() {
         // Remove too-old entries
         const cutoff = dateString(daysAgo(new Date(), 60));
         for (let date in history) {
-          if(date < cutoff) {
+          if (date < cutoff) {
             delete history[date];
           }
         }
@@ -173,22 +194,28 @@ function loadState() {
 }
 
 window.onload = async function () {
+  // Cache controls from DOM we'll be manipulating
   upper = document.getElementById("upper");
   lower = document.getElementById("lower");
   op = document.getElementById("op");
   answer = document.getElementById("answer");
-
   progress = document.getElementById("progress");
   progressOuter = document.getElementById("progress-outer");
-
-  oneComplete = new Audio("mlg-air-horn.mp3");
-  setComplete = new Audio("applause-sound-effect.mp3");
 
   loadState();
 
   // Reflect loaded state in UI
   op.innerText = settings.op;
   showProgress();
+
+  // Load sounds
+  if (settings.sounds) {
+    oneComplete = new Audio(`${sounds[(settings.oneSound ?? 0) % sounds.length]}.mp3`);
+    setComplete = new Audio(`${sounds[(settings.setSound ?? 1) % sounds.length]}.mp3`);
+
+    oneComplete.volume = settings.volume ?? 1;
+    setComplete.volume = settings.volume ?? 1;
+  }
 
   // Hook up to check answer
   answer.focus();
@@ -197,5 +224,6 @@ window.onload = async function () {
   // Hook up to toggle operation
   op.addEventListener("click", nextOperation);
 
+  // Choose the first problem
   nextProblem();
 };
