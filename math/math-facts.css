@@ -1,31 +1,45 @@
+:root {
+    --problem-font-size: min(16vw, 16vh);
+    --control-size: calc(var(--problem-font-size) * 0.25);
+}
+
 * {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: min(16vw, 16vh);
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
-}
-
-#progress {
-    width: 100%;
-    height: 0.2em;    
-    background-repeat: no-repeat;
-    background-size: 0%;
 }
 
 #progress-outer {
     background-repeat: no-repeat;
     background-size: 100%;
     width: 100% 100%;
-    height: 0.2em;
+    height: var(--control-size);
+    border-bottom: 1px solid #888;
+}
+
+#progress {
+    width: 100%;
+    height: var(--control-size);
+    background-repeat: no-repeat;
+    background-size: 0%;
+    text-align: center;
+}
+
+#controls {
+    padding: 0px 2px;
+    margin: 0 auto;
+    width: fit-content;
 }
 
 #problem {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr 1fr 0.3fr 1fr;
+    font-size: var(--problem-font-size);
 
     width: 2.5em;
     margin: auto auto;
@@ -67,7 +81,21 @@ html, body {
 }
 
 #answer {
+    font-size: var(--problem-font-size);
     text-align: right;
     box-sizing: border-box;
     width: 100%;
+}
+
+/* Calendar to show recent history */
+
+svg {
+    width: var(--control-size);
+    height: var(--control-size);
+    cursor: pointer;
+
+    /* To get SVG not to be weirdly positioned vertically */
+    display: block;
+
+    /* Set 'viewBox="0 0 40 40"' for 40px-intended-size to get runtime scaling */
 }

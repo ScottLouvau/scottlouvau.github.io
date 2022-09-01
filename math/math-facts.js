@@ -14,7 +14,7 @@ let setComplete = null;
 let nextAnswer = null;
 
 let settings = { goal: 40, pauseMs: 500, op: '+', sounds: true, volume: 0.25, oneSound: 0, setSound: 2 };
-let today = { date: dateString(new Date()), count: 0 };
+let today = { date: dateString(now()), count: 0 };
 let history = {};
 
 const sounds = ["air-horn", "applause", "birthday-party"];
@@ -29,16 +29,26 @@ const sounds = ["air-horn", "applause", "birthday-party"];
 }
 */
 
-// Return a canonical string for the given date (ex: '2022-08-31')
-function dateString(date) {
-  return date.toISOString().slice(0, 10);
+function now() {
+  return new Date();
 }
 
-// Compute the date 'days' days before 'date'
-function daysAgo(date, days) {
+// Return an ISO 8601 string for the given date in the local timezone (not UTC) (ex: '2022-08-31')
+function dateString(date) {
+  // "sv" locale (Sweden) uses ISO 8601 date formatting
+  return date.toLocaleDateString("sv");
+}
+
+// Compute the date 'days' after 'date'
+function addDays(date, days) {
   let result = new Date(date);
-  result.setDate(result.getDate() - days);
+  result.setDate(result.getDate() + days);
   return result;
+}
+
+// Return the date of Sunday in the same week as 'date'
+function startOfWeek(date) {
+  return addDays(date, -date.getDay());
 }
 
 // Choose a value between min and max, except last.
@@ -61,29 +71,26 @@ function nextProblem() {
   if (o === '+') {
     u = randomish(0, 12, u);
     l = randomish(0, 12, l);
-
     nextAnswer = u + l;
   } else if (o === '-') {
     u = randomish(0, 20, u);
     l = randomish(0, u, l);
-
     nextAnswer = u - l;
   } else if (o === 'x' || o === '*') {
     u = randomish(0, 12, u);
     l = randomish(0, 12, l);
-
     nextAnswer = u * l;
   } else { // (o === '/' || o === '÷')
-    // No divide zero or divide by zero
+    // Choose *factors* and compute product; no zero.
     nextAnswer = randomish(1, 12, nextAnswer);
     l = randomish(1, 12, l);
-
     u = nextAnswer * l;
   }
 
   upper.innerText = u;
   lower.innerText = l;
   answer.value = "";
+  answer.readOnly = false;
 }
 
 // Toggle to the next math operation
@@ -124,6 +131,7 @@ function checkAnswer() {
     } catch { }
 
     showProgress();
+    answer.readOnly = true;
     setTimeout(nextProblem, settings.pauseMs ?? 250);
 
     if (settings.sounds) {
@@ -179,7 +187,7 @@ function loadState() {
         history[lastToday.date] = lastToday;
 
         // Remove too-old entries
-        const cutoff = dateString(daysAgo(new Date(), 60));
+        const cutoff = dateString(addDays(new Date(), -60));
         for (let date in history) {
           if (date < cutoff) {
             delete history[date];
@@ -192,6 +200,7 @@ function loadState() {
   }
   catch { }
 }
+
 
 window.onload = async function () {
   // Cache controls from DOM we'll be manipulating
