@@ -110,3 +110,43 @@ function toggleCalendar() {
   </div>
 </body>
 ```
+
+```
+{ 
+  settings: { goal: 5, op: '+', ... },
+  today: { date: "2022-09-01", count: 15, telemetry: [
+    ["5", "+", "3", 2640, true], ...
+    [upper, op, lower, timeToSolveMs, wasEverIncorrect]
+  ] },
+  history: {
+    "2022-08-31": { [same as 'today' for that date] }
+  },
+
+  telemetry: { 
+    count: 120,    // Count of problems in telemetry data
+    accuracy: {
+      "+": { 
+        "1": { 
+          "1": { 45, 49 }, // 1+1 done 49 times, correct on first try 45/49 times.
+          "2", { 21, 22 }, // 1+2 done 22 times, correct on first try 21/22 times.
+          ...
+        }, ...
+      }, ... 
+    },
+    speed: {
+      "+": {
+        "1": { 
+          "1": { 2640, 1420, 2130, 22000, ... }, // Time in Ms to correct answer for every 1+1 attempt.
+        }
+      }
+    }
+  }
+}
+
+ historyAccuracy will only capture the first attempt each time a problem is presented.
+ historyAccuracy triggers when the answer is as many digits as the correct answer for the first time.
+
+ historySpeed excludes attempts over 60 seconds.
+ A time percentile (50th? 67th? 75th?) should be used to get a typical solution speed while excluding large outliers.
+ This excludes very long solve times due to interruptions, and gives room for reported speed to improve as newer, faster times accumulate.
+```
