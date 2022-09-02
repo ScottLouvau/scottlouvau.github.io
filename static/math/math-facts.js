@@ -22,11 +22,46 @@ const sounds = ["air-horn", "applause", "birthday-party"];
 /* LocalStorage saved data 'shape':
 { 
   settings: { goal: 5, op: '+', ... },
-  today: { date: today, count: 0 },
-  history: {
-    "2022-08-31": { date: "2022-08-31", count: 28 }, ... [>= 60 days ago]
+  today: { date: "2022-09-01", count: 15, set: [
+    ["5", "+", "3", 2640, true], ...
+    [upper, op, lower, timeToSolveMs, firstAnswerCorrect]
+  ] },
+  historyCount: {
+    "2022-08-31": [ 28 ], ...
+  },
+  historyAccuracy: {
+    "+": { 
+      "1": { 
+        "1": { 45, 49 }, // For 1+1, correct on first try 45/49 times.
+        "2", { 21, 22 }, // For 1+2, correct on first try 21/22 times.
+        ...
+      }, ...
+    }, ... 
+  },
+  historySpeed: {
+    "+": {
+      "1": { 
+        "1": { 2640, 1420, 2130, 22000, ... }, // Time in Ms to correct answer for every 1+1 attempt.
+      }
+    }
   }
 }
+
+ historyAccuracy will only capture the first attempt each time a problem is presented.
+ historyAccuracy triggers when the answer is as many digits as the correct answer for the first time.
+
+ historySpeed excludes attempts over 60 seconds.
+ A time percentile (50th? 67th? 75th?) should be used to get a typical solution speed while excluding large outliers.
+ This excludes very long solve times due to interruptions, and gives room for reported speed to improve as newer, faster times accumulate.
+
+ TODO
+ ====
+   Should history be segmented by month to allow easily excluding older data? By week?
+     Issue: We need thousands of attempts to get tens per problem, likely taking months to accumulate.
+     
+   Should speed be sorted to allow quick percentile extraction? (Probably)
+   Alternatively, speed could be sorted by time and include only the most recent N attempts per problem, to get a "recent" sample.
+   Accuracy could not be similarly filtered, however.
 */
 
 function now() {
@@ -90,7 +125,6 @@ function nextProblem() {
   upper.innerText = u;
   lower.innerText = l;
   answer.value = "";
-  answer.readOnly = false;
 }
 
 // Toggle to the next math operation
@@ -131,7 +165,6 @@ function checkAnswer() {
     } catch { }
 
     showProgress();
-    answer.readOnly = true;
     setTimeout(nextProblem, settings.pauseMs ?? 250);
 
     if (settings.sounds) {
