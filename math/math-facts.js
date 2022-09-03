@@ -47,6 +47,7 @@ function startOfWeek(date) {
 function randomish(min, max, last) {
   let range = max - min;
   if (last >= min && last <= max) { range--; }
+  if (range <= 0) { return min; }
 
   let result = min + Math.floor(Math.random() * range);
   if (result === last) { result = max; }
@@ -89,6 +90,60 @@ function nextProblem() {
   answer.value = "";
 }
 
+// Check the answer
+function checkAnswer() {
+  let a = +(answer.value);
+
+  // Stop if we are in between problems right now
+  if (currentProblem === null) { return; }
+
+  // If correct, track progress, celebrate, and pick the next one
+  if (a === currentProblem.answer) {
+    const newNow = now();
+
+    // If it's a new day, push old data to history and swap to a new 'today'
+    if (dateString(newNow) !== today.date) {
+      loadState();
+    }
+
+    // Add just solved problem to telemetry
+    const msToAnswer = (newNow - currentProblem.startTime);
+    today.count++;
+
+    if (msToAnswer < 60 * 1000) {
+      const entry = [upper.innerText, op.innerText, lower.innerText, msToAnswer, currentProblem.wasEverIncorrect];
+      today.telemetry ??= [];
+      today.telemetry.push(entry);
+      addTelemetryEntry(entry);
+    }
+
+    // Save new telemetry
+    try {
+      window.localStorage.setItem('today', JSON.stringify(today));
+    } catch { }
+
+    // Update UI
+    currentProblem = null;
+    showProgress();
+    setTimeout(nextProblem, settings.pauseMs ?? 250);
+
+    if (settings.sounds) {
+      if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
+        setComplete.load();
+        setComplete.play();
+      } else {
+        oneComplete.load();
+        oneComplete.play();
+      }
+    }
+  } else {
+    // If incorrect, and the right length, mark wasEverIncorrect
+    if (currentProblem.answer.toString().length <= answer.value.length) {
+      currentProblem.wasEverIncorrect = true;
+    }
+  }
+}
+
 // Toggle to the next math operation
 function nextOperation() {
   let o = op.innerText;
@@ -112,50 +167,6 @@ function nextOperation() {
 
   nextProblem();
   answer.focus();
-}
-
-// Check the answer
-function checkAnswer() {
-  let a = +(answer.value);
-
-  // Stop if we are in between problems right now
-  if (currentProblem === null) { return; }
-
-  // If correct, track progress, celebrate, and pick the next one
-  if (a === currentProblem.answer) {
-    const msToAnswer = (now() - currentProblem.startTime);
-    today.count++;
-
-    if (msToAnswer < 60 * 1000) {
-      const entry = [upper.innerText, op.innerText, lower.innerText, msToAnswer, currentProblem.wasEverIncorrect];
-      today.telemetry ??= [];
-      today.telemetry.push(entry);
-      addTelemetryEntry(entry);
-    }
-
-    try {
-      window.localStorage.setItem('today', JSON.stringify(today));
-    } catch { }
-
-    currentProblem = null;
-    showProgress();
-    setTimeout(nextProblem, settings.pauseMs ?? 250);
-
-    if (settings.sounds) {
-      if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
-        setComplete.load();
-        setComplete.play();
-      } else {
-        oneComplete.load();
-        oneComplete.play();
-      }
-    }
-  } else {
-    // If incorrect, and the right length, mark wasEverIncorrect
-    if (currentProblem.answer.toString().length <= answer.value.length) {
-      currentProblem.wasEverIncorrect = true;
-    }
-  }
 }
 
 // Render progress on top bar
@@ -236,9 +247,10 @@ function loadState() {
     settings = { ...settings, ...JSON.parse(storage.getItem('settings')) };
     history = JSON.parse(storage.getItem('history')) ?? history;
 
+    const currentToday = dateString(now());
     const lastToday = JSON.parse(storage.getItem('today'));
     if (lastToday) {
-      if (lastToday.date === today.date) {
+      if (lastToday.date === currentToday) {
         today = lastToday;
       } else {
         // On a new day, add most recent day to history
@@ -246,10 +258,17 @@ function loadState() {
         storage.setItem("history", JSON.stringify(history));
 
         // TODO: Delete very old data?
+
+        // Reset 'today' data
+        today = { date: currentToday, count: 0, telemetry: [] };
       }
     }
   }
   catch { }
+
+  // Reflect loaded state in UI
+  op.innerText = settings.op;
+  showProgress();
 
   computeTelemetry();
 }
@@ -263,11 +282,8 @@ window.onload = async function () {
   progress = document.getElementById("progress");
   progressOuter = document.getElementById("progress-outer");
 
+  // Load localStorage state (Settings, work per day, ...)
   loadState();
-
-  // Reflect loaded state in UI
-  op.innerText = settings.op;
-  showProgress();
 
   // Load sounds
   if (settings.sounds) {
