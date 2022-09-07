@@ -43,13 +43,26 @@ function startOfWeek(date) {
   return addDays(date, -date.getDay());
 }
 
+// Define an order for the mathematical functions
+function nextOperation(o) {
+  if (o === '+') {
+    return '-';
+  } else if (o === '-') {
+    return 'x';
+  } else if (o === 'x') {
+    return '÷';
+  } else {
+    return '+';
+  }
+}
+
 // Choose a value between min and max, except last.
 function randomish(min, max, last) {
   let range = max - min;
   if (last >= min && last <= max) { range--; }
   if (range <= 0) { return min; }
 
-  let result = min + Math.floor(Math.random() * range);
+  let result = min + Math.floor(Math.random() * (range + 1));
   if (result === last) { result = max; }
 
   return result;
@@ -70,11 +83,11 @@ function nextProblem() {
     u = randomish(0, 20, u);
     l = randomish(0, u, l);
     a = u - l;
-  } else if (o === 'x' || o === '*') {
+  } else if (o === 'x') {
     u = randomish(0, 12, u);
     l = randomish(0, 12, l);
     a = u * l;
-  } else { // (o === '/' || o === '÷')
+  } else { // (o === '÷')
     // Choose *factors* and compute product; no zero.
     a = randomish(1, 12, a);
     l = randomish(1, 12, l);
@@ -145,19 +158,8 @@ function checkAnswer() {
 }
 
 // Toggle to the next math operation
-function nextOperation() {
-  let o = op.innerText;
-
-  if (o === '+') {
-    o = '-';
-  } else if (o === '-') {
-    o = 'x';
-  } else if (o === 'x' || o === '*') {
-    o = '÷';
-  } else { // (o === '/' || o === '÷')
-    o = '+';
-  }
-
+function nextProblemOperation() {
+  const o = nextOperation(op.innerText);
   op.innerText = o;
   settings.op = o;
 
@@ -171,23 +173,18 @@ function nextOperation() {
 
 // Render progress on top bar
 function showProgress() {
-  // https://uigradients.com/; https://cssgradient.io/
-  const first = "linear-gradient(to right, #ca7345, #732100)";
-  const second = "linear-gradient(to right, #d7dde8, #757f9a)";
-  const third = "linear-gradient(to right, #eecd3f, #99771f)";
-
   if (today.count < settings.goal) {
-    progress.style.backgroundImage = first;
-    progressOuter.style.backgroundImage = '';
+    progress.className = "bronze";
+    progressOuter.className = '';
   } else if (today.count < 2 * settings.goal) {
-    progress.style.backgroundImage = second;
-    progressOuter.style.backgroundImage = first;
+    progress.className = "silver";
+    progressOuter.className = "bronze";
   } else if (today.count < 3 * settings.goal) {
-    progress.style.backgroundImage = third;
-    progressOuter.style.backgroundImage = second;
+    progress.className = "gold";
+    progressOuter.className = "silver";
   } else {
-    progress.style.backgroundImage = '';
-    progressOuter.style.backgroundImage = third;
+    progress.className = '';
+    progressOuter.className = "gold";
   }
 
   const portionDone = (today.count % settings.goal) / settings.goal;
@@ -234,7 +231,7 @@ function addTelemetryEntry(entry) {
   // speed["2"]["x"]["4"] = [1640, 2160, 850]  (means "2 x 4" asked three times and correct answer recieved in 1.64s, 2.16s, and 850 ms)
   speed[o] ??= {};
   speed[o][u] ??= {};
-  speed[o][u][l] = [];
+  speed[o][u][l] ??= [];
   speed[o][u][l].push(timeInMs);
 
   telemetry.count++;
@@ -299,8 +296,241 @@ window.onload = async function () {
   answer.addEventListener("input", checkAnswer);
 
   // Hook up to toggle operation
-  op.addEventListener("click", nextOperation);
+  op.addEventListener("click", nextProblemOperation);
+
+
+  // Hook up hiding modal popups
+  document.querySelectorAll(".overlay").forEach((o) => o.addEventListener("click", hide));
+  document.querySelectorAll(".contents").forEach((o) => o.addEventListener("click", suppressHide));
+
+  // Hook up bar icons
+  document.getElementById("help-button").addEventListener("click", () => show("help-box"));
+  document.getElementById("speed-button").addEventListener("click", () => drawTelemetryTable(op.innerText, getSpeedCell));
+  document.getElementById("accuracy-button").addEventListener("click", () => drawTelemetryTable(op.innerText, getAccuracyCell));
+  document.getElementById("calendar-button").addEventListener("click", drawCalendar);
 
   // Choose the first problem
   nextProblem();
 };
+
+// ---- Control Bar Icons ----
+
+function show(id) {
+  const container = document.getElementById(id);
+  container.style.display = "";
+}
+
+function hide(args) {
+  args.target.style.display = "none";
+}
+
+function suppressHide(args) {
+  args.stopPropagation();
+}
+
+// ---- Speed and Accuracy Reports ----
+
+function getSpeedCell(column, operation, row) {
+  // For subtraction, only create cells for non-negative results
+  if (operation === '-' && column - row < 0) { return null; }
+
+  // Look up telemetry for problem
+  const u = (operation === '÷' ? (column * row) : column);
+  const current = telemetry.speed?.[operation]?.[`${u}`]?.[`${row}`];
+
+  const td = document.createElement("td");
+  td.title = `${u} ${operation} ${row}`;
+
+  if (current) {
+    current.sort((l, r) => l - r);
+    const medianMs = current[Math.floor(current.length / 2)];
+    const medianS = medianMs / 1000;
+    td.innerText = medianS.toLocaleString("en-US", { minimumFractionDigits: (medianS < 9.5 ? 1 : 0), maximumFractionDigits: 1 });
+    td.className = speedClass(medianMs);
+  }
+
+  return td;
+}
+
+function getAccuracyCell(column, operation, row) {
+  // For subtraction, only create cells for non-negative results
+  if (operation === '-' && column - row < 0) { return null; }
+
+  // Look up telemetry for problem
+  const u = (operation === '÷' ? (column * row) : column);
+  const current = telemetry.accuracy?.[operation]?.[`${u}`]?.[`${row}`];
+
+  const td = document.createElement("td");
+  td.title = `${u} ${operation} ${row}`;
+
+  if (current) {
+    const accuracyPct = 100 * (current[0] / current[1]);
+    td.innerText = `${accuracyPct.toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+    td.className = accuracyClass(accuracyPct);
+  }
+
+  return td;
+}
+
+function drawTelemetryTable(operation, getTableCell) {
+  operation ??= '+';
+
+  let colHeadings = null;
+  let rowHeadings = null;
+
+  if (operation === '-') {
+    colHeadings = [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+    rowHeadings = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  } else if (operation === '÷') {
+    colHeadings = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    rowHeadings = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  } else {
+    colHeadings = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    rowHeadings = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  }
+
+  const table = drawTable(operation, colHeadings, rowHeadings, getTableCell);
+  const container = document.getElementById("contents");
+  container.innerHTML = "";
+  container.appendChild(table);
+  show("box");
+}
+
+function drawTable(operation, colHeadings, rowHeadings, getTableCell) {
+  const table = document.createElement("table");
+  table.classList.add("stats");
+  if (operation === '-') { table.classList.add("subtraction"); }
+
+  let tr = null;
+  let td = null;
+
+  tr = document.createElement("tr");
+
+  // Corner Cell
+  td = document.createElement("th");
+  td.innerText = operation;
+  td.addEventListener('click', () => drawTelemetryTable(nextOperation(operation), getTableCell));
+  tr.appendChild(td);
+
+  // First Row (column headings)
+  for (let x = 0; x < colHeadings.length; ++x) {
+    td = document.createElement("th");
+    td.innerText = colHeadings[x];
+    tr.appendChild(td);
+  }
+
+  table.appendChild(tr);
+
+  for (let y = 0; y < rowHeadings.length; ++y) {
+    tr = document.createElement("tr");
+
+    td = document.createElement("td");
+    td.innerText = rowHeadings[y];
+    tr.appendChild(td);
+
+    for (let x = 0; x < colHeadings.length; ++x) {
+      const td = getTableCell(colHeadings[x], operation, rowHeadings[y]);
+      if (td) { tr.appendChild(td); }
+    }
+
+    table.appendChild(tr);
+  }
+
+  return table;
+}
+
+function speedClass(timeMs) {
+  if (!timeMs) {
+    return "unknown";
+  } else if (timeMs < 2000) {
+    return "great";
+  } else if (timeMs < 3000) {
+    return "good";
+  } else if (timeMs < 6000) {
+    return "ok";
+  } else {
+    return "bad";
+  }
+}
+
+function accuracyClass(accuracyPct) {
+  if (!accuracyPct) {
+    return "unknown";
+  } else if (accuracyPct >= 95) {
+    return "great";
+  } else if (accuracyPct >= 90) {
+    return "good";
+  } else if (accuracyPct >= 75) {
+    return "ok";
+  } else {
+    return "bad";
+  }
+}
+
+// ---- Consistency Calendar ----
+
+function drawCalendar() {
+  const table = document.createElement("table");
+  table.className = "calendar";
+
+  let tr = null;
+  let td = null;
+
+  // Header Row (day names)
+  const colHeadings = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  tr = document.createElement("tr");
+  for (let x = 0; x < colHeadings.length; ++x) {
+    td = document.createElement("th");
+    td.innerText = colHeadings[x];
+    tr.appendChild(td);
+  }
+  table.appendChild(tr);
+
+  const end = now();
+  const startDate = addDays(startOfWeek(end), -21);
+  let current = startDate;
+
+  while (current <= end) {
+    tr = document.createElement("tr");
+
+    for (let x = 0; x < 7; ++x) {
+      const td = document.createElement("td");
+      const date = dateString(current);
+      const historyDay = (date === today.date ? today : history[date]);
+      const color = starColor(historyDay);
+      const showMonth = (current === startDate || current.getDate() === 1);
+
+      let contents = `<div class="date">${(showMonth ? current.toLocaleString('en-US', { month: "short" }) : "")} ${current.toLocaleString('en-US', { day: "numeric" })}</div>`;
+      if (color) {
+        contents += `<svg class="fill-${color}"><use href="#star"></use</svg>`;
+      }
+
+      td.innerHTML = contents;
+      tr.appendChild(td);
+      current = addDays(current, 1);
+      if (current > end) { break; }
+    }
+
+    table.appendChild(tr);
+  }
+
+  const container = document.getElementById("contents");
+  container.innerHTML = "";
+  container.appendChild(table);
+  show("box");
+}
+
+function starColor(historyDay) {
+  if (!historyDay) { return null; }
+
+  const count = historyDay.count;
+  if (count >= 3 * settings.goal) {
+    return "gold";
+  } else if (count >= 2 * settings.goal) {
+    return "silver";
+  } else if (count >= settings.goal) {
+    return "bronze";
+  } else {
+    return null;
+  }
+}

@@ -1,6 +1,17 @@
+/* Dynamically size text and controls to browser size */
 :root {
-    --problem-font-size: min(16vw, 16vh);
+    --base-font-size: calc(min(2vw, 16px));
+    --problem-font-size: calc(min(16vw, 16vh));
     --control-size: calc(var(--problem-font-size) * 0.25);
+}
+
+/* Make controls much bigger on mobile */
+@media screen and (max-width: 600px) {
+    :root {
+        --base-font-size: calc(min(3vw, 12px));
+        --problem-font-size: calc(min(20vw, 20vh));
+        --control-size: 8vw;
+    }
 }
 
 * {
@@ -9,31 +20,22 @@
 
 html,
 body {
+    font-size: var(--base-font-size);
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
-#progress-outer {
-    background-repeat: no-repeat;
-    background-size: 100%;
-    width: 100% 100%;
-    height: var(--control-size);
-    border-bottom: 1px solid #888;
+body {
+    display: flex;
+    flex-direction: column;
 }
 
-#progress {
-    width: 100%;
-    height: var(--control-size);
-    background-repeat: no-repeat;
-    background-size: 0%;
-    text-align: center;
+.spacer {
+    flex-grow: 1;
 }
 
-#controls {
-    padding: 0px 2px;
-    margin: 0 auto;
-    width: fit-content;
-}
+/* --- Math Problem Box --- */ 
 
 #problem {
     display: grid;
@@ -43,7 +45,6 @@ body {
 
     width: 2.5em;
     margin: auto auto;
-    margin-top: 0.25em;
     padding: 0.25em;
 
     border: solid 1px #888;
@@ -87,15 +88,178 @@ body {
     width: 100%;
 }
 
-/* Calendar to show recent history */
+/* --- Controls --- */
 
-svg {
+#control-bar {
+    border-bottom: 1px solid #888;
+    width: calc(100% - 4px);
+    padding: 0em 0.1em;
+    flex-grow: 0;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.center {
+    flex-grow: 1;
+    text-align: center;
+    vertical-align: middle;
+    font-size: var(--control-size);
+}
+
+.icon {
+    margin: 0.2em;
+    display: inline-block;
+}
+
+.icon svg {
     width: var(--control-size);
     height: var(--control-size);
     cursor: pointer;
 
     /* To get SVG not to be weirdly positioned vertically */
-    display: block;
+    display: inline-block;
 
     /* Set 'viewBox="0 0 40 40"' for 40px-intended-size to get runtime scaling */
+}
+
+#progress-outer {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100% 100%;
+    height: fit-content;
+    flex-grow: 0;
+    /* border-bottom: 1px solid #888; */
+}
+
+#progress {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 0%;
+}
+
+/* ---- Overlays ---- */
+.overlay {
+    z-index: 10;
+    background-color: rgba(96, 96, 96, 0.9);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contents {
+    width: fit-content;
+    border: solid 1px black;
+    background-color: white;
+    padding: 1em;
+
+    display: flex;
+    justify-content: center;
+}
+
+.help {
+    white-space: pre-line;
+    max-width: calc(min(80vw, 40em));
+    padding: 1em;
+
+    /* Issue: Not in Safari */
+    overflow-wrap: anywhere;
+}
+
+.contents table {
+    border-collapse: collapse;
+}
+
+.contents table th, td {
+    border: solid 1px #888;
+    width: 2.5em;
+    height: 2.5em;
+    text-align: center;
+}
+
+.contents table.subtraction {
+    font-size: 75%;
+}
+
+.contents table.subtraction th, td {
+    width: 2em;
+    height: 2em;
+}
+
+.contents table.stats th:first-child {
+    font-size: 200%;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+}
+
+.contents table.stats th, td:first-child { 
+    color: #888;
+}
+
+/* https://observablehq.com/@d3/color-schemes; Discrete (8), 4th to 5th usually. */
+/* Blue: ["#f7fbff","#deebf7","#c6dbef","#9ecae1","#6baed6","#4292c6","#2171b5","#084594"] */
+/* Green: ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#005a32"] */
+/* Green/Blue: ["#f7fcf0","#e0f3db","#ccebc5","#a8ddb5","#7bccc4","#4eb3d3","#2b8cbe","#08589e"] */
+/* Yellow/Green: ["#ffffe5","#f7fcb9","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#005a32"] */
+
+.great {
+    background-image: linear-gradient(to right, #74c476, #41ab5d);
+}
+
+.good {
+    background-image: linear-gradient(to right, #f7fcb9, #addd8e);
+}
+
+.ok {
+    background-image: linear-gradient(to right, #fdd0a2, #fdae6b);
+}
+
+.bad {
+    background-image: linear-gradient(to right, #fc9272, #fb6a4a);
+}
+
+/* ---- Calendar History ---- */
+/* https://uigradients.com/; https://cssgradient.io/ */
+.bronze { background-image: linear-gradient(to right, #ca7345, #732100); }
+.silver { background-image: linear-gradient(to right, #d7dde8, #757f9a);  }
+.gold { background-image: linear-gradient(to right, #eecd3f, #99771f); }
+
+.fill-bronze { fill: #ca7345;}
+.fill-silver { fill: #d7dde8;}
+.fill-gold { fill: #eecd3f; }
+
+.calendar {
+    font-size: 150%;
+}
+
+.calendar th {
+    font-weight: normal;
+    color: #888;
+}
+
+.calendar svg {
+    width: 3em;
+    height: 3em;
+}
+
+.calendar td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.2em;
+
+    width: 3em;
+    height: 4em;
+}
+
+.calendar .date {
+    font-size: calc(max(9px, 0.5em));
+    color: #888;
 }
