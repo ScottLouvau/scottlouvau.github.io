@@ -1,6 +1,6 @@
 /* Dynamically size text and controls to browser size */
 :root {
-    --base-font-size: calc(min(2vw, 16px));
+    --base-font-size: calc(min(2vw, 20px));
     --problem-font-size: calc(min(16vw, 16vh));
     --control-size: calc(var(--problem-font-size) * 0.25);
 }
@@ -24,6 +24,10 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+}
+
+input, select, label {
+    font-size: var(--base-font-size);
 }
 
 body {
@@ -164,15 +168,7 @@ body {
     justify-content: center;
 }
 
-.help {
-    white-space: pre-line;
-    max-width: calc(min(80vw, 40em));
-    padding: 1em;
-
-    /* Issue: Not in Safari */
-    overflow-wrap: anywhere;
-}
-
+/* ---- Analytics Tables ---- */
 .contents table {
     border-collapse: collapse;
 }
@@ -237,7 +233,7 @@ body {
 .fill-gold { fill: #eecd3f; }
 
 .calendar {
-    font-size: 150%;
+    font-size: 125%;
 }
 
 .calendar th {
@@ -262,4 +258,43 @@ body {
 .calendar .date {
     font-size: calc(max(9px, 0.5em));
     color: #888;
+}
+
+/* ---- Help ---- */
+.help {
+    white-space: pre-line;
+    max-width: calc(min(80vw, 40em));
+    padding: 1em;
+
+    /* Issue: Not in Safari */
+    overflow-wrap: anywhere;
+}
+
+/* ---- Settings ---- */
+.contents.settings {
+    /*width: 80%;*/
+}
+
+.settings {
+    font-size: 150%;
+}
+
+.settings label {
+    text-align: right;
+}
+
+.settings input {
+    width: 3em;
+}
+
+.settings td {
+    border: none;
+    text-align: left;
+    height: 1.5em;
+}
+
+.settings tr td:first-child {
+    text-align: right;
+    width: fit-content;
+    padding-right: 0.5em;
 }
