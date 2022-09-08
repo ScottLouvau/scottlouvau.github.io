@@ -9,12 +9,12 @@ let progressOuter = null;
 // Sound Effects
 let oneComplete = null;
 let setComplete = null;
-const sounds = ["air-horn", "applause", "birthday-party"];
+const sounds = ["none", "air-horn", "applause", "birthday-party"];
 
 // State
 let currentProblem = null; // { answer: null, startTime: null, wasEverIncorrect: null };
 
-let settings = { goal: 40, pauseMs: 500, op: '+', sounds: true, volume: 0.25, oneSound: 0, setSound: 2 };
+let settings = { goal: 40, pauseMs: 500, op: '+', volume: 0.25, oneSound: 1, setSound: 3 };
 let today = { date: dateString(now()), count: 0, telemetry: [] };
 let history = {};
 let telemetry = { count: 0, accuracy: {}, speed: {} };
@@ -140,14 +140,13 @@ function checkAnswer() {
     showProgress();
     setTimeout(nextProblem, settings.pauseMs ?? 250);
 
-    if (settings.sounds) {
-      if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
-        setComplete.load();
-        setComplete.play();
-      } else {
-        oneComplete.load();
-        oneComplete.play();
-      }
+    // Play sound
+    if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
+      setComplete?.load();
+      setComplete?.play();
+    } else {
+      oneComplete?.load();
+      oneComplete?.play();
     }
   } else {
     // If incorrect, and the right length, mark wasEverIncorrect
@@ -162,10 +161,8 @@ function nextProblemOperation() {
   const o = nextOperation(op.innerText);
   op.innerText = o;
   settings.op = o;
-
-  try {
-    window.localStorage.setItem('settings', JSON.stringify(settings));
-  } catch { }
+  document.getElementById("setting-op").value = o;
+  saveSettings();
 
   nextProblem();
   answer.focus();
@@ -263,11 +260,27 @@ function loadState() {
   }
   catch { }
 
+  // Load sounds
+  oneComplete = loadSound(settings.oneSound ?? 1);
+  setComplete = loadSound(settings.setSound ?? 3);
+
   // Reflect loaded state in UI
   op.innerText = settings.op;
   showProgress();
 
   computeTelemetry();
+}
+
+function loadSound(index) {
+  const name = sounds[index % sounds.length];
+
+  if (name === "none") {
+    return null;
+  } else {
+    const sound = new Audio(`${name}.mp3`);
+    sound.volume = settings.volume ?? 1;
+    return sound;
+  }
 }
 
 window.onload = async function () {
@@ -282,15 +295,6 @@ window.onload = async function () {
   // Load localStorage state (Settings, work per day, ...)
   loadState();
 
-  // Load sounds
-  if (settings.sounds) {
-    oneComplete = new Audio(`${sounds[(settings.oneSound ?? 0) % sounds.length]}.mp3`);
-    setComplete = new Audio(`${sounds[(settings.setSound ?? 1) % sounds.length]}.mp3`);
-
-    oneComplete.volume = settings.volume ?? 1;
-    setComplete.volume = settings.volume ?? 1;
-  }
-
   // Hook up to check answer
   answer.focus();
   answer.addEventListener("input", checkAnswer);
@@ -298,16 +302,18 @@ window.onload = async function () {
   // Hook up to toggle operation
   op.addEventListener("click", nextProblemOperation);
 
-
   // Hook up hiding modal popups
   document.querySelectorAll(".overlay").forEach((o) => o.addEventListener("click", hide));
   document.querySelectorAll(".contents").forEach((o) => o.addEventListener("click", suppressHide));
 
   // Hook up bar icons
-  document.getElementById("help-button").addEventListener("click", () => show("help-box"));
+  document.getElementById("calendar-button").addEventListener("click", drawCalendar);
   document.getElementById("speed-button").addEventListener("click", () => drawTelemetryTable(op.innerText, getSpeedCell));
   document.getElementById("accuracy-button").addEventListener("click", () => drawTelemetryTable(op.innerText, getAccuracyCell));
-  document.getElementById("calendar-button").addEventListener("click", drawCalendar);
+
+  document.getElementById("help-button").addEventListener("click", () => show("help-box"));
+  document.getElementById("settings-button").addEventListener("click", loadSettings);
+
 
   // Choose the first problem
   nextProblem();
@@ -440,7 +446,7 @@ function drawTable(operation, colHeadings, rowHeadings, getTableCell) {
 }
 
 function speedClass(timeMs) {
-  if (!timeMs) {
+  if (timeMs == null) {
     return "unknown";
   } else if (timeMs < 2000) {
     return "great";
@@ -454,7 +460,7 @@ function speedClass(timeMs) {
 }
 
 function accuracyClass(accuracyPct) {
-  if (!accuracyPct) {
+  if (accuracyPct == null) {
     return "unknown";
   } else if (accuracyPct >= 95) {
     return "great";
@@ -521,7 +527,7 @@ function drawCalendar() {
 }
 
 function starColor(historyDay) {
-  if (!historyDay) { return null; }
+  if (historyDay == null) { return null; }
 
   const count = historyDay.count;
   if (count >= 3 * settings.goal) {
@@ -533,4 +539,74 @@ function starColor(historyDay) {
   } else {
     return null;
   }
+}
+
+// ---- Settings ----
+
+function addSounds(control) {
+  if (control.options.length === 0) {
+    for (let i = 0; i < sounds.length; ++i) {
+      const so = document.createElement("option");
+      so.text = sounds[i];
+      control.add(so, i);
+    }
+  }
+}
+
+let settingsLoaded = false;
+
+function loadSettings() {
+  if (!settingsLoaded) {
+    const goal = document.getElementById("setting-goal");
+    goal.value = settings.goal;
+    goal.addEventListener("input", () => {
+      settings.goal = +(goal.value) || 40;
+      saveSettings();
+      showProgress();
+    });
+
+    const oper = document.getElementById("setting-op");
+    oper.value = op.innerText;
+    oper.addEventListener("input", () => {
+      const newOp = oper.value;
+      op.innerText = newOp;
+      settings.op = newOp;
+      saveSettings();
+      nextProblem();
+    });
+
+    const eachSound = document.getElementById("setting-each-sound");
+    addSounds(eachSound);
+    eachSound.selectedIndex = settings.oneSound;
+    eachSound.addEventListener("input", () => {
+      settings.oneSound = eachSound.selectedIndex % sounds.length;
+      saveSettings();
+      loadState();
+    });
+
+    const goalSound = document.getElementById("setting-goal-sound");
+    addSounds(goalSound);
+    goalSound.selectedIndex = settings.setSound;
+    goalSound.addEventListener("input", () => {
+      settings.setSound = goalSound.selectedIndex % sounds.length;
+      saveSettings();
+      loadState();
+    });
+
+    const delay = document.getElementById("setting-delay");
+    delay.value = (settings.pauseMs);
+    delay.addEventListener("input", () => {
+      settings.pauseMs = +(delay.value) || 250;
+      saveSettings();
+    });
+  }
+
+  settingsLoaded = true;
+  show("settings-box");
+}
+
+function saveSettings() {
+  try {
+    window.localStorage.setItem('settings', JSON.stringify(settings));
+  } catch { }
 }

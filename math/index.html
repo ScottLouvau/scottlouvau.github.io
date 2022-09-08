@@ -127,13 +127,52 @@ All data is stored in your local browser only.
 Please report any issues at https://github.com/ScottLouvau/MathFacts.
 Send any feedback to scottlo@outlook.com.</div>
   </div>
+
+  <div id="settings-box" class="overlay" style="display: none;">
+    <div class="contents settings">
+      <table>
+        <tr>
+          <td><label for="setting-goal">Daily Goal</label></td>
+          <td><input id="setting-goal" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" /></td>
+        </tr>
+        <tr>
+          <td><label for="setting-op">Operation</label></td>
+          <td>
+            <select id="setting-op">
+              <option>+</option>
+              <option>-</option>
+              <option>x</option>
+              <option>÷</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="setting-each-sound">Each Answer Sound</label></td>
+          <td><select id="setting-each-sound"></select></td>
+        </tr>
+        <tr>
+          <td><label for="setting-goal-sound">Goal Done Sound</label></td>
+          <td><select id="setting-goal-sound"></select></td>
+        </tr>
+        <tr>
+          <td><label for="setting-delay">Delay Between Problems</label></td>
+          <td>
+            <select id="setting-delay">
+              <option value="100">Instant</option>
+              <option value="250">Short</option>
+              <option value="500" selected="selected">Normal</option>
+              <option value="1000">Long</option>
+            </select>
+        </td>
+        </tr>
+      </table>
+     </div>
   </div>
 
   <div id="box" class="overlay" style="display: none;">
     <div id="contents" class="contents">
 
     </div>
-  </div>
   </div>
 </body>
 
