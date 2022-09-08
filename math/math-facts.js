@@ -575,6 +575,21 @@ function loadSettings() {
       nextProblem();
     });
 
+    const delay = document.getElementById("setting-delay");
+    delay.value = +(settings.pauseMs) ?? 500;
+    delay.addEventListener("input", () => {
+      settings.pauseMs = +(delay.value) || 250;
+      saveSettings();
+    });
+
+    const volume = document.getElementById("setting-volume");
+    volume.value = `${(100 * (+(settings.volume) ?? 0.5)).toFixed(0)}%`;
+    volume.addEventListener("input", () => {
+      settings.volume = parseFloat(volume.value) / 100;
+      saveSettings();
+      loadState();
+    });
+
     const eachSound = document.getElementById("setting-each-sound");
     addSounds(eachSound);
     eachSound.selectedIndex = settings.oneSound;
@@ -591,13 +606,6 @@ function loadSettings() {
       settings.setSound = goalSound.selectedIndex % sounds.length;
       saveSettings();
       loadState();
-    });
-
-    const delay = document.getElementById("setting-delay");
-    delay.value = (settings.pauseMs);
-    delay.addEventListener("input", () => {
-      settings.pauseMs = +(delay.value) || 250;
-      saveSettings();
     });
   }
 

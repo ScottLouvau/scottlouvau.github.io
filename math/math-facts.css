@@ -1,16 +1,15 @@
 /* Dynamically size text and controls to browser size */
 :root {
-    --base-font-size: calc(min(2vw, 20px));
-    --problem-font-size: calc(min(16vw, 16vh));
-    --control-size: calc(var(--problem-font-size) * 0.25);
+    --min-font-size: 10px;
+    --control-size: clamp(20px, 6vw, 36px);
+    --problem-size: min(16vw, 16vh);
 }
 
 /* Make controls much bigger on mobile */
 @media screen and (max-width: 600px) {
     :root {
-        --base-font-size: calc(min(3vw, 12px));
-        --problem-font-size: calc(min(20vw, 20vh));
-        --control-size: 8vw;
+        --min-font-size: 8px;
+        --control-size: clamp(20px, 10vw, 36px);
     }
 }
 
@@ -20,14 +19,14 @@
 
 html,
 body {
-    font-size: var(--base-font-size);
+    font-size: var(--min-font-size);
     margin: 0;
     padding: 0;
     height: 100%;
 }
 
 input, select, label {
-    font-size: var(--base-font-size);
+    font-size: var(--min-font-size);
 }
 
 body {
@@ -45,7 +44,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr 1fr 0.3fr 1fr;
-    font-size: var(--problem-font-size);
+    font-size: var(--problem-size);
 
     width: 2.5em;
     margin: auto auto;
@@ -86,7 +85,7 @@ body {
 }
 
 #answer {
-    font-size: var(--problem-font-size);
+    font-size: var(--problem-size);
     text-align: right;
     box-sizing: border-box;
     width: 100%;
@@ -95,7 +94,7 @@ body {
 /* --- Controls --- */
 
 #control-bar {
-    border-bottom: 1px solid #888;
+    border-bottom: thin solid #888;
     width: calc(100% - 4px);
     padding: 0em 0.1em;
     flex-grow: 0;
@@ -133,7 +132,6 @@ body {
     width: 100% 100%;
     height: fit-content;
     flex-grow: 0;
-    /* border-bottom: 1px solid #888; */
 }
 
 #progress {
@@ -170,6 +168,7 @@ body {
 
 /* ---- Analytics Tables ---- */
 .contents table {
+    font-size: clamp(var(--min-font-size), min(2vw, 2vh), 20px);
     border-collapse: collapse;
 }
 
@@ -181,7 +180,7 @@ body {
 }
 
 .contents table.subtraction {
-    font-size: 75%;
+    font-size: clamp(var(--min-font-size), min(1.6vw, 1.6vh), 20px);
 }
 
 .contents table.subtraction th, td {
@@ -232,8 +231,8 @@ body {
 .fill-silver { fill: #d7dde8;}
 .fill-gold { fill: #eecd3f; }
 
-.calendar {
-    font-size: 125%;
+.calendar th, .calendar td {
+    font-size: clamp(var(--min-font-size), min(3vw, 3vh), 30px);
 }
 
 .calendar th {
@@ -256,27 +255,24 @@ body {
 }
 
 .calendar .date {
-    font-size: calc(max(9px, 0.5em));
+    font-size: 60%;
     color: #888;
 }
 
 /* ---- Help ---- */
 .help {
-    white-space: pre-line;
-    max-width: calc(min(80vw, 40em));
+    max-width: min(80vw, 40em);
     padding: 1em;
+    font-size: clamp(10px, 2vw, 20px);
+    white-space: pre-line;
 
     /* Issue: Not in Safari */
     overflow-wrap: anywhere;
 }
 
 /* ---- Settings ---- */
-.contents.settings {
-    /*width: 80%;*/
-}
-
-.settings {
-    font-size: 150%;
+.settings label, .settings input, .settings select, .settings td {
+    font-size: clamp(12px, 3.5vw, 20px);
 }
 
 .settings label {
@@ -290,11 +286,11 @@ body {
 .settings td {
     border: none;
     text-align: left;
-    height: 1.5em;
+    height: 1.75em;
 }
 
 .settings tr td:first-child {
     text-align: right;
     width: fit-content;
-    padding-right: 0.5em;
+    padding-right: 0.75em;
 }

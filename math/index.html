@@ -133,7 +133,20 @@ Send any feedback to scottlo@outlook.com.</div>
       <table>
         <tr>
           <td><label for="setting-goal">Daily Goal</label></td>
-          <td><input id="setting-goal" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" /></td>
+          <td>
+            <select id="setting-goal">
+              <option>10</option>
+              <option>20</option>
+              <option>30</option>
+              <option selected>40</option>
+              <option>50</option>
+              <option>60</option>
+              <option>70</option>
+              <option>80</option>
+              <option>90</option>
+              <option>100</option>
+            </select>
+          </td>
         </tr>
         <tr>
           <td><label for="setting-op">Operation</label></td>
@@ -147,23 +160,35 @@ Send any feedback to scottlo@outlook.com.</div>
           </td>
         </tr>
         <tr>
+          <td><label for="setting-delay">Delay Between Problems</label></td>
+          <td>
+            <select id="setting-delay">
+              <option value="100">Instant</option>
+              <option value="250">Short</option>
+              <option value="500" selected>Normal</option>
+              <option value="1000">Long</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="setting-volume">Sound Volume</label></td>
+          <td>
+            <select id="setting-volume">              
+              <option>100%</option>
+              <option>50%</option>
+              <option>25%</option>
+              <option>10%</option>
+              <option>0%</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
           <td><label for="setting-each-sound">Each Answer Sound</label></td>
           <td><select id="setting-each-sound"></select></td>
         </tr>
         <tr>
           <td><label for="setting-goal-sound">Goal Done Sound</label></td>
           <td><select id="setting-goal-sound"></select></td>
-        </tr>
-        <tr>
-          <td><label for="setting-delay">Delay Between Problems</label></td>
-          <td>
-            <select id="setting-delay">
-              <option value="100">Instant</option>
-              <option value="250">Short</option>
-              <option value="500" selected="selected">Normal</option>
-              <option value="1000">Long</option>
-            </select>
-        </td>
         </tr>
       </table>
      </div>
