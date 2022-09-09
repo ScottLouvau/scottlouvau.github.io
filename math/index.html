@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  <!-- Controls Bar with Progress Bar drawn behond -->
   <div id="progress-outer">
     <div id="progress">
       <div id="control-bar">
@@ -56,6 +57,7 @@
 
   <div class="spacer"></div>
 
+  <!-- The Math Problem itself -->
   <div id="container">
     <div id="problem">
       <div id="upper">0</div>
@@ -75,6 +77,7 @@
 
   <div class="spacer"></div>
 
+  <!-- Inlined SVG icons to reference -->
   <svg style="display: none">
     <!-- 
        Google Material Design Icons [https://fonts.google.com/icons]
@@ -108,7 +111,20 @@
       <path
         d="m9.708 36.667 2.709-11.709-9.084-7.875 12-1.041L20 5l4.667 11.042 12 1.041-9.084 7.875 2.709 11.709L20 30.458Z" />
     </symbol>
+    <symbol id="mail" viewBox="0 0 40 40">
+      <path d="M6.125 33.333q-1.125 0-1.958-.833-.834-.833-.834-1.958V9.458q0-1.125.834-1.958.833-.833 1.958-.833h27.75q1.125 0 1.958.833.834.833.834 1.958v21.084q0 1.125-.834 1.958-.833.833-1.958.833ZM20 21.042 6.125 12.083v18.459h27.75V12.083Zm0-2.75 13.792-8.834H6.25ZM6.125 12.083V9.458v21.084Z" />
+    </symbol>
+    <symbol id="clipboard" viewBox="0 0 40 40">
+      <path d="M7.792 35q-1.209 0-2-.792-.792-.791-.792-2V7.792q0-1.209.792-2Q6.583 5 7.792 5h7.916q.334-1.458 1.542-2.396 1.208-.937 2.75-.937t2.75.937q1.208.938 1.542 2.396h7.916q1.209 0 2 .792.792.791.792 2v24.416q0 1.209-.792 2-.791.792-2 .792Zm0-2.792h24.416V7.792h-2.75v4.166H10.542V7.792h-2.75v24.416ZM20 7.792q.708 0 1.188-.479.479-.48.479-1.188t-.479-1.187q-.48-.48-1.188-.48t-1.188.48q-.479.479-.479 1.187 0 .708.479 1.188.48.479 1.188.479Z"/>
+    </symbol>
   </svg>
+
+  <!-- Modal overlay box and predefined ones with static content -->
+  <div id="box" class="overlay" style="display: none;">
+    <div id="contents" class="contents">
+
+    </div>
+  </div>
 
   <div id="help-box" class="overlay" style="display: none;">
     <div class="contents help">Math Facts is a free, ad-free, tracking-free way to practice math facts.
@@ -125,7 +141,26 @@ All data is stored in your local browser only.
 - Click the Checkmark to see your accuracy per problem.
 
 Please report any issues at https://github.com/ScottLouvau/MathFacts.
-Send any feedback to scottlo@outlook.com.</div>
+Send any feedback to scottlo@outlook.com.
+
+Icons from https://fonts.google.com/icons
+License: Apache License 2.0 
+[http://www.apache.org/licenses/LICENSE-2.0]
+
+Sound Effects from http://www.freesoundslibrary.com, with some edits.
+License: Attribution 4.0 International (CC BY 4.0) 
+[https://creativecommons.org/licenses/by/4.0/]
+</div>
+  </div>
+
+  <div id="share-box" class="overlay" style="display: none;">
+    <div class="contents share">
+      <div id="share-text">${text}</div>
+      <div class="share-links">
+        <a id="share-mail" href="#" class="icon" title="Send as Email"><svg><use href="#mail"></use></svg></a>
+        <div id="share-clipboard" class="icon" title="Copy to Clipboard"><svg><use href="#clipboard"></use></svg></div>
+      </div>
+    </div>
   </div>
 
   <div id="settings-box" class="overlay" style="display: none;">
@@ -192,12 +227,6 @@ Send any feedback to scottlo@outlook.com.</div>
         </tr>
       </table>
      </div>
-  </div>
-
-  <div id="box" class="overlay" style="display: none;">
-    <div id="contents" class="contents">
-
-    </div>
   </div>
 </body>
 

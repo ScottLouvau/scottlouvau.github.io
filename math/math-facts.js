@@ -7,18 +7,18 @@ let progress = null;
 let progressOuter = null;
 
 // Sound Effects
-let oneComplete = null;
-let setComplete = null;
-const sounds = ["none", "air-horn", "applause", "birthday-party"];
+let oneSound = null;
+let goalSound = null;
+const sounds = ["none", "air-horn", "aooga", "applause", "ding-ding", "ding", "drama", "happy-tones", "mario-coin", "minecraft-eating", "success", "tada", "xylophone"];
 
 // State
 let currentProblem = null; // { answer: null, startTime: null, wasEverIncorrect: null };
 
-let settings = { goal: 40, pauseMs: 500, op: '+', volume: 0.25, oneSound: 1, setSound: 3 };
+let settings = { goal: 40, pauseMs: 500, op: '+', volume: 0.25, oneSound: sounds.indexOf("ding"), goalSound: sounds.indexOf("tada") };
 let today = { date: dateString(now()), count: 0, telemetry: [] };
 let history = {};
 let telemetry = { count: 0, accuracy: {}, speed: {} };
-
+let shareText = null;
 
 // Return this moment as a Date
 function now() {
@@ -142,11 +142,11 @@ function checkAnswer() {
 
     // Play sound
     if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
-      setComplete?.load();
-      setComplete?.play();
+      goalSound?.load();
+      goalSound?.play();
     } else {
-      oneComplete?.load();
-      oneComplete?.play();
+      oneSound?.load();
+      oneSound?.play();
     }
   } else {
     // If incorrect, and the right length, mark wasEverIncorrect
@@ -189,12 +189,16 @@ function showProgress() {
 }
 
 // Compute telemetry summary for today and last 60 days of history
-function computeTelemetry() {
+function computeTelemetry(historyDayCount) {
+  historyDayCount ??= 60;
+
+  telemetry = { count: 0, accuracy: {}, speed: {}, rollup: { accuracy: {}, speed: {} } };
+
   for (const entry of today.telemetry) {
     addTelemetryEntry(entry);
   }
 
-  const cutoff = dateString(addDays(now(), -60));
+  const cutoff = dateString(addDays(now(), -1 * Math.abs(historyDayCount)));
   for (let date in history) {
     if (date >= cutoff) {
       let dayTelemetry = history[date].telemetry;
@@ -212,6 +216,9 @@ function addTelemetryEntry(entry) {
   const accuracy = telemetry.accuracy;
   const speed = telemetry.speed;
 
+  const rAccuracy = telemetry.rollup.accuracy;
+  const rSpeed = telemetry.rollup.speed;
+
   const u = entry[0];
   const o = entry[1];
   const l = entry[2];
@@ -225,11 +232,29 @@ function addTelemetryEntry(entry) {
   accuracy[o][u][l][0] += (wasEverIncorrect ? 0 : 1);
   accuracy[o][u][l][1] += 1;
 
+  rAccuracy[o] ??= {};
+  if (op === '+' || op === 'x') {
+    rAccuracy[o][u] ??= [0, 0];
+    rAccuracy[o][u][0] += (wasEverIncorrect ? 0 : 1);
+    rAccuracy[o][u][1] += 1;
+  }
+  rAccuracy[o][l] ??= [0, 0];
+  rAccuracy[o][l][0] += (wasEverIncorrect ? 0 : 1);
+  rAccuracy[o][l][1] += 1;
+
   // speed["2"]["x"]["4"] = [1640, 2160, 850]  (means "2 x 4" asked three times and correct answer recieved in 1.64s, 2.16s, and 850 ms)
   speed[o] ??= {};
   speed[o][u] ??= {};
   speed[o][u][l] ??= [];
   speed[o][u][l].push(timeInMs);
+
+  rSpeed[o] ??= {};
+  if (op === '+' || op === 'x') {
+    rSpeed[o][u] ??= [];
+    rSpeed[o][u].push(timeInMs);
+  }
+  rSpeed[o][l] ??= [];
+  rSpeed[o][l].push(timeInMs);
 
   telemetry.count++;
 }
@@ -261,8 +286,8 @@ function loadState() {
   catch { }
 
   // Load sounds
-  oneComplete = loadSound(settings.oneSound ?? 1);
-  setComplete = loadSound(settings.setSound ?? 3);
+  oneSound = loadSound(settings.oneSound ?? 1);
+  goalSound = loadSound(settings.goalSound ?? 3);
 
   // Reflect loaded state in UI
   op.innerText = settings.op;
@@ -277,47 +302,11 @@ function loadSound(index) {
   if (name === "none") {
     return null;
   } else {
-    const sound = new Audio(`${name}.mp3`);
+    const sound = new Audio(`./audio/${name}.mp3`);
     sound.volume = settings.volume ?? 1;
     return sound;
   }
 }
-
-window.onload = async function () {
-  // Cache controls from DOM we'll be manipulating
-  upper = document.getElementById("upper");
-  lower = document.getElementById("lower");
-  op = document.getElementById("op");
-  answer = document.getElementById("answer");
-  progress = document.getElementById("progress");
-  progressOuter = document.getElementById("progress-outer");
-
-  // Load localStorage state (Settings, work per day, ...)
-  loadState();
-
-  // Hook up to check answer
-  answer.focus();
-  answer.addEventListener("input", checkAnswer);
-
-  // Hook up to toggle operation
-  op.addEventListener("click", nextProblemOperation);
-
-  // Hook up hiding modal popups
-  document.querySelectorAll(".overlay").forEach((o) => o.addEventListener("click", hide));
-  document.querySelectorAll(".contents").forEach((o) => o.addEventListener("click", suppressHide));
-
-  // Hook up bar icons
-  document.getElementById("calendar-button").addEventListener("click", drawCalendar);
-  document.getElementById("speed-button").addEventListener("click", () => drawTelemetryTable(op.innerText, getSpeedCell));
-  document.getElementById("accuracy-button").addEventListener("click", () => drawTelemetryTable(op.innerText, getAccuracyCell));
-
-  document.getElementById("help-button").addEventListener("click", () => show("help-box"));
-  document.getElementById("settings-button").addEventListener("click", loadSettings);
-
-
-  // Choose the first problem
-  nextProblem();
-};
 
 // ---- Control Bar Icons ----
 
@@ -594,18 +583,24 @@ function loadSettings() {
     addSounds(eachSound);
     eachSound.selectedIndex = settings.oneSound;
     eachSound.addEventListener("input", () => {
+      oneSound?.load();
       settings.oneSound = eachSound.selectedIndex % sounds.length;
       saveSettings();
       loadState();
+      oneSound?.load();
+      oneSound?.play();
     });
 
-    const goalSound = document.getElementById("setting-goal-sound");
-    addSounds(goalSound);
-    goalSound.selectedIndex = settings.setSound;
-    goalSound.addEventListener("input", () => {
-      settings.setSound = goalSound.selectedIndex % sounds.length;
+    const setSound = document.getElementById("setting-goal-sound");
+    addSounds(setSound);
+    setSound.selectedIndex = settings.goalSound;
+    setSound.addEventListener("input", () => {
+      goalSound?.load();
+      settings.goalSound = setSound.selectedIndex % sounds.length;
       saveSettings();
       loadState();
+      goalSound?.load();
+      goalSound?.play();
     });
   }
 
@@ -618,3 +613,112 @@ function saveSettings() {
     window.localStorage.setItem('settings', JSON.stringify(settings));
   } catch { }
 }
+
+// ---- Share ----  🟧 🟪 🟫 ⬜ 😕
+const emoji = {
+  "unknown": '⬛',
+  "great": '🟦',
+  "good": '🟩',
+  "ok": '🟨',
+  "bad": '🟥',
+
+  "gold": '🟨',
+  "silver": '⬜',
+  "bronze": '🟧'
+};
+
+const worstFirst = [ null, "unknown", "bad", "ok", "good", "great"];
+function worst(class1, class2) {
+  return worstFirst[Math.min(worstFirst.indexOf(class1), worstFirst.indexOf(class2))];
+}
+
+function share() {
+  const end = now();
+  let text = `${dateString(end)} | ${settings.goal} | ${settings.op}\n\n`;
+  
+  let current = addDays(startOfWeek(end), -7);
+  text += `📅\n`;
+  while (current <= end) {
+    const date = dateString(current);
+    const historyDay = (date === today.date ? today : history[date]);
+    text += emoji[starColor(historyDay) ?? "unknown"];
+    if (current.getDay() === 6) { text += '\n'; }
+    current = addDays(current, 1);
+  }
+  text += '\n\n';
+
+  computeTelemetry(14);
+  text += emojiTelemetrySummary(settings.op);
+  computeTelemetry(60);
+
+  const container = document.getElementById("share-text");
+  container.innerHTML = text;
+  shareText = text;
+
+  let link = `mailto:?subject=Math Facts Summary&body=${encodeURIComponent(text)}`;
+  document.getElementById("share-mail").href = link;
+
+  show("share-box");
+}
+
+function emojiTelemetrySummary(o) {
+  let sText = '⚡ ';
+  let aText = '🎯 ';
+
+  const speed = telemetry.rollup.speed[o];
+  const accuracy = telemetry.rollup.accuracy[o];
+  const start = (o === '÷' ? 1 : 0);
+  const end = (o === '-' ? 20 : 12);
+
+  for (let i = start; i <= end; ++i) {
+    const current = speed[i];
+    current?.sort((l, r) => l - r);
+    const timeMs = current?.[Math.floor(current.length * 0.75)] ?? null;
+    const accuracyPct = 100 * (accuracy?.[i]?.[0] / accuracy?.[i]?.[1]);
+
+    sText += emoji[speedClass(timeMs)];
+    aText += emoji[accuracyClass(accuracyPct)];    
+  }
+
+  return aText + '\n' + sText;
+}
+
+// ---------------------------------
+
+window.onload = async function () {
+  // Cache controls from DOM we'll be manipulating
+  upper = document.getElementById("upper");
+  lower = document.getElementById("lower");
+  op = document.getElementById("op");
+  answer = document.getElementById("answer");
+  progress = document.getElementById("progress");
+  progressOuter = document.getElementById("progress-outer");
+
+  // Load localStorage state (Settings, work per day, ...)
+  loadState();
+
+  // Hook up to check answer
+  answer.focus();
+  answer.addEventListener("input", checkAnswer);
+
+  // Hook up to toggle operation
+  op.addEventListener("click", nextProblemOperation);
+
+  // Hook up hiding modal popups
+  document.querySelectorAll(".overlay").forEach((o) => o.addEventListener("click", hide));
+  document.querySelectorAll(".contents").forEach((o) => o.addEventListener("click", suppressHide));
+
+  // Hook up bar icons
+  document.getElementById("calendar-button").addEventListener("click", drawCalendar);
+  document.getElementById("speed-button").addEventListener("click", () => drawTelemetryTable(op.innerText, getSpeedCell));
+  document.getElementById("accuracy-button").addEventListener("click", () => drawTelemetryTable(op.innerText, getAccuracyCell));
+
+  document.getElementById("share-button").addEventListener("click", share);
+  document.getElementById("help-button").addEventListener("click", () => show("help-box"));
+  document.getElementById("settings-button").addEventListener("click", loadSettings);
+
+  document.getElementById("share-clipboard").addEventListener("click", () => navigator.clipboard.writeText(shareText));
+
+  // Choose the first problem
+  nextProblem();
+};
