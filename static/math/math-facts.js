@@ -5,6 +5,7 @@ let op = null;
 let answer = null;
 let progress = null;
 let progressOuter = null;
+let correctCheck = null;
 
 // Sound Effects
 let oneSound = null;
@@ -19,6 +20,15 @@ let today = { date: dateString(now()), count: 0, telemetry: [] };
 let history = {};
 let telemetry = { count: 0, accuracy: {}, speed: {} };
 let shareText = null;
+
+// Briefly show a message to the user
+function showMessage(message) {
+  const box = document.getElementById("temp-message");
+  box.innerText = message;
+  box.classList.remove("hidden");
+  box.classList.remove("show-message");
+  window.setTimeout(() => box.classList.add("show-message"), 10);
+}
 
 // Return this moment as a Date
 function now() {
@@ -101,6 +111,8 @@ function nextProblem() {
   upper.innerText = u;
   lower.innerText = l;
   answer.value = "";
+  correctCheck.classList.remove("correct");
+  correctCheck.classList.remove("correct-instant");
 }
 
 // Check the answer
@@ -135,7 +147,8 @@ function checkAnswer() {
       window.localStorage.setItem('today', JSON.stringify(today));
     } catch { }
 
-    // Update UI
+    // Update UI    
+    correctCheck.classList.add((settings.pauseMs >= 500 ? "correct" : "correct-instant"));
     currentProblem = null;
     showProgress();
     setTimeout(nextProblem, settings.pauseMs ?? 250);
@@ -144,6 +157,7 @@ function checkAnswer() {
     if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
       goalSound?.load();
       goalSound?.play();
+      showMessage("Yay!");
     } else {
       oneSound?.load();
       oneSound?.play();
@@ -259,6 +273,17 @@ function addTelemetryEntry(entry) {
   telemetry.count++;
 }
 
+// Check to see if the day has rolled over
+function checkForTomorrow() {
+  // Reload state on a new day
+  if (dateString(now()) !== today.date) {
+    loadState();
+  }
+
+  // Check hourly
+  window.setTimeout(checkForTomorrow, 60 * 60 * 1000);
+}
+
 // Load stored settings, progress today, and historical progress.
 function loadState() {
   const storage = window.localStorage;
@@ -285,15 +310,18 @@ function loadState() {
   }
   catch { }
 
-  // Load sounds
-  oneSound = loadSound(settings.oneSound ?? 1);
-  goalSound = loadSound(settings.goalSound ?? 3);
-
   // Reflect loaded state in UI
   op.innerText = settings.op;
   showProgress();
 
+  // Calculate telemetry based on loaded history
   computeTelemetry();
+
+  // Load sounds
+  window.setTimeout(() => {
+    oneSound = loadSound(settings.oneSound ?? 1);
+    goalSound = loadSound(settings.goalSound ?? 3);
+  }, 50);
 }
 
 function loadSound(index) {
@@ -311,12 +339,18 @@ function loadSound(index) {
 // ---- Control Bar Icons ----
 
 function show(id) {
+  let closeBox = document.createElement("template");
+  closeBox.innerHTML = `<svg class="close-button" title="Close"><use href="#close"></use></svg>`;
+
   const container = document.getElementById(id);
-  container.style.display = "";
+  container.children?.[0]?.prepend(closeBox.content);
+  container.classList.remove("hidden");
+
+  document.querySelectorAll(".close-button").forEach((o) => o.addEventListener("click", hide));
 }
 
-function hide(args) {
-  args.target.style.display = "none";
+function hide() {
+  document.querySelectorAll(".overlay").forEach((o) => o.classList.add("hidden"));
 }
 
 function suppressHide(args) {
@@ -627,7 +661,7 @@ const emoji = {
   "bronze": '🟧'
 };
 
-const worstFirst = [ null, "unknown", "bad", "ok", "good", "great"];
+const worstFirst = [null, "unknown", "bad", "ok", "good", "great"];
 function worst(class1, class2) {
   return worstFirst[Math.min(worstFirst.indexOf(class1), worstFirst.indexOf(class2))];
 }
@@ -635,7 +669,7 @@ function worst(class1, class2) {
 function share() {
   const end = now();
   let text = `${dateString(end)} | ${settings.goal} | ${settings.op}\n\n`;
-  
+
   let current = addDays(startOfWeek(end), -7);
   text += `📅\n`;
   while (current <= end) {
@@ -677,10 +711,15 @@ function emojiTelemetrySummary(o) {
     const accuracyPct = 100 * (accuracy?.[i]?.[0] / accuracy?.[i]?.[1]);
 
     sText += emoji[speedClass(timeMs)];
-    aText += emoji[accuracyClass(accuracyPct)];    
+    aText += emoji[accuracyClass(accuracyPct)];
   }
 
   return aText + '\n' + sText;
+}
+
+function copyShareToClipboard() {
+  navigator.clipboard.writeText(shareText);
+  showMessage("Copied to Clipboard!");
 }
 
 // ---------------------------------
@@ -693,6 +732,7 @@ window.onload = async function () {
   answer = document.getElementById("answer");
   progress = document.getElementById("progress");
   progressOuter = document.getElementById("progress-outer");
+  correctCheck = document.getElementById("correct-check");
 
   // Load localStorage state (Settings, work per day, ...)
   loadState();
@@ -716,8 +756,10 @@ window.onload = async function () {
   document.getElementById("share-button").addEventListener("click", share);
   document.getElementById("help-button").addEventListener("click", () => show("help-box"));
   document.getElementById("settings-button").addEventListener("click", loadSettings);
+  document.getElementById("share-clipboard").addEventListener("click", copyShareToClipboard);
 
-  document.getElementById("share-clipboard").addEventListener("click", () => navigator.clipboard.writeText(shareText));
+  // Check hourly for the day to roll over
+  window.setTimeout(checkForTomorrow, 60 * 60 * 1000);
 
   // Choose the first problem
   nextProblem();

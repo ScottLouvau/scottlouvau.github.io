@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="math-facts.css" />
   <script type="module" src="math-facts.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <style>
+    .hidden { display: none; }
+  </style>
 </head>
 
 <body>
@@ -27,12 +31,11 @@
           </div>
           <div id="accuracy-button" title="Accurary Chart" class="icon">
             <svg>
-              <use href="#accuracy-chart"></use>
+              <use href="#check-circle"></use>
             </svg>
           </div>
         </div>
-        <div class="center">
-
+        <div class="center">          
         </div>
         <div class="right">
           <div id="share-button" title="Share" class="icon">
@@ -72,13 +75,14 @@
         tabindex="0" 
         title="answer" />
       </div>
-    </div>
+      <svg id="correct-check"><use href="#check-circle"></use></svg>
+    </div>    
   </div>
 
   <div class="spacer"></div>
 
   <!-- Inlined SVG icons to reference -->
-  <svg style="display: none">
+  <svg class="hidden">
     <!-- 
        Google Material Design Icons [https://fonts.google.com/icons]
        LICENSE: Apache License 2.0 [http://www.apache.org/licenses/LICENSE-2.0]
@@ -91,9 +95,8 @@
       <path
         d="M17.125 26.25q.958.958 2.687.917 1.73-.042 2.563-1.292l9.083-14.083L17.5 21q-1.208.792-1.292 2.542-.083 1.75.917 2.708Zm2.833-19.542q2.375 0 4.854.73 2.48.729 4.73 2.437l-2.5 1.708q-1.709-1.083-3.625-1.604-1.917-.521-3.459-.521-5.75 0-9.791 4.084-4.042 4.083-4.042 9.916 0 1.834.5 3.667.5 1.833 1.417 3.417h23.75q.958-1.5 1.458-3.417.5-1.917.5-3.792 0-1.666-.458-3.479-.459-1.812-1.584-3.396l1.75-2.5q1.459 2.209 2.23 4.5.77 2.292.854 4.667.041 2.458-.542 4.667-.583 2.208-1.708 4.083-.459.917-1.104 1.187-.646.271-1.48.271H8.167q-.75 0-1.479-.375-.73-.375-1.105-1.083-1.083-1.958-1.666-4.021-.584-2.062-.584-4.396 0-3.458 1.313-6.52 1.312-3.063 3.562-5.334 2.25-2.271 5.292-3.583 3.042-1.313 6.458-1.313Zm-.166 13.542Z" />
     </symbol>
-    <symbol id="accuracy-chart" viewBox="0 0 40 40">
-      <path
-        d="m14.375 37.5-3.167-5.375-6.166-1.333.666-6.125L1.667 20l4.041-4.625-.666-6.167 6.166-1.291L14.375 2.5 20 5.042 25.625 2.5l3.167 5.417 6.166 1.291-.666 6.167L38.333 20l-4.041 4.667.666 6.125-6.166 1.333-3.167 5.375L20 34.958Zm1.25-3.625L20 32.042l4.5 1.833 2.625-4.083 4.792-1.209-.459-4.875L34.708 20l-3.25-3.792.459-4.875-4.792-1.125-2.708-4.083L20 7.958l-4.5-1.833-2.625 4.083-4.792 1.125.459 4.875L5.292 20l3.25 3.708-.459 4.959 4.792 1.125ZM20 20Zm-1.792 5.667 9.459-9.375-2.042-1.959-7.417 7.375-3.833-3.916-2.042 2Z" />
+    <symbol id="check-circle" viewBox="0 0 40 40">
+      <path d="m17.583 27.625 11.792-11.792-2.083-2.041-9.709 9.75-4.916-4.917-2.042 2ZM20 36.667q-3.417 0-6.458-1.313-3.042-1.312-5.313-3.583t-3.583-5.313Q3.333 23.417 3.333 20q0-3.458 1.313-6.5 1.312-3.042 3.583-5.292t5.313-3.562Q16.583 3.333 20 3.333q3.458 0 6.5 1.313 3.042 1.312 5.292 3.562t3.562 5.292q1.313 3.042 1.313 6.5 0 3.417-1.313 6.458-1.312 3.042-3.562 5.313T26.5 35.354q-3.042 1.313-6.5 1.313Zm0-2.792q5.792 0 9.833-4.042 4.042-4.041 4.042-9.833t-4.042-9.833Q25.792 6.125 20 6.125t-9.833 4.042Q6.125 14.208 6.125 20t4.042 9.833q4.041 4.042 9.833 4.042ZM20 20Z"/>
     </symbol>
     <symbol id="share" viewBox="0 0 40 40">
       <path
@@ -117,43 +120,49 @@
     <symbol id="clipboard" viewBox="0 0 40 40">
       <path d="M7.792 35q-1.209 0-2-.792-.792-.791-.792-2V7.792q0-1.209.792-2Q6.583 5 7.792 5h7.916q.334-1.458 1.542-2.396 1.208-.937 2.75-.937t2.75.937q1.208.938 1.542 2.396h7.916q1.209 0 2 .792.792.791.792 2v24.416q0 1.209-.792 2-.791.792-2 .792Zm0-2.792h24.416V7.792h-2.75v4.166H10.542V7.792h-2.75v24.416ZM20 7.792q.708 0 1.188-.479.479-.48.479-1.188t-.479-1.187q-.48-.48-1.188-.48t-1.188.48q-.479.479-.479 1.187 0 .708.479 1.188.48.479 1.188.479Z"/>
     </symbol>
+    <symbol id="close" viewBox="0 0 40 40">
+      <path d="M13.833 28.125 20 21.958l6.167 6.167 1.958-1.958L21.958 20l6.167-6.167-1.958-1.958L20 18.042l-6.167-6.167-1.958 1.958L18.042 20l-6.167 6.167ZM20 36.667q-3.417 0-6.458-1.313-3.042-1.312-5.313-3.583t-3.583-5.313Q3.333 23.417 3.333 20q0-3.458 1.313-6.5 1.312-3.042 3.583-5.292t5.313-3.562Q16.583 3.333 20 3.333q3.458 0 6.5 1.313 3.042 1.312 5.292 3.562t3.562 5.292q1.313 3.042 1.313 6.5 0 3.417-1.313 6.458-1.312 3.042-3.562 5.313T26.5 35.354q-3.042 1.313-6.5 1.313Zm0-2.792q5.792 0 9.833-4.042 4.042-4.041 4.042-9.833t-4.042-9.833Q25.792 6.125 20 6.125t-9.833 4.042Q6.125 14.208 6.125 20t4.042 9.833q4.041 4.042 9.833 4.042ZM20 20Z"/>
+    </symbol>
   </svg>
 
   <!-- Modal overlay box and predefined ones with static content -->
-  <div id="box" class="overlay" style="display: none;">
+  <div id="box" class="overlay hidden">
     <div id="contents" class="contents">
-
     </div>
   </div>
 
-  <div id="help-box" class="overlay" style="display: none;">
-    <div class="contents help">Math Facts is a free, ad-free, tracking-free way to practice math facts.
+  <div id="help-box" class="overlay hidden">
+    <div class="contents">
+      <div class="help">Math Facts is a free, ad-free, privacy respecting app to help kids practice math facts.
+        
+        - Click Settings (top right) to set a daily goal, choose what to practice (+, -, x, ÷), and configure sounds.
+        - Practice every day to earn a star.
+        - Click the calendar to see your practice history.
+        - Click the Speedometer and Checkmark to see your speed and accuracy per problem.
+        - Click Share to easily share results with your teacher.
 
-There's no time pressure and no harsh response for wrong answers.
-All data is stored in your local browser only.
-
-- Complete 40 problems to earn a star each day.
-- Complete extra problems for a silver or gold star.
-
-- Click the operation to toggle (+, -, x, ÷).
-- Click the Calendar to see your recent work and streak.
-- Click the Speedometer to see your speed per problem.
-- Click the Checkmark to see your accuracy per problem.
-
-Please report any issues at https://github.com/ScottLouvau/MathFacts.
-Send any feedback to scottlo@outlook.com.
-
-Icons from https://fonts.google.com/icons
-License: Apache License 2.0 
-[http://www.apache.org/licenses/LICENSE-2.0]
-
-Sound Effects from http://www.freesoundslibrary.com, with some edits.
-License: Attribution 4.0 International (CC BY 4.0) 
-[https://creativecommons.org/licenses/by/4.0/]
-</div>
+        All telemetry is stored locally only, to help you see how you're doing.
+        Low stress: No timer, no reaction to wrong answers.
+      </div>
+      <div class="help-links">
+        <a href="https://github.com/ScottLouvau/MathFacts#share-icon-reference">Understanding 'Share' Text</a><br />
+        <a href="https://github.com/ScottLouvau/MathFacts/issues">Report Issue</a><br />
+        <a href="mailto:scottlo@outlook.com">Send Feedback</a><br />
+        <a href="https://github.com/ScottLouvau/MathFacts">See Code</a><br />
+        <div class="attribution">
+          Sound Effects from <a href="http://www.freesoundslibrary.com">FreeSoundsLibrary</a>, with some edits.<br />
+          License: <a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International (CC BY 4.0)</a><br />
+          <br />
+          Icons from <a href="https://fonts.google.com/icons">Google Material Design Icons</a><br />
+          License: <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a><br />
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div id="share-box" class="overlay" style="display: none;">
+  <div id="temp-message" class="hidden"></div>
+
+  <div id="share-box" class="overlay hidden">  
     <div class="contents share">
       <div id="share-text">${text}</div>
       <div class="share-links">
@@ -163,7 +172,7 @@ License: Attribution 4.0 International (CC BY 4.0)
     </div>
   </div>
 
-  <div id="settings-box" class="overlay" style="display: none;">
+  <div id="settings-box" class="overlay hidden">
     <div class="contents settings">
       <table>
         <tr>
@@ -198,7 +207,6 @@ License: Attribution 4.0 International (CC BY 4.0)
           <td><label for="setting-delay">Delay Between Problems</label></td>
           <td>
             <select id="setting-delay">
-              <option value="100">Instant</option>
               <option value="250">Short</option>
               <option value="500" selected>Normal</option>
               <option value="1000">Long</option>
