@@ -130,6 +130,7 @@ body {
     grid-column: 1;
     grid-row: 1;
     width: 1em;
+    height: 1em;
     fill: green;
     transform: scale(0);
 }
