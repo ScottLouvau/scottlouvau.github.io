@@ -132,6 +132,7 @@ function nextProblem() {
 
   // Update UI
   upper.innerText = u;
+  op.innerText = o;
   lower.innerText = l;
   answer.value = "";
   correctCheck.classList.remove("correct");
@@ -142,8 +143,8 @@ function nextProblem() {
 function checkAnswer() {
   let a = +(answer.value);
 
-  // Stop if we are in between problems right now
-  if (currentProblem === null) { return; }
+  // Stop if we are pending the next problem, or if no text is entered
+  if (currentProblem === null || answer.value === "") { return; }
 
   // If correct, track progress, celebrate, and pick the next one
   if (a === currentProblem.answer) {
@@ -193,8 +194,8 @@ function checkAnswer() {
     // Show next problem (after brief delay)
     setTimeout(nextProblem, settings.pauseMs ?? 250);
   } else {
-    // If incorrect, and the right length, mark wasEverIncorrect
-    if (currentProblem.answer.toString().length <= answer.value.length) {
+    // If incorrect, and at least right length, mark wasEverIncorrect
+    if (a.toString().length >= currentProblem.answer.toString().length) {
       currentProblem.wasEverIncorrect = true;
     }
   }
