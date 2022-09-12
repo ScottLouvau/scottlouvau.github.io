@@ -3,16 +3,39 @@
 [MathFacts](https://relentlessoptimizer.com/math) is a free, ad-free, privacy respecting app to help kids practice math facts. 
 
 * Supports addition, subtraction, multiplication, and division.
-
 * Low stress - no timer, no response to wrong answers.
-
-* Locally saves work history and speed and accuracy per problem.
-
-* Fun sounds
-
+* Motivating with sounds, animation, a goal bar, and a practice calendar.
+* Problems you had trouble with are given again to finish your daily goal.
+* Identify struggles and improve with local-only telemetry.
 * Use 'Share' to send your practice record to your teacher easily.
 
-  
+## Telemetry
+
+MathFacts tracks how you're doing to help you to improve. Tracking is stored only in your browser - it's for you only.
+
+### Speed (Speedometer Icon)
+
+Click the Speedometer icon to see how fast you were at solving each problem. Your median time (in seconds) to solve each problem is shown. 
+
+![Speed Telemetry](./img/speed-telemetry.png)
+
+In this table, it took me a median of 4.9 seconds to answer 2 x 5. (The column for '2' and row for '5'). I haven't been asked 5 x 2 yet (column '5', row '2' is blank).
+
+Times under two seconds are dark green. 2-3 seconds are lighter green. 3-6 seconds are orange. Longer times are red. There are 169 possible problems in the 0-12 set, so it will take a while for every problem to be asked.
+
+This table is for multiplication, as shown by the 'x' in the top left corner. Click top left 'x' to see telemetry for the other math operations.
+
+### Accuracy (Checkmark Icon)
+
+Click the checkmark icon to see accuracy telemetry. The table shows my "correct the first time" percentage for each problem.
+
+![Accuracy View](./img/accuracy-telemetry.png)
+
+This table shows that I got "1 x 6" correct only 75% of the time. (Looking at the column "1", row "6"). I have not been asked "6 x 1" yet, because the cell in column "6", row "1" is empty.
+
+For each problem given, when the answer box has the right number of digits in it, the problem is considered right or wrong based on the number in the answer box. Only the first attempt is counted each time a problem is given.
+
+It's easy to get problems wrong by mis-typing, so accuracy data won't be meaningful until a large number of problems have been solved.
 
 ## 'Share' Icon Reference
 

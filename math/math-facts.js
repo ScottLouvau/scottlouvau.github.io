@@ -16,7 +16,7 @@ const sounds = ["none", "air-horn", "aooga", "applause", "ding-ding", "ding", "d
 let currentProblem = null; // { answer: null, startTime: null, wasEverIncorrect: null };
 
 let settings = { goal: 40, pauseMs: 500, op: '+', volume: 0.25, oneSound: sounds.indexOf("ding"), goalSound: sounds.indexOf("tada") };
-let today = { date: dateString(now()), count: 0, telemetry: [] };
+let today = null;
 let history = {};
 let telemetry = { count: 0, accuracy: {}, speed: {} };
 let shareText = null;
@@ -66,6 +66,16 @@ function nextOperation(o) {
   }
 }
 
+// Return the next problem to retry, if it's time and there are any
+function nextToRedo() {
+  const countToGoal = settings.goal - (today.count % settings.goal);
+  if (today.redo?.length >= countToGoal) {
+    return today.redo.shift();
+  } else {
+    return null;
+  }
+}
+
 // Choose a value between min and max, except last.
 function randomish(min, max, last) {
   let range = max - min;
@@ -84,23 +94,36 @@ function nextProblem() {
   let u = +(upper.innerText);
   let l = +(lower.innerText);
   let a = null;
+  let redo = nextToRedo();
 
-  if (o === '+') {
+  // Choose new problem (or a redo) to do next
+  if (redo) {
+    u = +(redo[0]);
+    o = redo[1];
+    l = +(redo[2]);
+  } else if (o === '+') {
     u = randomish(0, 12, u);
     l = randomish(0, 12, l);
-    a = u + l;
   } else if (o === '-') {
     u = randomish(0, 20, u);
     l = randomish(0, u, l);
-    a = u - l;
   } else if (o === 'x') {
     u = randomish(0, 12, u);
     l = randomish(0, 12, l);
-    a = u * l;
   } else { // (o === '÷')
     // Choose *factors* and compute product; no zero.
     a = randomish(1, 12, a);
     l = randomish(1, 12, l);
+  }
+
+  // Compute correct answer
+  if (o === '+') {
+    a = u + l;
+  } else if (o === '-') {
+    a = u - l;
+  } else if (o === 'x') {
+    a = u * l;
+  } else { // (o === '÷')
     u = a * l;
   }
 
@@ -140,6 +163,11 @@ function checkAnswer() {
       today.telemetry ??= [];
       today.telemetry.push(entry);
       addTelemetryEntry(entry);
+
+      if (currentProblem.wasEverIncorrect || msToAnswer >= 6000) {
+        today.redo ??= [];
+        today.redo.push(entry);
+      }
     }
 
     // Save new telemetry
@@ -151,7 +179,6 @@ function checkAnswer() {
     correctCheck.classList.add((settings.pauseMs >= 500 ? "correct" : "correct-instant"));
     currentProblem = null;
     showProgress();
-    setTimeout(nextProblem, settings.pauseMs ?? 250);
 
     // Play sound
     if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
@@ -162,6 +189,9 @@ function checkAnswer() {
       oneSound?.load();
       oneSound?.play();
     }
+
+    // Show next problem (after brief delay)
+    setTimeout(nextProblem, settings.pauseMs ?? 250);
   } else {
     // If incorrect, and the right length, mark wasEverIncorrect
     if (currentProblem.answer.toString().length <= answer.value.length) {
@@ -286,29 +316,36 @@ function checkForTomorrow() {
 
 // Load stored settings, progress today, and historical progress.
 function loadState() {
+  const currentToday = dateString(now());
   const storage = window.localStorage;
+
   try {
     settings = { ...settings, ...JSON.parse(storage.getItem('settings')) };
     history = JSON.parse(storage.getItem('history')) ?? history;
 
-    const currentToday = dateString(now());
     const lastToday = JSON.parse(storage.getItem('today'));
     if (lastToday) {
       if (lastToday.date === currentToday) {
+        // Reload 'today' data if it's still the same day
         today = lastToday;
       } else {
-        // On a new day, add most recent day to history
+        // Otherwise, add most recent day to history
         history[lastToday.date] = lastToday;
         storage.setItem("history", JSON.stringify(history));
 
         // TODO: Delete very old data?
 
-        // Reset 'today' data
-        today = { date: currentToday, count: 0, telemetry: [] };
+        // And start fresh
+        today = null;
       }
     }
   }
   catch { }
+
+  // Reset 'today' data
+  if (today == null) {
+    today = { date: currentToday, count: 0, telemetry: [] };
+  }
 
   // Reflect loaded state in UI
   op.innerText = settings.op;
