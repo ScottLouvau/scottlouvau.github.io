@@ -21,14 +21,14 @@
   - [ ] Confirm colors correct for time/accuracy ranges.
 - [ ] Settings
   - [ ] When changing sounds, do you hear them immediately?
-  - [ ] When operaiton changes, is a new problem picked?
+  - [ ] When operation changes, is a new problem picked?
   - [ ] When goal changes, is goal bar redrawn?
   - [ ] Turn Volume to 0 and confirm respected. Change back.
   - [ ] Select 'None' and confirm no sound played, no errors.
 - [ ] Share
   - [ ] Click mail icon; confirm email comes up with text populated.
   - [ ] Click clipboard; confirm text on clipboard and popup notification shown.
-  - [ ] Click clipboar; confirm popup re-shows and re-hides.
+  - [ ] Click clipboard; confirm popup re-shows and re-hides.
 - [ ] Click operation and confirm toggles through +, -, x, /.
 - [ ] Check LocalStorage
   - [ ] Settings, including changes.
@@ -65,9 +65,9 @@
 
 - [ ] Chrome / Windows
 - [ ] Edge / Windows
-- [ ] Firefox / Windows
 - [ ] Edge / MacOS
 - [ ] Safari / MacOS
+- [ ] Firefox / MacOS
 - [ ] Chrome / Android
 - [ ] Edge / Android
 - [ ] Safari / iOS

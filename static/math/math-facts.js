@@ -354,11 +354,13 @@ function loadState() {
   // Calculate telemetry based on loaded history
   computeTelemetry();
 
-  // Load sounds
-  window.setTimeout(() => {
-    oneSound = loadSound(settings.oneSound ?? 1);
-    goalSound = loadSound(settings.goalSound ?? 3);
-  }, 50);
+  // Load sounds (asynchronously)
+  window.setTimeout(loadSounds, 50);
+}
+
+function loadSounds() {
+  oneSound = loadSound(settings.oneSound ?? 1);
+  goalSound = loadSound(settings.goalSound ?? 3);
 }
 
 function loadSound(index) {
@@ -657,7 +659,7 @@ function loadSettings() {
       oneSound?.load();
       settings.oneSound = eachSound.selectedIndex % sounds.length;
       saveSettings();
-      loadState();
+      loadSounds();
       oneSound?.load();
       oneSound?.play();
     });
@@ -669,7 +671,7 @@ function loadSettings() {
       goalSound?.load();
       settings.goalSound = setSound.selectedIndex % sounds.length;
       saveSettings();
-      loadState();
+      loadSounds();
       goalSound?.load();
       goalSound?.play();
     });
@@ -736,15 +738,15 @@ function emojiTelemetrySummary(o) {
   let sText = '⚡ ';
   let aText = '🎯 ';
 
-  const speed = telemetry.rollup.speed[o];
-  const accuracy = telemetry.rollup.accuracy[o];
+  const speed = telemetry?.rollup?.speed[o];
+  const accuracy = telemetry?.rollup?.accuracy[o];
   const start = (o === '÷' ? 1 : 0);
   const end = (o === '-' ? 20 : 12);
 
   for (let i = start; i <= end; ++i) {
-    const current = speed[i];
+    const current = speed?.[i];
     current?.sort((l, r) => l - r);
-    const timeMs = current?.[Math.floor(current.length * 0.75)] ?? null;
+    const timeMs = current?.[Math.floor(current?.length * 0.75)] ?? null;
     const accuracyPct = 100 * (accuracy?.[i]?.[0] / accuracy?.[i]?.[1]);
 
     sText += emoji[speedClass(timeMs)];
