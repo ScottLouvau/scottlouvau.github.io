@@ -32,10 +32,44 @@ input, select, label {
 body {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .spacer {
     flex-grow: 1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Popup Message --- */
+#temp-message {
+    z-index: 20;
+    position: absolute;
+    top: max(4px, 0.20vh);
+
+    font-size: clamp(12px, 3vw, 24px);
+    width: fit-content;
+    padding: 0.2em 1em;
+    vertical-align: middle;
+    
+    border: thin solid black;
+    border-radius: 1em;
+    background-color: white;
+
+    opacity: 0;
+}
+
+.show-message {
+    animation: show-briefly 4s ease-in-out;
+}
+
+@keyframes show-briefly {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    60% { opacity: 1;}
+    100% { opacity: 0; }
 }
 
 /* --- Math Problem Box --- */ 
@@ -50,7 +84,7 @@ body {
     margin: auto auto;
     padding: 0.25em;
 
-    border: solid 1px #888;
+    border: thin solid #888;
 }
 
 #upper {
@@ -91,6 +125,30 @@ body {
     width: 100%;
 }
 
+/* --- Correct Answer Checkmark -- */
+#correct-check {
+    grid-column: 1;
+    grid-row: 1;
+    width: 1em;
+    fill: green;
+    transform: scale(0);
+}
+
+#correct-check.correct {
+    animation: correct 500ms ease-in-out;
+    transform: scale(1);
+}
+
+#correct-check.correct-instant {
+    transform: scale(1);
+}
+
+@keyframes correct {
+    0% { transform: scale(0); }
+    75% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
 /* --- Controls --- */
 
 #control-bar {
@@ -129,8 +187,8 @@ body {
 #progress-outer {
     background-repeat: no-repeat;
     background-size: 100%;
-    width: 100% 100%;
     height: fit-content;
+    width: 100vw;
     flex-grow: 0;
 }
 
@@ -152,15 +210,29 @@ body {
     bottom: 0;
     
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+.close-button {
+    z-index: 11;
+    position: absolute;
+    top: -50px;
+    right: -5px;    
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
 .contents {
+    position: relative;
+
     width: fit-content;
-    border: solid 1px black;
     background-color: white;
     padding: 1em;
+    border: thin solid black;
+    border-radius: 1em;
 
     display: flex;
     flex-direction: column;
@@ -174,7 +246,7 @@ body {
 }
 
 .contents table th, td {
-    border: solid 1px #888;
+    border: thin solid #888;
     width: 2.5em;
     height: 2.5em;
     text-align: center;
@@ -201,10 +273,6 @@ body {
 }
 
 /* https://observablehq.com/@d3/color-schemes; Discrete (8), 4th to 5th usually. */
-/* Blue: ["#f7fbff","#deebf7","#c6dbef","#9ecae1","#6baed6","#4292c6","#2171b5","#084594"] */
-/* Green: ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#005a32"] */
-/* Green/Blue: ["#f7fcf0","#e0f3db","#ccebc5","#a8ddb5","#7bccc4","#4eb3d3","#2b8cbe","#08589e"] */
-/* Yellow/Green: ["#ffffe5","#f7fcb9","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#005a32"] */
 
 .great {
     background-image: linear-gradient(to right, #74c476, #41ab5d);
@@ -269,6 +337,20 @@ body {
 
     /* Issue: Not in Safari */
     overflow-wrap: anywhere;
+}
+
+.help-links {
+    padding: 0em 1em;
+    font-size: clamp(10px, 2vw, 20px);
+}
+
+.attribution {
+    margin: 1.5em 0em;
+    padding: 1em;
+    font-size: 80%;
+
+    border: thin solid silver;
+    border-radius: 6px;
 }
 
 #share-text {
