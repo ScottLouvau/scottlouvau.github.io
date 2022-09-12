@@ -133,6 +133,11 @@ body {
     height: 1em;
     fill: green;
     transform: scale(0);
+
+    /* Fix for blurry sometimes during animation in FireFox
+       https://stackoverflow.com/questions/60796102/css-animation-scale-transform-starts-blurry-in-firefox
+    */
+    backface-visibility: hidden;
 }
 
 #correct-check.correct {
