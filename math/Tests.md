@@ -54,13 +54,16 @@
   - [ ] Reload, confirm moved to history, fresh "today" started.
 
 - [ ] Delete all LocalStorage
-
   - [ ] Confirm Page loads; bar empty; setting defaults reasonable.
-
   - [ ] Get a Problem Wrong; confirm "redo" populated, no error.
 
-    
+- [ ] Leave open tab overnight
+  - [ ] Do work in another tab
+  - [ ] In first tab, bar should reload and merge in other tab data.
 
+- [ ] Cookies Turned off?
+- [ ] JavaScript turned off (need fallback error)
+ 
 ### Environments
 
 - [ ] Chrome / Windows

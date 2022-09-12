@@ -49,7 +49,7 @@ body {
     position: absolute;
     top: max(4px, 0.20vh);
 
-    font-size: clamp(12px, 3vw, 24px);
+    font-size: clamp(12px, 4vw, 24px);
     width: fit-content;
     padding: 0.2em 1em;
     vertical-align: middle;
