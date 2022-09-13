@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
   <title>Math Facts</title>
-  <link rel="stylesheet" href="math-facts.css" />
   <script type="module" src="math-facts.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="utf-8">
+  <link rel="stylesheet" href="math-facts.css" />
   <style>
     .hidden { display: none; }
   </style>
@@ -197,10 +196,10 @@
           <td><label for="setting-op">Operation</label></td>
           <td>
             <select id="setting-op">
-              <option>+</option>
-              <option>-</option>
-              <option>x</option>
-              <option>÷</option>
+              <option value="+">+ Addition</option>
+              <option value="-">- Subtraction</option>
+              <option value="x">x Multiplication</option>
+              <option value="÷">÷ Division</option>
             </select>
           </td>
         </tr>
@@ -238,5 +237,4 @@
      </div>
   </div>
 </body>
-
 </html>
