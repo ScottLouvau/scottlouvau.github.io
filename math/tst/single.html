@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <title>Math Facts</title>
+  <script type="module">
+    (()=>{var M=null,$=null,i=null,v=null,S=null,L=null,N=null,w=null,I=null,y=["none","air-horn","aooga","applause","ding-ding","ding","drama","happy-tones","mario-coin","minecraft-eating","success","tada","xylophone"],f=null,c={goal:40,pauseMs:500,op:"+",volume:.25,oneSound:y.indexOf("ding"),goalSound:y.indexOf("tada")},d=null,h={},g={count:0,accuracy:{},speed:{}},G=null;function Y(e){let t=document.getElementById("temp-message");t.innerText=e,t.classList.remove("hidden"),t.classList.remove("show-message"),window.setTimeout(()=>t.classList.add("show-message"),10)}function T(){return new Date}function x(e){return e.toLocaleDateString("sv")}function b(e,t){let n=new Date(e);return n.setDate(n.getDate()+t),n}function K(e){return b(e,-e.getDay())}function Q(e){return e==="+"?"-":e==="-"?"x":e==="x"?"\xF7":"+"}function te(){let e=c.goal-d.count%c.goal;return d.redo?.length>=e?d.redo.shift():null}function p(e,t,n){let l=t-e;if(n>=e&&n<=t&&l--,l<=0)return e;let s=e+Math.floor(Math.random()*(l+1));return s===n&&(s=t),s}function O(){let e=i.innerText,t=+M.innerText,n=+$.innerText,l=null,s=te();s?(t=+s[0],e=s[1],n=+s[2]):e==="+"?(t=p(0,12,t),n=p(0,12,n)):e==="-"?(t=p(0,20,t),n=p(0,t,n)):e==="x"?(t=p(0,12,t),n=p(0,12,n)):(l=p(1,12,l),n=p(1,12,n)),e==="+"?l=t+n:e==="-"?l=t-n:e==="x"?l=t*n:t=l*n,f={answer:l,startTime:T(),wasEverIncorrect:!1},M.innerText=t,i.innerText=e,$.innerText=n,v.value="",N.classList.remove("correct"),N.classList.remove("correct-instant")}function ne(){let e=+v.value;if(!(f===null||v.value===""))if(e===f.answer){let t=T();x(t)!==d.date&&D();let n=t-f.startTime;if(d.count++,n<60*1e3){let l=[M.innerText,i.innerText,$.innerText,n,f.wasEverIncorrect];d.telemetry??=[],d.telemetry.push(l),J(l),(f.wasEverIncorrect||n>=6e3)&&(d.redo??=[],d.redo.push(l))}try{window.localStorage.setItem("today",JSON.stringify(d))}catch{}N.classList.add(c.pauseMs>=500?"correct":"correct-instant"),f=null,H(),d.count>0&&d.count<=3*c.goal&&d.count%c.goal===0?(I?.load(),I?.play(),Y("Yay!")):(w?.load(),w?.play()),setTimeout(O,c.pauseMs??250)}else e.toString().length>=f.answer.toString().length&&(f.wasEverIncorrect=!0)}function oe(){let e=Q(i.innerText);i.innerText=e,c.op=e,document.getElementById("setting-op").value=e,E(),O(),v.focus()}function H(){d.count<c.goal?(S.className="bronze",L.className=""):d.count<2*c.goal?(S.className="silver",L.className="bronze"):d.count<3*c.goal?(S.className="gold",L.className="silver"):(S.className="",L.className="gold");let e=d.count%c.goal/c.goal;S.style.backgroundSize=`${Math.floor(100*e)}% 100%`}function F(e){e??=60,g={count:0,accuracy:{},speed:{},rollup:{accuracy:{},speed:{}}};for(let n of d.telemetry)J(n);let t=x(b(T(),-1*Math.abs(e)));for(let n in h)if(n>=t){let l=h[n].telemetry;if(l)for(let s of l)J(s)}}function J(e){let t=g.accuracy,n=g.speed,l=g.rollup.accuracy,s=g.rollup.speed,r=e[0],o=e[1],a=e[2],u=e[3],m=e[4];t[o]??={},t[o][r]??={},t[o][r][a]??=[0,0],t[o][r][a][0]+=m?0:1,t[o][r][a][1]+=1,l[o]??={},(i==="+"||i==="x")&&(l[o][r]??=[0,0],l[o][r][0]+=m?0:1,l[o][r][1]+=1),l[o][a]??=[0,0],l[o][a][0]+=m?0:1,l[o][a][1]+=1,n[o]??={},n[o][r]??={},n[o][r][a]??=[],n[o][r][a].push(u),s[o]??={},(i==="+"||i==="x")&&(s[o][r]??=[],s[o][r].push(u)),s[o][a]??=[],s[o][a].push(u),g.count++}function V(){x(T())!==d.date&&D(),window.setTimeout(V,60*60*1e3)}function D(){let e=x(T()),t=window.localStorage;try{c={...c,...JSON.parse(t.getItem("settings"))},h=JSON.parse(t.getItem("history"))??h;let n=JSON.parse(t.getItem("today"));n&&(n.date===e?d=n:(h[n.date]=n,t.setItem("history",JSON.stringify(h)),d=null))}catch{}d==null&&(d={date:e,count:0,telemetry:[]}),i.innerText=c.op,H(),F(),window.setTimeout(z,50)}function z(){w=j(c.oneSound??1),I=j(c.goalSound??3)}function j(e){let t=y[e%y.length];if(t==="none")return null;{let n=new Audio(`./audio/${t}.mp3`);return n.volume=c.volume??1,n}}function k(e){let t=document.createElement("template");t.innerHTML='<svg class="close-button" title="Close"><use href="#close"></use></svg>';let n=document.getElementById(e);n.children?.[0]?.prepend(t.content),n.classList.remove("hidden"),document.querySelectorAll(".close-button").forEach(l=>l.addEventListener("click",X))}function X(){document.querySelectorAll(".overlay").forEach(e=>e.classList.add("hidden"))}function le(e){e.stopPropagation()}function se(e,t,n){if(t==="-"&&e-n<0)return null;let l=t==="\xF7"?e*n:e,s=g.speed?.[t]?.[`${l}`]?.[`${n}`],r=document.createElement("td");if(r.title=`${l} ${t} ${n}`,s){s.sort((u,m)=>u-m);let o=s[Math.floor(s.length/2)],a=o/1e3;r.innerText=a.toLocaleString("en-US",{minimumFractionDigits:a<9.5?1:0,maximumFractionDigits:1}),r.className=Z(o)}return r}function re(e,t,n){if(t==="-"&&e-n<0)return null;let l=t==="\xF7"?e*n:e,s=g.accuracy?.[t]?.[`${l}`]?.[`${n}`],r=document.createElement("td");if(r.title=`${l} ${t} ${n}`,s){let o=100*(s[0]/s[1]);r.innerText=`${o.toLocaleString("en-US",{maximumFractionDigits:0})}`,r.className=_(o)}return r}function U(e,t){e??="+";let n=null,l=null;e==="-"?(n=[20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],l=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]):e==="\xF7"?(n=[1,2,3,4,5,6,7,8,9,10,11,12],l=[1,2,3,4,5,6,7,8,9,10,11,12]):(n=[0,1,2,3,4,5,6,7,8,9,10,11,12],l=[0,1,2,3,4,5,6,7,8,9,10,11,12]);let s=ce(e,n,l,t),r=document.getElementById("contents");r.innerHTML="",r.appendChild(s),k("box")}function ce(e,t,n,l){let s=document.createElement("table");s.classList.add("stats"),e==="-"&&s.classList.add("subtraction");let r=null,o=null;r=document.createElement("tr"),o=document.createElement("th"),o.innerText=e,o.addEventListener("click",()=>U(Q(e),l)),r.appendChild(o);for(let a=0;a<t.length;++a)o=document.createElement("th"),o.innerText=t[a],r.appendChild(o);s.appendChild(r);for(let a=0;a<n.length;++a){r=document.createElement("tr"),o=document.createElement("td"),o.innerText=n[a],r.appendChild(o);for(let u=0;u<t.length;++u){let m=l(t[u],e,n[a]);m&&r.appendChild(m)}s.appendChild(r)}return s}function Z(e){return e==null?"unknown":e<2e3?"great":e<3e3?"good":e<6e3?"ok":"bad"}function _(e){return e==null?"unknown":e>=95?"great":e>=90?"good":e>=75?"ok":"bad"}function ae(){let e=document.createElement("table");e.className="calendar";let t=null,n=null,l=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];t=document.createElement("tr");for(let u=0;u<l.length;++u)n=document.createElement("th"),n.innerText=l[u],t.appendChild(n);e.appendChild(t);let s=T(),r=b(K(s),-21),o=r;for(;o<=s;){t=document.createElement("tr");for(let u=0;u<7;++u){let m=document.createElement("td"),B=x(o),A=B===d.date?d:h[B],C=ee(A),P=`<div class="date">${o===r||o.getDate()===1?o.toLocaleString("en-US",{month:"short"}):""} ${o.toLocaleString("en-US",{day:"numeric"})}</div>`;if(C&&(P+=`<svg class="fill-${C}"><use href="#star"></use</svg>`),m.innerHTML=P,t.appendChild(m),o=b(o,1),o>s)break}e.appendChild(t)}let a=document.getElementById("contents");a.innerHTML="",a.appendChild(e),k("box")}function ee(e){if(e==null)return null;let t=e.count;return t>=3*c.goal?"gold":t>=2*c.goal?"silver":t>=c.goal?"bronze":null}function R(e){if(e.options.length===0)for(let t=0;t<y.length;++t){let n=document.createElement("option");n.text=y[t],e.add(n,t)}}var W=!1;function de(){if(!W){let e=document.getElementById("setting-goal");e.value=c.goal,e.addEventListener("input",()=>{c.goal=+e.value||40,E(),H()});let t=document.getElementById("setting-op");t.value=i.innerText,t.addEventListener("input",()=>{let o=t.value;i.innerText=o,c.op=o,E(),O()});let n=document.getElementById("setting-delay");n.value=+c.pauseMs,n.addEventListener("input",()=>{c.pauseMs=+n.value||250,E()});let l=document.getElementById("setting-volume");l.value=`${(100*+c.volume).toFixed(0)}%`,l.addEventListener("input",()=>{c.volume=parseFloat(l.value)/100,E(),D()});let s=document.getElementById("setting-each-sound");R(s),s.selectedIndex=c.oneSound,s.addEventListener("input",()=>{w?.load(),c.oneSound=s.selectedIndex%y.length,E(),z(),w?.load(),w?.play()});let r=document.getElementById("setting-goal-sound");R(r),r.selectedIndex=c.goalSound,r.addEventListener("input",()=>{I?.load(),c.goalSound=r.selectedIndex%y.length,E(),z(),I?.load(),I?.play()})}W=!0,k("settings-box")}function E(){try{window.localStorage.setItem("settings",JSON.stringify(c))}catch{}}var q={unknown:"\u2B1B",great:"\u{1F7E6}",good:"\u{1F7E9}",ok:"\u{1F7E8}",bad:"\u{1F7E5}",gold:"\u{1F7E8}",silver:"\u2B1C",bronze:"\u{1F7E7}"};function ue(){let e=T(),t=`${x(e)} | ${c.goal} | ${c.op}
+
+`,n=b(K(e),-7);for(t+=`\u{1F4C5}
+`;n<=e;){let r=x(n),o=r===d.date?d:h[r];t+=q[ee(o)??"unknown"],n.getDay()===6&&(t+=`
+`),n=b(n,1)}t+=`
+
+`,F(14),t+=ie(c.op),F(60);let l=document.getElementById("share-text");l.innerHTML=t,G=t;let s=`mailto:?subject=Math Facts Summary&body=${encodeURIComponent(t)}`;document.getElementById("share-mail").href=s,k("share-box")}function ie(e){let t="\u26A1 ",n="\u{1F3AF} ",l=g?.rollup?.speed[e],s=g?.rollup?.accuracy[e],r=e==="\xF7"?1:0,o=e==="-"?20:12;for(let a=r;a<=o;++a){let u=l?.[a];u?.sort((A,C)=>A-C);let m=u?.[Math.floor(u?.length*.75)]??null,B=100*(s?.[a]?.[0]/s?.[a]?.[1]);t+=q[Z(m)],n+=q[_(B)]}return n+`
+`+t}function me(){navigator.clipboard.writeText(G),Y("Copied to Clipboard!")}window.onload=async function(){M=document.getElementById("upper"),$=document.getElementById("lower"),i=document.getElementById("op"),v=document.getElementById("answer"),S=document.getElementById("progress"),L=document.getElementById("progress-outer"),N=document.getElementById("correct-check"),D(),v.focus(),v.addEventListener("input",ne),i.addEventListener("click",oe),document.querySelectorAll(".overlay").forEach(e=>e.addEventListener("click",X)),document.querySelectorAll(".contents").forEach(e=>e.addEventListener("click",le)),document.getElementById("calendar-button").addEventListener("click",ae),document.getElementById("speed-button").addEventListener("click",()=>U(i.innerText,se)),document.getElementById("accuracy-button").addEventListener("click",()=>U(i.innerText,re)),document.getElementById("share-button").addEventListener("click",ue),document.getElementById("help-button").addEventListener("click",()=>k("help-box")),document.getElementById("settings-button").addEventListener("click",de),document.getElementById("share-clipboard").addEventListener("click",me),window.setTimeout(V,60*60*1e3),O()};})();
+
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <style>
+  :root{--min-font-size: 10px;--control-size: clamp(20px, 6vw, 40px);--problem-size: min(16vw, 16vh)}@media screen and (max-width: 600px){:root{--min-font-size: 8px;--control-size: clamp(20px, 12vw, 40px)}}*{font-family:Arial,Helvetica,sans-serif}html,body{font-size:var(--min-font-size);margin:0;padding:0;height:100%}input,select,label{font-size:var(--min-font-size)}body{display:flex;flex-direction:column;align-items:center}.spacer{flex-grow:1}.hidden{display:none!important}#temp-message{z-index:20;position:absolute;top:max(4px,.2vh);font-size:clamp(12px,4vw,24px);width:fit-content;padding:.2em 1em;vertical-align:middle;border:thin solid black;border-radius:1em;background-color:#fff;opacity:0}.show-message{animation:show-briefly 4s ease-in-out}@keyframes show-briefly{0%{opacity:0}20%{opacity:1}60%{opacity:1}to{opacity:0}}#problem{display:grid;grid-template-columns:1fr 3fr;grid-template-rows:1fr 1fr .3fr 1fr;font-size:var(--problem-size);width:2.5em;margin:auto;padding:.25em;border:thin solid #888}#upper{grid-column:2;grid-row:1;text-align:right}#op{grid-column:1;grid-row:2;cursor:pointer}#lower{grid-column:2;grid-row:2;text-align:right}#line{grid-column:1 / -1;grid-row:3;height:1px;border-top:.08em solid black}#answer-box{grid-column:1 / -1;grid-row:4}#answer{font-size:var(--problem-size);text-align:right;box-sizing:border-box;width:100%}#correct-check{grid-column:1;grid-row:1;width:1em;height:1em;fill:green;transform:scale(0);backface-visibility:hidden}#correct-check.correct{animation:correct .5s ease-in-out;transform:scale(1)}#correct-check.correct-instant{transform:scale(1)}@keyframes correct{0%{transform:scale(0)}75%{transform:scale(1)}to{transform:scale(1)}}#control-bar{border-bottom:thin solid #888;width:calc(100% - 4px);padding:0 .1em;flex-grow:0;display:flex;flex-direction:row}.center{flex-grow:1;text-align:center;vertical-align:middle;font-size:var(--control-size)}.icon{margin:.2em;display:inline-block}.icon svg{width:var(--control-size);height:var(--control-size);cursor:pointer;display:inline-block}#progress-outer{background-repeat:no-repeat;background-size:100%;height:fit-content;width:100vw;flex-grow:0}#progress{width:100%;height:100%;background-repeat:no-repeat;background-size:0%}.overlay{z-index:10;background-color:#606060e6;position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.close-button{z-index:11;position:absolute;top:-50px;right:-5px;width:40px;height:40px;cursor:pointer}.contents{position:relative;width:fit-content;background-color:#fff;padding:1em;border:thin solid black;border-radius:1em;display:flex;flex-direction:column;justify-content:center}.contents table{font-size:clamp(var(--min-font-size),min(2vw,2vh),20px);border-collapse:collapse}.contents table th,td{border:thin solid #888;width:2.5em;height:2.5em;text-align:center}.contents table.subtraction{font-size:clamp(var(--min-font-size),min(1.6vw,1.6vh),20px)}.contents table.subtraction th,td{width:2em;height:2em}.contents table.stats th:first-child{font-size:200%;width:1em;height:1em;cursor:pointer}.contents table.stats th,td:first-child{color:#888}.great{background-image:linear-gradient(to right,#74c476,#41ab5d)}.good{background-image:linear-gradient(to right,#f7fcb9,#addd8e)}.ok{background-image:linear-gradient(to right,#fdd0a2,#fdae6b)}.bad{background-image:linear-gradient(to right,#fc9272,#fb6a4a)}.bronze{background-image:linear-gradient(to right,#ca7345,#732100)}.silver{background-image:linear-gradient(to right,#d7dde8,#757f9a)}.gold{background-image:linear-gradient(to right,#eecd3f,#99771f)}.fill-bronze{fill:#ca7345}.fill-silver{fill:#d7dde8}.fill-gold{fill:#eecd3f}.calendar th,.calendar td{font-size:clamp(var(--min-font-size),min(3vw,3vh),30px)}.calendar th{font-weight:400;color:#888}.calendar svg{width:3em;height:3em}.calendar td{text-align:left;vertical-align:top;padding:.2em;width:3em;height:4em}.calendar .date{font-size:60%;color:#888}.help,.share{max-width:min(80vw,40em);padding:1em;font-size:clamp(10px,2vw,20px);white-space:pre-line;overflow-wrap:anywhere}.help-links{padding:0 1em;font-size:clamp(10px,2vw,20px)}.attribution{margin:1.5em 0;padding:1em;font-size:80%;border:thin solid silver;border-radius:6px}#share-text{font-size:clamp(10px,4vw,30px)}.share-links{text-align:right;margin-top:1em;white-space:initial}.settings label,.settings input,.settings select,.settings td{font-size:clamp(12px,3.5vw,20px)}.settings label{text-align:right}.settings input{width:3em}.settings td{border:none;text-align:left;height:1.75em}.settings tr td:first-child{text-align:right;width:fit-content;padding-right:.75em}
+  </style>
+</head>
+
+<body>
+  <!-- Controls Bar with Progress Bar drawn behond -->
+  <div id="progress-outer">
+    <div id="progress">
+      <div id="control-bar">
+        <div class="left">
+          <div id="calendar-button" title="Practice History" class="icon">
+            <svg>
+              <use href="#calendar"></use>
+            </svg>
+          </div>
+          <div id="speed-button" title="Speed Chart" class="icon">
+            <svg>
+              <use href="#speed-chart"></use>
+            </svg>
+          </div>
+          <div id="accuracy-button" title="Accurary Chart" class="icon">
+            <svg>
+              <use href="#check-circle"></use>
+            </svg>
+          </div>
+        </div>
+        <div class="center">          
+        </div>
+        <div class="right">
+          <div id="share-button" title="Share" class="icon">
+            <svg>
+              <use href="#share"></use>
+            </svg>
+          </div>
+          <div id="help-button" title="Help" class="icon">
+            <svg>
+              <use href="#help"></use>
+            </svg>
+          </div>
+          <div id="settings-button" title="Settings" class="icon">
+            <svg>
+              <use href="#settings"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- The Math Problem itself -->
+  <div id="container">
+    <div id="problem">
+      <div id="upper">0</div>
+      <div id="op">x</div>
+      <div id="lower">0</div>
+      <div id="line"></div>
+      <div id="answer-box">
+        <input id="answer" type="text" 
+        inputmode="numeric" pattern="[0-9]*" 
+        maxlength="3" 
+        autocomplete="off"
+        tabindex="0" 
+        title="answer" />
+      </div>
+      <svg id="correct-check"><use href="#check-circle"></use></svg>
+    </div>    
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- Inlined SVG icons to reference -->
+  <svg class="hidden">
+    <!-- 
+       Google Material Design Icons [https://fonts.google.com/icons]
+       LICENSE: Apache License 2.0 [http://www.apache.org/licenses/LICENSE-2.0]
+      -->
+    <symbol id="calendar" viewBox="0 0 40 40">
+      <path
+        d="M7.792 36.667q-1.125 0-1.959-.834Q5 35 5 33.875v-25q0-1.125.833-1.937.834-.813 1.959-.813h2.333V3.333h2.917v2.792h13.916V3.333h2.917v2.792h2.333q1.125 0 1.959.813Q35 7.75 35 8.875v25q0 1.125-.833 1.958-.834.834-1.959.834Zm0-2.792h24.416v-17.5H7.792v17.5Zm0-20.25h24.416v-4.75H7.792Zm0 0v-4.75 4.75ZM20 23.333q-.708 0-1.188-.479-.479-.479-.479-1.187 0-.709.479-1.188Q19.292 20 20 20t1.188.479q.479.479.479 1.188 0 .708-.479 1.187-.48.479-1.188.479Zm-6.667 0q-.708 0-1.187-.479-.479-.479-.479-1.187 0-.709.479-1.188T13.333 20q.709 0 1.188.479T15 21.667q0 .708-.479 1.187-.479.479-1.188.479Zm13.334 0q-.709 0-1.188-.479T25 21.667q0-.709.479-1.188T26.667 20q.708 0 1.187.479.479.479.479 1.188 0 .708-.479 1.187-.479.479-1.187.479ZM20 30q-.708 0-1.188-.479-.479-.479-.479-1.188 0-.708.479-1.187.48-.479 1.188-.479t1.188.479q.479.479.479 1.187 0 .709-.479 1.188Q20.708 30 20 30Zm-6.667 0q-.708 0-1.187-.479-.479-.479-.479-1.188 0-.708.479-1.187.479-.479 1.187-.479.709 0 1.188.479T15 28.333q0 .709-.479 1.188T13.333 30Zm13.334 0q-.709 0-1.188-.479T25 28.333q0-.708.479-1.187.479-.479 1.188-.479.708 0 1.187.479.479.479.479 1.187 0 .709-.479 1.188T26.667 30Z" />
+    </symbol>
+    <symbol id="speed-chart" viewBox="0 0 40 40">
+      <path
+        d="M17.125 26.25q.958.958 2.687.917 1.73-.042 2.563-1.292l9.083-14.083L17.5 21q-1.208.792-1.292 2.542-.083 1.75.917 2.708Zm2.833-19.542q2.375 0 4.854.73 2.48.729 4.73 2.437l-2.5 1.708q-1.709-1.083-3.625-1.604-1.917-.521-3.459-.521-5.75 0-9.791 4.084-4.042 4.083-4.042 9.916 0 1.834.5 3.667.5 1.833 1.417 3.417h23.75q.958-1.5 1.458-3.417.5-1.917.5-3.792 0-1.666-.458-3.479-.459-1.812-1.584-3.396l1.75-2.5q1.459 2.209 2.23 4.5.77 2.292.854 4.667.041 2.458-.542 4.667-.583 2.208-1.708 4.083-.459.917-1.104 1.187-.646.271-1.48.271H8.167q-.75 0-1.479-.375-.73-.375-1.105-1.083-1.083-1.958-1.666-4.021-.584-2.062-.584-4.396 0-3.458 1.313-6.52 1.312-3.063 3.562-5.334 2.25-2.271 5.292-3.583 3.042-1.313 6.458-1.313Zm-.166 13.542Z" />
+    </symbol>
+    <symbol id="check-circle" viewBox="0 0 40 40">
+      <path d="m17.583 27.625 11.792-11.792-2.083-2.041-9.709 9.75-4.916-4.917-2.042 2ZM20 36.667q-3.417 0-6.458-1.313-3.042-1.312-5.313-3.583t-3.583-5.313Q3.333 23.417 3.333 20q0-3.458 1.313-6.5 1.312-3.042 3.583-5.292t5.313-3.562Q16.583 3.333 20 3.333q3.458 0 6.5 1.313 3.042 1.312 5.292 3.562t3.562 5.292q1.313 3.042 1.313 6.5 0 3.417-1.313 6.458-1.312 3.042-3.562 5.313T26.5 35.354q-3.042 1.313-6.5 1.313Zm0-2.792q5.792 0 9.833-4.042 4.042-4.041 4.042-9.833t-4.042-9.833Q25.792 6.125 20 6.125t-9.833 4.042Q6.125 14.208 6.125 20t4.042 9.833q4.041 4.042 9.833 4.042ZM20 20Z"/>
+    </symbol>
+    <symbol id="share" viewBox="0 0 40 40">
+      <path
+        d="M30.208 36.667q-2.041 0-3.437-1.417t-1.396-3.417q0-.291.042-.666.041-.375.166-.667L13.25 23.333q-.667.667-1.562 1.084-.896.416-1.855.416-2 0-3.416-1.416Q5 22 5 20q0-2 1.417-3.417 1.416-1.416 3.416-1.416.959 0 1.834.375.875.375 1.583 1.041l12.333-7.125q-.125-.25-.166-.604-.042-.354-.042-.687 0-2 1.396-3.417 1.396-1.417 3.437-1.417 2 0 3.417 1.417 1.417 1.417 1.417 3.417 0 2-1.417 3.416Q32.208 13 30.208 13q-1 0-1.875-.333-.875-.334-1.541-1l-12.334 6.958q.084.292.146.687.063.396.063.688 0 .292-.063.625-.062.333-.146.625l12.334 7.042q.666-.584 1.52-.938.855-.354 1.896-.354 2 0 3.417 1.417 1.417 1.416 1.417 3.416t-1.417 3.417q-1.417 1.417-3.417 1.417Zm0-26.459q.875 0 1.459-.583.583-.583.583-1.458t-.583-1.459q-.584-.583-1.459-.583-.875 0-1.479.583-.604.584-.604 1.459 0 .875.604 1.458t1.479.583ZM9.833 22.042q.875 0 1.459-.584.583-.583.583-1.458t-.583-1.458q-.584-.584-1.459-.584-.875 0-1.458.584-.583.583-.583 1.458t.583 1.458q.583.584 1.458.584Zm20.375 11.833q.875 0 1.459-.583.583-.584.583-1.459 0-.875-.583-1.458-.584-.583-1.459-.583-.875 0-1.479.583-.604.583-.604 1.458t.604 1.459q.604.583 1.479.583Zm0-25.708ZM9.833 20Zm20.375 11.833Z" />
+    </symbol>
+    <symbol id="help" viewBox="0 0 40 40">
+      <path
+        d="M20.083 29.792q.75 0 1.25-.5t.5-1.25q0-.709-.5-1.23-.5-.52-1.25-.52t-1.25.52q-.5.521-.5 1.23 0 .75.5 1.25t1.25.5Zm-1.458-6.167h2.667q0-1.208.27-2.063.271-.854 1.73-2.104 1.208-1.083 1.77-2.104.563-1.021.563-2.312 0-2.25-1.521-3.542-1.521-1.292-3.896-1.292-2.125 0-3.666 1.084-1.542 1.083-2.209 2.875l2.375.916q.375-1.041 1.23-1.75.854-.708 2.187-.708 1.417 0 2.208.75.792.75.792 1.833 0 .917-.521 1.688-.521.771-1.479 1.562-1.417 1.292-1.958 2.271-.542.979-.542 2.896ZM20 36.667q-3.417 0-6.458-1.313-3.042-1.312-5.313-3.583t-3.583-5.313Q3.333 23.417 3.333 20q0-3.458 1.313-6.5 1.312-3.042 3.583-5.292t5.313-3.562Q16.583 3.333 20 3.333q3.458 0 6.5 1.313 3.042 1.312 5.292 3.562t3.562 5.292q1.313 3.042 1.313 6.5 0 3.417-1.313 6.458-1.312 3.042-3.562 5.313T26.5 35.354q-3.042 1.313-6.5 1.313Zm0-2.792q5.792 0 9.833-4.042 4.042-4.041 4.042-9.833t-4.042-9.833Q25.792 6.125 20 6.125t-9.833 4.042Q6.125 14.208 6.125 20t4.042 9.833q4.041 4.042 9.833 4.042ZM20 20Z" />
+    </symbol>
+    <symbol id="settings" viewBox="0 0 40 40">
+      <path
+        d="m15.917 36.667-.792-5.292q-.708-.25-1.437-.687-.73-.438-1.355-.896L7.417 32l-4.125-7.208L7.75 21.5q-.083-.333-.104-.75-.021-.417-.021-.75t.021-.75q.021-.417.104-.75l-4.458-3.292L7.417 8l4.916 2.208q.625-.458 1.375-.896.75-.437 1.417-.687l.792-5.292h8.166l.792 5.292q.708.25 1.458.667.75.416 1.334.916L32.583 8l4.125 7.208-4.458 3.209q.083.375.104.791.021.417.021.792 0 .375-.021.771t-.104.771l4.417 3.25L32.583 32l-4.916-2.208q-.625.458-1.355.916-.729.459-1.437.667l-.792 5.292Zm4.125-11.125q2.291 0 3.916-1.625T25.583 20q0-2.292-1.625-3.917t-3.916-1.625q-2.334 0-3.959 1.625T14.458 20q0 2.292 1.625 3.917t3.959 1.625Z" />
+    </symbol>
+    <symbol id="star" viewBox="2 2 36 36">
+      <path
+        d="m9.708 36.667 2.709-11.709-9.084-7.875 12-1.041L20 5l4.667 11.042 12 1.041-9.084 7.875 2.709 11.709L20 30.458Z" />
+    </symbol>
+    <symbol id="mail" viewBox="0 0 40 40">
+      <path d="M6.125 33.333q-1.125 0-1.958-.833-.834-.833-.834-1.958V9.458q0-1.125.834-1.958.833-.833 1.958-.833h27.75q1.125 0 1.958.833.834.833.834 1.958v21.084q0 1.125-.834 1.958-.833.833-1.958.833ZM20 21.042 6.125 12.083v18.459h27.75V12.083Zm0-2.75 13.792-8.834H6.25ZM6.125 12.083V9.458v21.084Z" />
+    </symbol>
+    <symbol id="clipboard" viewBox="0 0 40 40">
+      <path d="M7.792 35q-1.209 0-2-.792-.792-.791-.792-2V7.792q0-1.209.792-2Q6.583 5 7.792 5h7.916q.334-1.458 1.542-2.396 1.208-.937 2.75-.937t2.75.937q1.208.938 1.542 2.396h7.916q1.209 0 2 .792.792.791.792 2v24.416q0 1.209-.792 2-.791.792-2 .792Zm0-2.792h24.416V7.792h-2.75v4.166H10.542V7.792h-2.75v24.416ZM20 7.792q.708 0 1.188-.479.479-.48.479-1.188t-.479-1.187q-.48-.48-1.188-.48t-1.188.48q-.479.479-.479 1.187 0 .708.479 1.188.48.479 1.188.479Z"/>
+    </symbol>
+    <symbol id="close" viewBox="0 0 40 40">
+      <path d="M13.833 28.125 20 21.958l6.167 6.167 1.958-1.958L21.958 20l6.167-6.167-1.958-1.958L20 18.042l-6.167-6.167-1.958 1.958L18.042 20l-6.167 6.167ZM20 36.667q-3.417 0-6.458-1.313-3.042-1.312-5.313-3.583t-3.583-5.313Q3.333 23.417 3.333 20q0-3.458 1.313-6.5 1.312-3.042 3.583-5.292t5.313-3.562Q16.583 3.333 20 3.333q3.458 0 6.5 1.313 3.042 1.312 5.292 3.562t3.562 5.292q1.313 3.042 1.313 6.5 0 3.417-1.313 6.458-1.312 3.042-3.562 5.313T26.5 35.354q-3.042 1.313-6.5 1.313Zm0-2.792q5.792 0 9.833-4.042 4.042-4.041 4.042-9.833t-4.042-9.833Q25.792 6.125 20 6.125t-9.833 4.042Q6.125 14.208 6.125 20t4.042 9.833q4.041 4.042 9.833 4.042ZM20 20Z"/>
+    </symbol>
+  </svg>
+
+  <!-- Modal overlay box and predefined ones with static content -->
+  <div id="box" class="overlay hidden">
+    <div id="contents" class="contents">
+    </div>
+  </div>
+
+  <div id="help-box" class="overlay hidden">
+    <div class="contents">
+      <div class="help">Math Facts is a free, ad-free, privacy respecting app to help kids practice math facts.
+        
+        - Click Settings (top right) to set a daily goal, choose what to practice (+, -, x, ÷), and configure sounds.
+        - Practice every day to earn a star.
+        - Click the calendar to see your practice history.
+        - Click the Speedometer and Checkmark to see your speed and accuracy per problem.
+        - Click Share to easily share results with your teacher.
+
+        All telemetry is stored locally only, to help you see how you're doing.
+        Low stress: No timer, no reaction to wrong answers.
+      </div>
+      <div class="help-links">
+        <a href="https://github.com/ScottLouvau/MathFacts#telemetry" target="_blank">Understanding Speed and Accuracy Charts</a><br />
+        <a href="https://github.com/ScottLouvau/MathFacts#share-icon-reference" target="_blank">Understanding 'Share' Text</a><br />
+        <a href="https://github.com/ScottLouvau/MathFacts/issues" target="_blank">Report Issue</a><br />
+        <a href="mailto:scottlo@outlook.com">Send Feedback</a><br />
+        <a href="https://github.com/ScottLouvau/MathFacts" target="_blank">See Code</a><br />
+        <div class="attribution">
+          Sound Effects from <a href="http://www.freesoundslibrary.com">FreeSoundsLibrary</a>, with some edits.<br />
+          License: <a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International (CC BY 4.0)</a><br />
+          <br />
+          Icons from <a href="https://fonts.google.com/icons">Google Material Design Icons</a><br />
+          License: <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a><br />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="temp-message" class="hidden"></div>
+
+  <div id="share-box" class="overlay hidden">  
+    <div class="contents share">
+      <div id="share-text">${text}</div>
+      <div class="share-links">
+        <a id="share-mail" href="#" class="icon" title="Send as Email"><svg><use href="#mail"></use></svg></a>
+        <div id="share-clipboard" class="icon" title="Copy to Clipboard"><svg><use href="#clipboard"></use></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="settings-box" class="overlay hidden">
+    <div class="contents settings">
+      <table>
+        <tr>
+          <td><label for="setting-goal">Daily Goal</label></td>
+          <td>
+            <select id="setting-goal">
+              <option>10</option>
+              <option>20</option>
+              <option>30</option>
+              <option selected>40</option>
+              <option>50</option>
+              <option>60</option>
+              <option>70</option>
+              <option>80</option>
+              <option>90</option>
+              <option>100</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="setting-op">Operation</label></td>
+          <td>
+            <select id="setting-op">
+              <option>+</option>
+              <option>-</option>
+              <option>x</option>
+              <option>÷</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="setting-delay">Delay Between Problems</label></td>
+          <td>
+            <select id="setting-delay">
+              <option value="250">Short</option>
+              <option value="500" selected>Normal</option>
+              <option value="1000">Long</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="setting-volume">Sound Volume</label></td>
+          <td>
+            <select id="setting-volume">              
+              <option>100%</option>
+              <option>50%</option>
+              <option>25%</option>
+              <option>10%</option>
+              <option>0%</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="setting-each-sound">Each Answer Sound</label></td>
+          <td><select id="setting-each-sound"></select></td>
+        </tr>
+        <tr>
+          <td><label for="setting-goal-sound">Goal Done Sound</label></td>
+          <td><select id="setting-goal-sound"></select></td>
+        </tr>
+      </table>
+     </div>
+  </div>
+</body>
+
+</html>

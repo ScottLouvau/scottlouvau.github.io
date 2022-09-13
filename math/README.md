@@ -140,3 +140,15 @@ LICENSE: Apache License 2.0 [http://www.apache.org/licenses/LICENSE-2.0]
 Transcoding: ffmpeg -i \<inFile\> -c:a mp3 -b:a 96k -ac 1 \<outFile\>
 -t 00:00:01 [transcode from start offset; place before -i argument]
 -ss 00:00:05 [transcode this duration]
+
+#### Bundle \[sort of\]
+
+```
+esbuild math-facts.js --bundle --minify --outfile=bundle.js
+esbuild math-facts.css --bundle --minify --outfile=bundle.css
+[Copy into style and script blocks in copy of HTML]
+[44.3 KB -> 292 KB raw]
+[14.0 KB -> 9.7 KB zip]
+
+[minify-html [https://www.npmjs.com/package/@minify-html/node]]
+```
