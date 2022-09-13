@@ -24,28 +24,7 @@ let shareText = null;
 let cantSaveWarningShown = false;
 const cantSaveWarningText = "Can't save progress or settings with cookies disabled.";
 
-// Briefly show a message to the user
-function showMessage(message) {
-  const box = document.getElementById("temp-message");
-  box.innerHTML = message;
-  box.classList.remove("hidden");
-  box.classList.remove("show-message");
-  window.setTimeout(() => box.classList.add("show-message"), 10);
-}
-
-// Play sound; handle sound not allowed gracefully
-function play(audio, volume) {
-  if (audio == null) { return; }
-
-  audio.volume = (volume ?? settings.volume ?? 1);
-  audio.pause();
-  audio.currentTime = 0;
-  const promise = audio.play();
-  if (promise) {
-    promise.catch(error => { });
-  }
-}
-
+// ---- Date Functions ----
 // Return this moment as a Date
 function now() {
   return new Date();
@@ -69,18 +48,7 @@ function startOfWeek(date) {
   return addDays(date, -date.getDay());
 }
 
-// Define an order for the mathematical functions
-function nextOperation(o) {
-  if (o === '+') {
-    return '-';
-  } else if (o === '-') {
-    return 'x';
-  } else if (o === 'x') {
-    return '÷';
-  } else {
-    return '+';
-  }
-}
+// ---- Basics: Load Settings and Progress, Choose Math Problems, Check Answers ----
 
 // Return the next problem to retry, if it's time and there are any
 function nextToRedo() {
@@ -107,16 +75,16 @@ function randomish(min, max, last) {
 // Randomly choose the next math problem
 function nextProblem() {
   let o = op.innerText;
-  let u = +(upper.innerText);
-  let l = +(lower.innerText);
+  let u = parseInt(upper.innerText);
+  let l = parseInt(lower.innerText);
   let a = null;
   let redo = nextToRedo();
 
   // Choose new problem (or a redo) to do next
   if (redo) {
-    u = +(redo[0]);
+    u = parseInt(redo[0]);
     o = redo[1];
-    l = +(redo[2]);
+    l = parseInt(redo[2]);
   } else if (o === '+') {
     u = randomish(0, 12, u);
     l = randomish(0, 12, l);
@@ -144,20 +112,29 @@ function nextProblem() {
   }
 
   // Update current problem state
-  currentProblem = { answer: a, startTime: now(), wasEverIncorrect: false };
+  currentProblem = { answer: a, wasEverIncorrect: false };
+  resetProblemTimer();
 
   // Update UI
+  correctCheck.classList.remove("correct");
+  correctCheck.classList.remove("correct-instant");
+  
   upper.innerText = u;
   op.innerText = o;
   lower.innerText = l;
+  
   answer.value = "";
-  correctCheck.classList.remove("correct");
-  correctCheck.classList.remove("correct-instant");
+  answer.focus();
+}
+
+// Reset the timer for solving the current problem (if any)
+function resetProblemTimer() {
+  if (currentProblem) { currentProblem.startTime = now(); }
 }
 
 // Check the answer
 function checkAnswer() {
-  let a = +(answer.value);
+  let a = parseInt(answer.value);
 
   // Stop if we are pending the next problem, or if no text is entered
   if (currentProblem === null || answer.value === "") { return; }
@@ -190,7 +167,12 @@ function checkAnswer() {
     // Save new telemetry
     try {
       window.localStorage.setItem('today', JSON.stringify(today));
-    } catch { }
+    } catch { 
+      if (!cantSaveWarningShown) {
+        cantSaveWarningShown = true;
+        showMessage(cantSaveWarningText);
+      }
+    }
 
     // Update UI    
     correctCheck.classList.add((settings.pauseMs >= 500 ? "correct" : "correct-instant"));
@@ -215,18 +197,6 @@ function checkAnswer() {
   }
 }
 
-// Toggle to the next math operation
-function nextProblemOperation() {
-  const o = nextOperation(op.innerText);
-  op.innerText = o;
-  settings.op = o;
-  document.getElementById("setting-op").value = o;
-  saveSettings();
-
-  nextProblem();
-  answer.focus();
-}
-
 // Render progress on top bar
 function showProgress() {
   if (today.count < settings.goal) {
@@ -246,6 +216,156 @@ function showProgress() {
   const portionDone = (today.count % settings.goal) / settings.goal;
   progress.style.backgroundSize = `${Math.floor(100 * portionDone)}% 100%`;
 }
+
+// Check to see if the day has rolled over
+function checkForTomorrow() {
+  // Reload state on a new day
+  if (dateString(now()) !== today.date) {
+    showMessage("Welcome Back!");
+    loadState();
+  }
+
+  // Check hourly
+  window.setTimeout(checkForTomorrow, 60 * 60 * 1000);
+}
+
+// Load stored settings, progress today, and historical progress.
+function loadState() {
+  const currentToday = dateString(now());
+
+  try {
+    const storage = window.localStorage;
+    settings = { ...settings, ...JSON.parse(storage.getItem('settings')) };
+    history = JSON.parse(storage.getItem('history')) ?? history;
+
+    const lastToday = JSON.parse(storage.getItem('today'));
+    if (lastToday) {
+      if (lastToday.date === currentToday) {
+        // Reload 'today' data if it's still the same day
+        today = lastToday;
+      } else {
+        // Otherwise, add most recent day to history
+        history[lastToday.date] = lastToday;
+        storage.setItem("history", JSON.stringify(history));
+
+        // TODO: Delete very old data?
+
+        // And start fresh
+        today = null;
+      }
+    }
+  }
+  catch { }
+
+  // Read any URL params
+  const params = new URLSearchParams(location.search);
+
+  const pGoal = parseInt(params.get("g"));
+  if (pGoal) { settings.goal = pGoal; }
+
+  const pOp = params.get("o");
+  if (pOp === '+' || pOp === '-' || pOp === 'x' || pOp === '÷') { settings.op = pOp; }
+
+  const pVol = parseInt(params.get("v"));
+  if (pVol >= 0 && pVol <= 100) { settings.volume = (pVol / 100); }
+
+
+  // Reset 'today' data
+  if (today == null) {
+    today = { date: currentToday, count: 0, telemetry: [] };
+  }
+
+  // Reflect loaded state in UI
+  op.innerText = settings.op;
+  showProgress();
+
+  // Calculate telemetry based on loaded history
+  computeTelemetry();
+
+  // Load sounds (asynchronously)
+  window.setTimeout(loadSounds, 50);
+}
+
+function toggleOperation() {
+  const ops = [ '+', '-', 'x', '÷' ];
+  settings.op = ops[(ops.indexOf(settings.op) + 1) % ops.length];
+  op.innerText = settings.op;
+  saveSettings();
+  nextProblem();
+}
+
+// ---- Sound Effects ----
+
+// Load select sound effects
+function loadSounds() {
+  oneSound = loadSound(settings.oneSound ?? 1, oneSound);
+  goalSound = loadSound(settings.goalSound ?? 3, goalSound);
+}
+
+// Load a single sound (if 'None' not selected)
+function loadSound(index, currentAudio) {
+  const name = sounds[index % sounds.length];
+
+  if (name === "none" || settings.volume === 0) {
+    return null;
+  } else if (currentAudio?.src?.indexOf(`${name}.mp3`) >= 0) {
+    return currentAudio;
+  } else {
+    const sound = new Audio(`./audio/${name}.mp3`);
+    sound.load();
+    return sound;
+  }
+}
+
+// Play sound; handle sound not allowed gracefully
+function play(audio, volume) {
+  if (audio == null) { return; }
+
+  audio.volume = (volume ?? settings.volume ?? 1);
+  audio.pause();
+  audio.currentTime = 0;
+  const promise = audio.play();
+  if (promise) {
+    promise.catch(error => { });
+  }
+}
+
+// ---- Control Bar ----
+
+// Show a Modal Box
+function show(id) {
+  let closeBox = document.createElement("template");
+  closeBox.innerHTML = `<svg class="close-button" title="Close"><use href="#close"></use></svg>`;
+
+  const container = document.getElementById(id);
+  container.children?.[0]?.prepend(closeBox.content);
+  container.classList.remove("hidden");
+
+  document.querySelectorAll(".close-button").forEach((o) => o.addEventListener("click", hide));
+}
+
+// Hide a Modal Box
+function hide() {
+  document.querySelectorAll(".overlay").forEach((o) => o.classList.add("hidden"));
+  resetProblemTimer();
+  answer.focus();
+}
+
+// Don't hide a modal box (when clicking on box itself)
+function suppressHide(args) {
+  args.stopPropagation();
+}
+
+// Briefly show a message to the user
+function showMessage(message) {
+  const box = document.getElementById("temp-message");
+  box.innerHTML = message;
+  box.classList.remove("hidden");
+  box.classList.remove("show-message");
+  window.setTimeout(() => box.classList.add("show-message"), 10);
+}
+
+// ---- Telemetry Tracking ----
 
 // Compute telemetry summary for today and last 60 days of history
 function computeTelemetry(historyDayCount) {
@@ -316,121 +436,6 @@ function addTelemetryEntry(entry) {
   rSpeed[o][l].push(timeInMs);
 
   telemetry.count++;
-}
-
-// Check to see if the day has rolled over
-function checkForTomorrow() {
-  // Reload state on a new day
-  if (dateString(now()) !== today.date) {
-    loadState();
-  }
-
-  // Check hourly
-  window.setTimeout(checkForTomorrow, 60 * 60 * 1000);
-}
-
-// Load stored settings, progress today, and historical progress.
-function loadState() {
-  const currentToday = dateString(now());
-
-  try {
-    const storage = window.localStorage;
-    settings = { ...settings, ...JSON.parse(storage.getItem('settings')) };
-    history = JSON.parse(storage.getItem('history')) ?? history;
-
-    const lastToday = JSON.parse(storage.getItem('today'));
-    if (lastToday) {
-      if (lastToday.date === currentToday) {
-        // Reload 'today' data if it's still the same day
-        today = lastToday;
-      } else {
-        // Otherwise, add most recent day to history
-        history[lastToday.date] = lastToday;
-        storage.setItem("history", JSON.stringify(history));
-
-        // TODO: Delete very old data?
-
-        // And start fresh
-        today = null;
-      }
-    }
-  }
-  catch {
-    if (!cantSaveWarningShown) {
-      cantSaveWarningShown = true;
-      showMessage(cantSaveWarningText);
-    }
-  }
-
-  // Read any URL params
-  const params = new URLSearchParams(location.search);
-  
-  const pGoal = +(params.get("g"));
-  if (pGoal) { settings.goal = pGoal; }
-
-  const pOp = params.get("o");
-  if (pOp === '+' || pOp === '-' || pOp === 'x' || pOp === '÷') { settings.op = pOp; }
-
-  const pVol = +(params.get("v"));
-  if (pVol >= 0 && pVol <= 100) { settings.volume = (pVol / 100); }
-
-
-  // Reset 'today' data
-  if (today == null) {
-    today = { date: currentToday, count: 0, telemetry: [] };
-  }
-
-  // Reflect loaded state in UI
-  op.innerText = settings.op;
-  showProgress();
-
-  // Calculate telemetry based on loaded history
-  computeTelemetry();
-
-  // Load sounds (asynchronously)
-  window.setTimeout(loadSounds, 50);
-}
-
-// Load select sound effects
-function loadSounds() {
-  oneSound = loadSound(settings.oneSound ?? 1, oneSound);
-  goalSound = loadSound(settings.goalSound ?? 3, goalSound);
-}
-
-// Load a single sound (if 'None' not selected)
-function loadSound(index, currentAudio) {
-  const name = sounds[index % sounds.length];
-
-  if (name === "none" || settings.volume === 0) {
-    return null;
-  } else if (currentAudio?.src?.indexOf(`${name}.mp3`) >= 0) {
-    return currentAudio;
-  } else {
-    const sound = new Audio(`./audio/${name}.mp3`);
-    sound.load();
-    return sound;
-  }
-}
-
-// ---- Control Bar Icons ----
-
-function show(id) {
-  let closeBox = document.createElement("template");
-  closeBox.innerHTML = `<svg class="close-button" title="Close"><use href="#close"></use></svg>`;
-
-  const container = document.getElementById(id);
-  container.children?.[0]?.prepend(closeBox.content);
-  container.classList.remove("hidden");
-
-  document.querySelectorAll(".close-button").forEach((o) => o.addEventListener("click", hide));
-}
-
-function hide() {
-  document.querySelectorAll(".overlay").forEach((o) => o.classList.add("hidden"));
-}
-
-function suppressHide(args) {
-  args.stopPropagation();
 }
 
 // ---- Speed and Accuracy Reports ----
@@ -659,7 +664,7 @@ function loadSettings() {
     const goal = document.getElementById("setting-goal");
     goal.value = settings.goal;
     goal.addEventListener("input", () => {
-      settings.goal = +(goal.value) || 40;
+      settings.goal = parseInt(goal.value) || 40;
       saveSettings();
       showProgress();
     });
@@ -675,14 +680,14 @@ function loadSettings() {
     });
 
     const delay = document.getElementById("setting-delay");
-    delay.value = +(settings.pauseMs) ?? 500;
+    delay.value = parseInt(settings.pauseMs) ?? 500;
     delay.addEventListener("input", () => {
-      settings.pauseMs = +(delay.value) || 250;
+      settings.pauseMs = parseInt(delay.value) || 250;
       saveSettings();
     });
 
     const volume = document.getElementById("setting-volume");
-    volume.value = `${(100 * (+(settings.volume) ?? 0.5)).toFixed(0)}%`;
+    volume.value = `${(100 * (parseInt(settings.volume) || 0.5)).toFixed(0)}%`;
     volume.addEventListener("input", () => {
       settings.volume = parseFloat(volume.value) / 100;
       saveSettings();
@@ -745,6 +750,7 @@ function worst(class1, class2) {
   return worstFirst[Math.min(worstFirst.indexOf(class1), worstFirst.indexOf(class2))];
 }
 
+// ---- Share Text ---- 
 function share() {
   const end = now();
   let text = `${dateString(end)} | ${settings.goal} | ${settings.op}\n\n`;
@@ -817,11 +823,10 @@ window.onload = async function () {
   loadState();
 
   // Hook up to check answer
-  answer.focus();
   answer.addEventListener("input", checkAnswer);
 
-  // Hook up to toggle operation
-  op.addEventListener("click", nextProblemOperation);
+  // On op clicked, toggle op
+  op.addEventListener("click", toggleOperation);
 
   // Hook up hiding modal popups
   document.querySelectorAll(".overlay").forEach((o) => o.addEventListener("click", hide));
@@ -844,6 +849,9 @@ window.onload = async function () {
 
   // Check hourly for the day to roll over
   window.setTimeout(checkForTomorrow, 60 * 60 * 1000);
+
+  // Reset problem start when browser loses and regains focus
+  window.addEventListener("focus", resetProblemTimer);
 
   // Choose the first problem
   nextProblem();
