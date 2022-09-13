@@ -9,6 +9,19 @@
 * Identify struggles and improve with local-only telemetry.
 * Use 'Share' to send your practice record to your teacher easily.
 
+## Sending a Link
+
+You can pass the operation to practice, the daily goal, and the sound volume in the link to MathFacts to get your students to the right settings instantly.
+
+| Purpose | Name | Value | Example |
+| ------- | ---- | ----- | ------- |
+| Operation | o | + - x ÷ | o=÷ |
+| Daily Goal | g | 10, 20, ... 100 | g=40 |
+| Volume [%] | v | 0-100 | v=0 |
+
+For example, for 60 multiplication problems per day with sound off (0%):
+https://relentlessoptimizer.com/math?g=60&o=x&v=0
+
 ## Telemetry
 
 MathFacts tracks how you're doing to help you to improve. Tracking is stored only in your browser - it's for you only.

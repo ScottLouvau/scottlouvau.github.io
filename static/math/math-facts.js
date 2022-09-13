@@ -1,4 +1,4 @@
-// Cached Elements
+// Cached Elements ÷
 let upper = null;
 let lower = null;
 let op = null;
@@ -21,13 +21,29 @@ let history = {};
 let telemetry = { count: 0, accuracy: {}, speed: {} };
 let shareText = null;
 
+let cantSaveWarningShown = false;
+const cantSaveWarningText = "Can't save progress or settings with cookies disabled.";
+
 // Briefly show a message to the user
 function showMessage(message) {
   const box = document.getElementById("temp-message");
-  box.innerText = message;
+  box.innerHTML = message;
   box.classList.remove("hidden");
   box.classList.remove("show-message");
   window.setTimeout(() => box.classList.add("show-message"), 10);
+}
+
+// Play sound; handle sound not allowed gracefully
+function play(audio, volume) {
+  if (audio == null) { return; }
+
+  audio.volume = (volume ?? settings.volume ?? 1);
+  audio.pause();
+  audio.currentTime = 0;
+  const promise = audio.play();
+  if (promise) {
+    promise.catch(error => { });
+  }
 }
 
 // Return this moment as a Date
@@ -183,12 +199,10 @@ function checkAnswer() {
 
     // Play sound
     if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
-      goalSound?.load();
-      goalSound?.play();
+      play(goalSound);
       showMessage("Yay!");
     } else {
-      oneSound?.load();
-      oneSound?.play();
+      play(oneSound);
     }
 
     // Show next problem (after brief delay)
@@ -318,9 +332,9 @@ function checkForTomorrow() {
 // Load stored settings, progress today, and historical progress.
 function loadState() {
   const currentToday = dateString(now());
-  const storage = window.localStorage;
 
   try {
+    const storage = window.localStorage;
     settings = { ...settings, ...JSON.parse(storage.getItem('settings')) };
     history = JSON.parse(storage.getItem('history')) ?? history;
 
@@ -341,7 +355,25 @@ function loadState() {
       }
     }
   }
-  catch { }
+  catch {
+    if (!cantSaveWarningShown) {
+      cantSaveWarningShown = true;
+      showMessage(cantSaveWarningText);
+    }
+  }
+
+  // Read any URL params
+  const params = new URLSearchParams(location.search);
+  
+  const pGoal = +(params.get("g"));
+  if (pGoal) { settings.goal = pGoal; }
+
+  const pOp = params.get("o");
+  if (pOp === '+' || pOp === '-' || pOp === 'x' || pOp === '÷') { settings.op = pOp; }
+
+  const pVol = +(params.get("v"));
+  if (pVol >= 0 && pVol <= 100) { settings.volume = (pVol / 100); }
+
 
   // Reset 'today' data
   if (today == null) {
@@ -359,19 +391,23 @@ function loadState() {
   window.setTimeout(loadSounds, 50);
 }
 
+// Load select sound effects
 function loadSounds() {
-  oneSound = loadSound(settings.oneSound ?? 1);
-  goalSound = loadSound(settings.goalSound ?? 3);
+  oneSound = loadSound(settings.oneSound ?? 1, oneSound);
+  goalSound = loadSound(settings.goalSound ?? 3, goalSound);
 }
 
-function loadSound(index) {
+// Load a single sound (if 'None' not selected)
+function loadSound(index, currentAudio) {
   const name = sounds[index % sounds.length];
 
-  if (name === "none") {
+  if (name === "none" || settings.volume === 0) {
     return null;
+  } else if (currentAudio?.src?.indexOf(`${name}.mp3`) >= 0) {
+    return currentAudio;
   } else {
     const sound = new Audio(`./audio/${name}.mp3`);
-    sound.volume = settings.volume ?? 1;
+    sound.load();
     return sound;
   }
 }
@@ -657,24 +693,22 @@ function loadSettings() {
     addSounds(eachSound);
     eachSound.selectedIndex = settings.oneSound;
     eachSound.addEventListener("input", () => {
-      oneSound?.load();
+      oneSound?.pause();
       settings.oneSound = eachSound.selectedIndex % sounds.length;
       saveSettings();
-      loadSounds();
-      oneSound?.load();
-      oneSound?.play();
+      oneSound = loadSound(settings.oneSound ?? 1, oneSound);
+      play(oneSound);
     });
 
     const setSound = document.getElementById("setting-goal-sound");
     addSounds(setSound);
     setSound.selectedIndex = settings.goalSound;
     setSound.addEventListener("input", () => {
-      goalSound?.load();
+      goalSound?.pause();
       settings.goalSound = setSound.selectedIndex % sounds.length;
       saveSettings();
-      loadSounds();
-      goalSound?.load();
-      goalSound?.play();
+      goalSound = loadSound(settings.goalSound ?? 3, goalSound);
+      play(goalSound);
     });
   }
 
@@ -685,7 +719,12 @@ function loadSettings() {
 function saveSettings() {
   try {
     window.localStorage.setItem('settings', JSON.stringify(settings));
-  } catch { }
+  } catch {
+    if (!cantSaveWarningShown) {
+      cantSaveWarningShown = true;
+      showMessage(cantSaveWarningText);
+    }
+  }
 }
 
 // ---- Share ----  🟧 🟪 🟫 ⬜ 😕
@@ -797,6 +836,11 @@ window.onload = async function () {
   document.getElementById("help-button").addEventListener("click", () => show("help-box"));
   document.getElementById("settings-button").addEventListener("click", loadSettings);
   document.getElementById("share-clipboard").addEventListener("click", copyShareToClipboard);
+
+  // Unlock sounds on first click [Safari]
+  document.body.addEventListener("click", () => {
+    play(oneSound, 0);
+  });
 
   // Check hourly for the day to roll over
   window.setTimeout(checkForTomorrow, 60 * 60 * 1000);
