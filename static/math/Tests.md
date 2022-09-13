@@ -11,6 +11,8 @@
   - [ ] No sound/bar/animation
 - [ ] Take over six seconds for a problem (write down what problem)
 - [ ] Solve ten problems correctly.
+- [ ] Open settings, close them, then solve a problem.
+  - [ ] Verify not added to redo list (timer resets on modal close)
 - [ ] Click each toolbar icon
   - [ ] Do modals show?
   - [ ] Is rendering ok? (Good width, font size ok, no text over edges)
@@ -29,7 +31,6 @@
   - [ ] Click mail icon; confirm email comes up with text populated.
   - [ ] Click clipboard; confirm text on clipboard and popup notification shown.
   - [ ] Click clipboard; confirm popup re-shows and re-hides.
-- [ ] Click operation and confirm toggles through +, -, x, /.
 - [ ] Check LocalStorage
   - [ ] Settings, including changes.
   - [ ] Today with problems to do (and redo).
@@ -49,11 +50,10 @@
   - [ ] Click each toolbar icon; confirm popups are big enough but don't overflow screen.
 
 
-
 - [ ] In LocalStorage, change "today" entry date back.
   - [ ] Reload, confirm moved to history, fresh "today" started.
 
-- [ ] Delete all LocalStorage
+- [ ] Open in InPrivate Tab (LocalStorage emptied)
   - [ ] Confirm Page loads; bar empty; setting defaults reasonable.
   - [ ] Get a Problem Wrong; confirm "redo" populated, no error.
 
