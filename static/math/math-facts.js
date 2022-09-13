@@ -74,7 +74,7 @@ function randomish(min, max, last) {
 
 // Randomly choose the next math problem
 function nextProblem() {
-  let o = op.innerText;
+  let o = settings.op;
   let u = parseInt(upper.innerText);
   let l = parseInt(lower.innerText);
   let a = null;
@@ -85,6 +85,7 @@ function nextProblem() {
     u = parseInt(redo[0]);
     o = redo[1];
     l = parseInt(redo[2]);
+    if (o === '÷') { a = u / l; }
   } else if (o === '+') {
     u = randomish(0, 12, u);
     l = randomish(0, 12, l);
@@ -118,11 +119,11 @@ function nextProblem() {
   // Update UI
   correctCheck.classList.remove("correct");
   correctCheck.classList.remove("correct-instant");
-  
+
   upper.innerText = u;
   op.innerText = o;
   lower.innerText = l;
-  
+
   answer.value = "";
   answer.focus();
 }
@@ -134,15 +135,14 @@ function resetProblemTimer() {
 
 // Check the answer
 function checkAnswer() {
-  let a = parseInt(answer.value);
+  const newNow = now();
+  const a = parseInt(answer.value);
 
   // Stop if we are pending the next problem, or if no text is entered
   if (currentProblem === null || answer.value === "") { return; }
 
   // If correct, track progress, celebrate, and pick the next one
   if (a === currentProblem.answer) {
-    const newNow = now();
-
     // If it's a new day, push old data to history and swap to a new 'today'
     if (dateString(newNow) !== today.date) {
       loadState();
@@ -167,7 +167,7 @@ function checkAnswer() {
     // Save new telemetry
     try {
       window.localStorage.setItem('today', JSON.stringify(today));
-    } catch { 
+    } catch {
       if (!cantSaveWarningShown) {
         cantSaveWarningShown = true;
         showMessage(cantSaveWarningText);
@@ -286,10 +286,13 @@ function loadState() {
   window.setTimeout(loadSounds, 50);
 }
 
+function nextOperation(op) {
+  const ops = ['+', '-', 'x', '÷'];
+  return ops[(ops.indexOf(op) + 1) % ops.length];
+}
+
 function toggleOperation() {
-  const ops = [ '+', '-', 'x', '÷' ];
-  settings.op = ops[(ops.indexOf(settings.op) + 1) % ops.length];
-  op.innerText = settings.op;
+  op.innerText = settings.op = nextOperation(settings.op);
   saveSettings();
   nextProblem();
 }
@@ -298,17 +301,18 @@ function toggleOperation() {
 
 // Load select sound effects
 function loadSounds() {
-  oneSound = loadSound(settings.oneSound ?? 1, oneSound);
-  goalSound = loadSound(settings.goalSound ?? 3, goalSound);
+  oneSound = loadSound(settings.oneSound ?? sounds.indexOf("ding"), oneSound);
+  goalSound = loadSound(settings.goalSound ?? sounds.indexOf("tada"), goalSound);
 }
 
 // Load a single sound (if 'None' not selected)
 function loadSound(index, currentAudio) {
-  const name = sounds[index % sounds.length];
+  currentAudio?.pause();
+  const name = sounds[(index || 0) % sounds.length];
 
   if (name === "none" || settings.volume === 0) {
     return null;
-  } else if (currentAudio?.src?.indexOf(`${name}.mp3`) >= 0) {
+  } else if (currentAudio?.src?.indexOf(`/${name}.mp3`) >= 0) {
     return currentAudio;
   } else {
     const sound = new Audio(`./audio/${name}.mp3`);
@@ -321,12 +325,22 @@ function loadSound(index, currentAudio) {
 function play(audio, volume) {
   if (audio == null) { return; }
 
-  audio.volume = (volume ?? settings.volume ?? 1);
   audio.pause();
   audio.currentTime = 0;
+  audio.volume = (volume ?? settings.volume ?? 1);
   const promise = audio.play();
   if (promise) {
     promise.catch(error => { });
+  }
+}
+
+// Safari: Audio locked until first sound played in user action event handler.
+// 'input' event doesn't count, but 'click' does, so play on first body click to unlock audio.
+let audioUnlocked = false;
+function unlockAudio() {
+  if (!audioUnlocked) {
+    audioUnlocked = true;
+    play(oneSound, 0);
   }
 }
 
@@ -482,7 +496,7 @@ function getAccuracyCell(column, operation, row) {
   return td;
 }
 
-function drawTelemetryTable(operation, getTableCell) {
+function showTelemetryTable(operation, getTableCell) {
   operation ??= '+';
 
   let colHeadings = null;
@@ -499,14 +513,14 @@ function drawTelemetryTable(operation, getTableCell) {
     rowHeadings = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   }
 
-  const table = drawTable(operation, colHeadings, rowHeadings, getTableCell);
+  const table = createTable(operation, colHeadings, rowHeadings, getTableCell);
   const container = document.getElementById("contents");
   container.innerHTML = "";
   container.appendChild(table);
   show("box");
 }
 
-function drawTable(operation, colHeadings, rowHeadings, getTableCell) {
+function createTable(operation, colHeadings, rowHeadings, getTableCell) {
   const table = document.createElement("table");
   table.classList.add("stats");
   if (operation === '-') { table.classList.add("subtraction"); }
@@ -519,7 +533,7 @@ function drawTable(operation, colHeadings, rowHeadings, getTableCell) {
   // Corner Cell
   td = document.createElement("th");
   td.innerText = operation;
-  td.addEventListener('click', () => drawTelemetryTable(nextOperation(operation), getTableCell));
+  td.addEventListener('click', () => showTelemetryTable(nextOperation(operation), getTableCell));
   tr.appendChild(td);
 
   // First Row (column headings)
@@ -579,7 +593,7 @@ function accuracyClass(accuracyPct) {
 
 // ---- Consistency Calendar ----
 
-function drawCalendar() {
+function showCalendar() {
   const table = document.createElement("table");
   table.className = "calendar";
 
@@ -659,15 +673,16 @@ function addSounds(control) {
 
 let settingsLoaded = false;
 
-function loadSettings() {
+function showSettings() {
   if (!settingsLoaded) {
     const goal = document.getElementById("setting-goal");
     goal.value = settings.goal;
     goal.addEventListener("input", () => {
-      settings.goal = parseInt(goal.value) || 40;
+      settings.goal = parseInt(goal.value);
       saveSettings();
       showProgress();
     });
+    if (goal.value === "") { goal.value = 40; }
 
     const oper = document.getElementById("setting-op");
     oper.value = op.innerText;
@@ -680,25 +695,25 @@ function loadSettings() {
     });
 
     const delay = document.getElementById("setting-delay");
-    delay.value = parseInt(settings.pauseMs) ?? 500;
+    delay.value = parseInt(settings.pauseMs);
     delay.addEventListener("input", () => {
-      settings.pauseMs = parseInt(delay.value) || 250;
+      settings.pauseMs = parseInt(delay.value);
       saveSettings();
     });
 
     const volume = document.getElementById("setting-volume");
-    volume.value = `${(100 * (parseInt(settings.volume) || 0.5)).toFixed(0)}%`;
+    volume.value = parseFloat(settings.volume);
     volume.addEventListener("input", () => {
-      settings.volume = parseFloat(volume.value) / 100;
+      settings.volume = parseFloat(volume.value);
       saveSettings();
-      loadState();
+      loadSounds();
+      play(oneSound || goalSound);
     });
 
     const eachSound = document.getElementById("setting-each-sound");
     addSounds(eachSound);
     eachSound.selectedIndex = settings.oneSound;
     eachSound.addEventListener("input", () => {
-      oneSound?.pause();
       settings.oneSound = eachSound.selectedIndex % sounds.length;
       saveSettings();
       oneSound = loadSound(settings.oneSound ?? 1, oneSound);
@@ -709,7 +724,6 @@ function loadSettings() {
     addSounds(setSound);
     setSound.selectedIndex = settings.goalSound;
     setSound.addEventListener("input", () => {
-      goalSound?.pause();
       settings.goalSound = setSound.selectedIndex % sounds.length;
       saveSettings();
       goalSound = loadSound(settings.goalSound ?? 3, goalSound);
@@ -751,7 +765,7 @@ function worst(class1, class2) {
 }
 
 // ---- Share Text ---- 
-function share() {
+function showShare() {
   const end = now();
   let text = `${dateString(end)} | ${settings.goal} | ${settings.op}\n\n`;
 
@@ -833,19 +847,17 @@ window.onload = async function () {
   document.querySelectorAll(".contents").forEach((o) => o.addEventListener("click", suppressHide));
 
   // Hook up bar icons
-  document.getElementById("calendar-button").addEventListener("click", drawCalendar);
-  document.getElementById("speed-button").addEventListener("click", () => drawTelemetryTable(op.innerText, getSpeedCell));
-  document.getElementById("accuracy-button").addEventListener("click", () => drawTelemetryTable(op.innerText, getAccuracyCell));
+  document.getElementById("calendar-button").addEventListener("click", showCalendar);
+  document.getElementById("speed-button").addEventListener("click", () => showTelemetryTable(op.innerText, getSpeedCell));
+  document.getElementById("accuracy-button").addEventListener("click", () => showTelemetryTable(op.innerText, getAccuracyCell));
 
-  document.getElementById("share-button").addEventListener("click", share);
+  document.getElementById("share-button").addEventListener("click", showShare);
   document.getElementById("help-button").addEventListener("click", () => show("help-box"));
-  document.getElementById("settings-button").addEventListener("click", loadSettings);
+  document.getElementById("settings-button").addEventListener("click", showSettings);
   document.getElementById("share-clipboard").addEventListener("click", copyShareToClipboard);
 
   // Unlock sounds on first click [Safari]
-  document.body.addEventListener("click", () => {
-    play(oneSound, 0);
-  });
+  document.body.addEventListener("click", unlockAudio);
 
   // Check hourly for the day to roll over
   window.setTimeout(checkForTomorrow, 60 * 60 * 1000);

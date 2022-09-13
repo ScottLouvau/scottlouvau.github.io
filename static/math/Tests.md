@@ -1,45 +1,48 @@
 # Testcases
 
-- [ ] Page loads without errors; problem is not 0+0.
-  - [ ] Focus on answer box immediately.
-  - [ ] Popup keyboard is a number keyboard, if supported (GBoard)
+- [ ] Open Page in InPrivate Tab (no saved data)
+- [ ] Verify focus is on answer box immediately.
+- [ ] Click each toolbar icon and verify the modals come up (no errors).
+  - [ ] Close modals by clicking outside or clicking X; verify both work.
+  - [ ] Verify focus back on answer box after modals closed.
+
+- [ ] Click Settings
+  - [ ] Set goal to 20 problems.
+  - [ ] Change a sound and verify the new sound is played immediately.
+  - [ ] Change the volume and verify the current sound is played at the new volume.
+  - [ ] Change each setting; refresh page, verify all settings restored.
+
 - [ ] Solve a Problem
   - [ ] Does bar draw longer?
-  - [ ] Correct problem sound?
+  - [ ] Correct problem sound at correct volume?
   - [ ] Green checkmark animation?
-- [ ] Get a Problem wrong (write down what problem)
-  - [ ] No sound/bar/animation
-- [ ] Take over six seconds for a problem (write down what problem)
 - [ ] Solve ten problems correctly.
-- [ ] Open settings, close them, then solve a problem.
-  - [ ] Verify not added to redo list (timer resets on modal close)
-- [ ] Click each toolbar icon
-  - [ ] Do modals show?
-  - [ ] Is rendering ok? (Good width, font size ok, no text over edges)
-  - [ ] Does clicking anywhere outside close the modal?
-  - [ ] Does clicking the close X work?
+- [ ] Get one problem of each operation wrong
+  - [ ] Click operator to toggle through.
+
+- [ ] Check LocalStorage
+  - [ ] Settings, including changes.
+  - [ ] Today with problems to do (and redo).
+- [ ] Finish problem set to reach goal.
+  - [ ] Verify wrong problems given to you again just before the goal.
+  - [ ] Verify getting a problem wrong again leaves it for the next end-of-goal.
+  - [ ] Verify goal sound.
+  - [ ] Verify operation flips back to the one from before the redos.
+
 - [ ] Speed/Accuracy
   - [ ] Confirm values shown for problems answered.
   - [ ] Confirm colors correct for time/accuracy ranges.
-- [ ] Settings
-  - [ ] When changing sounds, do you hear them immediately?
-  - [ ] When operation changes, is a new problem picked?
-  - [ ] When goal changes, is goal bar redrawn?
-  - [ ] Turn Volume to 0 and confirm respected. Change back.
-  - [ ] Select 'None' and confirm no sound played, no errors.
+
 - [ ] Share
   - [ ] Click mail icon; confirm email comes up with text populated.
   - [ ] Click clipboard; confirm text on clipboard and popup notification shown.
   - [ ] Click clipboard; confirm popup re-shows and re-hides.
-- [ ] Check LocalStorage
-  - [ ] Settings, including changes.
-  - [ ] Today with problems to do (and redo).
+
 - [ ] Reload page with Network Tools open
   - [ ] Confirm only selected sounds loaded (and nothing for 'None')
   - [ ] Confirm sounds are loaded asynchronously.
   - [ ] Does bar redraw for problem count previously done?
-  - [ ] Do problems to goal. Were slow and incorrect problems re-given just before goal reached?
-
+  - [ ] Solve a problem. Verify sound not reloaded each time.
 
 
 - [ ] Browser Resize
@@ -47,21 +50,24 @@
   - [ ] Confirm top bar icons big enough to touch on Mobile Phones.
   - [ ] Confirm problem stays centered under top bar
   - [ ] Confirm problem is big but never overflows available space.
-  - [ ] Click each toolbar icon; confirm popups are big enough but don't overflow screen.
-
+  - [ ] Click each modal from toolbar icons; confirm popups are big enough but don't overflow screen.
+  - [ ] Test landscape and portrait dimensions.
 
 - [ ] In LocalStorage, change "today" entry date back.
   - [ ] Reload, confirm moved to history, fresh "today" started.
+  - [ ] Change today date again. Do a problem.
+    - [ ] Verify today stored again.
+    - [ ] Verify bar reset to one problem done for today.
 
-- [ ] Open in InPrivate Tab (LocalStorage emptied)
-  - [ ] Confirm Page loads; bar empty; setting defaults reasonable.
-  - [ ] Get a Problem Wrong; confirm "redo" populated, no error.
+- [ ] Disable all Cookies
+  - [ ] Verify no error when site first loaded.
+  - [ ] Verify warning message when doing a problem or changing a setting.
+  - [ ] Verify settings changes work for this session.
 
-- [ ] Leave open tab overnight
-  - [ ] Do work in another tab
-  - [ ] In first tab, bar should reload and merge in other tab data.
+- [ ] QueryString: Try index.html?o=x&g=20&v=0
+  - [ ] Verify volume off; goal 20; operation = x
+  - [ ] Verify session changes >> URL >> localStorage
 
-- [ ] Cookies Turned off?
 - [ ] JavaScript turned off (need fallback error)
  
 ### Environments
