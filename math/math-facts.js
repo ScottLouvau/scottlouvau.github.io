@@ -838,21 +838,25 @@ function unlockAudio() {
 // Must shrink problem fonts manually to ensure it can be seen on screen.
 let fontManuallyAdjusted = false;
 function onscreenKeyboardCheck() {
-  if (window.visualViewport && window.innerHeight !== window.visualViewport.height) {
+  if (!window.visualViewport) { return; }
+
+  if (window.innerHeight !== window.visualViewport.height) {
     // If less than the viewport height is *actually* showing, scale fonts via script
     fontManuallyAdjusted = true;
-    document.getElementById("problem").style.fontSize = (0.12 * window.visualViewport.height);
-    document.getElementById("answer").style.fontSize = (0.12 * window.visualViewport.height);
+    let height = (Math.min(0.20 * window.visualViewport.width, 0.10 * window.visualViewport.height)).toFixed(1);
+    document.getElementById("problem").style.fontSize = `${height}px`;
+    document.getElementById("answer").style.fontSize = `${height}px`;
     document.getElementById("top-spacer").style.flexGrow = 0;
+    showMessage(`(${window.visualViewport.width}, ${window.visualViewport.height}) -> ${height}px`);
   } else if (fontManuallyAdjusted) {
     // If fonts scaled and keyboard gone, go back to CSS-determined-values
     fontManuallyAdjusted = false;
     document.getElementById("problem").style.fontSize = "";
     document.getElementById("answer").style.fontSize = "";
-    document.getElementById("top-spacer").style.flexGrow = null;
+    document.getElementById("top-spacer").style.flexGrow = "";
   }
 
-  // showMessage(`Resized to ${window.innerWidth} x ${window.innerHeight} ${window.visualViewport.height}`);
+  //showMessage(`Resized to ${window?.visualViewport?.width ?? window.innerWidth} x ${window?.visualViewport?.height ?? window.innerHeight} `);
 }
 
 // ---------------------------------
