@@ -274,10 +274,10 @@ function loadState() {
   const pVol = parseInt(params.get("v"));
   if (pVol >= 0 && pVol <= 100) { settings.volume = (pVol / 100); }
 
-  uMin = parseInt(params.get("u0")) || 0;
-  uMax = parseInt(params.get("u1")) || 20;
-  lMin = parseInt(params.get("l0")) || 0;
-  lMax = parseInt(params.get("l1")) || 20;
+  uMin = parseInt(params.get("u0") ?? params.get("u")) || 0;
+  uMax = parseInt(params.get("u1") ?? params.get("u")) || 20;
+  lMin = parseInt(params.get("l0") ?? params.get("l")) || 0;
+  lMax = parseInt(params.get("l1") ?? params.get("l")) || 20;
 
   // Reset 'today' data
   if (today == null) {
