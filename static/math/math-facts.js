@@ -60,19 +60,24 @@ function nextToRedo() {
   }
 }
 
-// Choose a value between min and max, except last.
+// Choose a value between min and max.
+//  Don't re-choose last value if there are at least three options.
 function randomish(min, max, last) {
-  let range = max - min;
-  if (last >= min && last <= max) { range--; }
-  if (range <= 0) { return min; }
+  let options = (max - min) + 1;
+  let avoidLast = (options >= 3 && last >= min && last <= max);
 
-  let result = min + Math.floor(Math.random() * (range + 1));
-  if (result === last) { result = max; }
+  if (options <= 1) { return max; }
+  if (avoidLast) { options--; }
+
+  let result = min + Math.floor(Math.random() * options);
+  if (result === last && avoidLast) { result = max; }
 
   return result;
 }
 
 // Randomly choose the next math problem
+let uMin = 0, uMax = 20, lMin = 0, lMax = 20;
+
 function nextProblem() {
   let o = settings.op;
   let u = parseInt(upper.innerText);
@@ -87,18 +92,18 @@ function nextProblem() {
     l = parseInt(redo[2]);
     if (o === '÷') { a = u / l; }
   } else if (o === '+') {
-    u = randomish(0, 12, u);
-    l = randomish(0, 12, l);
+    u = randomish(Math.max(0, uMin), Math.min(12, uMax), u);
+    l = randomish(Math.max(0, lMin), Math.min(12, lMax), l);
   } else if (o === '-') {
-    u = randomish(0, 20, u);
-    l = randomish(0, u, l);
+    u = randomish(Math.max(0, lMin, uMin), Math.min(20, uMax), u);
+    l = randomish(Math.max(0, lMin), Math.min(u, lMax), l);
   } else if (o === 'x') {
-    u = randomish(0, 12, u);
-    l = randomish(0, 12, l);
+    u = randomish(Math.max(0, uMin), Math.min(12, uMax), u);
+    l = randomish(Math.max(0, lMin), Math.min(12, lMax), l);
   } else { // (o === '÷')
     // Choose *factors* and compute product; no zero.
-    a = randomish(1, 12, a);
-    l = randomish(1, 12, l);
+    a = randomish(Math.max(1, uMin), Math.min(12, uMax), a);
+    l = randomish(Math.max(1, lMin), Math.min(12, lMax), l);
   }
 
   // Compute correct answer
@@ -269,6 +274,10 @@ function loadState() {
   const pVol = parseInt(params.get("v"));
   if (pVol >= 0 && pVol <= 100) { settings.volume = (pVol / 100); }
 
+  uMin = parseInt(params.get("u0")) || 0;
+  uMax = parseInt(params.get("u1")) || 20;
+  lMin = parseInt(params.get("l0")) || 0;
+  lMax = parseInt(params.get("l1")) || 20;
 
   // Reset 'today' data
   if (today == null) {
@@ -286,11 +295,13 @@ function loadState() {
   window.setTimeout(loadSounds, 50);
 }
 
+// Identify the next math operation in a fixed order
 function nextOperation(op) {
   const ops = ['+', '-', 'x', '÷'];
   return ops[(ops.indexOf(op) + 1) % ops.length];
 }
 
+// Toggle the current math operation (when the operator is clicked)
 function toggleOperation() {
   op.innerText = settings.op = nextOperation(settings.op);
   saveSettings();
@@ -331,16 +342,6 @@ function play(audio, volume) {
   const promise = audio.play();
   if (promise) {
     promise.catch(error => { });
-  }
-}
-
-// Safari: Audio locked until first sound played in user action event handler.
-// 'input' event doesn't count, but 'click' does, so play on first body click to unlock audio.
-let audioUnlocked = false;
-function unlockAudio() {
-  if (!audioUnlocked) {
-    audioUnlocked = true;
-    play(oneSound, 0);
   }
 }
 
@@ -821,6 +822,39 @@ function copyShareToClipboard() {
   showMessage("Copied to Clipboard!");
 }
 
+// ---- Lame Hacks ----
+
+// Safari: Audio locked until first sound played in user action event handler.
+// 'input' event doesn't count, but 'click' does, so play on first body click to unlock audio.
+let audioUnlocked = false;
+function unlockAudio() {
+  if (!audioUnlocked) {
+    audioUnlocked = true;
+    play(oneSound, 0);
+  }
+}
+
+// Safari + iPhone: On screen keyboard doesn't reduce viewport height.
+// Must shrink problem fonts manually to ensure it can be seen on screen.
+let fontManuallyAdjusted = false;
+function onscreenKeyboardCheck() {
+  if (window.visualViewport && window.innerHeight !== window.visualViewport.height) {
+    // If less than the viewport height is *actually* showing, scale fonts via script
+    fontManuallyAdjusted = true;
+    document.getElementById("problem").style.fontSize = (0.12 * window.visualViewport.height);
+    document.getElementById("answer").style.fontSize = (0.12 * window.visualViewport.height);
+    document.getElementById("top-spacer").style.flexGrow = 0;
+  } else if (fontManuallyAdjusted) {
+    // If fonts scaled and keyboard gone, go back to CSS-determined-values
+    fontManuallyAdjusted = false;
+    document.getElementById("problem").style.fontSize = "";
+    document.getElementById("answer").style.fontSize = "";
+    document.getElementById("top-spacer").style.flexGrow = null;
+  }
+
+  // showMessage(`Resized to ${window.innerWidth} x ${window.innerHeight} ${window.visualViewport.height}`);
+}
+
 // ---------------------------------
 
 window.onload = async function () {
@@ -856,8 +890,9 @@ window.onload = async function () {
   document.getElementById("settings-button").addEventListener("click", showSettings);
   document.getElementById("share-clipboard").addEventListener("click", copyShareToClipboard);
 
-  // Unlock sounds on first click [Safari]
+  // Hook up hacks (unlock audio, resize for on screen keyboard)
   document.body.addEventListener("click", unlockAudio);
+  window.addEventListener("resize", onscreenKeyboardCheck);
 
   // Check hourly for the day to roll over
   window.setTimeout(checkForTomorrow, 60 * 60 * 1000);
