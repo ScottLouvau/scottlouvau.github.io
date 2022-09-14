@@ -3,13 +3,16 @@
     --min-font-size: 10px;
     --control-size: clamp(20px, 6vw, 40px);
     --problem-size: min(16vw, 16vh);
+    --top-ratio: 1;
 }
 
-/* Make controls much bigger on mobile */
-@media screen and (max-width: 600px) {
+/* Mobile: Bigger toolbar icons, smaller text, less spacing around problem. */
+@media screen and (max-width: 600px),
+       screen and (max-height: 600px) {
     :root {
         --min-font-size: 8px;
-        --control-size: clamp(20px, min(6vh, 12vw), 40px);
+        --control-size: clamp(20px, min(12vh, 12vw), 40px);
+        --top-ratio: 0.25;
     }
 }
 
@@ -36,8 +39,12 @@ body {
 }
 
 .spacer {
-    min-height: 3px;
     flex-grow: 1;
+}
+
+#top-spacer {
+    flex-grow: var(--top-ratio);
+    min-height: 3px;
 }
 
 .hidden {
