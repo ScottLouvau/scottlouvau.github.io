@@ -15,10 +15,9 @@ const sounds = ["none", "air-horn", "aooga", "applause", "ding-ding", "ding", "d
 // State
 let currentProblem = null; // { answer: null, startTime: null, wasEverIncorrect: null };
 
-let settings = { goal: 40, pauseMs: 500, op: '+', volume: 0.25, oneSound: sounds.indexOf("ding"), goalSound: sounds.indexOf("tada") };
+let settings = { goal: 40, op: '+', facts: '', pauseMs: 500, volume: 0.25, showTelemetryDays: 60, oneSound: sounds.indexOf("ding"), goalSound: sounds.indexOf("tada") };
 let today = null;
 let history = {};
-let telemetry = { count: 0, accuracy: {}, speed: {} };
 let shareText = null;
 
 let cantSaveWarningShown = false;
@@ -121,7 +120,7 @@ function nextProblem() {
   currentProblem = { answer: a, wasEverIncorrect: false };
   resetProblemTimer();
 
-  // Update UI
+  // Update UI (check animation, problem text boxes, answer)
   correctCheck.classList.remove("correct");
   correctCheck.classList.remove("correct-instant");
 
@@ -161,21 +160,20 @@ function checkAnswer() {
       const entry = [upper.innerText, op.innerText, lower.innerText, msToAnswer, currentProblem.wasEverIncorrect];
       today.telemetry ??= [];
       today.telemetry.push(entry);
-      addTelemetryEntry(entry);
 
       if (currentProblem.wasEverIncorrect || msToAnswer >= 6000) {
         today.redo ??= [];
         today.redo.push(entry);
       }
-    }
 
-    // Save new telemetry
-    try {
-      window.localStorage.setItem('today', JSON.stringify(today));
-    } catch {
-      if (!cantSaveWarningShown) {
-        cantSaveWarningShown = true;
-        showMessage(cantSaveWarningText);
+      // Save new telemetry
+      try {
+        window.localStorage.setItem('today', JSON.stringify(today));
+      } catch {
+        if (!cantSaveWarningShown) {
+          cantSaveWarningShown = true;
+          showMessage(cantSaveWarningText);
+        }
       }
     }
 
@@ -185,7 +183,7 @@ function checkAnswer() {
     showProgress();
 
     // Play sound
-    if (today.count > 0 && today.count <= 3 * settings.goal && (today.count % settings.goal) === 0) {
+    if (today.count > 0 && (today.count % settings.goal) === 0) {
       play(goalSound);
       showMessage("Yay!");
     } else {
@@ -193,7 +191,7 @@ function checkAnswer() {
     }
 
     // Show next problem (after brief delay)
-    setTimeout(nextProblem, settings.pauseMs ?? 250);
+    setTimeout(nextProblem, settings.pauseMs ?? 500);
   } else {
     // If incorrect, and at least right length, mark wasEverIncorrect
     if (a.toString().length >= currentProblem.answer.toString().length) {
@@ -262,7 +260,7 @@ function loadState() {
   }
   catch { }
 
-  // Read any URL params
+  // Read set URL params
   const params = new URLSearchParams(location.search);
 
   const pGoal = parseInt(params.get("g"));
@@ -274,10 +272,7 @@ function loadState() {
   const pVol = parseInt(params.get("v"));
   if (pVol >= 0 && pVol <= 100) { settings.volume = (pVol / 100); }
 
-  uMin = parseInt(params.get("u0") ?? params.get("u")) || 0;
-  uMax = parseInt(params.get("u1") ?? params.get("u")) || 20;
-  lMin = parseInt(params.get("l0") ?? params.get("l")) || 0;
-  lMax = parseInt(params.get("l1") ?? params.get("l")) || 20;
+  loadFactRanges();
 
   // Reset 'today' data
   if (today == null) {
@@ -287,9 +282,6 @@ function loadState() {
   // Reflect loaded state in UI
   op.innerText = settings.op;
   showProgress();
-
-  // Calculate telemetry based on loaded history
-  computeTelemetry();
 
   // Load sounds (asynchronously)
   window.setTimeout(loadSounds, 50);
@@ -306,6 +298,35 @@ function toggleOperation() {
   op.innerText = settings.op = nextOperation(settings.op);
   saveSettings();
   nextProblem();
+}
+
+// Set ranges for operands
+function loadFactRanges() {
+  const params = new URLSearchParams(location.search);
+  const facts = parseNumberOrRange(settings.facts);
+  const rLower = parseNumberOrRange(params.get("l"));
+  const rUpper = parseNumberOrRange(params.get("u"));
+
+  // Upper uses URL parameter or stays in fact range, if specified
+  uMin = parseInt(params.get("u0") ?? rUpper.lo ?? rUpper.single ?? facts.lo) || 0;
+  uMax = parseInt(params.get("u1") ?? rUpper.hi ?? rUpper.single ?? facts.hi) || 20;
+
+  // Lower uses URL parameter, single fact setting, or fact range
+  lMin = parseInt(params.get("l0") ?? rLower.lo ?? rLower.single ?? facts.lo ?? facts.single) || 0;
+  lMax = parseInt(params.get("l1") ?? rLower.hi ?? rLower.single ?? facts.hi ?? facts.single) || 20;
+}
+
+// Parse a number ("4") or range ("1-5")
+function parseNumberOrRange(value) {
+  const dash = value?.indexOf("-");
+  const hasDash = (dash >= 0);
+
+  return {
+    lo: (hasDash ? value?.slice(0, dash) : null),
+    hi: (hasDash ? value?.slice(dash + 1) : null),
+    hasDash: hasDash,
+    single: (hasDash ? null : value)
+  };
 }
 
 // ---- Sound Effects ----
@@ -386,10 +407,10 @@ function showMessage(message) {
 function computeTelemetry(historyDayCount) {
   historyDayCount ??= 60;
 
-  telemetry = { count: 0, accuracy: {}, speed: {}, rollup: { accuracy: {}, speed: {} } };
+  let telemetry = { count: 0, accuracy: {}, speed: {}, rollup: { accuracy: {}, speed: {} } };
 
   for (const entry of today.telemetry) {
-    addTelemetryEntry(entry);
+    addTelemetryEntry(entry, telemetry);
   }
 
   const cutoff = dateString(addDays(now(), -1 * Math.abs(historyDayCount)));
@@ -398,15 +419,17 @@ function computeTelemetry(historyDayCount) {
       let dayTelemetry = history[date].telemetry;
       if (dayTelemetry) {
         for (const entry of dayTelemetry) {
-          addTelemetryEntry(entry);
+          addTelemetryEntry(entry, telemetry);
         }
       }
     }
   }
+
+  return telemetry;
 }
 
 // Add telemetry for a single problem entry
-function addTelemetryEntry(entry) {
+function addTelemetryEntry(entry, telemetry) {
   const accuracy = telemetry.accuracy;
   const speed = telemetry.speed;
 
@@ -455,7 +478,7 @@ function addTelemetryEntry(entry) {
 
 // ---- Speed and Accuracy Reports ----
 
-function getSpeedCell(column, operation, row) {
+function getSpeedCell(column, operation, row, telemetry) {
   // For subtraction, only create cells for non-negative results
   if (operation === '-' && column - row < 0) { return null; }
 
@@ -477,7 +500,7 @@ function getSpeedCell(column, operation, row) {
   return td;
 }
 
-function getAccuracyCell(column, operation, row) {
+function getAccuracyCell(column, operation, row, telemetry) {
   // For subtraction, only create cells for non-negative results
   if (operation === '-' && column - row < 0) { return null; }
 
@@ -498,6 +521,26 @@ function getAccuracyCell(column, operation, row) {
 }
 
 function showTelemetryTable(operation, getTableCell) {
+  const telemetry = computeTelemetry(settings.showTelemetryDays ?? 60);
+
+  // Create a date range selector dropdown
+  const daysSelect = document.createElement("select");
+  daysSelect.id = "days-select";
+  daysSelect.innerHTML = `
+    <option value="0">Today</option>
+    <option value="7">Last 7 days</option>
+    <option value="14">Last 14 days</option>
+    <option value="28">Last 28 days</option>
+    <option value="60">Last 60 days</option>
+  `;
+  daysSelect.addEventListener("input", (args) => {
+    settings.showTelemetryDays = args.target.value;
+    saveSettings();
+    showTelemetryTable(operation, getTableCell);
+  });
+  daysSelect.value = settings.showTelemetryDays ?? 60;
+
+  // Render the telemetry table
   operation ??= '+';
 
   let colHeadings = null;
@@ -514,14 +557,17 @@ function showTelemetryTable(operation, getTableCell) {
     rowHeadings = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   }
 
-  const table = createTable(operation, colHeadings, rowHeadings, getTableCell);
+  const table = createTable(operation, colHeadings, rowHeadings, getTableCell, telemetry);
+
+  // Add to the modal container
   const container = document.getElementById("contents");
   container.innerHTML = "";
+  container.appendChild(daysSelect);
   container.appendChild(table);
   show("box");
 }
 
-function createTable(operation, colHeadings, rowHeadings, getTableCell) {
+function createTable(operation, colHeadings, rowHeadings, getTableCell, telemetry) {
   const table = document.createElement("table");
   table.classList.add("stats");
   if (operation === '-') { table.classList.add("subtraction"); }
@@ -554,7 +600,7 @@ function createTable(operation, colHeadings, rowHeadings, getTableCell) {
     tr.appendChild(td);
 
     for (let x = 0; x < colHeadings.length; ++x) {
-      const td = getTableCell(colHeadings[x], operation, rowHeadings[y]);
+      const td = getTableCell(colHeadings[x], operation, rowHeadings[y], telemetry);
       if (td) { tr.appendChild(td); }
     }
 
@@ -695,6 +741,15 @@ function showSettings() {
       nextProblem();
     });
 
+    const facts = document.getElementById("setting-facts");
+    facts.value = settings.facts;
+    facts.addEventListener("input", () => {
+      settings.facts = facts.value;
+      saveSettings();
+      loadFactRanges();
+      nextProblem();
+    });
+
     const delay = document.getElementById("setting-delay");
     delay.value = parseInt(settings.pauseMs);
     delay.addEventListener("input", () => {
@@ -780,10 +835,7 @@ function showShare() {
     current = addDays(current, 1);
   }
   text += '\n\n';
-
-  computeTelemetry(14);
   text += emojiTelemetrySummary(settings.op);
-  computeTelemetry(60);
 
   const container = document.getElementById("share-text");
   container.innerHTML = text;
@@ -799,6 +851,7 @@ function emojiTelemetrySummary(o) {
   let sText = '⚡ ';
   let aText = '🎯 ';
 
+  const telemetry = computeTelemetry(14);
   const speed = telemetry?.rollup?.speed[o];
   const accuracy = telemetry?.rollup?.accuracy[o];
   const start = (o === '÷' ? 1 : 0);

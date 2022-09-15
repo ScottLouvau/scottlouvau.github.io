@@ -265,7 +265,12 @@ body {
 }
 
 /* ---- Analytics Tables ---- */
-.contents table {
+.contents #days-select {
+    max-width: 8em;    
+    margin-bottom: 4px;
+}
+
+.contents table, #days-select {
     font-size: clamp(var(--min-font-size), min(2vw, 2vh), 20px);
     border-collapse: collapse;
 }
