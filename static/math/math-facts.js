@@ -902,7 +902,7 @@ window.onload = async function () {
   window.setTimeout(checkForTomorrow, 60 * 60 * 1000);
 
   // Reset problem start when browser loses and regains focus
-  window.addEventListener("focus", resetProblemTimer);
+  //window.addEventListener("focus", resetProblemTimer);
 
   // Choose the first problem
   nextProblem();
