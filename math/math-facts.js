@@ -184,8 +184,8 @@ function checkAnswer() {
 
     // Play sound
     if (today.count > 0 && (today.count % settings.goal) === 0) {
-      play(goalSound);
       showMessage("Yay!");
+      play(goalSound);
     } else {
       play(oneSound);
     }
@@ -332,13 +332,13 @@ function parseNumberOrRange(value) {
 // ---- Sound Effects ----
 
 // Load select sound effects
-function loadSounds() {
-  oneSound = loadSound(settings.oneSound ?? sounds.indexOf("ding"), oneSound);
-  goalSound = loadSound(settings.goalSound ?? sounds.indexOf("tada"), goalSound);
+async function loadSounds() {
+  oneSound = await loadSound(settings.oneSound ?? sounds.indexOf("ding"), oneSound);
+  goalSound = await loadSound(settings.goalSound ?? sounds.indexOf("tada"), goalSound);
 }
 
 // Load a single sound (if 'None' not selected)
-function loadSound(index, currentAudio) {
+async function loadSound(index, currentAudio) {
   currentAudio?.pause();
   const name = sounds[(index || 0) % sounds.length];
 
@@ -346,22 +346,34 @@ function loadSound(index, currentAudio) {
     return null;
   } else if (currentAudio?.src?.indexOf(`/${name}.mp3`) >= 0) {
     return currentAudio;
-  } else {
-    const sound = new Audio(`./audio/${name}.mp3`);
-    sound.load();
-    return sound;
+  } else if (currentAudio == null) {
+    currentAudio = new Audio();
   }
+
+  // Craziness: Download and cache sound effects as Data URLs to get
+  // Safari to play them reliably without redownloading every time.
+  await loadSoundEx(`./audio/${name}.mp3`, currentAudio);
+
+  // Otherwise, should be just this:
+  //currentAudio.src = `./audio/${name}.mp3`;
+  //currentAudio.load();
+
+  return currentAudio;
 }
 
-// Play sound; handle sound not allowed gracefully
+// Play a Sound Effect
 function play(audio, volume) {
-  if (audio == null) { return; }
+  if (audio == null || settings.volume <= 0) { return; }
 
+  // Call pause and load for clean Safari playback.
+  // Sounds are downloaded and Audio.src is a Data URL to prevent actual repeat downloading.
   audio.pause();
-  audio.currentTime = 0;
+  audio.load();  
   audio.volume = (volume ?? settings.volume ?? 1);
+
   const promise = audio.play();
   if (promise) {
+    // Gracefully handle audio not allowed (ex: Safari for select.input event)
     promise.catch(error => { });
   }
 }
@@ -769,20 +781,20 @@ function showSettings() {
     const eachSound = document.getElementById("setting-each-sound");
     addSounds(eachSound);
     eachSound.selectedIndex = settings.oneSound;
-    eachSound.addEventListener("input", () => {
+    eachSound.addEventListener("input", async () => {
       settings.oneSound = eachSound.selectedIndex % sounds.length;
       saveSettings();
-      oneSound = loadSound(settings.oneSound ?? 1, oneSound);
+      oneSound = await loadSound(settings.oneSound ?? 1, oneSound);
       play(oneSound);
     });
 
     const setSound = document.getElementById("setting-goal-sound");
     addSounds(setSound);
     setSound.selectedIndex = settings.goalSound;
-    setSound.addEventListener("input", () => {
+    setSound.addEventListener("input", async () => {
       settings.goalSound = setSound.selectedIndex % sounds.length;
       saveSettings();
-      goalSound = loadSound(settings.goalSound ?? 3, goalSound);
+      goalSound = await loadSound(settings.goalSound ?? 3, goalSound);
       play(goalSound);
     });
   }
@@ -879,37 +891,46 @@ function copyShareToClipboard() {
 
 // Safari: Audio locked until first sound played in user action event handler.
 // 'input' event doesn't count, but 'click' does, so play on first body click to unlock audio.
+// On iOS, each Audio instance seems to require separate unlocking, so play both and reuse the instances
+// when sound effects are changed.
 let audioUnlocked = false;
 function unlockAudio() {
   if (!audioUnlocked) {
     audioUnlocked = true;
-    play(oneSound, 0);
+    oneSound?.play();
+    oneSound?.pause();
+    goalSound?.play();
+    goalSound?.pause();
   }
 }
 
-// Safari + iPhone: On screen keyboard doesn't reduce viewport height.
-// Must shrink problem fonts manually to ensure it can be seen on screen.
-let fontManuallyAdjusted = false;
-function onscreenKeyboardCheck() {
-  if (!window.visualViewport) { return; }
+// Safari: Audio won't repeatedly play a sound from the beginning unless load is called,
+// which downloads it again every time. To avoid this, download into a Data URL and make
+// *that* the Audio.src.
+async function loadSoundEx(url, target) {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  const content = await readBlob(blob);
+  target.setAttribute("src", content);
 
-  if (window.innerHeight !== window.visualViewport.height) {
-    // If less than the viewport height is *actually* showing, scale fonts via script
-    fontManuallyAdjusted = true;
-    let height = (Math.min(0.20 * window.visualViewport.width, 0.10 * window.visualViewport.height)).toFixed(1);
-    document.getElementById("problem").style.fontSize = `${height}px`;
-    document.getElementById("answer").style.fontSize = `${height}px`;
-    document.getElementById("top-spacer").style.flexGrow = 0;
-    showMessage(`(${window.visualViewport.width}, ${window.visualViewport.height}) -> ${height}px`);
-  } else if (fontManuallyAdjusted) {
-    // If fonts scaled and keyboard gone, go back to CSS-determined-values
-    fontManuallyAdjusted = false;
-    document.getElementById("problem").style.fontSize = "";
-    document.getElementById("answer").style.fontSize = "";
-    document.getElementById("top-spacer").style.flexGrow = "";
+  function readBlob(b) {
+    return new Promise(function(resolve, reject) {
+      const reader = new FileReader();
+      reader.onloadend = function() {
+        resolve(reader.result);
+      };
+  
+      reader.readAsDataURL(b);
+    });
   }
+}
 
-  //showMessage(`Resized to ${window?.visualViewport?.width ?? window.innerWidth} x ${window?.visualViewport?.height ?? window.innerHeight} `);
+// Safari + iPhone: On screen keyboard scrolls to input and doesn't reduce viewport height,
+// so we need to ensure the whole problem is visible.
+function onscreenKeyboardCheck() {
+  if (window.innerHeight !== window.visualViewport.height) {
+    document.getElementById("control-bar").scrollIntoView();
+  }
 }
 
 // ---------------------------------
@@ -947,15 +968,15 @@ window.onload = async function () {
   document.getElementById("settings-button").addEventListener("click", showSettings);
   document.getElementById("share-clipboard").addEventListener("click", copyShareToClipboard);
 
-  // Hook up hacks (unlock audio, resize for on screen keyboard)
+  // Hook up hacks (unlock audio, ensure problem visible with iOS onscreen keyboard
   document.body.addEventListener("click", unlockAudio);
-  window.addEventListener("resize", onscreenKeyboardCheck);
+  window.visualViewport?.addEventListener("resize", onscreenKeyboardCheck);
 
   // Check hourly for the day to roll over
   window.setTimeout(checkForTomorrow, 60 * 60 * 1000);
 
   // Reset problem start when browser loses and regains focus
-  //window.addEventListener("focus", resetProblemTimer);
+  window.addEventListener("focus", resetProblemTimer);
 
   // Choose the first problem
   nextProblem();

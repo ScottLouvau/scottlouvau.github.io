@@ -1,7 +1,7 @@
 /* Dynamically size text and controls to browser size */
 :root {
     --min-font-size: 10px;
-    --control-size: clamp(20px, 6vw, 40px);
+    --control-size: clamp(16px, 6vw, 40px);
     --problem-size: min(16vw, 16vh);
     --top-ratio: 1;
 }
@@ -11,8 +11,9 @@
        screen and (max-height: 600px) {
     :root {
         --min-font-size: 8px;
-        --control-size: clamp(20px, min(12vh, 12vw), 40px);
-        --top-ratio: 0.25;
+        --problem-size: min(14vw, 14vh);
+        --control-size: clamp(12px, min(10vh, 20vw), 40px);
+        --top-ratio: 0.1;
     }
 }
 
@@ -90,6 +91,10 @@ body {
     font-size: var(--problem-size);
 
     width: 2.5em;
+
+    /* Avoid weird Safari + iOS stretching */
+    max-height: 5em;
+
     margin: auto auto;
     padding: 0.25em;
 
