@@ -371,7 +371,7 @@ function play(audio, volume) {
   // Call pause and load for clean Safari playback.
   // Sounds are downloaded and Audio.src is a Data URL to prevent actual repeat downloading.
   audio.pause();
-  audio.load();  
+  audio.load();
   audio.volume = (volume ?? settings.volume ?? 1);
 
   const promise = audio.play();
@@ -518,9 +518,9 @@ function getSpeedCell(column, operation, row, telemetry) {
 
 function recentMedianValues(current) {
   // Take the middle 20 values from the array
-  const medians = current;
-  if(current.length > 20) { medians = current.slice(Math.floor(current.length / 2 - 10), 20); }
-  
+  let medians = current;
+  if (current.length > 20) { medians = current.slice(Math.floor(current.length / 2 - 10), 20); }
+
   // Convert to a comma-delimited string
   return medians.map((v) => (v / 1000).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })).join(", ");
 }
@@ -928,12 +928,12 @@ async function loadSoundEx(url, target) {
   target.setAttribute("src", content);
 
   function readBlob(b) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       const reader = new FileReader();
-      reader.onloadend = function() {
+      reader.onloadend = function () {
         resolve(reader.result);
       };
-  
+
       reader.readAsDataURL(b);
     });
   }
