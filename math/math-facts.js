@@ -212,7 +212,7 @@ function showProgress() {
     progress.className = "gold";
     progressOuter.className = "silver";
   } else {
-    progress.className = '';
+    progress.className = "gold";
     progressOuter.className = "gold";
   }
 
@@ -341,10 +341,11 @@ async function loadSounds() {
 async function loadSound(index, currentAudio) {
   currentAudio?.pause();
   const name = sounds[(index || 0) % sounds.length];
+  const url = `./audio/${name}.mp3`;
 
   if (name === "none" || settings.volume === 0) {
     return null;
-  } else if (currentAudio?.src?.indexOf(`/${name}.mp3`) >= 0) {
+  } else if (currentAudio?.url === url) {
     return currentAudio;
   } else if (currentAudio == null) {
     currentAudio = new Audio();
@@ -352,10 +353,12 @@ async function loadSound(index, currentAudio) {
 
   // Craziness: Download and cache sound effects as Data URLs to get
   // Safari to play them reliably without redownloading every time.
-  await loadSoundEx(`./audio/${name}.mp3`, currentAudio);
+  await loadSoundEx(url, currentAudio);
+  currentAudio.url = url;
 
   // Otherwise, should be just this:
-  //currentAudio.src = `./audio/${name}.mp3`;
+  //currentAudio.src = url;
+  //currentAudio.url = url;
   //currentAudio.load();
 
   return currentAudio;
@@ -771,10 +774,10 @@ function showSettings() {
 
     const volume = document.getElementById("setting-volume");
     volume.value = parseFloat(settings.volume);
-    volume.addEventListener("input", () => {
+    volume.addEventListener("input", async () => {
       settings.volume = parseFloat(volume.value);
       saveSettings();
-      loadSounds();
+      await loadSounds();
       play(oneSound || goalSound);
     });
 
