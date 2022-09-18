@@ -509,10 +509,20 @@ function getSpeedCell(column, operation, row, telemetry) {
     const medianMs = current[Math.floor(current.length / 2)];
     const medianS = medianMs / 1000;
     td.innerText = medianS.toLocaleString("en-US", { minimumFractionDigits: (medianS < 9.5 ? 1 : 0), maximumFractionDigits: 1 });
+    td.title = recentMedianValues(current);
     td.className = speedClass(medianMs);
   }
 
   return td;
+}
+
+function recentMedianValues(current) {
+  // Take the middle 20 values from the array
+  const medians = current;
+  if(current.length > 20) { medians = current.slice(Math.floor(current.length / 2 - 10), 20); }
+  
+  // Convert to a comma-delimited string
+  return medians.map((v) => (v / 1000).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })).join(", ");
 }
 
 function getAccuracyCell(column, operation, row, telemetry) {
@@ -529,6 +539,7 @@ function getAccuracyCell(column, operation, row, telemetry) {
   if (current) {
     const accuracyPct = 100 * (current[0] / current[1]);
     td.innerText = `${accuracyPct.toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+    td.title = `${current[0]} / ${current[1]}`;
     td.className = accuracyClass(accuracyPct);
   }
 
