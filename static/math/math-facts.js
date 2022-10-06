@@ -308,12 +308,12 @@ function loadFactRanges() {
   const rUpper = parseNumberOrRange(params.get("u"));
 
   // Upper uses URL parameter or stays in fact range, if specified
-  uMin = parseInt(params.get("u0") ?? rUpper.lo ?? rUpper.single ?? facts.lo) || 0;
-  uMax = parseInt(params.get("u1") ?? rUpper.hi ?? rUpper.single ?? facts.hi) || 20;
+  uMin = parseInt(params.get("u0") ?? rUpper.lo ?? rUpper.single ?? facts.lo ?? 0);
+  uMax = parseInt(params.get("u1") ?? rUpper.hi ?? rUpper.single ?? facts.hi ?? 20);
 
   // Lower uses URL parameter, single fact setting, or fact range
-  lMin = parseInt(params.get("l0") ?? rLower.lo ?? rLower.single ?? facts.lo ?? facts.single) || 0;
-  lMax = parseInt(params.get("l1") ?? rLower.hi ?? rLower.single ?? facts.hi ?? facts.single) || 20;
+  lMin = parseInt(params.get("l0") ?? rLower.lo ?? rLower.single ?? facts.lo ?? facts.single ?? 0);
+  lMax = parseInt(params.get("l1") ?? rLower.hi ?? rLower.single ?? facts.hi ?? facts.single ?? 20);
 }
 
 // Parse a number ("4") or range ("1-5")
@@ -325,7 +325,7 @@ function parseNumberOrRange(value) {
     lo: (hasDash ? value?.slice(0, dash) : null),
     hi: (hasDash ? value?.slice(dash + 1) : null),
     hasDash: hasDash,
-    single: (hasDash ? null : value)
+    single: (hasDash || value?.length < 1 ? null : value)
   };
 }
 
@@ -518,11 +518,13 @@ function getSpeedCell(column, operation, row, telemetry) {
 
 function recentMedianValues(current) {
   // Take the middle 20 values from the array
-  let medians = current;
-  if (current.length > 20) { medians = current.slice(Math.floor(current.length / 2 - 10), 20); }
+  const trim = Math.floor((current?.length - 20) / 2);
+  if (trim > 0) { 
+    current = current.slice(trim, (current.length - trim)); 
+  }
 
   // Convert to a comma-delimited string
-  return medians.map((v) => (v / 1000).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })).join(", ");
+  return current?.map((v) => (v / 1000).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })).join(", ") ?? null;
 }
 
 function getAccuracyCell(column, operation, row, telemetry) {
