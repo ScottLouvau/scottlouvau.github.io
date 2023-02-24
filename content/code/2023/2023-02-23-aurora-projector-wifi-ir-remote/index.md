@@ -2,9 +2,9 @@
 title: "Aurora Projector Wi-Fi IR Remote"
 date: 2023-02-23
 author: "Darinee Louvau"
+images:
+- ./img/aurora-galaxy-lights.jpg
 ---
-
-<meta property="og:image" content="./img/aurora-galaxy-lights.jpg">
 
 *Editor's Note: This is the first guest post from my wife, Darinee!*
 
