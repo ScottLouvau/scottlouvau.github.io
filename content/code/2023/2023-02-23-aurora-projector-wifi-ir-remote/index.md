@@ -4,6 +4,8 @@ date: 2023-02-23
 author: "Darinee Louvau"
 ---
 
+<meta property="og:image" content="./img/aurora-galaxy-lights.jpg">
+
 *Editor's Note: This is the first guest post from my wife, Darinee!*
 
 Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy one and an aurora one.  They project red, green, blue, and white lights to the ceiling in very organic ways.  They're very cool!  I have since conscripted the aurora projector for the living room.  The projector came with a remote control to adjust things like color, speed, and the stars.  However, who wants another IR remote to store and keep track of?  Not me!  So, I created a WiFi IR remote which I connected with Home Assistant so I can control the projector from anywhere. 
