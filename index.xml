@@ -6,7 +6,16 @@
     <description>Recent content on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 23 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dryer Done Notifications with Home Assistant and Iotawatt</title>
+      <link>https://relentlessoptimizer.com/code/2023/05/04/dryer-done-notifications-with-home-assistant-and-iotawatt/</link>
+      <pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/code/2023/05/04/dryer-done-notifications-with-home-assistant-and-iotawatt/</guid>
+      <description>I do the laundry in our house, and it often takes most of a day because I don&amp;rsquo;t hear the dryer finish.</description>
+    </item>
+    
     <item>
       <title>Aurora Projector Wi-Fi IR Remote</title>
       <link>https://relentlessoptimizer.com/code/2023/02/23/aurora-projector-wi-fi-ir-remote/</link>
