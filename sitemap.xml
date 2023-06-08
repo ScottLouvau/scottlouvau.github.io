@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://relentlessoptimizer.com/gaming/</loc>
+    <lastmod>2023-06-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://relentlessoptimizer.com/gaming/2023/06/08/my-best-wordle-guesses/</loc>
+    <lastmod>2023-06-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://relentlessoptimizer.com/</loc>
+    <lastmod>2023-06-08T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://relentlessoptimizer.com/code/</loc>
     <lastmod>2023-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/code/2023/05/04/dryer-done-notifications-with-home-assistant-and-iotawatt/</loc>
-    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://relentlessoptimizer.com/</loc>
     <lastmod>2023-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/code/2023/02/23/aurora-projector-wi-fi-ir-remote/</loc>
@@ -34,9 +40,6 @@
   </url><url>
     <loc>https://relentlessoptimizer.com/code/2022/03/15/ffmpeg-cheat-sheet/</loc>
     <lastmod>2022-03-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://relentlessoptimizer.com/gaming/</loc>
-    <lastmod>2022-02-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://relentlessoptimizer.com/gaming/2022/02/16/optimizing-kingdom-rush/</loc>
     <lastmod>2022-02-16T00:00:00+00:00</lastmod>
