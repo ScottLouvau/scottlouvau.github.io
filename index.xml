@@ -6,7 +6,16 @@
     <description>Recent content on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 08 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust vs CS DateTime Parsing</title>
+      <link>https://relentlessoptimizer.com/code/2024/01/30/rust-vs-cs-datetime-parsing/</link>
+      <pubDate>Tue, 30 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/code/2024/01/30/rust-vs-cs-datetime-parsing/</guid>
+      <description>I originally wrote the C# version of this code to write a performance tuning tutorial for DateTime parsing. I came back after learning some Rust to try to compare the performance of the two languages.</description>
+    </item>
+    
     <item>
       <title>My Best Wordle Guesses</title>
       <link>https://relentlessoptimizer.com/gaming/2023/06/08/my-best-wordle-guesses/</link>
@@ -23,6 +32,15 @@
       
       <guid>https://relentlessoptimizer.com/code/2023/05/04/dryer-done-notifications-with-home-assistant-and-iotawatt/</guid>
       <description>I do the laundry in our house, and it often takes most of a day because I don&amp;rsquo;t hear the dryer finish.</description>
+    </item>
+    
+    <item>
+      <title>DIY Wireguard Setup</title>
+      <link>https://relentlessoptimizer.com/code/2023/03/23/diy-wireguard-setup/</link>
+      <pubDate>Thu, 23 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/code/2023/03/23/diy-wireguard-setup/</guid>
+      <description>We recently set up Wireguard as a home VPN. It&amp;rsquo;s widely used, trusted, open source, and free, but I stumbled on a few things along the way and the documentation is sparse, so I wanted to write up what I did.</description>
     </item>
     
     <item>
