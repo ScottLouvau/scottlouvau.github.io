@@ -3,7 +3,7 @@ title: "How to Invest"
 date: 2021-05-26
 ---
 
-You've [made a budget]({{< relref "../2021-03-20-how-we-budget" >}}), [done some initial saving]({{< relref "../2021-04-13-what-to-save-for" >}}), and now you finally have some savings to invest for retirement. What should you invest in, and how do you go about that? 
+You've [made a budget]({{< ref "finance/2021/2021-03-20-how-we-budget" >}}), [done some initial saving]({{< ref "finance/2021/2021-04-13-what-to-save-for" >}}), and now you finally have some savings to invest for retirement. What should you invest in, and how do you go about that? 
 
 TL;DR? Skip to [Taking Action](#taking-action) at the bottom.
 
@@ -77,7 +77,7 @@ Note that while stocks and bonds have good capitalization-weighted indices, it's
 
 Ok, great. You know what to invest in, but how much of your money should go to stock versus bonds? Unfortunately the answer is "it's complicated". Stock has a higher long term return, but also much more volatility. The decision about how to split your money up is called 'Asset Allocation', and different people will often choose differently based on how well they handle the day-to-day ups and downs of the market and how many years from now they'll want the money.
 
-People a long time from retirement often want a high percentage of stock (80-90%) to maximize long term growth, and those close to or in retirement want less (40-60%) for less exciting ups and downs. It's really not necessary to have more than 80% stock (returns are barely higher at 100% stock than 80%), and less than 30% stock is a bad idea even in retirement because returns become too low to keep up with spending and inflation over time. See "[How Much Stock vs Bonds]({{< relref "../2021-07-16-how-much-stock-vs-bonds" >}})" for more detail.
+People a long time from retirement often want a high percentage of stock (80-90%) to maximize long term growth, and those close to or in retirement want less (40-60%) for less exciting ups and downs. It's really not necessary to have more than 80% stock (returns are barely higher at 100% stock than 80%), and less than 30% stock is a bad idea even in retirement because returns become too low to keep up with spending and inflation over time. See "[How Much Stock vs Bonds]({{< ref "finance/2021/2021-07-16-how-much-stock-vs-bonds" >}})" for more detail.
 
 We've just been talking about "stock" here, but you can buy stock in US companies or companies from other countries. Opinions vary about how to much of your stock should be international. People often think having more stock in your local country is good. After all, the returns are in the currency you want to spend. Others want to own as much of the world as possible, and try to own the "capitalization-weighting" of every country. In our case, about a quarter of our stock investments are international stock.
 

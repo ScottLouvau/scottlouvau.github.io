@@ -3,7 +3,7 @@ title: "Frugal Groceries"
 date: 2021-08-19
 ---
 
-It's surprising, but keeping food costs down was a big part of [sticking to our budget]({{< relref "../2021-06-09-how-we-kept-the-same-budget" >}}) and ultimately [retiring early]({{< relref "../../../retire-early" >}}). Food is the [third highest](https://www.bls.gov/opub/reports/consumer-expenditures/2019/home.htm) spending category for US households (after housing and transportation), so it's a big part of most budgets. It's easier to change your food choices than to move to a new house or car, so if you want to save more, it's a good place to start.
+It's surprising, but keeping food costs down was a big part of [sticking to our budget]({{< ref "finance/2021/2021-06-09-how-we-kept-the-same-budget" >}}) and ultimately [retiring early]({{< ref "/retire-early" >}}). Food is the [third highest](https://www.bls.gov/opub/reports/consumer-expenditures/2019/home.htm) spending category for US households (after housing and transportation), so it's a big part of most budgets. It's easier to change your food choices than to move to a new house or car, so if you want to save more, it's a good place to start.
 
 Surprisingly, it takes some solid life experience to grocery shop successfully. We started out often coming home from work to an empty fridge. Next we had food, but not **all** of the ingredients needed for anything. Then we tried out buying things that spoiled before we got around to eating them. 
 

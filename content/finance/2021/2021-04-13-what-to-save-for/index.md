@@ -3,7 +3,7 @@ title: "What To Save For"
 date: 2021-04-13
 ---
 
-So you've [made a budget]({{< relref "../2021-03-20-how-we-budget" >}}) and now you're starting to save. What should you do with the money?
+So you've [made a budget]({{< ref "finance/2021/2021-03-20-how-we-budget" >}}) and now you're starting to save. What should you do with the money?
 
 ---
 

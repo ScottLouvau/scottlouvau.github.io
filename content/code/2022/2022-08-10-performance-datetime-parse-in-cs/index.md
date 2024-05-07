@@ -5,7 +5,7 @@ date: 2022-08-10
 
 I love the Visual Studio C# Performance Profiler, and am shocked to find out how many engineers around me haven't used it before. It's very easy to quickly check the performance of your code and you'd be amazed how often there are significant performance bottlenecks there that are very easy to fix.
 
-Check out "[How to Optimize Existing Code]({{< relref "../2022-08-10-optimize-existing-code" >}})" for an overview of the process, or keep reading to walk through an example with me.
+Check out "[How to Optimize Existing Code]({{< ref "code/2022/2022-08-10-optimize-existing-code" >}})" for an overview of the process, or keep reading to walk through an example with me.
 
 ## The Scenario
 

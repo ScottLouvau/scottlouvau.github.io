@@ -3,7 +3,7 @@ title: "Rust vs CS DateTime Parsing"
 date: 2024-01-30
 ---
 
-I originally wrote the C# version of this code to write a performance tuning [tutorial]({{< relref "../../2022/2022-08-10-performance-datetime-parse-in-cs" >}}) for DateTime parsing. I came back after learning some Rust to try to compare the performance of the two languages.
+I originally wrote the C# version of this code to write a performance tuning [tutorial]({{< ref "code/2022/2022-08-10-performance-datetime-parse-in-cs" >}}) for DateTime parsing. I came back after learning some Rust to try to compare the performance of the two languages.
 
 The [code](https://github.com/ScottLouvau/experiments/tree/main/datetime-parse) parses a text file with 10M DateTimes in "2022-04-14T02:32:53.4028225Z" format. I tried to use the most likely "naive" implementations to start, and then tuned the two implementations based on profiling results.
 

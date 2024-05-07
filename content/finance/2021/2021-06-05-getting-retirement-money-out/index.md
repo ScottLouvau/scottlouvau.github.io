@@ -5,11 +5,11 @@ date: 2021-06-05
 
 Once you retire, which accounts should you take your retirement spending from first? If you retire before age 59.5, how do you get IRA money out at all? Are there any retirement tax surprises to watch out for?
 
-If you are many years from retirement, you don't need to worry about this stuff. Save in the [right account types]({{< relref "finance/2021/2021-06-04-retirement-account-types" >}}) with the [right investments]({{< relref "finance/2021/2021-05-26-how-to-invest" >}}) and don't try to pre-plan for your 2040 taxes right now. Tax laws change.
+If you are many years from retirement, you don't need to worry about this stuff. Save in the [right account types]({{< ref "finance/2021/2021-06-04-retirement-account-types" >}}) with the [right investments]({{< relref "finance/2021/2021-05-26-how-to-invest" >}}) and don't try to pre-plan for your 2040 taxes right now. Tax laws change.
 
 ## Approximate Federal Taxes
 
-Taking your retirement money in the right mix from different [account types]({{< relref "finance/2021/2021-06-04-retirement-account-types" >}}) can **drastically lower your taxes**. I tried to write an accurate but simplified summary of the tax rules. It was still a mess. So here's a version which provides **approximate** tax amounts with much, much less complexity.
+Taking your retirement money in the right mix from different [account types]({{< ref "finance/2021/2021-06-04-retirement-account-types" >}}) can **drastically lower your taxes**. I tried to write an accurate but simplified summary of the tax rules. It was still a mess. So here's a version which provides **approximate** tax amounts with much, much less complexity.
 
 First, there are three **types of income**:
 

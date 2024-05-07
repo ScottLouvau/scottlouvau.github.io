@@ -7,7 +7,7 @@ After you retire, you need to decide how much you can spend each year, which inv
 
 ### The Default - the 4% Rule Withdrawal Strategy
 
-Since the ["4% Rule"]({{< relref "../2021-06-02-how-much-you-need" >}}) is so well known, you might consider the withdrawal plan the 4% rule uses to be the "default". 
+Since the ["4% Rule"]({{< ref "finance/2021/2021-06-02-how-much-you-need" >}}) is so well known, you might consider the withdrawal plan the 4% rule uses to be the "default". 
 
 Basically:
 

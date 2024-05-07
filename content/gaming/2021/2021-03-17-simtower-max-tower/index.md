@@ -3,7 +3,7 @@ title: "SimTower Max Tower"
 date: "2021-03-17"
 ---
 
-A few days after my [previous SimTower adventure]({{< relref "../2021-03-12-Return-To-SimTower" >}}), I wanted to revise my tower design. My retail-heavy-attempt was straightforward and didn't take too many floors, but I thought it'd be fun to try to build consistently all the way up to the 100th floor cathedral, and to try to max out many of the in-game limits right when I reached it.
+A few days after my [previous SimTower adventure]({{< ref "gaming/2021/2021-03-12-return-to-simtower" >}}), I wanted to revise my tower design. My retail-heavy-attempt was straightforward and didn't take too many floors, but I thought it'd be fun to try to build consistently all the way up to the 100th floor cathedral, and to try to max out many of the in-game limits right when I reached it.
 
 ### Design
 

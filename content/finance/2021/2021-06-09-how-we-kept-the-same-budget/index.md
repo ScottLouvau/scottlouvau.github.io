@@ -3,7 +3,7 @@ title: "How We Kept The Same Budget for Eight Years"
 date: 2021-06-09
 ---
 
-Learning to [budget]({{< relref "../2021-03-20-how-we-budget" >}}) and [invest]({{< relref "../2021-05-26-how-to-invest" >}}) put us on a path to retire early, but our choice to keep the same budget for eight years (adding all of our raises to saving) enabled us to retire **really early**. In this post, I'm going to explain how we accomplished that.
+Learning to [budget]({{< ref "finance/2021/2021-03-20-how-we-budget" >}}) and [invest]({{< ref "finance/2021/2021-05-26-how-to-invest" >}}) put us on a path to retire early, but our choice to keep the same budget for eight years (adding all of our raises to saving) enabled us to retire **really early**. In this post, I'm going to explain how we accomplished that.
 
 First, a quick recap of how we budget. Our paychecks go into a **transfer account**. We have monthly transfers into accounts for each category: **day-to-day spending**, **monthly bills**, **irregular spending**, **house**, **car**, and **fun**. We automatically invest the rest.
 
@@ -80,7 +80,7 @@ Should we just have spent more like our current budget the whole way along? Mayb
 
 ## Conclusion
 
-In ["How Long Does It Take To Retire"]({{< relref "../2021-06-03-how-long-does-it-take" >}}), our sample couple would retire eight years earlier by cutting spending by 1% per year and saving the money. We effectively did that in our real lives (keeping our budget despite 2% inflation). It's possible, and it's a great way to accelerate your early retirement. 
+In ["How Long Does It Take To Retire"]({{< ref "finance/2021/2021-06-03-how-long-does-it-take" >}}), our sample couple would retire eight years earlier by cutting spending by 1% per year and saving the money. We effectively did that in our real lives (keeping our budget despite 2% inflation). It's possible, and it's a great way to accelerate your early retirement. 
 
-If you [do the math]({{< relref "../2021-06-03-how-long-does-it-take" >}}) and find you're already on track to retire as early as you want, you might be able to spend more now. If you want to retire as early as possible, trimming your fixed bills and optimizing your food spending can go a long way. What should you do? That's up to you. =)
+If you [do the math]({{< ref "finance/2021/2021-06-03-how-long-does-it-take" >}}) and find you're already on track to retire as early as you want, you might be able to spend more now. If you want to retire as early as possible, trimming your fixed bills and optimizing your food spending can go a long way. What should you do? That's up to you. =)
 

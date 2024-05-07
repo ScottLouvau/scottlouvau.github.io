@@ -5,7 +5,7 @@ date: 2022-08-10
 
 You've got some existing code and you might want to make it faster. How hard is it to make it faster? How do you go about it? What tools do you need? Is it even worth doing?
 
-This post talks through the process of optimizing existing code; to walk through an illustrated example, see "[Parse 50M DateTimes a second in C#]({{< relref "../2022-08-10-performance-datetime-parse-in-cs" >}})".
+This post talks through the process of optimizing existing code; to walk through an illustrated example, see "[Parse 50M DateTimes a second in C#]({{< ref "code/2022/2022-08-10-performance-datetime-parse-in-cs" >}})".
 
 ## TL;DR
 
