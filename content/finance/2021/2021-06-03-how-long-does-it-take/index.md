@@ -3,7 +3,7 @@ title: "How Long Until You Can Retire?"
 date: 2021-06-03
 ---
 
-In ["How Much You Need To Retire"]({{< relref "../2021-06-02-how-much-you-need" >}}), you learned that you need to save about 25 times your retirement spending to retire. When I first heard that number, I thought saving that much would take forever. Fortunately, there are two giant tailwinds to help: **compounding returns** and **decreasing spending**.
+In ["How Much You Need To Retire"]({{< ref "finance/2021/2021-06-02-how-much-you-need" >}}), you learned that you need to save about 25 times your retirement spending to retire. When I first heard that number, I thought saving that much would take forever. Fortunately, there are two giant tailwinds to help: **compounding returns** and **decreasing spending**.
 
 ## Early Retirement Sample Situation
 
@@ -35,7 +35,7 @@ At the highest, their taxes will now be **$3,712**, if all of their retirement i
 
 So, in summary, our couple went from paying $15,100 in federal taxes each year to $3,712 (worst-case) or potentially less than $1,000 per year depending on where their retirement income comes from.
 
-See [Getting Retirement Money Out]({{< relref "../2021-06-05-getting-retirement-money-out" >}}) for more on optimizing taxes in retirement.
+See [Getting Retirement Money Out]({{< ref "finance/2021/2021-06-05-getting-retirement-money-out" >}}) for more on optimizing taxes in retirement.
 
 | Retired                                    | Per Year |
 | ------------------------------------------ | ------------: |
@@ -58,7 +58,7 @@ Below, all of my numbers are after-inflation returns, so you can use them to und
 
 ## Compounding Returns
 
-Between 1871 and 2021, [an S&P 500 index fund]({{< relref "../2021-05-26-how-to-invest" >}}) provided an after-inflation annualized return, including dividends, of [7.04% per year](https://dqydj.com/sp-500-return-calculator/). How much does this matter? 
+Between 1871 and 2021, [an S&P 500 index fund]({{< ref "finance/2021/2021-05-26-how-to-invest" >}}) provided an after-inflation annualized return, including dividends, of [7.04% per year](https://dqydj.com/sp-500-return-calculator/). How much does this matter? 
 
 If you're saving $10k per year, in year two you'll find that the $10,000 from the first year grew to $10,704. Not terrible, but not much of an impact compared to the money you put in. After a while, though, that growth really starts to pile up:
 
@@ -122,7 +122,7 @@ Hopefully, you look at the numbers above and are excited to see how much time wi
 
 Is there anything you can do to speed it up, or do you just get it going and then have to sit on your hands for a few decades? That's where decreasing spending picks up.
 
-Once you have an [effective budget]({{< relref "../2021-03-20-how-we-budget" >}}), you're in control of how much you spend. At first, you set aside savings to get that ball rolling. What happens if as you get raises and find ways to trim your bills, you keep choosing to save more and more? 
+Once you have an [effective budget]({{< ref "finance/2021/2021-03-20-how-we-budget" >}}), you're in control of how much you spend. At first, you set aside savings to get that ball rolling. What happens if as you get raises and find ways to trim your bills, you keep choosing to save more and more? 
 
 In this example, let's see what happens if every year you find another $500 to save. Since you spend just under $50,000 per year on "Other Spending", this is only a 1% cut to your spending each year (and saving an extra 0.5% of your pre-tax income). 
 
@@ -165,7 +165,7 @@ First, the bigger savings means that after 28 years, you saved $1,190,401 instea
 
 Is this plausible? Saving an extra 0.5% per year sounds reasonable, but cutting your spending from $59k to $45.5k, even over a long time, sounds hard.
 
-However, when there's 2% inflation (as has been the average in recent US history), this really means getting by with just a 1% raise in spending each year. If you only got 1% raises, could you manage? You need to find things to trim here and there as prices go up, but it's possible, [we did it]({{< relref "../2021-06-09-how-we-kept-the-same-budget" >}}), and it can make a huge difference in your retirement over time. 
+However, when there's 2% inflation (as has been the average in recent US history), this really means getting by with just a 1% raise in spending each year. If you only got 1% raises, could you manage? You need to find things to trim here and there as prices go up, but it's possible, [we did it]({{< ref "finance/2021/2021-06-09-how-we-kept-the-same-budget" >}}), and it can make a huge difference in your retirement over time. 
 
 ## Years to Retirement Table
 

@@ -3,13 +3,13 @@ title: "How Much Stock vs Bonds"
 date: 2021-07-16
 ---
 
-How should you split your [retirement investments]({{< relref "../2021-05-26-how-to-invest" >}}) between stock and bonds? How do you make this decision? Your chosen split is called your Asset Allocation, and you'll often see it written as two numbers; for example, 60% stock and 40% bonds is written as "60/40". Let's dig into it.
+How should you split your [retirement investments]({{< ref "finance/2021/2021-05-26-how-to-invest" >}}) between stock and bonds? How do you make this decision? Your chosen split is called your Asset Allocation, and you'll often see it written as two numbers; for example, 60% stock and 40% bonds is written as "60/40". Let's dig into it.
 
 ### Goals
 
 To decide on an asset allocation, it's worth first thinking about your goals from your retirement portfolio. Saving for retirement isn't the same thing from beginning to end - your goals really do change over time.
 
-When you have a long time until retirement, your goal is **to grow your retirement investments as fast as safely possible**. You have a [large target balance]({{< relref "../2021-06-02-how-much-you-need" >}}) to save up, so the faster your investments grow, [the faster you'll get there]({{< relref "../2021-06-03-how-long-does-it-take" >}}). Ups and downs don't matter, as long as you don't lose everything. Your new savings can make up for price drops (and take advantage of the discount).
+When you have a long time until retirement, your goal is **to grow your retirement investments as fast as safely possible**. You have a [large target balance]({{< ref "finance/2021/2021-06-02-how-much-you-need" >}}) to save up, so the faster your investments grow, [the faster you'll get there]({{< ref "finance/2021/2021-06-03-how-long-does-it-take" >}}). Ups and downs don't matter, as long as you don't lose everything. Your new savings can make up for price drops (and take advantage of the discount).
 
 When you're getting closer to retirement (say, 10 years or less), your goal is to **reach your retirement target with some predictability**. You have a lot saved up. You still need your portfolio to grow, but stability is starting to matter, too. You want to know when you can quit. It's ok if your retirement date shifts a little, but you don't want a crash to set you back five years. You are not ready to work 10 years more than planned if things go wrong. Your new savings each year can't make up for big portfolio swings anymore.
 

@@ -20,7 +20,7 @@ In retirement, you will (or can) have:
 * No kids to support (if you have some still at home now)
 * Health Care to pay for (via Medicare or the ACA Exchange)
 
-See our [example couple]({{< relref "../2021-06-03-how-long-does-it-take" >}}), who earns $100k and goes from paying $15.1k tax when working to $3.7k or less in retirement.
+See our [example couple]({{< ref "finance/2021/2021-06-03-how-long-does-it-take" >}}), who earns $100k and goes from paying $15.1k tax when working to $3.7k or less in retirement.
 
 Your retirement spending is likely to have a lot of other small differences - maybe more spending on hobbies but less on gas since you're not commuting - but they are hard to predict before you make the leap into post-work life.
 

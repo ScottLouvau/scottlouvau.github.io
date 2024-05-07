@@ -31,7 +31,7 @@ If you've hit the tax-deferred and tax-free contribution limits and still have m
 
 ## Special Cases
 
-I've said taxes are [usually much lower in retirement]({{< relref "../2021-06-03-how-long-does-it-take" >}}). If, for some reason, you expect higher taxes in retirement, save in tax-free accounts first. 
+I've said taxes are [usually much lower in retirement]({{< ref "finance/2021/2021-06-03-how-long-does-it-take" >}}). If, for some reason, you expect higher taxes in retirement, save in tax-free accounts first. 
 
 If you have money you want to save for retirement but might need it sooner, you can save in a taxable account so that you can get the money early if you need it. For example, if you're worried that the college fund for your kids won't be enough, you could put some savings in a taxable account for easy access if needed.
 
