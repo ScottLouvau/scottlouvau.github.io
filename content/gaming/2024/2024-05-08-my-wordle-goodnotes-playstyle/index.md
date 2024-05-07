@@ -40,7 +40,9 @@ Here's the analysis of the BREAD game:
 Most of this is too complicated to explain in this post. I'll just say that this line:
 `> gybed  4.57  [10, 4, 0, 0, 0, ... ^7]`
 
-Says that GYBED was my actual next guess. It should take 4.57 turns, on average, to solve for all 25 answers that are still possible. The thing in brackets is called a **Cluster Vector** - it's complicated. Check out [Dave Rusin's amazing Wordle analysis](https://web.ma.utexas.edu/users/rusin/wordle/) if you want to learn about them.
+Says that GYBED was my actual next guess. It should take 4.57 turns, on average, to solve for all 25 answers that are still possible. 
+
+The thing in brackets is called a **Cluster Vector**. If you had the cluster vector `[5, 3]`, it means that there are eight possible outcomes for the guess. In five cases, there's only one possible answer (GYBED ⬛⬛🟨🟨🟩  -> BREAD). In the other three cases, there are two possible words for each. Check out [Dave Rusin's amazing Wordle analysis](https://web.ma.utexas.edu/users/rusin/wordle/) if you want to learn about them in detail.
 
 ### The GoodNotes Template
 I play two games each day (the New York Times version, and the original Wordle code, which I saved before NYT bought Wordle), so my overall GoodNotes template has two sections on each page to fit them. If you want to try it, here's the [template](img/wordle-template.pdf).
@@ -67,7 +69,8 @@ I've revised my strategy several times since my post about it. My current one is
  -> guess if 3+ found AND at least one green AND not only "int" (any colors)
 
 2. SOARE
- -> guess *except* the following cases (lowercase = yellow and UPPERCASE = green):
+ -> guess *except* the following cases 
+ (lowercase = yellow and UPPERCASE = green):
 
 _               -> DUMPY
 a, i            -> DUMPY
@@ -80,10 +83,12 @@ are             -> GYBED
 orE, ire        -> PAVED
 O, TaN          -> DOUGH
 NO, cat, East   -> BUMPH
+
+-> 8,450 / 2,315 = 3.650 average turns.
 ```
 
 This strategy only requires memorizing six words in addition to the standard two guesses, and I was able to memorize the situations without too much trouble.
 
-If you play it correctly, and guess random possible answers, you should solve all (original) Wordle puzzles in **3.65** turns on average. (8,450 turns for all 2,315 games)
+If you play it correctly, and guess random possible answers, you should solve all (original) Wordle puzzles in **3.650** turns on average. (8,450 turns for all 2,315 games)
 
 My record after 200 games is **3.715** turns (743 / 200), because I make some errors and guess valid, but non-answer, words relatively often. :/
