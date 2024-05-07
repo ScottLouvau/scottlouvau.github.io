@@ -52,28 +52,6 @@
                 <svg id="sun"><use xlink:href="{{ partial "useSvg.html" . }}#sun"></use></svg>
             </button>
             {{- end}}
-            {{ $lang := .Lang}}
-            {{ $separator := or .Title (not .Site.Params.disableThemeToggle)}}
-            {{- with $.Site.Home.AllTranslations }}
-
-            <ul class="lang-switch">
-                {{- if $separator }}<li>|</li>{{ end }}
-                {{- range . -}}
-                {{- if ne $lang .Lang }}
-                <li>
-                    <a href="{{- .RelPermalink -}}" title="{{ .Language.LanguageName | default (.Lang | humanize) }}"
-                        aria-label="{{ .Language.LanguageName | default (.Lang | humanize) }}">
-                        {{- if (and $.Site.Params.displayFullLangName (.Language.LanguageName)) }}
-                        {{- .Language.LanguageName | emojify -}}
-                        {{- else }}
-                        {{- .Lang | humanize -}}
-                        {{- end -}}
-                    </a>
-                </li>
-                {{- end -}}
-            {{- end}}
-            </ul>
-            {{- end }}
         </span>
     </div>
     {{- $currentPage := . }}
