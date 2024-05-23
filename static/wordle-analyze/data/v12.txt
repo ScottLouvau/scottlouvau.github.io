@@ -1,0 +1,64 @@
+8448  (*, 2315)   -> clint  [18, 16, 7, 6, 5 .. ^435 ∑108]
+    8181  (*, 2314)   -> soare  [642, 200, 121, 52, 29 .. ^25 ∑1104]
+        7282  (*, 767)    -> *
+        114   (amber, 25) -> gybed  [10, 4, 0, 0, 0 .. ^7]
+        63    (boxer, 14) -> mawky  [5, 2, 0, 0, 1]
+        43    (diver, 10) -> paved  [7, 0, 1]
+        33    (broke, 8)  -> paved  [6, 1]
+        62    (buddy, 16) -> dumpy  [8, 3]
+        63    (baggy, 15) -> dumpy  [10, 1, 1]
+        42    (biddy, 10) -> dumpy  [7, 3]
+        98    (breed, 23) -> dumpy  [16, 0, 1, 1]
+        55    (brood, 13) -> dumpy  [7, 3]
+        49    (amply, 12) -> dumpy  [10, 1]
+        40    (brake, 9)  -> dumpy  [5, 0, 0, 1]
+        32    (bribe, 8)  -> dumpy  [8]
+        29    (shade, 7)  -> dumpy  [5, 1]
+        70    (bobby, 16) -> dough  [9, 1, 0, 0, 1]
+        27    (daunt, 6)  -> dough  [3, 0, 1]
+        34    (bound, 8)  -> bumph  [5, 0, 1]
+        25    (batch, 6)  -> bumph  [4, 1]
+        21    (baste, 5)  -> bumph  [3, 1]
+    18   (filet, 6) -> *
+    19   (cabin, 6) -> *
+    15   (built, 5) -> *
+    15   (blind, 5) -> *
+    15   (stick, 5) -> *
+    15   (still, 4) -> *
+    12   (flick, 4) -> *
+    12   (clang, 4) -> *
+    8    (blunt, 3) -> *
+    8    (elfin, 3) -> *
+    9    (antic, 3) -> *
+    9    (child, 3) -> *
+    8    (cleat, 3) -> *
+    9    (click, 3) -> *
+    5    (inlet, 2) -> *
+    5    (blitz, 2) -> *
+    5    (alien, 2) -> *
+    5    (flint, 2) -> *
+    5    (enact, 2) -> *
+    5    (scant, 2) -> *
+    5    (edict, 2) -> *
+    5    (chant, 2) -> *
+    5    (cacti, 2) -> *
+    5    (canal, 2) -> *
+    5    (cavil, 2) -> *
+    5    (clean, 2) -> *
+    5    (cling, 2) -> *
+    2    (knelt, 1) -> *
+    2    (leant, 1) -> *
+    2    (until, 1) -> *
+    2    (lying, 1) -> *
+    2    (plait, 1) -> *
+    2    (flirt, 1) -> *
+    2    (tacit, 1) -> *
+    2    (scion, 1) -> *
+    2    (icing, 1) -> *
+    2    (eclat, 1) -> *
+    2    (icily, 1) -> *
+    2    (elect, 1) -> *
+    2    (cairn, 1) -> *
+    2    (china, 1) -> *
+    2    (cloth, 1) -> *
+    2    (claim, 1) -> *
