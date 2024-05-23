@@ -1,6 +1,6 @@
 const CACHE_NAME = "wordle-wasm-v1";
 const CACHE_URLS = [
-    ".",
+    "./",
     "./index.html",
     "./wordle-analyze-a.png",
     "./data/v12.txt",
