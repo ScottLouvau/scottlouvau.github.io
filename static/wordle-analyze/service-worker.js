@@ -1,13 +1,13 @@
 const CACHE_NAME = "wordle-wasm-v1";
 const CACHE_URLS = [
     ".",
-    "index.html",
-    "wordle-analyze-a.png",
-    "data/v12.txt",
-    "data/answers.txt",
-    "data/valid.txt",
-    "pkg/wordle_wasm_bg.wasm",
-    "pkg/wordle_wasm.js",
+    "./index.html",
+    "./wordle-analyze-a.png",
+    "./data/v12.txt",
+    "./data/answers.txt",
+    "./data/valid.txt",
+    "./pkg/wordle_wasm_bg.wasm",
+    "./pkg/wordle_wasm.js",
 ];
 
 async function cacheResources() {
