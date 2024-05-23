@@ -1,12 +1,12 @@
 {
     "name": "Wordle Analyze",
     "short_name": "Wordle Analyze",
-    "start_url": "/",
+    "start_url": "./index.html",
     "display": "standalone",
     "id": "com.relentlessoptimizer.wordleanalyze",
     "icons": [
         {
-            "src": "wordle-analyze-a.png",
+            "src": "./wordle-analyze-a.png",
             "type": "image/png",
             "sizes": "128x128"
         }
