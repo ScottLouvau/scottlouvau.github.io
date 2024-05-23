@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-US">
+  <link rel="manifest" href="app.webmanifest">
+  <link rel="apple-touch-icon" href="wordle-analyze-a.png">
+  <head>
+    <meta charset="utf-8" />
+    <title>Wordle Analyzer (WASM!)</title>
+    <style>
+      * {
+          font-family: monospace;
+      }
+  
+      body {
+          color: #d7dadc;
+          background-color: #121213;
+          display: flex;
+          flex-direction: column;
+      }
+  
+      #guesses {
+          font-size: 150%;
+          padding: 4px;
+      }
+  
+      #result {
+          margin-top: 12px;
+          padding: 4px;
+  
+          white-space: pre;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import init, { Wordle } from "./pkg/wordle_wasm.js";
+
+      let strategy = "";
+      let answers = "";
+      let valid = "";
+
+      let wordle;
+
+      async function load() {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('service-worker.js');
+        }
+
+        await init();
+
+        await fetch("./data/v12.txt")
+          .then((response) => response.text())
+          .then((text) => {
+            strategy = text;
+          });
+
+        await fetch("./data/answers.txt")
+          .then((response) => response.text())
+          .then((text) => {
+            answers = text;
+          });
+
+        await fetch("./data/valid.txt")
+          .then((response) => response.text())
+          .then((text) => {
+            valid = text;
+          });
+
+          wordle = Wordle.new(valid, answers, strategy);
+      }
+      
+      async function analyze() {
+        const result = document.getElementById('result');
+
+        let guesses = document.getElementById('guesses').value;
+        guesses = guesses.trim().replace(/ /g, ',');
+
+        // Analyze whenever a new five letter guess is fully typed
+        let last_guess = guesses.split(',').pop();
+        if (last_guess.length === 5) {
+            const start = performance.now();
+            let response = "";
+            
+            try {
+              response = wordle.assess(guesses, 10000);
+            } catch (e) {
+              response = e;
+            }
+            
+            const time = performance.now() - start;
+
+            response += `\n\nTime: ${time.toFixed(2)} ms`;
+            result.innerHTML = response;
+        }
+      }
+
+      load().then(() => {
+        analyze();
+
+        const textbox = document.getElementById('guesses');
+        textbox.addEventListener('input', analyze);
+      });
+    </script>
+    <input id="guesses" type="text" value="clint soare " tabindex="1" />
+    <div id="result">
+
+    </div>
+  </body>
+</html>

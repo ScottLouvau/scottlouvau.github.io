@@ -1,0 +1,15 @@
+{
+    "name": "Wordle Analyze",
+    "short_name": "Wordle Analyze",
+    "start_url": "/",
+    "display": "standalone",
+    "id": "com.relentlessoptimizer.wordleanalyze",
+    "icons": [
+        {
+            "src": "wordle-analyze-a.png",
+            "type": "image/png",
+            "sizes": "128x128"
+        }
+    ],
+    "background_color": "#121213"
+ }
