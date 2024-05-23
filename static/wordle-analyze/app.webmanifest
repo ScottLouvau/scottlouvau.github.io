@@ -1,7 +1,7 @@
 {
     "name": "Wordle Analyze",
     "short_name": "Wordle Analyze",
-    "start_url": "./index.html",
+    "start_url": "./",
     "display": "standalone",
     "id": "com.relentlessoptimizer.wordleanalyze",
     "icons": [
