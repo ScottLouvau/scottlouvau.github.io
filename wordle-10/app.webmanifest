@@ -1,9 +1,9 @@
 {
-    "name": "Wordle Analyze",
-    "short_name": "Wordle Analyze",
+    "name": "Wordle V1",
+    "short_name": "Wordle V1",
     "start_url": "./",
     "display": "standalone",
-    "id": "com.relentlessoptimizer.wordleanalyze",
+    "id": "com.relentlessoptimizer.wordle-v1",
     "icons": [
         {
             "src": "./icon.svg",
