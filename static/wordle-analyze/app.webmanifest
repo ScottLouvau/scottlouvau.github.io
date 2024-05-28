@@ -6,14 +6,19 @@
     "id": "com.relentlessoptimizer.wordleanalyze",
     "icons": [
         {
-            "src": "./icon.svg",
-            "type": "image/svg+xml",
-            "sizes": "any"
+            "src": "./icon-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
         },
         {
-            "src": "./icon.png",
-            "type": "image/png",
-            "sizes": "512x512"
+            "src": "./icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "./icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
         }
     ],
     "background_color": "#121213"
