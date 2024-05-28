@@ -1,16 +1,11 @@
 const CACHE_VERSION = "v2";
-const CACHE_PREFIX = "wordle-wasm";
+const CACHE_PREFIX = "wordle-10";
 
 const CACHE_NAME = `${CACHE_PREFIX}-${CACHE_VERSION}`;
 const CACHE_URLS = [
     "./",
     "./app.webmanifest",
     "./icon.svg",
-    "./data/v12.txt",
-    "./data/answers.txt",
-    "./data/valid.txt",
-    "./pkg/wordle_wasm_bg.wasm",
-    "./pkg/wordle_wasm.js",
 ];
 
 async function install() {

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-US">
   <link rel="manifest" href="./app.webmanifest">
-  <link rel="apple-touch-icon" href="./wordle-analyze-a.png">
+  <link rel="apple-touch-icon" href="./icon.svg">
   <head>
     <meta charset="utf-8" />
     <title>Wordle Analyzer (WASM!)</title>
@@ -42,7 +42,7 @@
 
       async function load() {
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('./service-worker.js');
+          navigator.serviceWorker.register('./service-worker.js', { scope: './' });
         }
 
         await init();
