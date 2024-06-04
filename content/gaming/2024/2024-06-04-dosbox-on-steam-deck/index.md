@@ -7,7 +7,7 @@ I was delighted to play some of my old DOS favorites on my Steam Deck, but quick
 
 ## Goals
 I wanted my DOS games to:
-- Run reliably without crashes or video or audio stutter.
+- Run reliably without crashing and without video or audio stutter.
 - Exit directly back to SteamOS.
 - Scale to good resolutions for each display I use. (Built-In, Desk Monitor, TV)
 - Run fullscreen from Game Mode or windowed in Desktop Mode.
@@ -18,9 +18,8 @@ I wanted my DOS games to:
 I was eventually able to get this all to work with "original" DOSBox from the Discover Store. The other variants I tried - DosBox-Pure, DosBox-X, and DosBox-Staging - all failed at least one of the above goals.
 
 ## My Preferred Setup
-You can install DOSBox on SteamOS directly from the "Discover Store" in Desktop Mode.
 
-### Installing Original DOSBox
+### Installing (original) DOSBox
 - Press the Steam Button
 - Under Power, choose "Switch to Desktop"
 - Open the Discover Store (pinned near the bottom left)
@@ -34,9 +33,9 @@ All games need to be under **/home/deck/Documents** for DOSBox to access them, u
 DOSBox allows you to pass `--conf XYZ.conf` **multiple times**, with the settings in later ones overriding earlier ones.
 
 We can use this to create: 
-- A **dosbox.conf per screen resolution** with common settings
-- A **dosbox.conf per game** to run the game and with setting overrides
-- A **bash script per game** to detect the resolution and add to Steam
+- A dosbox.conf **per screen resolution** with common settings
+- A dosbox.conf **per game** to run the game and with setting overrides
+- A **bash script per game** as an entry point that can be added to Steam
 
 Here's a sample of each:
 
@@ -63,6 +62,8 @@ core=dynamic
 cycles=100000
 ```
 
+Take out the "mapperfile" line if you don't add any keyboard mappings. The "openglnb" output mode works well and doesn't do any post-scaling. I prefer `autolock=false` to not capture the mouse when playing in Desktop Mode.
+
 ### game-Anvil.conf
 ```
 [autoexec]
@@ -74,12 +75,18 @@ ANVIL
 exit
 ```
 
+This variant of DOSBox didn't handle relative paths, so use `~` to refer to /home/deck. Add "exit" after everything to quit back to SteamOS cleanly.
+
+If you need to override settings, put the `[autoexec]` section last; some DOSBox variants don't know how to parse the autoexec section and won't read any settings after it.
+
 ### Anvil of Dawn.sh
 ```
 #!/bin/sh
 resolution=$(xdpyinfo | grep dimensions: | awk '{print $2}')
 flatpak run com.dosbox.DOSBox -conf "/home/deck/Documents/DOS/DosBox/res-$resolution.conf" --conf "/home/deck/Documents/DOS/DosBox/game-Anvil.conf"
 ```
+
+`xdpyinfo` works nicely on the Steam Deck to find the current screen resolution. If you use this script design, you will need a "res" configuration file for each screen resolution you use.
 
 After you create the script, you need to make it executable. Right-click in the file explorer, click Properties, go to the Permissions tab, and check "Is executable". (You can also run `chmod +x [XYZ.sh]` from the Terminal.)
 
@@ -98,11 +105,11 @@ You don't need any Compatibility settings for them, because DOSBox runs directly
 You can use Decky and the SteamGridDB plugin to find artwork for the games so that they look nice in the Steam Library. The art isn't always as good as what EmuDeck finds; I need to figure out where EmuDeck caches them so that I can use EmuDeck to locate the art and then SteamGridDB to apply it.
 
 ### Running in Desktop Mode
-Games will run nicely in a window in Desktop Mode when double-clicked. I set `autolock=false` in my dosbox.conf because mouse capture was annoying and the games still work fine in Game Mode when full screen.
+Games will run nicely in a window in Desktop Mode when double-clicked. You can click and drag onto the Desktop and choose "Link Here" from the context menu to make a shortcut.
 
 
 ## DOSBox Pure Problems and Solutions
-I ran into quite a few problems trying to run under DOSBox-Pure in RetroArch. I'm documenting the problems here so that people hitting them can find this post. I suggest using original DOSBox instead, but I've included workarounds and fixes when I figured them out for anyone who wants to stick with DOSBox-Pure.
+I ran into quite a few problems trying to run under DOSBox-Pure in RetroArch. I'm documenting the problems here so that people encountering them can find this post. I've included workarounds and fixes when I figured them out for anyone who wants to stick with DOSBox-Pure, but I recommend switching to DOSBox as described above for a better experience.
 
 ### EmuDeck couldn't find my DOSBox games
 I had to look into the [README](https://github.com/schellingb/dosbox-pure?tab=readme-ov-file#dosbox-pure) to figure out that DOSBox-Pure expects games to [each be in a ZIP file](https://github.com/schellingb/dosbox-pure?tab=readme-ov-file#load-games-from-zip) to be found by the EmuDeck "Steam ROM Manager" scan process.
