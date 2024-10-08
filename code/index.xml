@@ -13,7 +13,7 @@
       <pubDate>Tue, 30 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2024/01/30/rust-vs-cs-datetime-parsing/</guid>
-      <description>I originally wrote the C# version of this code to write a performance tuning tutorial for DateTime parsing. I came back after learning some Rust to try to compare the performance of the two languages.</description>
+      <description>&lt;p&gt;I originally wrote the C# version of this code to write a performance tuning &lt;a href=&#34;https://relentlessoptimizer.com/code/2022/08/10/performance-tuning-from-1.5m-to-50m-datetimes-parsed-per-second-in-c/&#34;&gt;tutorial&lt;/a&gt; for DateTime parsing. I came back after learning some Rust to try to compare the performance of the two languages.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2023/05/04/dryer-done-notifications-with-home-assistant-and-iotawatt/</guid>
-      <description>I do the laundry in our house, and it often takes most of a day because I don&amp;rsquo;t hear the dryer finish.</description>
+      <description>&lt;p&gt;I do the laundry in our house, and it often takes most of a day because I don&amp;rsquo;t hear the dryer finish. I set a timer on my phone, but it&amp;rsquo;s often not done when I go check on it. Today Darinee and I finally implemented a &amp;ldquo;Dryer is done&amp;rdquo; notification on my phone, so I&amp;rsquo;ll know exactly when it&amp;rsquo;s time.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Thu, 23 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2023/03/23/diy-wireguard-setup/</guid>
-      <description>We recently set up Wireguard as a home VPN. It&amp;rsquo;s widely used, trusted, open source, and free, but I stumbled on a few things along the way and the documentation is sparse, so I wanted to write up what I did.</description>
+      <description>&lt;p&gt;We recently set up Wireguard as a home VPN. It&amp;rsquo;s widely used, trusted, open source, and free, but I stumbled on a few things along the way and the documentation is sparse, so I wanted to write up what I did.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -40,8 +40,8 @@
       <pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2023/02/23/aurora-projector-wi-fi-ir-remote/</guid>
-      <description>Editor&amp;rsquo;s Note: This is the first guest post from my wife, Darinee!
-Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy one and an aurora one.</description>
+      <description>&lt;p&gt;&lt;em&gt;Editor&amp;rsquo;s Note: This is the first guest post from my wife, Darinee!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy one and an aurora one.  They project red, green, blue, and white lights to the ceiling in very organic ways.  They&amp;rsquo;re very cool!  I have since conscripted the aurora projector for the living room.  The projector came with a remote control to adjust things like color, speed, and the stars.  However, who wants another IR remote to store and keep track of?  Not me!  So, I created a WiFi IR remote which I connected with Home Assistant so I can control the projector from anywhere.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -50,7 +50,7 @@ Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy 
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2022/08/10/how-to-performance-optimize-existing-code/</guid>
-      <description>You&amp;rsquo;ve got some existing code and you might want to make it faster. How hard is it to make it faster?</description>
+      <description>&lt;p&gt;You&amp;rsquo;ve got some existing code and you might want to make it faster. How hard is it to make it faster? How do you go about it? What tools do you need? Is it even worth doing?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -59,7 +59,7 @@ Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy 
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2022/08/10/performance-tuning-from-1.5m-to-50m-datetimes-parsed-per-second-in-c/</guid>
-      <description>I love the Visual Studio C# Performance Profiler, and am shocked to find out how many engineers around me haven&amp;rsquo;t used it before.</description>
+      <description>&lt;p&gt;I love the Visual Studio C# Performance Profiler, and am shocked to find out how many engineers around me haven&amp;rsquo;t used it before. It&amp;rsquo;s very easy to quickly check the performance of your code and you&amp;rsquo;d be amazed how often there are significant performance bottlenecks there that are very easy to fix.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -68,8 +68,10 @@ Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy 
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2022/03/15/ffmpeg-cheat-sheet/</guid>
-      <description>I&amp;rsquo;ve been using FFMPEG to transcode gaming videos often lately, and I find the reference documentation confusing.
-Cheat Sheet Transcode for Blog Transcode to H.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been using FFMPEG to transcode gaming videos often lately, and I find the &lt;a href=&#34;https://ffmpeg.org/ffmpeg-all.html&#34;&gt;reference documentation&lt;/a&gt; confusing.&lt;/p&gt;
+&lt;h2 id=&#34;cheat-sheet&#34;&gt;Cheat Sheet&lt;/h2&gt;
+&lt;h4 id=&#34;transcode-for-blog&#34;&gt;Transcode for Blog&lt;/h4&gt;
+&lt;p&gt;Transcode to H.264 quality 24 and mono 96 kbps AAC audio.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -78,7 +80,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Wed, 08 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2021/12/08/regex-builder-2.10/</guid>
-      <description>Today I&amp;rsquo;m releasing a new version of Regex Builder, 14 years after the previous release, thanks to an email from a fan.</description>
+      <description>&lt;p&gt;Today I&amp;rsquo;m &lt;a href=&#34;https://github.com/ScottLouvau/RegexBuilder/releases/tag/v2.10&#34;&gt;releasing&lt;/a&gt; a new version of &lt;a href=&#34;https://github.com/ScottLouvau/RegexBuilder&#34;&gt;Regex Builder&lt;/a&gt;, &lt;strong&gt;14 years&lt;/strong&gt; after the previous release, thanks to an email from a fan. Regular Expressions (regexes) are a powerful way to search text, but also hard to write and &lt;strong&gt;very&lt;/strong&gt; hard to debug, kind of like SQL queries. I wrote Regex Builder originally around 2004 (!!) to help me to iterate on regexes more quickly.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -87,7 +89,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2021/06/26/cloudflare-pages-custom-domain-setup/</guid>
-      <description>This blog is hosted on CloudFlare Pages with CloudFlare-managed DNS, and I finally have DNS resolution working fully. The documentation was confusing and incomplete - here is what I needed to know.</description>
+      <description>&lt;p&gt;This blog is hosted on CloudFlare Pages with CloudFlare-managed DNS, and I finally have DNS resolution working fully. The documentation was confusing and incomplete - here is what I needed to know.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -96,7 +98,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Fri, 28 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2021/05/28/photo-optimization/</guid>
-      <description>I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process.</description>
+      <description>&lt;p&gt;I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process. I figured our phones would produce decently optimized JPG photos directly, but it turns out that a quick pass with an optimization tool reduced the sizes by half with no difference that I could perceive.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -105,7 +107,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2021/03/24/github-pages-and-domain.com-dns/</guid>
-      <description>After some (mis)adventures, I finally got my custom domain name directed to my GitHub Pages site successfully. Here is what worked, in case someone else has the same problem.</description>
+      <description>&lt;p&gt;After some (mis)adventures, I finally got my custom domain name directed to my GitHub Pages site successfully. Here is what worked, in case someone else has the same problem.&lt;/p&gt;</description>
     </item>
     
   </channel>

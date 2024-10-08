@@ -6,14 +6,23 @@
     <description>Recent content on Relentless Optimizer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 04 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://relentlessoptimizer.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>M4 iPad Pro 11 Charging</title>
+      <link>https://relentlessoptimizer.com/life/2024/10/08/m4-ipad-pro-11-charging/</link>
+      <pubDate>Tue, 08 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://relentlessoptimizer.com/life/2024/10/08/m4-ipad-pro-11-charging/</guid>
+      <description>&lt;p&gt;I recently bought an M4 iPad Pro 11&amp;quot; and couldn&amp;rsquo;t find detailed charging data about it. Here are my measurements.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>DOSBox on Steam Deck</title>
       <link>https://relentlessoptimizer.com/gaming/2024/06/04/dosbox-on-steam-deck/</link>
       <pubDate>Tue, 04 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2024/06/04/dosbox-on-steam-deck/</guid>
-      <description>I was delighted to play some of my old DOS favorites on my Steam Deck, but quickly ran into a number of problems with the EmuDeck &amp;gt; RetroArch &amp;gt; DOSBox-Pure path.</description>
+      <description>&lt;p&gt;I was delighted to play some of my old DOS favorites on my Steam Deck, but quickly ran into a number of problems with the EmuDeck &amp;gt; RetroArch &amp;gt; DOSBox-Pure path. After trying the various options, I found a setup that works well and wanted to document it here.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -22,7 +31,7 @@
       <pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2024/05/08/my-wordle-goodnotes-playstyle/</guid>
-      <description>I enjoy playing Wordle and optimizing my play. Initially that meant choosing the best starting guesses, but I have also worked on how I play the games.</description>
+      <description>&lt;p&gt;I enjoy playing Wordle and optimizing my play. &lt;a href=&#34;https://relentlessoptimizer.com/gaming/2023/06/08/my-best-wordle-guesses/&#34;&gt;Initially&lt;/a&gt; that meant choosing the best starting guesses, but I have also worked on &lt;strong&gt;how&lt;/strong&gt; I play the games. I originally tried to solve the puzzles in my head, but quickly found that I play much better on paper.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -31,7 +40,7 @@
       <pubDate>Tue, 07 May 2024 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2024/05/07/steam-deck-oled-charging/</guid>
-      <description>I&amp;rsquo;ve been really impressed by my new Steam Deck OLED. I was looking for some specific charging speed information online, but couldn&amp;rsquo;t find it, so I measured myself.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been really impressed by my new Steam Deck OLED. I was looking for some specific charging speed information online, but couldn&amp;rsquo;t find it, so I measured myself.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -40,7 +49,7 @@
       <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2024/02/06/on-optimizing-qwertle/</guid>
-      <description>Last week on Hacker News, someone announced a new Wordle variant, QWERTLE. As an avid Wordle player and optimizer, I was excited to try playing and solving this new game.</description>
+      <description>&lt;p&gt;Last week on &lt;a href=&#34;https://news.ycombinator.com/&#34;&gt;Hacker News&lt;/a&gt;, someone &lt;a href=&#34;https://news.ycombinator.com/item?id=39136123&#34;&gt;announced&lt;/a&gt; a new Wordle variant, &lt;a href=&#34;https://qwertle.friedman.in/&#34;&gt;QWERTLE&lt;/a&gt;. As an avid Wordle player and optimizer, I was excited to try playing and solving this new game.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -49,7 +58,7 @@
       <pubDate>Tue, 30 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2024/01/30/rust-vs-cs-datetime-parsing/</guid>
-      <description>I originally wrote the C# version of this code to write a performance tuning tutorial for DateTime parsing. I came back after learning some Rust to try to compare the performance of the two languages.</description>
+      <description>&lt;p&gt;I originally wrote the C# version of this code to write a performance tuning &lt;a href=&#34;https://relentlessoptimizer.com/code/2022/08/10/performance-tuning-from-1.5m-to-50m-datetimes-parsed-per-second-in-c/&#34;&gt;tutorial&lt;/a&gt; for DateTime parsing. I came back after learning some Rust to try to compare the performance of the two languages.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -58,7 +67,7 @@
       <pubDate>Thu, 08 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2023/06/08/my-best-wordle-guesses/</guid>
-      <description>I&amp;rsquo;ve seen a lot of &amp;ldquo;best first Wordle guesses&amp;rdquo; posts online, but while they may provide the most theoretical information, I had trouble using them as a human.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve seen a &lt;a href=&#34;https://i-kh.net/2022/04/22/my-lazy-wordle-strategy/&#34;&gt;lot&lt;/a&gt; &lt;a href=&#34;https://www.cnbc.com/amp/2022/09/14/this-is-the-best-wordle-starting-word-according-to-mit-researchers.html&#34;&gt;of&lt;/a&gt; &amp;ldquo;best first Wordle guesses&amp;rdquo; &lt;a href=&#34;https://betterprogramming.pub/forget-luck-optimized-wordle-strategy-using-bigquery-c676771e316f&#34;&gt;posts&lt;/a&gt; &lt;a href=&#34;https://jonathanolson.net/experiments/optimal-wordle-solutions&#34;&gt;online&lt;/a&gt;, but while they may provide the most theoretical information, I had trouble using them as a human. Here are my adventures coming up with the best starting words for my own play style.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -67,7 +76,7 @@
       <pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2023/05/04/dryer-done-notifications-with-home-assistant-and-iotawatt/</guid>
-      <description>I do the laundry in our house, and it often takes most of a day because I don&amp;rsquo;t hear the dryer finish.</description>
+      <description>&lt;p&gt;I do the laundry in our house, and it often takes most of a day because I don&amp;rsquo;t hear the dryer finish. I set a timer on my phone, but it&amp;rsquo;s often not done when I go check on it. Today Darinee and I finally implemented a &amp;ldquo;Dryer is done&amp;rdquo; notification on my phone, so I&amp;rsquo;ll know exactly when it&amp;rsquo;s time.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -76,7 +85,7 @@
       <pubDate>Thu, 23 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2023/03/23/diy-wireguard-setup/</guid>
-      <description>We recently set up Wireguard as a home VPN. It&amp;rsquo;s widely used, trusted, open source, and free, but I stumbled on a few things along the way and the documentation is sparse, so I wanted to write up what I did.</description>
+      <description>&lt;p&gt;We recently set up Wireguard as a home VPN. It&amp;rsquo;s widely used, trusted, open source, and free, but I stumbled on a few things along the way and the documentation is sparse, so I wanted to write up what I did.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -85,8 +94,8 @@
       <pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2023/02/23/aurora-projector-wi-fi-ir-remote/</guid>
-      <description>Editor&amp;rsquo;s Note: This is the first guest post from my wife, Darinee!
-Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy one and an aurora one.</description>
+      <description>&lt;p&gt;&lt;em&gt;Editor&amp;rsquo;s Note: This is the first guest post from my wife, Darinee!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy one and an aurora one.  They project red, green, blue, and white lights to the ceiling in very organic ways.  They&amp;rsquo;re very cool!  I have since conscripted the aurora projector for the living room.  The projector came with a remote control to adjust things like color, speed, and the stars.  However, who wants another IR remote to store and keep track of?  Not me!  So, I created a WiFi IR remote which I connected with Home Assistant so I can control the projector from anywhere.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -95,7 +104,7 @@ Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy 
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2022/08/10/how-to-performance-optimize-existing-code/</guid>
-      <description>You&amp;rsquo;ve got some existing code and you might want to make it faster. How hard is it to make it faster?</description>
+      <description>&lt;p&gt;You&amp;rsquo;ve got some existing code and you might want to make it faster. How hard is it to make it faster? How do you go about it? What tools do you need? Is it even worth doing?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -104,34 +113,34 @@ Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy 
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2022/08/10/performance-tuning-from-1.5m-to-50m-datetimes-parsed-per-second-in-c/</guid>
-      <description>I love the Visual Studio C# Performance Profiler, and am shocked to find out how many engineers around me haven&amp;rsquo;t used it before.</description>
+      <description>&lt;p&gt;I love the Visual Studio C# Performance Profiler, and am shocked to find out how many engineers around me haven&amp;rsquo;t used it before. It&amp;rsquo;s very easy to quickly check the performance of your code and you&amp;rsquo;d be amazed how often there are significant performance bottlenecks there that are very easy to fix.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>COVID Road Trip: An Unexpected Journey</title>
-      <link>https://relentlessoptimizer.com/life/2022-07-21-covid-road-trip/</link>
+      <link>https://relentlessoptimizer.com/life/2022/07/21/covid-road-trip-an-unexpected-journey/</link>
       <pubDate>Thu, 21 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://relentlessoptimizer.com/life/2022-07-21-covid-road-trip/</guid>
-      <description>After two years of minimal travel, we decided to fly to New York City, and I promptly got COVID while there.</description>
+      <guid>https://relentlessoptimizer.com/life/2022/07/21/covid-road-trip-an-unexpected-journey/</guid>
+      <description>&lt;p&gt;After two years of minimal travel, we decided to fly to New York City, and I promptly got COVID while there. Our return turned into a surprise COVID road trip; this is the story.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Search for the Ultimate Indoor Sweater</title>
-      <link>https://relentlessoptimizer.com/life/2022-06-01-ultimate-sweater/</link>
+      <link>https://relentlessoptimizer.com/life/2022/06/01/search-for-the-ultimate-indoor-sweater/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://relentlessoptimizer.com/life/2022-06-01-ultimate-sweater/</guid>
-      <description>For most of my life, I&amp;rsquo;ve bought clothes on sale which seemed &amp;ldquo;good enough&amp;rdquo;. My outerwear lasts a really long time, though.</description>
+      <guid>https://relentlessoptimizer.com/life/2022/06/01/search-for-the-ultimate-indoor-sweater/</guid>
+      <description>&lt;p&gt;For most of my life, I&amp;rsquo;ve bought clothes on sale which seemed &amp;ldquo;good enough&amp;rdquo;. My outerwear lasts a really long time, though. As a few favorites finally wore out, I decided that I should really just get exactly what I want and get rid of the rest. With that, my quest for some perfect sweaters began.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>M1 MacBooks charge from anything!</title>
-      <link>https://relentlessoptimizer.com/life/2022-05-04-m1-macbook-charging/</link>
+      <link>https://relentlessoptimizer.com/life/2022/05/04/m1-macbooks-charge-from-anything/</link>
       <pubDate>Wed, 04 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://relentlessoptimizer.com/life/2022-05-04-m1-macbook-charging/</guid>
-      <description>I recently started using an M1 MacBook Pro 14&amp;quot;. I wanted to know which of my cables and chargers work with it and how fast it charges from them.</description>
+      <guid>https://relentlessoptimizer.com/life/2022/05/04/m1-macbooks-charge-from-anything/</guid>
+      <description>&lt;p&gt;I recently started using an M1 MacBook Pro 14&amp;quot;. I wanted to know which of my cables and chargers work with it and how fast it charges from them. My previous laptop, an ASUS Zephyrus G14, only charges from 20v (60w+) USB-C chargers, so I was expecting the same. I was shocked to find out that the MacBook will charge from &lt;strong&gt;every charger I have&lt;/strong&gt;, at any voltage!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -140,8 +149,10 @@ Our neighbor gave the kids a couple of light projectors for Christmas, a galaxy 
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2022/03/15/ffmpeg-cheat-sheet/</guid>
-      <description>I&amp;rsquo;ve been using FFMPEG to transcode gaming videos often lately, and I find the reference documentation confusing.
-Cheat Sheet Transcode for Blog Transcode to H.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been using FFMPEG to transcode gaming videos often lately, and I find the &lt;a href=&#34;https://ffmpeg.org/ffmpeg-all.html&#34;&gt;reference documentation&lt;/a&gt; confusing.&lt;/p&gt;
+&lt;h2 id=&#34;cheat-sheet&#34;&gt;Cheat Sheet&lt;/h2&gt;
+&lt;h4 id=&#34;transcode-for-blog&#34;&gt;Transcode for Blog&lt;/h4&gt;
+&lt;p&gt;Transcode to H.264 quality 24 and mono 96 kbps AAC audio.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -150,7 +161,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Wed, 16 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2022/02/16/optimizing-kingdom-rush/</guid>
-      <description>I love the tower defense game Kingdom Rush. More than anything else, it has just the right amount of complexity - just enough towers and abilities to give you options, and just enough tactical play to keep you busy between build steps.</description>
+      <description>&lt;p&gt;I love the tower defense game Kingdom Rush. More than anything else, it has just the right amount of complexity - just enough towers and abilities to give you options, and just enough tactical play to keep you busy between build steps. The difficulty rises smoothly across the levels, slowly asking more of you as you improve. It&amp;rsquo;s great fun and has massive replayability. Thanks to a vibrant community, YouTube walkthroughs are there to help if you get stuck or need new strategic ideas.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -159,7 +170,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Wed, 08 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2021/12/08/regex-builder-2.10/</guid>
-      <description>Today I&amp;rsquo;m releasing a new version of Regex Builder, 14 years after the previous release, thanks to an email from a fan.</description>
+      <description>&lt;p&gt;Today I&amp;rsquo;m &lt;a href=&#34;https://github.com/ScottLouvau/RegexBuilder/releases/tag/v2.10&#34;&gt;releasing&lt;/a&gt; a new version of &lt;a href=&#34;https://github.com/ScottLouvau/RegexBuilder&#34;&gt;Regex Builder&lt;/a&gt;, &lt;strong&gt;14 years&lt;/strong&gt; after the previous release, thanks to an email from a fan. Regular Expressions (regexes) are a powerful way to search text, but also hard to write and &lt;strong&gt;very&lt;/strong&gt; hard to debug, kind of like SQL queries. I wrote Regex Builder originally around 2004 (!!) to help me to iterate on regexes more quickly.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -168,25 +179,25 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/11/29/budgeting-is-like-backpacking/</guid>
-      <description>I&amp;rsquo;ve been updating my backpacking loadout and learning from the &amp;ldquo;ultralight&amp;rdquo; backpacking community. I was struck by the parallels between backpack-packing and budgeting and how backpacking wisdom can apply to finance.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been updating my backpacking loadout and learning from the &amp;ldquo;&lt;a href=&#34;https://reddit.com/r/ultralight&#34;&gt;ultralight&lt;/a&gt;&amp;rdquo; backpacking community. I was struck by the parallels between backpack-packing and budgeting and how backpacking wisdom can apply to finance.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Samsung Galaxy Watch 4 Battery Life</title>
-      <link>https://relentlessoptimizer.com/life/2021-10-11-galaxy-watch-battery/</link>
+      <link>https://relentlessoptimizer.com/life/2021/10/11/samsung-galaxy-watch-4-battery-life/</link>
       <pubDate>Mon, 11 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://relentlessoptimizer.com/life/2021-10-11-galaxy-watch-battery/</guid>
-      <description>My Samsung Galaxy Watch 4 battery ran out on the first day by 4:00pm, and I was pretty disappointed. After a few device resets and a lot of measurements, however, my watch is now using only about a third of the battery per full 24 hour day.</description>
+      <guid>https://relentlessoptimizer.com/life/2021/10/11/samsung-galaxy-watch-4-battery-life/</guid>
+      <description>&lt;p&gt;My Samsung Galaxy Watch 4 battery ran out on the first day by 4:00pm, and I was pretty disappointed. After a few device resets and a lot of measurements, however, my watch is now using only about a third of the battery per full 24 hour day. Here&amp;rsquo;s what I learned.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>No Phone Experiment: Taking Back My Attention</title>
-      <link>https://relentlessoptimizer.com/life/2021-09-24-no-phone-experiment/</link>
+      <link>https://relentlessoptimizer.com/life/2021/09/24/no-phone-experiment-taking-back-my-attention/</link>
       <pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://relentlessoptimizer.com/life/2021-09-24-no-phone-experiment/</guid>
-      <description>The Samsung Galaxy Watch 4 recently came out, and it inspired me to try going phone-free, carrying only the watch. I spend too much time glued to my phone, and I wanted to take back my attention, but I know I need to be reachable.</description>
+      <guid>https://relentlessoptimizer.com/life/2021/09/24/no-phone-experiment-taking-back-my-attention/</guid>
+      <description>&lt;p&gt;The Samsung Galaxy Watch 4 recently came out, and it inspired me to try going phone-free, carrying only the watch. I spend too much time glued to my phone, and I wanted to take back my attention, but I know I need to be reachable. For me, the core problem is the endless scrolling apps - Reddit, YouTube, Google News, and a few pages-of-links websites I obsessively visit.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -195,7 +206,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Tue, 14 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/09/14/being-frugal-vs-being-cheap/</guid>
-      <description>I used to think that &amp;ldquo;being frugal&amp;rdquo; and &amp;ldquo;being cheap&amp;rdquo; were basically the same thing. Along my saving journey, however, I found out that the two are very different.</description>
+      <description>&lt;p&gt;I used to think that &amp;ldquo;being frugal&amp;rdquo; and &amp;ldquo;being cheap&amp;rdquo; were basically the same thing. Along my saving journey, however, I found out that the two are very different. To me, In a nutshell, &amp;ldquo;being cheap&amp;rdquo; means trying to spend as little as possible and &amp;ldquo;being frugal&amp;rdquo; means to spend as thoughtfully as possible. What do those concepts really mean?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -204,7 +215,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Thu, 19 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/08/19/frugal-groceries/</guid>
-      <description>It&amp;rsquo;s surprising, but keeping food costs down was a big part of sticking to our budget and ultimately retiring early. Food is the third highest spending category for US households (after housing and transportation), so it&amp;rsquo;s a big part of most budgets.</description>
+      <description>&lt;p&gt;It&amp;rsquo;s surprising, but keeping food costs down was a big part of &lt;a href=&#34;https://relentlessoptimizer.com/finance/2021/06/09/how-we-kept-the-same-budget-for-eight-years/&#34;&gt;sticking to our budget&lt;/a&gt; and ultimately &lt;a href=&#34;https://relentlessoptimizer.com/retire-early/&#34;&gt;retiring early&lt;/a&gt;. Food is the &lt;a href=&#34;https://www.bls.gov/opub/reports/consumer-expenditures/2019/home.htm&#34;&gt;third highest&lt;/a&gt; spending category for US households (after housing and transportation), so it&amp;rsquo;s a big part of most budgets. It&amp;rsquo;s easier to change your food choices than to move to a new house or car, so if you want to save more, it&amp;rsquo;s a good place to start.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -213,7 +224,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Sat, 14 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2021/08/14/batman-arkham-asylum/</guid>
-      <description>The latest in my series of game replays is Batman: Arkham Asylum, thanks to a recent GOG Sale that had it going for $5.</description>
+      <description>&lt;p&gt;The latest in my series of game replays is Batman: Arkham Asylum, thanks to a recent GOG Sale that had it going for $5.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -222,7 +233,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/07/23/our-retirement-withdrawal-plan/</guid>
-      <description>After you retire, you need to decide how much you can spend each year, which investments to take the money from, and when to rebalance your investments.</description>
+      <description>&lt;p&gt;After you retire, you need to decide how much you can spend each year, which investments to take the money from, and when to rebalance your investments. Collectively, this is called your &amp;ldquo;withdrawal plan&amp;rdquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -231,7 +242,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Fri, 16 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/07/16/how-much-stock-vs-bonds/</guid>
-      <description>How should you split your retirement investments between stock and bonds? How do you make this decision? Your chosen split is called your Asset Allocation, and you&amp;rsquo;ll often see it written as two numbers; for example, 60% stock and 40% bonds is written as &amp;ldquo;60/40&amp;rdquo;.</description>
+      <description>&lt;p&gt;How should you split your &lt;a href=&#34;https://relentlessoptimizer.com/finance/2021/05/26/how-to-invest/&#34;&gt;retirement investments&lt;/a&gt; between stock and bonds? How do you make this decision? Your chosen split is called your Asset Allocation, and you&amp;rsquo;ll often see it written as two numbers; for example, 60% stock and 40% bonds is written as &amp;ldquo;60/40&amp;rdquo;. Let&amp;rsquo;s dig into it.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -240,7 +251,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2021/06/26/cloudflare-pages-custom-domain-setup/</guid>
-      <description>This blog is hosted on CloudFlare Pages with CloudFlare-managed DNS, and I finally have DNS resolution working fully. The documentation was confusing and incomplete - here is what I needed to know.</description>
+      <description>&lt;p&gt;This blog is hosted on CloudFlare Pages with CloudFlare-managed DNS, and I finally have DNS resolution working fully. The documentation was confusing and incomplete - here is what I needed to know.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -249,7 +260,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/06/09/how-we-kept-the-same-budget-for-eight-years/</guid>
-      <description>Learning to budget and invest put us on a path to retire early, but our choice to keep the same budget for eight years (adding all of our raises to saving) enabled us to retire really early.</description>
+      <description>&lt;p&gt;Learning to &lt;a href=&#34;https://relentlessoptimizer.com/finance/2021/03/30/how-we-budget/&#34;&gt;budget&lt;/a&gt; and &lt;a href=&#34;https://relentlessoptimizer.com/finance/2021/05/26/how-to-invest/&#34;&gt;invest&lt;/a&gt; put us on a path to retire early, but our choice to keep the same budget for eight years (adding all of our raises to saving) enabled us to retire &lt;strong&gt;really early&lt;/strong&gt;. In this post, I&amp;rsquo;m going to explain how we accomplished that.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -258,7 +269,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/06/05/getting-retirement-money-out/</guid>
-      <description>Once you retire, which accounts should you take your retirement spending from first? If you retire before age 59.5, how do you get IRA money out at all?</description>
+      <description>&lt;p&gt;Once you retire, which accounts should you take your retirement spending from first? If you retire before age 59.5, how do you get IRA money out at all? Are there any retirement tax surprises to watch out for?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -267,7 +278,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/06/04/retirement-account-types/</guid>
-      <description>You&amp;rsquo;re ready to start saving for retirement, but there are several different accounts you could use. Brokerage accounts, IRAs, Roth IRAs, 401(k)s.</description>
+      <description>&lt;p&gt;You&amp;rsquo;re ready to start saving for retirement, but there are several different accounts you could use. Brokerage accounts, IRAs, Roth IRAs, 401(k)s. Where should your retirement savings go, and why?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -276,7 +287,7 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/06/03/how-long-until-you-can-retire/</guid>
-      <description>In &amp;ldquo;How Much You Need To Retire&amp;rdquo;, you learned that you need to save about 25 times your retirement spending to retire.</description>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://relentlessoptimizer.com/finance/2021/06/02/how-much-you-need-to-retire/&#34;&gt;&amp;ldquo;How Much You Need To Retire&amp;rdquo;&lt;/a&gt;, you learned that you need to save about 25 times your retirement spending to retire. When I first heard that number, I thought saving that much would take forever. Fortunately, there are two giant tailwinds to help: &lt;strong&gt;compounding returns&lt;/strong&gt; and &lt;strong&gt;decreasing spending&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -285,8 +296,8 @@ Cheat Sheet Transcode for Blog Transcode to H.</description>
       <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/06/02/how-much-you-need-to-retire/</guid>
-      <description>So, you&amp;rsquo;ve decided to start saving for retirement. How much money will you need to save up?
-TL;DR: You need about 25 times your retirement spending invested in a 50% stock / 50% bonds portfolio for a 30 year retirement.</description>
+      <description>&lt;p&gt;So, you&amp;rsquo;ve decided to start saving for retirement. How much money will you need to save up?&lt;/p&gt;
+&lt;p&gt;TL;DR: You need about 25 times your &lt;strong&gt;retirement spending&lt;/strong&gt; invested in a &lt;strong&gt;50% stock / 50% bonds&lt;/strong&gt; portfolio for a &lt;strong&gt;30 year retirement&lt;/strong&gt;. Put another way, you can spend about 4% of your initial portfolio balance per year. For a 50+ year retirement, plan on 3.5% (or save 28.5 times your spending) and have 60-75% stock.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -295,7 +306,7 @@ TL;DR: You need about 25 times your retirement spending invested in a 50% stock 
       <pubDate>Fri, 28 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2021/05/28/photo-optimization/</guid>
-      <description>I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process.</description>
+      <description>&lt;p&gt;I recently decided to make a local and second-cloud backup of our digital photos, and decided to see if I could optimize them in the process. I figured our phones would produce decently optimized JPG photos directly, but it turns out that a quick pass with an optimization tool reduced the sizes by half with no difference that I could perceive.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -304,7 +315,7 @@ TL;DR: You need about 25 times your retirement spending invested in a 50% stock 
       <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/05/26/how-to-invest/</guid>
-      <description>You&amp;rsquo;ve made a budget, done some initial saving, and now you finally have some savings to invest for retirement. What should you invest in, and how do you go about that?</description>
+      <description>&lt;p&gt;You&amp;rsquo;ve &lt;a href=&#34;https://relentlessoptimizer.com/finance/2021/03/30/how-we-budget/&#34;&gt;made a budget&lt;/a&gt;, &lt;a href=&#34;https://relentlessoptimizer.com/finance/2021/04/13/what-to-save-for/&#34;&gt;done some initial saving&lt;/a&gt;, and now you finally have some savings to invest for retirement. What should you invest in, and how do you go about that?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -313,7 +324,7 @@ TL;DR: You need about 25 times your retirement spending invested in a 50% stock 
       <pubDate>Sat, 15 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/05/15/five-mistakes-we-made-during-our-first-early-retirement/</guid>
-      <description>We retired early (the first time) in 2014 at age 33. Within two years, we were both back at work. After knowing what went wrong, we made adjustments, and I&amp;rsquo;m happy to say that we retired again in 2020 and it&amp;rsquo;s been going much better.</description>
+      <description>&lt;p&gt;We retired early (the first time) in 2014 at age 33. Within two years, we were both back at work. After knowing what went wrong, we made adjustments, and I&amp;rsquo;m happy to say that we retired again in 2020 and it&amp;rsquo;s been going much better. Without further ado, here are five things we did wrong (and five we did right) in our first retirement attempt:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -322,7 +333,7 @@ TL;DR: You need about 25 times your retirement spending invested in a 50% stock 
       <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2021/04/20/quest-for-glory-i/</guid>
-      <description>Quest for Glory 1 is one of my favorite role-playing games, and one of the first I played. Sierra walked the line between adventure and puzzle games beautifully in the series, making something that still feels unique.</description>
+      <description>&lt;p&gt;Quest for Glory 1 is one of my favorite role-playing games, and one of the first I played. Sierra walked the line between adventure and puzzle games beautifully in the series, making something that still feels unique. Ultimately, though, what keeps bringing me back is the setting and the story, told with impressive graphics, great music, and witty dialog that still hold up well so many years later.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -331,8 +342,19 @@ TL;DR: You need about 25 times your retirement spending invested in a 50% stock 
       <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/04/13/what-to-save-for/</guid>
-      <description>So you&amp;rsquo;ve made a budget and now you&amp;rsquo;re starting to save. What should you do with the money?
-Credit Card debt Emergency Fund (one month of expenses) Other Non-Mortgage Debt (car loan, student loans) Some Retirement Saving (get employer match) Future Big Purchases (house, trip, car, kid college) More Retirement Saving Audacious Goals: House Payoff, Early Retirement, Year off from Work, &amp;hellip; First, if you have any credit card debt, pay it off.</description>
+      <description>&lt;p&gt;So you&amp;rsquo;ve &lt;a href=&#34;https://relentlessoptimizer.com/finance/2021/03/30/how-we-budget/&#34;&gt;made a budget&lt;/a&gt; and now you&amp;rsquo;re starting to save. What should you do with the money?&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Credit Card debt&lt;/li&gt;
+&lt;li&gt;Emergency Fund (one month of expenses)&lt;/li&gt;
+&lt;li&gt;Other Non-Mortgage Debt (car loan, student loans)&lt;/li&gt;
+&lt;li&gt;Some Retirement Saving (get employer match)&lt;/li&gt;
+&lt;li&gt;Future Big Purchases (house, trip, car, kid college)&lt;/li&gt;
+&lt;li&gt;More Retirement Saving&lt;/li&gt;
+&lt;li&gt;Audacious Goals: House Payoff, Early Retirement, Year off from Work, &amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;First, if you have any &lt;strong&gt;credit card debt&lt;/strong&gt;, pay it off. Put the credit cards away so you stop using them. Pay with a debit card instead. I know, debit cards don&amp;rsquo;t have rewards and fraud protection. But if you&amp;rsquo;re in debt, stopping the bank from taking your money every month in interest matters much more than the value of credit card rewards and the potential risk of losing some to fraud.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -341,7 +363,7 @@ Credit Card debt Emergency Fund (one month of expenses) Other Non-Mortgage Debt 
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/04/12/frugal-tip-starbucks-cold-brew-refills/</guid>
-      <description>I&amp;rsquo;ve been a fan of the Starbucks Vanilla Sweet Cream cold brew since it came out and a lover of cold brew coffee since the days before Seattle&amp;rsquo;s Best Coffee disappeared.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been a fan of the Starbucks Vanilla Sweet Cream cold brew since it came out and a lover of cold brew coffee since the days before Seattle&amp;rsquo;s Best Coffee disappeared. I&amp;rsquo;m not willing to buy coffee out every day, so I learned to make cold brew at home and mix reasonable replicas of my Seattle&amp;rsquo;s Best iced mocha and the Vanilla Sweet Cream between coffee outings.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -350,7 +372,7 @@ Credit Card debt Emergency Fund (one month of expenses) Other Non-Mortgage Debt 
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/04/12/the-american-rescue-plan-aca-and-roth-conversions/</guid>
-      <description>The American Rescue Plan became law on March 11th, 2021, and I was surprised to figure out that it changes the taxable income we want to aim for in 2021 and 2022 significantly.</description>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://www.congress.gov/bill/117th-congress/house-bill/1319/text&#34;&gt;American Rescue Plan&lt;/a&gt; became law on March 11th, 2021, and I was surprised to figure out that it changes the taxable income we want to aim for in 2021 and 2022 significantly.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -359,7 +381,7 @@ Credit Card debt Emergency Fund (one month of expenses) Other Non-Mortgage Debt 
       <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/finance/2021/03/30/how-we-budget/</guid>
-      <description>When we got our first real jobs, we put our paychecks into our checking account and bought everything from there. It couldn&amp;rsquo;t be easier, and I&amp;rsquo;m sure many people do the same thing.</description>
+      <description>&lt;p&gt;When we got our first real jobs, we put our paychecks into our checking account and bought everything from there. It couldn&amp;rsquo;t be easier, and I&amp;rsquo;m sure many people do the same thing. The problem was that while we didn&amp;rsquo;t spend more than we had, we also weren&amp;rsquo;t saving up anything. When we wanted to take a vacation, it wasn&amp;rsquo;t clear how we would pay for it. When we had an unexpected expense (a gift for someone, a car repair, or whatever) our account would be knocked down and we&amp;rsquo;d have to cut back for a while to try to refill it. It felt like we were constantly being knocked off track and forced to make cuts.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -368,9 +390,14 @@ Credit Card debt Emergency Fund (one month of expenses) Other Non-Mortgage Debt 
       <pubDate>Thu, 25 Mar 2021 13:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2021/03/25/dosbox-cheat-sheet/</guid>
-      <description>Some quick tables about DOSBox that I kept looking for.
-Sound Card Defaults Sound - DOSBoxWiki
-SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
+      <description>&lt;p&gt;Some quick tables about DOSBox that I kept looking for.&lt;/p&gt;
+&lt;h3 id=&#34;sound-card-defaults&#34;&gt;Sound Card Defaults&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.dosbox.com/wiki/Sound&#34;&gt;Sound - DOSBoxWiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;SoundBlaster 16
+Base Address: 220h
+IRQ: 7
+DMA: 1
+HDMA: 5&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -379,7 +406,7 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Thu, 25 Mar 2021 12:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2021/03/25/win95-on-dosbox/</guid>
-      <description>I needed Windows to run SimTower, so I decided to try getting Win95 to run on DOSBox. The walkthroughs online had some skippable steps and I ran into some problems, and then I got distracted optimizing it.</description>
+      <description>&lt;p&gt;I needed Windows to run SimTower, so I decided to try getting Win95 to run on DOSBox. The &lt;a href=&#34;http://dosbox95.darktraveler.com/guide%20select.html&#34;&gt;walkthroughs&lt;/a&gt; &lt;a href=&#34;https://dsync.blogspot.com/2014/03/a-complete-guide-to-install-windows-95.html&#34;&gt;online&lt;/a&gt; had some skippable steps and I ran into some problems, and then I got distracted optimizing it.. Anyway, here are my terse, working steps for getting very nice Win95 DOSBox images.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -388,7 +415,7 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/code/2021/03/24/github-pages-and-domain.com-dns/</guid>
-      <description>After some (mis)adventures, I finally got my custom domain name directed to my GitHub Pages site successfully. Here is what worked, in case someone else has the same problem.</description>
+      <description>&lt;p&gt;After some (mis)adventures, I finally got my custom domain name directed to my GitHub Pages site successfully. Here is what worked, in case someone else has the same problem.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -397,7 +424,7 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2021/03/17/simtower-max-tower/</guid>
-      <description>A few days after my previous SimTower adventure, I wanted to revise my tower design. My retail-heavy-attempt was straightforward and didn&amp;rsquo;t take too many floors, but I thought it&amp;rsquo;d be fun to try to build consistently all the way up to the 100th floor cathedral, and to try to max out many of the in-game limits right when I reached it.</description>
+      <description>&lt;p&gt;A few days after my &lt;a href=&#34;https://relentlessoptimizer.com/gaming/2021/03/12/return-to-simtower/&#34;&gt;previous SimTower adventure&lt;/a&gt;, I wanted to revise my tower design. My retail-heavy-attempt was straightforward and didn&amp;rsquo;t take too many floors, but I thought it&amp;rsquo;d be fun to try to build consistently all the way up to the 100th floor cathedral, and to try to max out many of the in-game limits right when I reached it.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -406,7 +433,7 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2021/03/13/simtower-reference/</guid>
-      <description>When playing through SimTower again, I was frequently looking for facts from the help and from online walkthroughs. Here&amp;rsquo;s a double-checked, complete set of the details I was looking for when replaying the game, with more useful details together in one place than the original help.</description>
+      <description>&lt;p&gt;When playing through SimTower again, I was frequently looking for facts from the help and from online walkthroughs. Here&amp;rsquo;s a double-checked, complete set of the details I was looking for when replaying the game, with more useful details together in one place than the original help.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -415,7 +442,7 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/gaming/2021/03/12/return-to-simtower/</guid>
-      <description>It&amp;rsquo;s 1994, and Maxis is a big name in gaming. The excellent SimCity 2000 released last year, but we&amp;rsquo;re looking at a lesser known title, SimTower.</description>
+      <description>&lt;p&gt;It&amp;rsquo;s 1994, and Maxis is a big name in gaming. The excellent SimCity 2000 released last year, but we&amp;rsquo;re looking at a lesser known title, SimTower. SimTower was not actually developed by Maxis, but instead by Yoot Saito, who was inspired by the 1989 SimCity. The game was released as &amp;ldquo;The Tower&amp;rdquo; in Japan and was relatively successful. Maxis learned about the game and offered to publish it in the US, branded as a &amp;ldquo;Sim&amp;rdquo;-title.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -424,7 +451,7 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/about/</guid>
-      <description>Hi, I&amp;rsquo;m Scott Louvau. I live near Seattle. I worked at Microsoft, mostly on Visual Studio and Visual Studio Online. I&amp;rsquo;m passionate about performance and I love to optimize things - code, games, finances, coffee - everything.</description>
+      <description>&lt;p&gt;Hi, I&amp;rsquo;m Scott Louvau. I live near Seattle. I worked at Microsoft, mostly on Visual Studio and Visual Studio Online. I&amp;rsquo;m passionate about performance and I love to optimize things - code, games, finances, coffee - everything. The optimizing of finances worked out well, and now I&amp;rsquo;m off writing fast code, playing old games, and spending a lot more time with my wife and two girls.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -433,7 +460,7 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/retire-early/</guid>
-      <description>My wife and I retired just before turning 40, and here are the nuts and bolts of how we did it.</description>
+      <description>&lt;p&gt;My wife and I retired just before turning 40, and here are the nuts and bolts of how we did it. Retiring by 40 requires a very modest budget or very lucky circumstances (and we had some of both). Still, many people could retire much earlier than normal by budgeting, saving, and investing the way we did, and so we wanted to share our approach.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -442,7 +469,7 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/KR/</guid>
-      <description>I love Kingdom Rush, so I built a syntax for transcribing games, an animator to efficiently show a game plan, and an AI Scanner to transcribe my games from video recordings.</description>
+      <description>&lt;p&gt;I love Kingdom Rush, so I built a syntax for transcribing games, an animator to efficiently show a game plan, and an AI Scanner to transcribe my games from video recordings.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -451,7 +478,8 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/KR/help/</guid>
-      <description>Kingdom Rush Syntax Kingdom Rush syntax is used to write a plan for how to play a given level, the same way that Chess Algebra is used to document chess games.</description>
+      <description>&lt;h2 id=&#34;kingdom-rush-syntax&#34;&gt;Kingdom Rush Syntax&lt;/h2&gt;
+&lt;p&gt;Kingdom Rush syntax is used to write a plan for how to play a given level, the same way that Chess Algebra is used to document chess games. The syntax has a &lt;strong&gt;long form&lt;/strong&gt;, intended for human use, and a &lt;a href=&#34;https://relentlessoptimizer.com/KR/help/#short-syntax&#34;&gt;&lt;strong&gt;short form&lt;/strong&gt;&lt;/a&gt; for computers (in URLs or stored in JSON, for example).&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -460,7 +488,7 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/pacifica/camping-build/</guid>
-      <description>We wanted to be able to sleep in our Pacifica, and for it to be more comfortable and faster to get to bed and get going than a random motel.</description>
+      <description>&lt;p&gt;We wanted to be able to sleep in our Pacifica, and for it to be more comfortable and faster to get to bed and get going than a random motel. We&amp;rsquo;re picky sleepers and need our room to be dark, quiet, cool, and the bed to be right. Most motels don&amp;rsquo;t have all of these things right, so we usually don&amp;rsquo;t sleep especially well.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -469,7 +497,7 @@ SoundBlaster 16 Base Address: 220h IRQ: 7 DMA: 1 HDMA: 5</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://relentlessoptimizer.com/pacifica/circuit/</guid>
-      <description>We wanted to camp overnight in our 2018 Chrysler Pacifica Hybrid. If the van is plugged in or the battery is charged enough, the climate system can run overnight without the engine turning on.</description>
+      <description>&lt;p&gt;We wanted to camp overnight in our 2018 Chrysler Pacifica Hybrid. If the van is plugged in or the battery is charged enough, the climate system can run overnight without the engine turning on. Unfortunately, the van turns itself off after 30 minutes if left in Park (or while charging).&lt;/p&gt;</description>
     </item>
     
   </channel>
