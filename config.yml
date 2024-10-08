@@ -29,6 +29,7 @@ permalinks:
   gaming:  gaming/:year/:month/:day/:title/
   code:    code/:year/:month/:day/:title/
   finance: finance/:year/:month/:day/:title/
+  life:    life/:year/:month/:day/:title/
 
 languages:
     en:

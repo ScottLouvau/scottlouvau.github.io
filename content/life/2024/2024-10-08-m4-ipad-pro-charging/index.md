@@ -1,6 +1,6 @@
 ---
 title: "M4 iPad Pro 11 Charging"
-date: "2024-10-08"
+date: 2024-10-08
 ---
 
 I recently bought an M4 iPad Pro 11" and couldn't find detailed charging data about it. Here are my measurements.
