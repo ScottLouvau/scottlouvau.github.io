@@ -33,3 +33,4 @@ Here's what I saw:
 The iPad charges at a max of 35w, which it maintains from 0-55%. After 55%, it slows to ~25w until 70%, and then ~17w until 90%. I didn't see the iPad draw more than 36w, even if I run a benchmark on it while the battery is under 50%. If you bring a 30w charger, you're getting just about maximum speed. 
 
 Overall, charging from 0-60% is quick, taking only 45 minutes. Charging to 80% (1:10) or 90% (1:25) is still reasonably fast, but 90-100% is slower. If you turn on the 80% Limit, charging is relatively fast all the way until it stops. 
+
