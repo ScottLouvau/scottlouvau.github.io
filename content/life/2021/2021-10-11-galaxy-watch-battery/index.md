@@ -15,7 +15,7 @@ TL;DR:
 
   
 
-I bought the Galaxy Watch 4 44mm LTE non-Classic, hoping to [try phone-free life]({{< ref "../2021-09-24-no-phone-experiment" >}}). On the first day, I quickly installed the apps I wanted (Gboard and Spotify), turned most things on (Always On Display, continuous health measurements) and the battery died by 4:00pm. :/ 
+I bought the Galaxy Watch 4 44mm LTE non-Classic, hoping to [try phone-free life]({{< ref "life/2021/2021-09-24-no-phone-experiment" >}}). On the first day, I quickly installed the apps I wanted (Gboard and Spotify), turned most things on (Always On Display, continuous health measurements) and the battery died by 4:00pm. :/ 
 
 I went back to the default settings (Always On Display off, gestures off, and default health measurement intervals). This improved my situation to about 50% battery use during a 12 hour day and about 25% overnight while I slept. Still pretty disappointing. 
 
