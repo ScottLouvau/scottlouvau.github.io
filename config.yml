@@ -1,6 +1,5 @@
 baseURL: "https://relentlessoptimizer.com"
 title: "Relentless Optimizer"
-paginate: 10
 # 'Relentless' is a minimal theme from scratch.
 # 'PaperModMe' is my customizations on the PaperMod theme.
 #theme: "relentless"
@@ -140,7 +139,6 @@ markup:
       unsafe: true
   highlight:
      # anchorLineNos: true
-     codeFences: true
      guessSyntax: true
      lineNos: false
      noClasses: false
