@@ -24,6 +24,9 @@ minify:
     disableXML: true
     #minifyOutput: true
 
+pagination:
+  pagerSize: 10
+
 permalinks:
   gaming:  gaming/:year/:month/:day/:title/
   code:    code/:year/:month/:day/:title/
@@ -148,23 +151,16 @@ markup:
 privacy:
     vimeo:
         disabled: true
-        simple: true
 
     twitter:
         disabled: true
-        enableDNT: true
-        simple: true
 
     instagram:
         disabled: true
-        simple: true
 
     youtube:
         disabled: true
-        privacyEnhanced: true
 
 services:
     instagram:
-        disableInlineCSS: true
-    twitter:
         disableInlineCSS: true
