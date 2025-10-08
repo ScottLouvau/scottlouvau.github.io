@@ -1,6 +1,6 @@
 baseURL: "https://relentlessoptimizer.com"
 title: "Relentless Optimizer"
-paginate: 10
+
 # 'Relentless' is a minimal theme from scratch.
 # 'PaperModMe' is my customizations on the PaperMod theme.
 #theme: "relentless"
@@ -24,6 +24,9 @@ minify:
     #disableCSS: true        # Don't minify CSS (easier to debug)
     disableXML: true
     #minifyOutput: true
+
+pagination:
+  pagerSize: 10
 
 permalinks:
   gaming:  gaming/:year/:month/:day/:title/
@@ -150,23 +153,16 @@ markup:
 privacy:
     vimeo:
         disabled: true
-        simple: true
 
     twitter:
         disabled: true
-        enableDNT: true
-        simple: true
 
     instagram:
         disabled: true
-        simple: true
 
     youtube:
         disabled: true
-        privacyEnhanced: true
 
 services:
     instagram:
-        disableInlineCSS: true
-    twitter:
         disableInlineCSS: true
