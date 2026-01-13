@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# Script to transcode all missing Bluray Movies/Shows from Raw/ to Transcode/ using HandBrakeCLI.
+# Usage: transcode-incremental <category> <preset> <output-folder-name>
+#  category: "Movies" or "Shows", or more specific ("Shows/Bluey (2018)")
+#  preset: "5SE3v3", "AHE3", or handbrake-presets file/preset name.
+
+# Setup:
+# - Install HandBrake (from Flatpak 'Flathub' repository for recent builds; can use 'apt install', but builds are old.)
+#  - Fix 'HandBrakeCLI' variable below to run your desired HandBrakeCLI version.
+# - apt install mkvtoolnix (for mkvpropedit)
+# - Fix 'sourceDir' and 'targetDir' paths below to match your media locations
+
+shopt -s nullglob
+scriptPath="$(dirname "$0")"
+
+# Run HandBrakeCLI version in the Flatpak (easy current builds instead of old one from apt install)
+HandBrakeCLI="flatpak run --command=HandBrakeCLI fr.handbrake.ghb"
+
+category="${1:-Movies}"
+preset="${2:-5SE3v3}"
+outFolderName="${3:-Blurays}"
+
+sourceDir="/media/scott/Expansion/Raw/Blurays/$category"
+targetDir="/media/video/Transcoded/$outFolderName/$category"
+
+echo "Transcoding '$category/' using '$preset'..."
+echo "  FROM: $sourceDir"
+echo "  TO:   $targetDir"
+echo
+
+# Find all MKV files under source directory
+#  'mapfile' is used to allow redirecting stdout in the loop without consuming the rest of the files to loop on)
+mapfile -d $'\0' files < <(find "$sourceDir" -type f -name "*.mkv" -print0)
+for file in "${files[@]}"; do
+    # Get input file name without extension    
+    fileName=$(basename "$file" .mkv)
+
+    # Calculate corresponding output directory
+    folderPath=$(dirname "$file")
+    pathUnderShows=${folderPath#"$sourceDir/"}
+    outDir="$targetDir/$pathUnderShows"
+    outFile="$outDir/$fileName - $preset.mkv"
+
+    # Transcode to a temporary name first
+    outTemp="$outDir/$fileName - Temp.mkv"
+
+    # If the output video doesn't exist...
+    if [ -f "$outFile" ]; then
+        echo "EXISTS: '$fileName'"
+    else
+        echo
+        echo "TRANSCODE: '$fileName'"
+        echo "  FROM: $file"
+        echo "  TO:   $outFile"
+
+        mkdir -p "$outDir"
+
+        # Transcode it, hiding all output except transcode progress
+        $HandBrakeCLI --preset-import-file "$scriptPath/handbrake-presets/$preset.json" -Z "$preset" -i "$file" -o "$outTemp" 2> "$outDir/Current.log"
+        
+        # Recompute statistics on the result (otherwise stream size metadata tags are wrong)
+        mkvpropedit "$outTemp" --add-track-statistics-tags
+        
+        # Rename output to the final file name only when done
+        #  (so interrupting and re-running the script will redo partially completed transcodes correctly)
+        mv "$outTemp" "$outFile"
+
+        echo
+    fi
+done
