@@ -5,7 +5,7 @@ date: 2026-02-26
 
 My wife and I weren't sleeping well. Our four-year-old mattress quickly formed hip dents, despite every-other-week rotation. We each preferred different firmnesses and bedding warmths, too, but the ~$1,600 base price of adjustable mattresses was unappealing.
 
-While procrastinating on that, I had a weird idea: Could I sleep better on a camping pad, if I got it "just right"? I wasn't sleeping well anyway, so I decided to find out.
+While procrastinating on that, I had a weird idea: Could I sleep better on a camping pad, if I got it "just right"? I'd never slept very well on sleeping pads, but I wasn't sleeping well anyway, so I decided to find out.
 
 I set up an [Exped MegaMat](https://www.expedusa.com/products/megamat?variant=47704145363161) next to our bed. I tried to judge "just right" bedding and inflation, and slept a few nights on it to see if I would acclimate. I didn't. The warmth was a lot better, but my back still ached each morning. My Apple Watch showed lots of interruptions, and that's how I felt.
 
