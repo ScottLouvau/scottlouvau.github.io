@@ -9,9 +9,11 @@ While procrastinating on that, I had a weird idea: Could I sleep better on a cam
 
 I set up an [Exped MegaMat](https://www.expedusa.com/products/megamat?variant=47704145363161) next to our bed. I tried to judge "just right" bedding and inflation, and slept a few nights on it to see if I would acclimate. I didn't. The warmth was a lot better, but my back still ached each morning. My Apple Watch showed lots of interruptions, and that's how I felt.
 
-I decided to test inflation levels systematically. I needed an inflation level which worked on my side and stomach. On my side, my spine can't be curved sideways too much. On my stomach, it can't be too arched or too flat. I started at the "neutral" level the pad self-inflates to if left open. I tried a night on that, then added five pumps with the included hand pump each night. N+10 and N+15 were both quite good. I tested more precisely, and settled on N+11. After a rough week of testing, I had my first few nights with no aching back and much higher sleep scores (94, 95, 96). Awesome! 
+I decided to test inflation levels systematically. I needed an inflation level which worked on both my side and stomach. On my side, my spine can't be curved sideways too much. On my stomach, it can't be too arched or too flat. 
 
-I didn't want to sleep on the floor forever. Fortunately, the [MegaMat Long X-Wide](https://www.expedusa.com/products/megamat?variant=47704145363161) is half of a queen (77.6" x 30.3" vs. 80" x 60"). We bought two from REI on sale ($200 each), and put them side-by-side in our bedframe. Underneath, we have a layer of plywood for support, and a layer of EVA foam tiles (gym floor mats) to protect the pads from splinters and be softer if we "bottom out".
+I started at the "neutral" level the pad self-inflates to if left open. I tried a night on that, then added five pumps with the included hand pump each night. N+10 and N+15 were both quite good. I tested more precisely, and settled on N+11. After a rough week of testing, I had my first few nights with no aching back and much higher sleep scores (94, 95, 96). Awesome! 
+
+I didn't want to sleep on the floor forever. Fortunately, the [MegaMat Long X-Wide](https://www.expedusa.com/products/megamat?variant=47704145363161) is half of queen size (77.6" x 30.3" vs. 80" x 60"). We bought two from REI on sale ($200 each), and put them side-by-side in our bedframe. Underneath, we have a layer of plywood for support, and a layer of EVA foam tiles (gym floor mats) to protect the pads from splinters and be softer if we "bottom out".
 
 ![Pads and Layers](img/pads-and-layers.jpg)
 
