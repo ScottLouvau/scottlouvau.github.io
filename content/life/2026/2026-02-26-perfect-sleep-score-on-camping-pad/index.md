@@ -30,4 +30,4 @@ We don't know how long the pads will last, but there are no springs or thick foa
 
 If you're struggling with bed firmness, or just want to sleep better the next time you camp, getting a nice sleeping pad and systematically testing inflation might be worth a try!
 
-![Final Bed with Separate Bedding](img/separate-bedding.jpg)
+![Final Bed, separate Bedding](img/separate-bedding.jpg)
