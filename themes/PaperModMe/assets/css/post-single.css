@@ -99,13 +99,14 @@
     margin-bottom: var(--content-gap)
 }
 
-.post-content ol,
-.post-content ul {
-    padding-inline-start: 20px
+.post-content p:has(+ ul) {
+    margin-bottom: 0;
 }
 
-.post-content li {
-    margin-top: 5px
+.post-content ol,
+.post-content ul {
+    padding-inline-start: 20px;
+    margin-left: 4px;
 }
 
 .post-content li p {
